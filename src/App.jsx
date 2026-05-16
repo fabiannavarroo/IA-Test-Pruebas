@@ -4059,8 +4059,60 @@ export default function App() {
   const [answers, setAnswers] = useState({});
   const [checked, setChecked] = useState({});
   const [showOnlyWrong, setShowOnlyWrong] = useState(false);
+  const [examMode, setExamMode] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(3600);
+  const [examFinished, setExamFinished] = useState(false);
 
   const selectedExam = exams.find((e) => e.id === selectedExamId) || exams[0];
+
+  React.useEffect(() => {
+    if (!examMode || examFinished) return;
+    if (timeLeft <= 0) {
+      setExamFinished(true);
+      return;
+    }
+    const timer = setInterval(() => {
+      setTimeLeft((t) => {
+        if (t <= 1) {
+          setExamFinished(true);
+          return 0;
+        }
+        return t - 1;
+      });
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [examMode, examFinished, timeLeft]);
+
+  React.useEffect(() => {
+    if (examMode) {
+      setTimeLeft(3600);
+      setExamFinished(false);
+    }
+  }, [examMode, selectedExamId]);
+
+  function formatTime(seconds) {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+  }
+
+  function getScore() {
+    let correct = 0;
+    let wrong = 0;
+    for (const q of selectedExam.questions) {
+      if (answers[q.id] && answers[q.id].length > 0) {
+        if (isCorrect(answers[q.id], q.correct)) {
+          correct += 1;
+        } else {
+          wrong += 1;
+        }
+      }
+    }
+    const total = selectedExam.questions.length;
+    const raw = (correct / total) * 10;
+    const penalty = (wrong / total) * 10;
+    return { correct, wrong, total, raw, penalty, score: Math.max(0, raw - penalty) };
+  }
 
   const examStats = useMemo(() => {
     const result = {};
@@ -4128,10 +4180,31 @@ export default function App() {
                 Cada pregunta tiene 4 opciones y pueden ser correctas 1, 2, 3 o 4. Selecciona tus respuestas y comprueba por pregunta o todo el examen.
               </p>
             </div>
-            <div className="rounded-2xl bg-slate-100 px-5 py-3 text-sm">
-              <div className="font-semibold">Examen actual</div>
-              <div className="text-slate-600">
-                {currentStats.correct}/{currentStats.total || 0} correctas comprobadas
+            <div className="flex flex-col items-end gap-2">
+              <button
+                onClick={() => {
+                  setExamMode((m) => !m);
+                  setChecked({});
+                  setShowOnlyWrong(false);
+                }}
+                className={`rounded-xl px-4 py-2 font-semibold text-sm transition ${
+                  examMode
+                    ? "bg-rose-600 text-white hover:bg-rose-700"
+                    : "bg-slate-200 text-slate-700 hover:bg-slate-300"
+                }`}
+              >
+                {examMode ? "🔴 Modo examen ON" : "⚪ Modo examen OFF"}
+              </button>
+              {examMode && (
+                <div className={`text-lg font-mono font-bold ${timeLeft < 300 ? "text-rose-600" : "text-slate-900"}`}>
+                  ⏱ {formatTime(timeLeft)}
+                </div>
+              )}
+              <div className="rounded-2xl bg-slate-100 px-5 py-3 text-sm">
+                <div className="font-semibold">Examen actual</div>
+                <div className="text-slate-600">
+                  {currentStats.correct}/{currentStats.total || 0} correctas comprobadas
+                </div>
               </div>
             </div>
           </div>
@@ -4161,22 +4234,69 @@ export default function App() {
         </aside>
 
         <section className="space-y-5">
+          {examMode && examFinished && (
+            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+              <h3 className="text-xl font-bold text-slate-900 mb-4">📋 Resultados del examen</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                <div className="rounded-xl bg-slate-50 p-4 text-center">
+                  <div className="text-2xl font-bold">{getScore().correct}</div>
+                  <div className="text-xs text-slate-500">Correctas</div>
+                </div>
+                <div className="rounded-xl bg-rose-50 p-4 text-center">
+                  <div className="text-2xl font-bold text-rose-700">{getScore().wrong}</div>
+                  <div className="text-xs text-slate-500">Incorrectas</div>
+                </div>
+                <div className="rounded-xl bg-amber-50 p-4 text-center">
+                  <div className="text-2xl font-bold text-amber-700">{getScore().total - getScore().correct - getScore().wrong}</div>
+                  <div className="text-xs text-slate-500">Sin responder</div>
+                </div>
+                <div className="rounded-xl bg-blue-50 p-4 text-center">
+                  <div className="text-2xl font-bold text-blue-700">{getScore().score.toFixed(2)}</div>
+                  <div className="text-xs text-slate-500">Nota /10</div>
+                </div>
+              </div>
+              <p className="text-sm text-slate-500">
+                Fórmula: ({getScore().correct}/{getScore().total})×10 − ({getScore().wrong}/{getScore().total})×10 = {getScore().score.toFixed(2)} (mínimo 0)
+              </p>
+              <button
+                onClick={() => { setChecked({}); setExamFinished(false); }}
+                className="mt-4 rounded-xl px-4 py-2 bg-blue-600 text-white font-semibold hover:bg-blue-700"
+              >
+                Ver corrección detallada
+              </button>
+            </div>
+          )}
+
           <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
             <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
               <div>
                 <h2 className="text-2xl font-bold">{selectedExam.title}</h2>
                 <p className="text-slate-600 mt-1">{selectedExam.subtitle}</p>
                 <p className="text-sm text-slate-500 mt-2">
-                  Instrucción: marca todas las opciones correctas. Una pregunta solo cuenta como correcta si marcas exactamente todas las correctas y ninguna incorrecta.
+                  {examMode
+                    ? "Modo examen real: 1 hora, respuestas incorrectas descuentan, sin ver corrección hasta finalizar."
+                    : "Instrucción: marca todas las opciones correctas. Una pregunta solo cuenta como correcta si marcas exactamente todas las correctas y ninguna incorrecta."}
                 </p>
               </div>
               <div className="flex flex-wrap gap-2">
-                <button onClick={checkExam} className="rounded-xl px-4 py-2 bg-blue-600 text-white font-semibold hover:bg-blue-700">
-                  Comprobar todo
-                </button>
-                <button onClick={() => setShowOnlyWrong((x) => !x)} className="rounded-xl px-4 py-2 bg-slate-100 text-slate-800 font-semibold hover:bg-slate-200">
-                  {showOnlyWrong ? "Ver todas" : "Ver fallos"}
-                </button>
+                {examMode && !examFinished && (
+                  <button
+                    onClick={() => setExamFinished(true)}
+                    className="rounded-xl px-4 py-2 bg-rose-600 text-white font-semibold hover:bg-rose-700"
+                  >
+                    Finalizar examen
+                  </button>
+                )}
+                {!examMode && (
+                  <>
+                    <button onClick={checkExam} className="rounded-xl px-4 py-2 bg-blue-600 text-white font-semibold hover:bg-blue-700">
+                      Comprobar todo
+                    </button>
+                    <button onClick={() => setShowOnlyWrong((x) => !x)} className="rounded-xl px-4 py-2 bg-slate-100 text-slate-800 font-semibold hover:bg-slate-200">
+                      {showOnlyWrong ? "Ver todas" : "Ver fallos"}
+                    </button>
+                  </>
+                )}
                 <button onClick={resetExam} className="rounded-xl px-4 py-2 bg-white border border-slate-300 text-slate-800 font-semibold hover:bg-slate-50">
                   Reiniciar
                 </button>
@@ -4215,7 +4335,7 @@ export default function App() {
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="font-bold text-slate-900">Pregunta {selectedExam.questions.findIndex((item) => item.id === q.id) + 1}</span>
                       <span className="text-xs font-semibold rounded-full px-2 py-1 bg-slate-100 text-slate-600">{q.topic}</span>
-                      {isChecked && (
+                {isChecked && !examMode && (
                         <span className={`text-xs font-bold rounded-full px-2 py-1 ${ok ? "bg-emerald-100 text-emerald-700" : "bg-rose-100 text-rose-700"}`}>
                           {ok ? "Correcta" : "Fallada"}
                         </span>
@@ -4223,9 +4343,11 @@ export default function App() {
                     </div>
                     <p className="mt-3 text-lg font-medium leading-relaxed">{q.statement}</p>
                   </div>
-                  <button onClick={() => checkQuestion(q.id)} className="rounded-xl px-4 py-2 bg-slate-900 text-white font-semibold hover:bg-slate-700 whitespace-nowrap">
-                    Comprobar
-                  </button>
+                  {!examMode && (
+                    <button onClick={() => checkQuestion(q.id)} className="rounded-xl px-4 py-2 bg-slate-900 text-white font-semibold hover:bg-slate-700 whitespace-nowrap">
+                      Comprobar
+                    </button>
+                  )}
                 </div>
 
                 <QuestionFigure figure={q.figure} />
