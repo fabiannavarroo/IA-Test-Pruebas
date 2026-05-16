@@ -1662,7 +1662,23 @@ const exams = [
       {
         id: "m7q4",
         topic: "Tabla conjunta",
-        statement: "En una tabla de 1000 pacientes, los casos con caries son 108, 12, 72 y 8. ¿Cuál es P(caries)?",
+        statement: "En una tabla de 1000 pacientes del dentista, ¿cuál es P(caries)?",
+        figure: {
+          type: "table",
+          title: "Tabla de 1000 pacientes — Dentista",
+          headers: ["Caries", "Dolor", "Enganche", "Nº"],
+          rows: [
+            ["Sí", "Sí", "Sí", "108"],
+            ["Sí", "Sí", "No", "12"],
+            ["Sí", "No", "Sí", "72"],
+            ["Sí", "No", "No", "8"],
+            ["No", "Sí", "Sí", "16"],
+            ["No", "Sí", "No", "64"],
+            ["No", "No", "Sí", "144"],
+            ["No", "No", "No", "576"],
+          ],
+          footer: "Total: 1000 pacientes",
+        },
         options: {
           a: "0.108",
           b: "0.2",
@@ -1675,7 +1691,7 @@ const exams = [
       {
         id: "m7q5",
         topic: "Tabla conjunta",
-        statement: "En la tabla del dentista, P(¬dolor, enganche) se calcula sumando los casos de enganche y no dolor: caries=72, ¬caries=144, total=1000. ¿Cuál es el valor?",
+        statement: "En la tabla del dentista (ver arriba), P(¬dolor, enganche) se calcula sumando los casos de enganche y no dolor: caries=72, ¬caries=144. ¿Cuál es el valor?",
         options: {
           a: "0.072",
           b: "0.144",
@@ -1688,7 +1704,7 @@ const exams = [
       {
         id: "m7q6",
         topic: "Probabilidad condicional",
-        statement: "En la tabla del dentista: dolor y caries son 108+12=120; total con dolor es 108+12+16+64=200. ¿Cuál es P(caries|dolor)?",
+        statement: "En la tabla del dentista (ver pregunta anterior): dolor y caries son 108+12=120; total con dolor es 108+12+16+64=200. ¿Cuál es P(caries|dolor)?",
         options: {
           a: "0.2",
           b: "0.4",
@@ -1741,7 +1757,19 @@ const exams = [
       {
         id: "m7q10",
         topic: "Naive Bayes",
-        statement: "Clasificador Naive Bayes: P(Gripe)=0.67 y P(Temp>37.5|Gripe)=0.80. Sin normalizar, ¿qué peso tiene Gripe dada Temp>37.5?",
+        statement: "Clasificador Naive Bayes para diagnóstico. Sin normalizar, ¿qué peso tiene Gripe dada Temp>37.5?",
+        figure: {
+          type: "table",
+          title: "Probabilidades del clasificador",
+          headers: ["Probabilidad", "Valor"],
+          rows: [
+            ["P(Gripe)", "0.67"],
+            ["P(Neumonía)", "0.33"],
+            ["P(Temp>37.5 | Gripe)", "0.80"],
+            ["P(Temp>37.5 | Neumonía)", "0.74"],
+          ],
+          footer: "Evidencia: Temp > 37.5",
+        },
         options: {
           a: "0.536",
           b: "0.67",
@@ -1754,7 +1782,7 @@ const exams = [
       {
         id: "m7q11",
         topic: "Normalización",
-        statement: "Si en una inferencia bayesiana los pesos sin normalizar son 0.536 para Gripe y 0.2442 para Neumonía, ¿aproximadamente cuánto vale P(Gripe|evidencia)?",
+        statement: "Con los pesos sin normalizar de la pregunta anterior (Gripe=0.536, Neumonía=0.2442), ¿aproximadamente cuánto vale P(Gripe|evidencia)?",
         options: {
           a: "0.536",
           b: "0.2442",
@@ -2403,7 +2431,23 @@ const exams = [
       {
         id: "m10q6",
         topic: "Probabilidad — Tabla conjunta",
-        statement: "Un dentista registra 1000 pacientes: Caries+Dolor+Enganche=90, Caries+Dolor+SinEnganche=30, Caries+SinDolor+Enganche=60, Caries+SinDolor+SinEnganche=20, SinCaries+Dolor+Enganche=20, SinCaries+Dolor+SinEnganche=80, SinCaries+SinDolor+Enganche=120, SinCaries+SinDolor+SinEnganche=580. ¿Cuánto vale P(C|D)?",
+        statement: "Un dentista registra 1000 pacientes según caries (C), dolor (D) y enganche (E). ¿Cuánto vale P(C|D)?",
+        figure: {
+          type: "table",
+          title: "Tabla de 1000 pacientes",
+          headers: ["Caries", "Dolor", "Enganche", "Nº pacientes"],
+          rows: [
+            ["Sí", "Sí", "Sí", "90"],
+            ["Sí", "Sí", "No", "30"],
+            ["Sí", "No", "Sí", "60"],
+            ["Sí", "No", "No", "20"],
+            ["No", "Sí", "Sí", "20"],
+            ["No", "Sí", "No", "80"],
+            ["No", "No", "Sí", "120"],
+            ["No", "No", "No", "580"],
+          ],
+          footer: "Total: 1000 pacientes",
+        },
         options: { a: "120/220 ≈ 0.545", b: "120/1000 = 0.12", c: "200/1000 = 0.20", d: "220/1000 = 0.22" },
         correct: ["a"],
         explanation: "P(C|D) = P(C,D)/P(D). Dolor total = 90+30+20+80 = 220. Dolor y caries = 90+30 = 120. P(C|D) = 120/220 ≈ 0.545."
@@ -2419,8 +2463,25 @@ const exams = [
       {
         id: "m10q8",
         topic: "Red bayesiana — Inferencia completa",
-        statement: "Red: D→C, D→T, C→V, T→V. P(D)=0.4, P(C|D)=0.8, P(C|¬D)=0.25, P(T|D)=0.7, P(T|¬D)=0.2, P(V|C,T)=0.95, P(V|C,¬T)=0.6, P(V|¬C,T)=0.5, P(V|¬C,¬T)=0.1. ¿Cuánto vale P(V|D)?",
-        figure: { type: "custom", kind: "bayesian-convergent" },
+        statement: "Red: D→C, D→T, C→V, T→V. ¿Cuánto vale P(V|D)?",
+        figure: {
+          type: "table",
+          title: "Tablas de probabilidad de la red bayesiana",
+          headers: ["Variable", "Condición", "Probabilidad"],
+          rows: [
+            ["P(D)", "—", "0.40"],
+            ["P(¬D)", "—", "0.60"],
+            ["P(C|D)", "D = Sí", "0.80"],
+            ["P(C|¬D)", "D = No", "0.25"],
+            ["P(T|D)", "D = Sí", "0.70"],
+            ["P(T|¬D)", "D = No", "0.20"],
+            ["P(V|C,T)", "C=Sí, T=Sí", "0.95"],
+            ["P(V|C,¬T)", "C=Sí, T=No", "0.60"],
+            ["P(V|¬C,T)", "C=No, T=Sí", "0.50"],
+            ["P(V|¬C,¬T)", "C=No, T=No", "0.10"],
+          ],
+          footer: "Red: D → C, D → T, C → V, T → V",
+        },
         options: { a: "0.752", b: "0.532+0.144+0.070+0.006", c: "0.8×0.7×0.95 + 0.8×0.3×0.6 + 0.2×0.7×0.5 + 0.2×0.3×0.1", d: "0.4823" },
         correct: ["a", "b", "c"],
         explanation: "P(V|D) = Σc Σt P(c|D)P(t|D)P(V|c,t) = 0.8×0.7×0.95 + 0.8×0.3×0.6 + 0.2×0.7×0.5 + 0.2×0.3×0.1 = 0.532+0.144+0.070+0.006 = 0.752."
@@ -2444,8 +2505,25 @@ const exams = [
       {
         id: "m10q11",
         topic: "HMM — Filtrado completo",
-        statement: "HMM: X∈{Alto,Bajo}, E∈{Aprueba,Suspende}. P(X0=Alto)=0.3, P(Alto|Alto)=0.8, P(Alto|Bajo)=0.3, P(Aprueba|Alto)=0.9, P(Aprueba|Bajo)=0.4. Observamos E1=Aprueba. ¿Cuánto vale P(Alto1|E1)?",
-        figure: { type: "custom", kind: "hmm-diagram" },
+        statement: "HMM: X∈{Alto,Bajo}, E∈{Aprueba,Suspende}. Observamos E1=Aprueba. ¿Cuánto vale P(Alto1|E1)?",
+        figure: {
+          type: "table",
+          title: "Probabilidades del HMM",
+          headers: ["Tipo", "Probabilidad", "Valor"],
+          rows: [
+            ["Inicial", "P(X0=Alto)", "0.30"],
+            ["Inicial", "P(X0=Bajo)", "0.70"],
+            ["Transición", "P(Alto | Alto)", "0.80"],
+            ["Transición", "P(Alto | Bajo)", "0.30"],
+            ["Transición", "P(Bajo | Alto)", "0.20"],
+            ["Transición", "P(Bajo | Bajo)", "0.70"],
+            ["Emisión", "P(Aprueba | Alto)", "0.90"],
+            ["Emisión", "P(Aprueba | Bajo)", "0.40"],
+            ["Emisión", "P(Suspende | Alto)", "0.10"],
+            ["Emisión", "P(Suspende | Bajo)", "0.60"],
+          ],
+          footer: "Observación: E1 = Aprueba",
+        },
         options: { a: "Primero predicción: P(Alto1)=0.8×0.3+0.3×0.7=0.45", b: "Peso(Alto1)=0.9×0.45=0.405", c: "P(Alto1|E1)=0.405/(0.405+0.220)=0.648", d: "P(Alto1|E1)=0.405" },
         correct: ["a", "b", "c"],
         explanation: "Predicción: P(Alto1)=0.8×0.3+0.3×0.7=0.45, P(Bajo1)=0.55. Actualización: peso(Alto)=0.9×0.45=0.405, peso(Bajo)=0.4×0.55=0.220. Normalizando: 0.405/0.625=0.648."
@@ -2453,7 +2531,21 @@ const exams = [
       {
         id: "m10q12",
         topic: "HMM — Filtrado paso 2",
-        statement: "Continuando con el HMM anterior, tras E1=Aprueba tenemos P(Alto1|E1)=0.648. Ahora observamos E2=Suspende. P(Suspende|Alto)=0.1, P(Suspende|Bajo)=0.6. ¿Cuánto vale P(Alto2|E1,E2)?",
+        statement: "Continuando con el HMM anterior, tras E1=Aprueba tenemos P(Alto1|E1)=0.648. Ahora observamos E2=Suspende. ¿Cuánto vale P(Alto2|E1,E2)?",
+        figure: {
+          type: "table",
+          title: "Resumen del paso 1 → datos para paso 2",
+          headers: ["Concepto", "Valor"],
+          rows: [
+            ["P(Alto1 | E1=Aprueba)", "0.648"],
+            ["P(Bajo1 | E1=Aprueba)", "0.352"],
+            ["P(Suspende | Alto)", "0.10"],
+            ["P(Suspende | Bajo)", "0.60"],
+            ["P(Alto2 | Alto1)", "0.80"],
+            ["P(Alto2 | Bajo1)", "0.30"],
+          ],
+          footer: "Observación nueva: E2 = Suspende",
+        },
         options: { a: "Predicción: P(Alto2|E1)=0.8×0.648+0.3×0.352=0.624", b: "Peso(Alto2)=0.1×0.624=0.0624", c: "P(Alto2|E1,E2)=0.0624/(0.0624+0.2256)≈0.217", d: "P(Alto2|E1,E2)=0.624" },
         correct: ["a", "b", "c"],
         explanation: "Predicción: P(Alto2|E1)=0.8×0.648+0.3×0.352=0.624. Actualización: peso(Alto)=0.1×0.624=0.0624, peso(Bajo)=0.6×0.376=0.2256. Normalizando: 0.0624/0.288≈0.217."
@@ -2461,7 +2553,21 @@ const exams = [
       {
         id: "m10q13",
         topic: "HMM — Secuencia de estados",
-        statement: "En una cadena de Markov con P(X0=W)=1, P(X1=A|W)=0.2, P(X2=A|A)=0.6, P(X3=W|A)=0.2. ¿Cuánto vale P(W,A,A,W)?",
+        statement: "En una cadena de Markov con estados {W, A}, ¿cuánto vale P(W,A,A,W)?",
+        figure: {
+          type: "table",
+          title: "Probabilidades de la cadena de Markov",
+          headers: ["Tipo", "Probabilidad", "Valor"],
+          rows: [
+            ["Inicial", "P(X0=W)", "1.00"],
+            ["Inicial", "P(X0=A)", "0.00"],
+            ["Transición", "P(A | W)", "0.20"],
+            ["Transición", "P(W | W)", "0.80"],
+            ["Transición", "P(A | A)", "0.60"],
+            ["Transición", "P(W | A)", "0.20"],
+          ],
+          footer: "Trayectoria: W → A → A → W",
+        },
         options: { a: "1×0.2×0.6×0.2 = 0.024", b: "0.2+0.6+0.2 = 1.0", c: "Se multiplican las transiciones de la trayectoria", d: "0.2×0.6 = 0.12" },
         correct: ["a", "c"],
         explanation: "P(W,A,A,W) = P(X0=W)×P(X1=A|W)×P(X2=A|A)×P(X3=W|A) = 1×0.2×0.6×0.2 = 0.024."
@@ -2469,8 +2575,21 @@ const exams = [
       {
         id: "m10q14",
         topic: "MDP — Bellman y política óptima",
-        statement: "MDP: S={A,B,C}, C es meta con V(C)=0. En A: acción p→B(0.7), A(0.3), coste 1; acción q→C(0.4), A(0.6), coste 1. En B: acción q→C(0.8), A(0.2), coste 1. ¿Cuáles son V(A), V(B) y la política óptima?",
-        figure: { type: "custom", kind: "mdp-diagram" },
+        statement: "MDP: S={A,B,C}, C es meta con V(C)=0. ¿Cuáles son V(A), V(B) y la política óptima?",
+        figure: {
+          type: "table",
+          title: "Transiciones y costes del MDP",
+          headers: ["Estado", "Acción", "Destino", "Prob.", "Coste"],
+          rows: [
+            ["A", "p", "B", "0.7", "1"],
+            ["A", "p", "A", "0.3", "1"],
+            ["A", "q", "C", "0.4", "1"],
+            ["A", "q", "A", "0.6", "1"],
+            ["B", "q", "C", "0.8", "1"],
+            ["B", "q", "A", "0.2", "1"],
+          ],
+          footer: "C es estado meta absorbente: V(C) = 0",
+        },
         options: { a: "Si π(A)=q: V(A)=1+0.6V(A) → V(A)=2.5", b: "V(B)=1+0.2×2.5=1.5", c: "Coste de p en A = 1+0.3×2.5+0.7×1.5=2.80 > 2.50, así que π*(A)=q", d: "π*(A)=p porque tiene más probabilidad de ir a B" },
         correct: ["a", "b", "c"],
         explanation: "Probamos q en A: V(A)=1+0.6V(A) → 0.4V(A)=1 → V(A)=2.5. V(B)=1+0.2×2.5=1.5. Comprobamos p: 1+0.3×2.5+0.7×1.5=2.80 > 2.50. Política óptima: π*(A)=q, π*(B)=q."
@@ -2486,8 +2605,25 @@ const exams = [
       {
         id: "m10q16",
         topic: "Lógica borrosa — Mamdani completo",
-        statement: "Controlador de riego: H=40, L=70. μseca(H)=0.75, μnormal(H)=0.25, μhúmeda(H)=0. μsombra(L)=0.30, μsol(L)=0.70. Reglas: R1: seca AND sol→alto; R2: seca AND sombra→medio; R3: normal AND sol→medio; R4: húmeda OR sombra→bajo. Agregación por máximo. ¿Cuáles son los grados agregados de cada salida?",
-        figure: { type: "custom", kind: "fuzzy-aggregation" },
+        statement: "Controlador de riego: H=40, L=70. ¿Cuáles son los grados agregados de cada salida?",
+        figure: {
+          type: "table",
+          title: "Grados de pertenencia y reglas",
+          headers: ["Concepto", "Valor"],
+          rows: [
+            ["μseca(40)", "0.75"],
+            ["μnormal(40)", "0.25"],
+            ["μhúmeda(40)", "0.00"],
+            ["μsombra(70)", "0.30"],
+            ["μsol(70)", "0.70"],
+            ["", ""],
+            ["R1: seca AND sol → alto", "min(0.75, 0.70) = 0.70"],
+            ["R2: seca AND sombra → medio", "min(0.75, 0.30) = 0.30"],
+            ["R3: normal AND sol → medio", "min(0.25, 0.70) = 0.25"],
+            ["R4: húmeda OR sombra → bajo", "max(0.00, 0.30) = 0.30"],
+          ],
+          footer: "AND = mínimo, OR = máximo, agregación = máximo",
+        },
         options: { a: "R1: min(0.75,0.70)=0.70→alto", b: "R2: min(0.75,0.30)=0.30→medio", c: "R3: min(0.25,0.70)=0.25→medio", d: "Agregado: bajo=0.30, medio=max(0.30,0.25)=0.30, alto=0.70" },
         correct: ["a", "b", "c", "d"],
         explanation: "Cada regla se activa con min (AND) o max (OR). R4: max(0,0.30)=0.30→bajo. Agregación: bajo=0.30, medio=max(0.30,0.25)=0.30, alto=0.70."
@@ -2503,7 +2639,21 @@ const exams = [
       {
         id: "m10q18",
         topic: "Naive Bayes — Clasificación",
-        statement: "Clasificador: P(Spam)=0.4, P(NoSpam)=0.6. P(oferta|Spam)=0.7, P(urgente|Spam)=0.6. P(oferta|NoSpam)=0.2, P(urgente|NoSpam)=0.1. Clasifica un correo con 'oferta' y 'urgente'.",
+        statement: "Clasifica un correo que contiene las palabras 'oferta' y 'urgente'.",
+        figure: {
+          type: "table",
+          title: "Probabilidades del clasificador Naive Bayes",
+          headers: ["Probabilidad", "Valor"],
+          rows: [
+            ["P(Spam)", "0.40"],
+            ["P(NoSpam)", "0.60"],
+            ["P(oferta | Spam)", "0.70"],
+            ["P(urgente | Spam)", "0.60"],
+            ["P(oferta | NoSpam)", "0.20"],
+            ["P(urgente | NoSpam)", "0.10"],
+          ],
+          footer: "Evidencia: correo contiene 'oferta' y 'urgente'",
+        },
         options: { a: "score(Spam)=0.4×0.7×0.6=0.168", b: "score(NoSpam)=0.6×0.2×0.1=0.012", c: "P(Spam|evidencia)=0.168/(0.168+0.012)≈0.933", d: "Se clasifica como NoSpam porque P(NoSpam)>P(Spam)" },
         correct: ["a", "b", "c"],
         explanation: "Naive Bayes multiplica priori por verosimilitudes. score(Spam)=0.168 >> score(NoSpam)=0.012. Normalizando: P(Spam|evidencia)≈0.933. Se clasifica como Spam."
@@ -2511,7 +2661,18 @@ const exams = [
       {
         id: "m10q19",
         topic: "Perceptrón — Actualización de pesos",
-        statement: "Perceptrón: w0=-0.5(bias), w1=0.8, w2=0.4. Entrada x=(1,0), objetivo t=0. Función: y=1 si NET≥0, y=0 si NET<0. Tasa η=0.1. ¿Cuáles son correctas?",
+        statement: "Perceptrón con bias. Entrada x=(1,0), objetivo t=0. Función: y=1 si NET≥0, y=0 si NET<0. Tasa η=0.1. ¿Cuáles son correctas?",
+        figure: {
+          type: "table",
+          title: "Pesos y entrada del perceptrón",
+          headers: ["Peso", "Valor inicial", "Entrada xi"],
+          rows: [
+            ["w0 (bias)", "-0.5", "1"],
+            ["w1", "0.8", "1"],
+            ["w2", "0.4", "0"],
+          ],
+          footer: "Regla: wi_nuevo = wi + η·(t−y)·xi  |  Objetivo t = 0",
+        },
         options: { a: "NET=-0.5+0.8×1+0.4×0=0.3, así que y=1", b: "Error: t-y=0-1=-1", c: "w0_nuevo=-0.5+0.1×(-1)×1=-0.6", d: "w1_nuevo=0.8+0.1×(-1)×1=0.7, w2 no cambia porque x2=0" },
         correct: ["a", "b", "c", "d"],
         explanation: "El perceptrón se activó cuando no debía. NET=0.3≥0 → y=1. Error=-1. Se actualizan: w0=-0.6, w1=0.7, w2=0.4 (no cambia porque x2=0)."
@@ -2560,6 +2721,35 @@ function QuestionFigure({ figure }) {
       <div className="my-4 flex justify-center">
         <div className="bg-white border border-slate-200 rounded-xl p-4 max-w-full overflow-x-auto">
           {renderCustomFigure(figure.kind, figure.props)}
+        </div>
+      </div>
+    );
+  }
+
+  if (figure.type === "table") {
+    return (
+      <div className="my-4 flex justify-center">
+        <div className="bg-white border border-slate-200 rounded-xl p-4 max-w-full overflow-x-auto">
+          {figure.title && <p className="text-sm font-semibold text-slate-700 mb-2 text-center">{figure.title}</p>}
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr>
+                {figure.headers.map((h, i) => (
+                  <th key={i} className="border border-slate-300 bg-slate-100 px-3 py-2 text-left font-semibold text-slate-700">{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {figure.rows.map((row, ri) => (
+                <tr key={ri} className={ri % 2 === 0 ? "bg-white" : "bg-slate-50"}>
+                  {row.map((cell, ci) => (
+                    <td key={ci} className="border border-slate-200 px-3 py-2 text-slate-800">{cell}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {figure.footer && <p className="text-xs text-slate-500 mt-2 text-center">{figure.footer}</p>}
         </div>
       </div>
     );
