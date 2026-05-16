@@ -179,6 +179,7 @@ const exams = [
         id: "m1q14",
         topic: "Redes bayesianas",
         statement: "En una red bayesiana:",
+        figure: { type: "custom", kind: "bayesian-chain" },
         options: {
           a: "Los nodos representan variables aleatorias.",
           b: "Los arcos representan dependencias directas.",
@@ -244,6 +245,7 @@ const exams = [
         id: "m1q19",
         topic: "Lógica borrosa",
         statement: "Sobre lógica borrosa, marque las correctas:",
+        figure: { type: "custom", kind: "fuzzy-humidity" },
         options: {
           a: "Los valores de pertenencia están en el intervalo [0,1].",
           b: "La borrosificación transforma entradas nítidas en grados de pertenencia.",
@@ -609,6 +611,7 @@ const exams = [
         id: "m3q6",
         topic: "Redes bayesianas",
         statement: "Para construir una red bayesiana se necesita indicar:",
+        figure: { type: "custom", kind: "bayesian-chain" },
         options: {
           a: "Variables aleatorias y sus dominios.",
           b: "Dependencias directas representadas por arcos.",
@@ -635,6 +638,7 @@ const exams = [
         id: "m3q8",
         topic: "Factorización RB",
         statement: "Si una red tiene A como padre de B y C, y B y C como padres de D, una factorización correcta es:",
+        figure: { type: "custom", kind: "bayesian-convergent" },
         options: {
           a: "P(A,B,C,D)=P(A)P(B|A)P(C|A)P(D|B,C).",
           b: "P(A,B,C,D)=P(D)P(C|D)P(B|D)P(A|B,C).",
@@ -674,6 +678,7 @@ const exams = [
         id: "m3q11",
         topic: "Redes bayesianas",
         statement: "En una estructura divergente A → B y A → C, marque las correctas:",
+        figure: { type: "custom", kind: "bayesian-chain" },
         options: {
           a: "B y C pueden ser dependientes si no se conoce A.",
           b: "B y C son independientes condicionados a A.",
@@ -687,6 +692,7 @@ const exams = [
         id: "m3q12",
         topic: "Redes bayesianas",
         statement: "En una estructura convergente A → C ← B, marque las correctas:",
+        figure: { type: "custom", kind: "bayesian-convergent" },
         options: {
           a: "A y B pueden ser independientes a priori.",
           b: "Observar C puede hacer dependientes a A y B.",
@@ -726,6 +732,7 @@ const exams = [
         id: "m3q15",
         topic: "HMM",
         statement: "Un Modelo Oculto de Markov añade a una cadena de Markov:",
+        figure: { type: "custom", kind: "hmm-diagram" },
         options: {
           a: "Estados ocultos o latentes.",
           b: "Variables de evidencia/observación.",
@@ -941,6 +948,7 @@ const exams = [
         id: "m4q11",
         topic: "Lógica borrosa",
         statement: "Una función de pertenencia μF(x):",
+        figure: { type: "custom", kind: "fuzzy-humidity" },
         options: {
           a: "Devuelve un valor entre 0 y 1.",
           b: "Indica el grado en que x pertenece al conjunto borroso F.",
@@ -954,6 +962,7 @@ const exams = [
         id: "m4q12",
         topic: "Conectivas borrosas",
         statement: "En inferencia borrosa max-min, se suele usar:",
+        figure: { type: "custom", kind: "fuzzy-and-rule" },
         options: {
           a: "AND como mínimo.",
           b: "OR como máximo.",
@@ -980,6 +989,7 @@ const exams = [
         id: "m4q14",
         topic: "Control borroso",
         statement: "Si una regla dice 'SI humedad es seca AND luz es soleada ENTONCES riego alto', su grado de activación con max-min se obtiene mediante:",
+        figure: { type: "custom", kind: "fuzzy-and-rule" },
         options: {
           a: "El mínimo de los grados de humedad seca y luz soleada.",
           b: "El máximo de los grados de humedad seca y luz soleada.",
@@ -1527,6 +1537,7 @@ const exams = [
         id: "m6q15",
         topic: "Lógica borrosa",
         statement: "En lógica borrosa, decir que la concentración alta tiene grado 0.9 significa:",
+        figure: { type: "custom", kind: "fuzzy-humidity" },
         options: {
           a: "Que pertenece al concepto 'alta' con grado 0.9.",
           b: "Que necesariamente hay 90% de probabilidad de morir.",
@@ -1717,6 +1728,7 @@ const exams = [
         id: "m7q9",
         topic: "Red bayesiana",
         statement: "En una red A → B → C, con P(A)=0.2, P(B|A)=0.5 y P(C|B)=0.8, ¿cuál es P(A,B,C)? para A,B,C verdaderos?",
+        figure: { type: "custom", kind: "bayesian-chain" },
         options: {
           a: "0.2+0.5+0.8 = 1.5",
           b: "0.2·0.5·0.8 = 0.08",
@@ -1769,6 +1781,7 @@ const exams = [
         id: "m7q13",
         topic: "HMM",
         statement: "En un HMM de salud, P(X0=W)=1, y P(X1=A|X0=W)=0.2. ¿Cuál es P(X0=W, X1=A)?",
+        figure: { type: "custom", kind: "hmm-diagram" },
         options: {
           a: "1.2",
           b: "0.8",
@@ -1821,6 +1834,7 @@ const exams = [
         id: "m7q17",
         topic: "MDP Bellman",
         statement: "En un MDP, si V(A)=2.4, V(B)=1.2, acción p desde A lleva a A con 0.2 y a B con 0.8, coste 1. ¿Coste esperado de p?",
+        figure: { type: "custom", kind: "mdp-diagram" },
         options: {
           a: "1 + 0.2·2.4 + 0.8·1.2 = 2.44",
           b: "0.2·2.4 + 0.8·1.2 = 1.44",
@@ -1847,6 +1861,7 @@ const exams = [
         id: "m7q19",
         topic: "Lógica borrosa con números",
         statement: "Si μSeco(40)=0.8 y μSoleado(70000)=0.7, en una regla con antecedente Seco AND Soleado usando max-min, ¿cuál es el grado de activación?",
+        figure: { type: "custom", kind: "fuzzy-humidity" },
         options: {
           a: "max(0.8,0.7)=0.8",
           b: "min(0.8,0.7)=0.7",
@@ -1860,6 +1875,7 @@ const exams = [
         id: "m7q20",
         topic: "Lógica borrosa con números",
         statement: "Si dos reglas activan la misma salida 'riego alto' con grados 0.3 y 0.7, usando agregación por máximo, ¿qué grado queda para esa salida?",
+        figure: { type: "custom", kind: "fuzzy-aggregation" },
         options: {
           a: "0.3",
           b: "0.7",
@@ -2037,6 +2053,7 @@ const exams = [
         id: "m8q13",
         topic: "Dijkstra / coste uniforme",
         statement: "Grafo con costes: S→A(2), S→B(5), A→B(1), A→G(10), B→G(2). ¿Cuál es el camino óptimo por coste?",
+        figure: { type: "custom", kind: "search-graph" },
         options: {
           a: "S→G, coste 0",
           b: "S→B→G, coste 7",
@@ -2050,6 +2067,7 @@ const exams = [
         id: "m8q14",
         topic: "A*",
         statement: "Mismo grafo: S→A(2), S→B(5), A→B(1), A→G(10), B→G(2). Heurística: h(S)=4,h(A)=3,h(B)=1,h(G)=0. ¿Qué camino devuelve A* si actualiza B al encontrar mejor coste?",
+        figure: { type: "custom", kind: "search-graph" },
         options: {
           a: "S→B→G, coste 7",
           b: "S→A→G, coste 12",
@@ -2089,6 +2107,7 @@ const exams = [
         id: "m8q17",
         topic: "Red bayesiana: cálculo corto",
         statement: "Red A→B→C. P(A)=0.4, P(B|A)=0.5 y P(C|B)=0.2. ¿Cuál es P(A,B,C) para los tres verdaderos?",
+        figure: { type: "custom", kind: "bayesian-chain" },
         options: {
           a: "0.4+0.5+0.2=1.1",
           b: "0.4·0.5·0.2=0.04",
@@ -2102,6 +2121,7 @@ const exams = [
         id: "m8q18",
         topic: "HMM: secuencia",
         statement: "En un HMM/Markov, P(X0=s)=0.6, P(X1=t|X0=s)=0.5 y P(X2=t|X1=t)=0.7. ¿Cuál es P(s,t,t)?",
+        figure: { type: "custom", kind: "hmm-diagram" },
         options: {
           a: "0.6+0.5+0.7=1.8",
           b: "0.6·0.5·0.7=0.21",
@@ -2115,6 +2135,7 @@ const exams = [
         id: "m8q19",
         topic: "MDP: Bellman",
         statement: "En un MDP con costes, V(A)=2, V(B)=5. Acción p desde S cuesta 1 y lleva a A con 0.75 y a B con 0.25. ¿Coste esperado de p?",
+        figure: { type: "custom", kind: "mdp-diagram" },
         options: {
           a: "1 + 0.75·2 + 0.25·5 = 3.75",
           b: "0.75·2 + 0.25·5 = 2.75",
@@ -2128,6 +2149,7 @@ const exams = [
         id: "m8q20",
         topic: "Lógica borrosa: ejercicio corto",
         statement: "Una regla borrosa tiene antecedente A AND B. Para una entrada, μA=0.4 y μB=0.9. Usando max-min, ¿qué grado activa la regla?",
+        figure: { type: "custom", kind: "fuzzy-and-rule" },
         options: {
           a: "0.4",
           b: "0.9",
@@ -2136,6 +2158,193 @@ const exams = [
         },
         correct: ["a"],
         explanation: "En inferencia max-min, AND se calcula con el mínimo: min(0.4,0.9)=0.4. El producto no es el operador usado en este estilo de ejercicios."
+      }
+    ]
+  },
+  {
+    id: "modelo-9",
+    title: "Modelo 9 — Preguntas visuales con gráficas",
+    subtitle: "Lógica borrosa, búsqueda, redes bayesianas, HMM y MDP con figuras.",
+    questions: [
+      {
+        id: "m9q1",
+        topic: "Lógica borrosa — Funciones de pertenencia",
+        statement: "Observa la gráfica de funciones de pertenencia para humedad. Para un valor de entrada x=40, ¿cuáles de las siguientes afirmaciones son correctas?",
+        figure: { type: "custom", kind: "fuzzy-humidity" },
+        options: { a: "μSeco(40) > 0", b: "μHúmedo(40) = 0", c: "μSeco(40) + μHúmedo(40) = 1 siempre", d: "En x=40, el grado de pertenencia a Seco es mayor que a Húmedo" },
+        correct: ["a", "b", "d"],
+        explanation: "En x=40, la función Seco tiene valor positivo (≈0.33) mientras que Húmedo empieza en 0 hasta x=40. No es obligatorio que sumen 1."
+      },
+      {
+        id: "m9q2",
+        topic: "Lógica borrosa — Regla AND",
+        statement: "En una regla con antecedente A AND B usando inferencia max-min, si μA(x)=0.6 y μB(x)=0.4, ¿cuál es el grado de activación de la regla?",
+        figure: { type: "custom", kind: "fuzzy-and-rule" },
+        options: { a: "0.6", b: "0.4", c: "min(0.6, 0.4)", d: "max(0.6, 0.4)" },
+        correct: ["b", "c"],
+        explanation: "En max-min, AND se calcula con el mínimo: min(0.6, 0.4) = 0.4."
+      },
+      {
+        id: "m9q3",
+        topic: "Lógica borrosa — Regla OR",
+        statement: "En una regla con antecedente A OR B usando inferencia max-min, si μA(x)=0.3 y μB(x)=0.7, ¿cuál es el grado de activación?",
+        figure: { type: "custom", kind: "fuzzy-or-rule" },
+        options: { a: "0.3", b: "0.7", c: "max(0.3, 0.7)", d: "0.3 · 0.7 = 0.21" },
+        correct: ["b", "c"],
+        explanation: "En max-min, OR se calcula con el máximo: max(0.3, 0.7) = 0.7."
+      },
+      {
+        id: "m9q4",
+        topic: "Lógica borrosa — Agregación",
+        statement: "Si dos reglas activan la misma salida con grados α1=0.5 y α2=0.8, y se usa agregación por máximo, ¿qué grado tiene la salida agregada?",
+        figure: { type: "custom", kind: "fuzzy-aggregation" },
+        options: { a: "0.5", b: "0.8", c: "max(0.5, 0.8)", d: "0.5 + 0.8 = 1.3" },
+        correct: ["b", "c"],
+        explanation: "La agregación por máximo conserva el mayor grado: max(0.5, 0.8) = 0.8."
+      },
+      {
+        id: "m9q5",
+        topic: "Lógica borrosa — Defuzzificación",
+        statement: "La defuzzificación por centroide sirve para:",
+        figure: { type: "custom", kind: "fuzzy-defuzz" },
+        options: { a: "Transformar la salida borrosa agregada en un valor nítido", b: "Calcular el centro de gravedad de la función de salida agregada", c: "Obtener el máximo de las funciones de pertenencia de entrada", d: "Eliminar las reglas con menor grado de activación" },
+        correct: ["a", "b"],
+        explanation: "El centroide calcula el centro de gravedad de la salida agregada para obtener un valor numérico concreto."
+      },
+      {
+        id: "m9q6",
+        topic: "Lógica borrosa — Mamdani",
+        statement: "En un sistema Mamdani con regla 'SI temp es alta AND humedad es baja ENTONCES riego medio', si μalta(30)=0.7 y μbaja(30)=0.5, ¿cuál es el grado de activación y qué operador se usa?",
+        figure: { type: "custom", kind: "fuzzy-and-rule" },
+        options: { a: "0.7 usando máximo", b: "0.5 usando mínimo", c: "min(0.7, 0.5) = 0.5", d: "El AND en Mamdani max-min usa el mínimo" },
+        correct: ["b", "c", "d"],
+        explanation: "AND en max-min = mínimo. min(0.7, 0.5) = 0.5. Este grado recorta la función de salida."
+      },
+      {
+        id: "m9q7",
+        topic: "Lógica borrosa — Interpretación gráfica",
+        statement: "Si en una gráfica de funciones de pertenencia, para x=60 se tiene μBajo(60)=0.2 y μAlto(60)=0.8, ¿qué se puede afirmar?",
+        figure: { type: "custom", kind: "fuzzy-humidity" },
+        options: { a: "El valor 60 pertenece más al conjunto Alto que al Bajo", b: "μBajo(60) + μAlto(60) = 1", c: "Si la regla es 'SI es Alto ENTONCES acción fuerte', se activa con grado 0.8", d: "El grado de pertenencia es una probabilidad" },
+        correct: ["a", "c"],
+        explanation: "μAlto(60)=0.8 > μBajo(60)=0.2, así que pertenece más a Alto. La regla se activa con ese grado. No es obligatorio que sumen 1 y no es probabilidad."
+      },
+      {
+        id: "m9q8",
+        topic: "Lógica borrosa — Salida agregada",
+        statement: "Tras agregar las salidas de múltiples reglas con máximo, la función resultante:",
+        figure: { type: "custom", kind: "fuzzy-aggregation" },
+        options: { a: "Tiene en cada punto el máximo de los valores de las reglas individuales", b: "Siempre es una función triangular", c: "Puede tener forma de meseta si varias reglas se solapan", d: "Es la entrada para la defuzzificación" },
+        correct: ["a", "c", "d"],
+        explanation: "La agregación por máximo toma el valor más alto en cada punto. Puede crear mesetas. Luego se defuzzifica."
+      },
+      {
+        id: "m9q9",
+        topic: "Búsqueda — Dijkstra",
+        statement: "Observa el grafo con costes. ¿Cuál es el camino óptimo de S a G usando Dijkstra/coste uniforme?",
+        figure: { type: "custom", kind: "search-graph" },
+        options: { a: "S→A→B→G con coste 5", b: "S→B→G con coste 7", c: "S→A→G con coste 12", d: "El camino de menor coste acumulado es S→A→B→G" },
+        correct: ["a", "d"],
+        explanation: "S→A(2)→B(1)→G(2) = 5, que es menor que S→B(5)→G(2) = 7 y S→A(2)→G(10) = 12."
+      },
+      {
+        id: "m9q10",
+        topic: "Búsqueda — A*",
+        statement: "Con el mismo grafo y heurísticas h(S)=4, h(A)=3, h(B)=1, h(G)=0, ¿qué camino devuelve A*?",
+        figure: { type: "custom", kind: "search-graph" },
+        options: { a: "S→A→B→G con coste 5", b: "Primero se expande A porque f(A)=2+3=5", c: "Desde A se mejora B con g(B)=3 y f(B)=4", d: "A* devuelve S→B→G porque es más directo" },
+        correct: ["a", "b", "c"],
+        explanation: "A* expande A primero (f=5), luego mejora B vía A (g=3, f=4), y B genera G con coste total 5."
+      },
+      {
+        id: "m9q11",
+        topic: "Búsqueda — f(n)=g(n)+h(n)",
+        statement: "En A*, para el nodo B del grafo, si se llega por S directamente: g(B)=5, h(B)=1. Si se llega por S→A→B: g(B)=3, h(B)=1. ¿Cuáles son correctas?",
+        figure: { type: "custom", kind: "search-graph" },
+        options: { a: "f(B) por S directo = 5+1 = 6", b: "f(B) por S→A→B = 3+1 = 4", c: "A* prefiere el camino S→A→B porque tiene menor f(B)", d: "La heurística h(B) cambia según el camino" },
+        correct: ["a", "b", "c"],
+        explanation: "f = g + h. h(B)=1 es fija. g(B) depende del camino. Menor f = preferido."
+      },
+      {
+        id: "m9q12",
+        topic: "Búsqueda — Parada de A*",
+        statement: "En A*, ¿cuándo se acepta la solución como óptima?",
+        figure: { type: "custom", kind: "search-graph" },
+        options: { a: "Cuando la meta G se genera como sucesor por primera vez", b: "Cuando G es seleccionado para expansión con el menor f de la abierta", c: "Parar al generar G puede dar soluciones subóptimas", d: "Siempre que h sea admisible, parar al generar G es correcto" },
+        correct: ["b", "c"],
+        explanation: "La trampa típica: en A* se acepta al sacar G como mejor nodo abierto, no al generarlo. Parar al generar puede ser subóptimo."
+      },
+      {
+        id: "m9q13",
+        topic: "Red bayesiana — Factorización",
+        statement: "En la red A → B → C, ¿cuál es la factorización correcta de P(A,B,C)?",
+        figure: { type: "custom", kind: "bayesian-chain" },
+        options: { a: "P(A) · P(B|A) · P(C|B)", b: "P(A) · P(B) · P(C)", c: "P(C|A,B) · P(B|A) · P(A)", d: "B es independiente de A dado C" },
+        correct: ["a", "c"],
+        explanation: "Cada nodo se condiciona a sus padres: P(A,B,C) = P(A)P(B|A)P(C|B). Por la regla de la cadena también es P(C|A,B)P(B|A)P(A), pero en esta red P(C|A,B) = P(C|B)."
+      },
+      {
+        id: "m9q14",
+        topic: "Red bayesiana — Estructura convergente",
+        statement: "En la red D → C ← T (C es efecto común de D y T), ¿cuáles son correctas?",
+        figure: { type: "custom", kind: "bayesian-convergent" },
+        options: { a: "D y T son independientes a priori", b: "Observar C puede hacer dependientes a D y T", c: "C es un collider o nodo convergente", d: "D y T siempre tienen arco directo entre sí" },
+        correct: ["a", "b", "c"],
+        explanation: "En la convergente, las causas son independientes a priori pero se vuelven dependientes al observar el efecto (explicación alternativa)."
+      },
+      {
+        id: "m9q15",
+        topic: "Red bayesiana — TPC",
+        statement: "En la red D,T → C → V, ¿qué tabla de probabilidad corresponde a cada nodo?",
+        figure: { type: "custom", kind: "bayesian-convergent" },
+        options: { a: "D y T tienen probabilidades a priori P(D) y P(T)", b: "C tiene P(C|D,T) condicionada a ambos padres", c: "V tiene P(V|C) condicionada solo a C", d: "C necesita P(C|D) y P(C|T) por separado" },
+        correct: ["a", "b", "c"],
+        explanation: "C tiene dos padres, así que su TPC es P(C|D,T). V solo tiene a C como padre. D y T son raíces con priors."
+      },
+      {
+        id: "m9q16",
+        topic: "HMM — Componentes",
+        statement: "En el diagrama HMM, ¿qué representa cada elemento?",
+        figure: { type: "custom", kind: "hmm-diagram" },
+        options: { a: "Xi son estados ocultos (no observables directamente)", b: "Ei son observaciones o evidencias", c: "Las flechas Xi→Xi+1 representan probabilidades de transición P(Xi+1|Xi)", d: "Las flechas Xi→Ei representan probabilidades de emisión P(Ei|Xi)" },
+        correct: ["a", "b", "c", "d"],
+        explanation: "Un HMM tiene estados ocultos conectados temporalmente, y cada estado genera una observación mediante emisión."
+      },
+      {
+        id: "m9q17",
+        topic: "HMM — Cálculo de secuencia",
+        statement: "Si P(X0=W)=1, P(X1=A|X0=W)=0.2, P(X2=A|X1=A)=0.6, ¿cuál es P(W,A,A)?",
+        figure: { type: "custom", kind: "hmm-diagram" },
+        options: { a: "1 · 0.2 · 0.6 = 0.12", b: "0.2 + 0.6 = 0.8", c: "Se multiplican las probabilidades de la trayectoria", d: "P(W,A,A) = P(X0=W) · P(X1=A|X0=W) · P(X2=A|X1=A)" },
+        correct: ["a", "c", "d"],
+        explanation: "La probabilidad de una secuencia de estados ocultos se obtiene multiplicando la inicial por las transiciones."
+      },
+      {
+        id: "m9q18",
+        topic: "HMM — Emisión",
+        statement: "Si el estado oculto X1=A y P(E1=s|X1=A)=0.7, ¿cuál es la probabilidad de observar 's' en el paso 1 estando en A?",
+        figure: { type: "custom", kind: "hmm-diagram" },
+        options: { a: "0.7", b: "P(E1=s|X1=A) se lee directamente de la tabla de emisión", c: "Hay que multiplicar por la transición", d: "Es la probabilidad de emisión del estado A para la observación s" },
+        correct: ["a", "b", "d"],
+        explanation: "La emisión se lee directamente: P(Ei|Xi). No se multiplica por transición para la emisión sola."
+      },
+      {
+        id: "m9q19",
+        topic: "MDP — Componentes y Bellman",
+        statement: "En el MDP mostrado, desde el estado A con acción p: va a B con prob. 0.8 y se queda en A con prob. 0.2, coste 1. Si V(A)=2.4 y V(B)=1.2, ¿cuál es el coste esperado de p?",
+        figure: { type: "custom", kind: "mdp-diagram" },
+        options: { a: "1 + 0.8·1.2 + 0.2·2.4 = 2.44", b: "1 + 0.8·2.4 + 0.2·1.2 = 3.04", c: "Bellman: coste inmediato + coste futuro esperado", d: "0.8·1.2 + 0.2·2.4 = 1.44 (sin coste inmediato)" },
+        correct: ["a", "c"],
+        explanation: "Bellman con costes: C(s,a) + Σ P(s'|s,a)·V(s') = 1 + 0.8·1.2 + 0.2·2.4 = 1 + 0.96 + 0.48 = 2.44."
+      },
+      {
+        id: "m9q20",
+        topic: "MDP — Política óptima",
+        statement: "Si desde A la acción p tiene coste esperado 2.44 y la acción q tiene coste esperado 3.16, en un MDP de costes la política óptima en A elige:",
+        figure: { type: "custom", kind: "mdp-diagram" },
+        options: { a: "p porque tiene menor coste esperado", b: "q porque tiene mayor probabilidad de llegar a la meta", c: "En MDP de costes se minimiza el coste esperado", d: "Se comparan los valores de Bellman de cada acción" },
+        correct: ["a", "c", "d"],
+        explanation: "Con costes, la política óptima elige la acción de menor coste esperado. 2.44 < 3.16, así que p es mejor."
       }
     ]
   }
@@ -2151,6 +2360,446 @@ function isCorrect(selected, correct) {
 
 function letterList(arr) {
   return [...arr].sort().map((x) => x.toUpperCase()).join(", ");
+}
+
+function QuestionFigure({ figure }) {
+  if (!figure) return null;
+
+  if (figure.type === "svg") {
+    return (
+      <div className="my-4 flex justify-center">
+        <div className="bg-white border border-slate-200 rounded-xl p-4 max-w-full overflow-x-auto">
+          {figure.title && <p className="text-sm font-semibold text-slate-700 mb-2 text-center">{figure.title}</p>}
+          {figure.description && <p className="text-xs text-slate-500 mb-3 text-center">{figure.description}</p>}
+          <div dangerouslySetInnerHTML={{ __html: figure.content }} className="flex justify-center" />
+        </div>
+      </div>
+    );
+  }
+
+  if (figure.type === "custom") {
+    return (
+      <div className="my-4 flex justify-center">
+        <div className="bg-white border border-slate-200 rounded-xl p-4 max-w-full overflow-x-auto">
+          {renderCustomFigure(figure.kind, figure.props)}
+        </div>
+      </div>
+    );
+  }
+
+  return null;
+}
+
+function renderCustomFigure(kind, props = {}) {
+  switch (kind) {
+    case "fuzzy-humidity":
+      return <FuzzyHumidityFigure />;
+    case "fuzzy-and-rule":
+      return <FuzzyAndRuleFigure />;
+    case "fuzzy-or-rule":
+      return <FuzzyOrRuleFigure />;
+    case "fuzzy-aggregation":
+      return <FuzzyAggregationFigure />;
+    case "fuzzy-defuzz":
+      return <FuzzyDefuzzFigure />;
+    case "search-graph":
+      return <SearchGraphFigure {...props} />;
+    case "bayesian-chain":
+      return <BayesianChainFigure />;
+    case "bayesian-convergent":
+      return <BayesianConvergentFigure />;
+    case "hmm-diagram":
+      return <HMMDiagramFigure />;
+    case "mdp-diagram":
+      return <MDPDiagramFigure />;
+    default:
+      return null;
+  }
+}
+
+function FuzzyHumidityFigure() {
+  const w = 400, h = 260, pad = 50;
+  const xMin = 0, xMax = 100, yMin = 0, yMax = 1;
+  const toX = (v) => pad + ((v - xMin) / (xMax - xMin)) * (w - 2 * pad);
+  const toY = (v) => h - pad - ((v - yMin) / (yMax - yMin)) * (h - 2 * pad);
+
+  const secoPath = `M${toX(0)},${toY(1)} L${toX(0)},${toY(1)} L${toX(60)},${toY(0)} L${toX(100)},${toY(0)}`;
+  const humedoPath = `M${toX(0)},${toY(0)} L${toX(40)},${toY(0)} L${toX(100)},${toY(1)}`;
+
+  const xVal = 40;
+  const secoAt40 = 1 - (40 / 60);
+  const humedoAt40 = 0;
+
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} className="w-full max-w-md" style={{ maxHeight: 260 }}>
+      <defs>
+        <marker id="arrowEnd" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L8,3 L0,6 Z" fill="#64748b" />
+        </marker>
+      </defs>
+      <line x1={pad} y1={toY(0)} x2={w - pad} y2={toY(0)} stroke="#64748b" strokeWidth="1.5" markerEnd="url(#arrowEnd)" />
+      <line x1={toX(0)} y1={h - pad} x2={toX(0)} y2={pad} stroke="#64748b" strokeWidth="1.5" markerEnd="url(#arrowEnd)" />
+      {[0, 20, 40, 60, 80, 100].map((v) => (
+        <text key={v} x={toX(v)} y={h - pad + 18} textAnchor="middle" fontSize="11" fill="#64748b">{v}</text>
+      ))}
+      {[0, 0.2, 0.4, 0.6, 0.8, 1].map((v) => (
+        <text key={v} x={toX(0) - 8} y={toY(v) + 4} textAnchor="end" fontSize="11" fill="#64748b">{v}</text>
+      ))}
+      <text x={w / 2} y={h - 8} textAnchor="middle" fontSize="12" fill="#475569">Humedad (%)</text>
+      <text x={14} y={h / 2} textAnchor="middle" fontSize="12" fill="#475569" transform={`rotate(-90,14,${h / 2})}`}>μ(x)</text>
+      <path d={secoPath} fill="none" stroke="#3b82f6" strokeWidth="2.5" />
+      <text x={toX(15)} y={toY(0.85) - 5} fontSize="12" fill="#3b82f6" fontWeight="600">Seco</text>
+      <path d={humedoPath} fill="none" stroke="#ef4444" strokeWidth="2.5" />
+      <text x={toX(80)} y={toY(0.7) - 5} fontSize="12" fill="#ef4444" fontWeight="600">Húmedo</text>
+      <line x1={toX(xVal)} y1={toY(0)} x2={toX(xVal)} y2={toY(1)} stroke="#1e293b" strokeWidth="1.5" strokeDasharray="5,3" />
+      <circle cx={toX(xVal)} cy={toY(secoAt40)} r="4" fill="#3b82f6" />
+      <text x={toX(xVal) + 8} y={toY(secoAt40) + 4} fontSize="11" fill="#3b82f6" fontWeight="600">μSeco(40)=0.33</text>
+      <circle cx={toX(xVal)} cy={toY(humedoAt40)} r="4" fill="#ef4444" />
+      <text x={toX(xVal) + 8} y={toY(humedoAt40) + 16} fontSize="11" fill="#ef4444" fontWeight="600">μHúmedo(40)=0</text>
+    </svg>
+  );
+}
+
+function FuzzyAndRuleFigure() {
+  const w = 420, h = 280, pad = 50;
+  const toX = (v) => pad + (v / 100) * (w - 2 * pad);
+  const toY = (v) => h - pad - v * (h - 2 * pad);
+
+  const tempPath = `M${toX(0)},${toY(0)} L${toX(20)},${toY(0)} L${toX(50)},${toY(1)} L${toX(80)},${toY(1)} L${toX(100)},${toY(0)}`;
+  const humPath = `M${toX(0)},${toY(1)} L${toX(40)},${toY(1)} L${toX(70)},${toY(0)} L${toX(100)},${toY(0)}`;
+
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} className="w-full max-w-md" style={{ maxHeight: 280 }}>
+      <line x1={pad} y1={toY(0)} x2={w - pad} y2={toY(0)} stroke="#64748b" strokeWidth="1" />
+      <line x1={toX(0)} y1={h - pad} x2={toX(0)} y2={pad} stroke="#64748b" strokeWidth="1" />
+      <text x={w / 2} y={h - 8} textAnchor="middle" fontSize="11" fill="#475569">Valor de entrada</text>
+      <text x={14} y={h / 2} textAnchor="middle" fontSize="11" fill="#475569" transform={`rotate(-90,14,${h / 2})`}>μ</text>
+      {[0, 25, 50, 75, 100].map((v) => (
+        <text key={v} x={toX(v)} y={h - pad + 16} textAnchor="middle" fontSize="10" fill="#64748b">{v}</text>
+      ))}
+      {[0, 0.5, 1].map((v) => (
+        <text key={v} x={toX(0) - 6} y={toY(v) + 4} textAnchor="end" fontSize="10" fill="#64748b">{v}</text>
+      ))}
+      <path d={tempPath} fill="none" stroke="#3b82f6" strokeWidth="2" />
+      <text x={toX(55)} y={toY(0.85)} fontSize="11" fill="#3b82f6" fontWeight="600">Temp. alta</text>
+      <path d={humPath} fill="none" stroke="#f59e0b" strokeWidth="2" />
+      <text x={toX(30)} y={toY(0.85)} fontSize="11" fill="#f59e0b" fontWeight="600">Humedad baja</text>
+      <line x1={toX(45)} y1={toY(0)} x2={toX(45)} y2={toY(1)} stroke="#1e293b" strokeWidth="1.5" strokeDasharray="4,3" />
+      <circle cx={toX(45)} cy={toY(0.5)} r="4" fill="#3b82f6" />
+      <circle cx={toX(45)} cy={toY(1)} r="4" fill="#f59e0b" />
+      <rect x={toX(45) - 3} y={toY(0.5)} width={toX(45) - 3 - (toX(45) - 3)} height={toY(0) - toY(0.5)} fill="none" />
+      <text x={toX(45) + 8} y={toY(0.5) - 4} fontSize="10" fill="#1e293b" fontWeight="600">min(0.5, 1.0) = 0.5</text>
+      <text x={w / 2} y={pad - 10} textAnchor="middle" fontSize="12" fill="#475569" fontWeight="600">Regla AND → mínimo</text>
+    </svg>
+  );
+}
+
+function FuzzyOrRuleFigure() {
+  const w = 420, h = 260, pad = 50;
+  const toX = (v) => pad + (v / 100) * (w - 2 * pad);
+  const toY = (v) => h - pad - v * (h - 2 * pad);
+
+  const aPath = `M${toX(0)},${toY(0)} L${toX(30)},${toY(0)} L${toX(60)},${toY(1)} L${toX(100)},${toY(1)}`;
+  const bPath = `M${toX(0)},${toY(1)} L${toX(50)},${toY(1)} L${toX(80)},${toY(0)} L${toX(100)},${toY(0)}`;
+
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} className="w-full max-w-md" style={{ maxHeight: 260 }}>
+      <line x1={pad} y1={toY(0)} x2={w - pad} y2={toY(0)} stroke="#64748b" strokeWidth="1" />
+      <line x1={toX(0)} y1={h - pad} x2={toX(0)} y2={pad} stroke="#64748b" strokeWidth="1" />
+      <text x={w / 2} y={h - 8} textAnchor="middle" fontSize="11" fill="#475569">Valor de entrada</text>
+      <text x={14} y={h / 2} textAnchor="middle" fontSize="11" fill="#475569" transform={`rotate(-90,14,${h / 2})`}>μ</text>
+      {[0, 50, 100].map((v) => (
+        <text key={v} x={toX(v)} y={h - pad + 16} textAnchor="middle" fontSize="10" fill="#64748b">{v}</text>
+      ))}
+      {[0, 0.5, 1].map((v) => (
+        <text key={v} x={toX(0) - 6} y={toY(v) + 4} textAnchor="end" fontSize="10" fill="#64748b">{v}</text>
+      ))}
+      <path d={aPath} fill="none" stroke="#8b5cf6" strokeWidth="2" />
+      <text x={toX(70)} y={toY(0.8)} fontSize="11" fill="#8b5cf6" fontWeight="600">A</text>
+      <path d={bPath} fill="none" stroke="#06b6d4" strokeWidth="2" />
+      <text x={toX(30)} y={toY(0.8)} fontSize="11" fill="#06b6d4" fontWeight="600">B</text>
+      <line x1={toX(45)} y1={toY(0)} x2={toX(45)} y2={toY(1)} stroke="#1e293b" strokeWidth="1.5" strokeDasharray="4,3" />
+      <text x={toX(45) + 8} y={toY(0.75) - 4} fontSize="10" fill="#1e293b" fontWeight="600">max(μA, μB)</text>
+      <text x={w / 2} y={pad - 10} textAnchor="middle" fontSize="12" fill="#475569" fontWeight="600">Regla OR → máximo</text>
+    </svg>
+  );
+}
+
+function FuzzyAggregationFigure() {
+  const w = 420, h = 280, pad = 50;
+  const toX = (v) => pad + (v / 100) * (w - 2 * pad);
+  const toY = (v) => h - pad - v * (h - 2 * pad);
+
+  const r1Path = `M${toX(0)},${toY(0)} L${toX(20)},${toY(0)} L${toX(20)},${toY(0.6)} L${toX(50)},${toY(0.6)} L${toX(50)},${toY(0)} L${toX(100)},${toY(0)}`;
+  const r2Path = `M${toX(0)},${toY(0)} L${toX(30)},${toY(0)} L${toX(30)},${toY(0.8)} L${toX(70)},${toY(0.8)} L${toX(70)},${toY(0)} L${toX(100)},${toY(0)}`;
+  const aggPath = `M${toX(0)},${toY(0)} L${toX(20)},${toY(0)} L${toX(20)},${toY(0.6)} L${toX(30)},${toY(0.6)} L${toX(30)},${toY(0.8)} L${toX(70)},${toY(0.8)} L${toX(70)},${toY(0)} L${toX(100)},${toY(0)}`;
+
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} className="w-full max-w-md" style={{ maxHeight: 280 }}>
+      <line x1={pad} y1={toY(0)} x2={w - pad} y2={toY(0)} stroke="#64748b" strokeWidth="1" />
+      <line x1={toX(0)} y1={h - pad} x2={toX(0)} y2={pad} stroke="#64748b" strokeWidth="1" />
+      <text x={w / 2} y={h - 8} textAnchor="middle" fontSize="11" fill="#475569">Salida (riego)</text>
+      <text x={14} y={h / 2} textAnchor="middle" fontSize="11" fill="#475569" transform={`rotate(-90,14,${h / 2})`}>μ</text>
+      {[0, 50, 100].map((v) => (
+        <text key={v} x={toX(v)} y={h - pad + 16} textAnchor="middle" fontSize="10" fill="#64748b">{v}</text>
+      ))}
+      {[0, 0.5, 1].map((v) => (
+        <text key={v} x={toX(0) - 6} y={toY(v) + 4} textAnchor="end" fontSize="10" fill="#64748b">{v}</text>
+      ))}
+      <path d={r1Path} fill="rgba(59,130,246,0.15)" stroke="#3b82f6" strokeWidth="1.5" />
+      <text x={toX(35)} y={toY(0.45)} fontSize="10" fill="#3b82f6">R1 (α=0.6)</text>
+      <path d={r2Path} fill="rgba(239,68,68,0.1)" stroke="#ef4444" strokeWidth="1.5" strokeDasharray="4,2" />
+      <text x={toX(50)} y={toY(0.65)} fontSize="10" fill="#ef4444">R2 (α=0.8)</text>
+      <path d={aggPath} fill="rgba(16,185,129,0.2)" stroke="#10b981" strokeWidth="2.5" />
+      <text x={toX(50)} y={toY(0.95)} fontSize="11" fill="#10b981" fontWeight="600">Agregada (máximo)</text>
+      <text x={w / 2} y={pad - 10} textAnchor="middle" fontSize="12" fill="#475569" fontWeight="600">Agregación de salidas</text>
+    </svg>
+  );
+}
+
+function FuzzyDefuzzFigure() {
+  const w = 420, h = 280, pad = 50;
+  const toX = (v) => pad + (v / 100) * (w - 2 * pad);
+  const toY = (v) => h - pad - v * (h - 2 * pad);
+
+  const aggPath = `M${toX(0)},${toY(0)} L${toX(15)},${toY(0)} L${toX(15)},${toY(0.5)} L${toX(35)},${toY(0.5)} L${toX(35)},${toY(0)} L${toX(45)},${toY(0)} L${toX(45)},${toY(0.8)} L${toX(75)},${toY(0.8)} L${toX(75)},${toY(0)} L${toX(100)},${toY(0)}`;
+
+  const centroidX = 55;
+
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} className="w-full max-w-md" style={{ maxHeight: 280 }}>
+      <line x1={pad} y1={toY(0)} x2={w - pad} y2={toY(0)} stroke="#64748b" strokeWidth="1" />
+      <line x1={toX(0)} y1={h - pad} x2={toX(0)} y2={pad} stroke="#64748b" strokeWidth="1" />
+      <text x={w / 2} y={h - 8} textAnchor="middle" fontSize="11" fill="#475569">Salida (riego)</text>
+      <text x={14} y={h / 2} textAnchor="middle" fontSize="11" fill="#475569" transform={`rotate(-90,14,${h / 2})`}>μ</text>
+      {[0, 50, 100].map((v) => (
+        <text key={v} x={toX(v)} y={h - pad + 16} textAnchor="middle" fontSize="10" fill="#64748b">{v}</text>
+      ))}
+      {[0, 0.5, 1].map((v) => (
+        <text key={v} x={toX(0) - 6} y={toY(v) + 4} textAnchor="end" fontSize="10" fill="#64748b">{v}</text>
+      ))}
+      <path d={aggPath} fill="rgba(139,92,246,0.2)" stroke="#8b5cf6" strokeWidth="2" />
+      <line x1={toX(centroidX)} y1={toY(0)} x2={toX(centroidX)} y2={toY(0.85)} stroke="#ef4444" strokeWidth="2" strokeDasharray="5,3" />
+      <circle cx={toX(centroidX)} cy={toY(0.4)} r="5" fill="#ef4444" />
+      <text x={toX(centroidX)} y={toY(0.9) + 16} textAnchor="middle" fontSize="11" fill="#ef4444" fontWeight="600">Centroide ≈ 55</text>
+      <text x={w / 2} y={pad - 10} textAnchor="middle" fontSize="12" fill="#475569" fontWeight="600">Defuzzificación por centroide</text>
+    </svg>
+  );
+}
+
+function SearchGraphFigure() {
+  const w = 420, h = 260;
+  const nodes = {
+    S: { x: 60, y: 130 },
+    A: { x: 170, y: 60 },
+    B: { x: 170, y: 200 },
+    C: { x: 290, y: 130 },
+    G: { x: 380, y: 130 },
+  };
+
+  const edges = [
+    { from: "S", to: "A", cost: 2 },
+    { from: "S", to: "B", cost: 5 },
+    { from: "A", to: "B", cost: 1 },
+    { from: "A", to: "G", cost: 10 },
+    { from: "B", to: "G", cost: 2 },
+    { from: "C", to: "G", cost: 3 },
+  ];
+
+  function edgePath(from, to) {
+    const a = nodes[from], b = nodes[to];
+    const dx = b.x - a.x, dy = b.y - a.y;
+    const len = Math.sqrt(dx * dx + dy * dy);
+    const r = 22;
+    const sx = a.x + (dx / len) * r, sy = a.y + (dy / len) * r;
+    const ex = b.x - (dx / len) * (r + 6), ey = b.y - (dy / len) * (r + 6);
+    return { sx, sy, ex, ey, mx: (sx + ex) / 2, my: (sy + ey) / 2 };
+  }
+
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} className="w-full max-w-md" style={{ maxHeight: 260 }}>
+      {edges.map((e, i) => {
+        const p = edgePath(e.from, e.to);
+        return (
+          <g key={i}>
+            <line x1={p.sx} y1={p.sy} x2={p.ex} y2={p.ey} stroke="#475569" strokeWidth="2" markerEnd="url(#arrowSearch)" />
+            <rect x={p.mx - 10} y={p.my - 8} width="20" height="16" rx="4" fill="white" stroke="#cbd5e1" strokeWidth="1" />
+            <text x={p.mx} y={p.my + 4} textAnchor="middle" fontSize="11" fontWeight="600" fill="#1e293b">{e.cost}</text>
+          </g>
+        );
+      })}
+      <defs>
+        <marker id="arrowSearch" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L8,3 L0,6 Z" fill="#475569" />
+        </marker>
+      </defs>
+      {Object.entries(nodes).map(([label, pos]) => (
+        <g key={label}>
+          <circle cx={pos.x} cy={pos.y} r="22" fill="white" stroke={label === "G" ? "#10b981" : "#3b82f6"} strokeWidth="2.5" />
+          <text x={pos.x} y={pos.y + 5} textAnchor="middle" fontSize="14" fontWeight="700" fill={label === "G" ? "#10b981" : "#1e293b"}>{label}</text>
+        </g>
+      ))}
+      <text x={w / 2} y={h - 10} textAnchor="middle" fontSize="10" fill="#64748b">h(S)=4, h(A)=3, h(B)=1, h(C)=2, h(G)=0</text>
+    </svg>
+  );
+}
+
+function BayesianChainFigure() {
+  const w = 360, h = 120;
+  const nodes = [
+    { id: "A", x: 60, y: 60 },
+    { id: "B", x: 180, y: 60 },
+    { id: "C", x: 300, y: 60 },
+  ];
+
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} className="w-full max-w-sm" style={{ maxHeight: 120 }}>
+      <defs>
+        <marker id="arrowBayes" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L8,3 L0,6 Z" fill="#475569" />
+        </marker>
+      </defs>
+      <line x1={nodes[0].x + 22} y1={nodes[0].y} x2={nodes[1].x - 22} y2={nodes[1].y} stroke="#475569" strokeWidth="2" markerEnd="url(#arrowBayes)" />
+      <line x1={nodes[1].x + 22} y1={nodes[1].y} x2={nodes[2].x - 22} y2={nodes[2].y} stroke="#475569" strokeWidth="2" markerEnd="url(#arrowBayes)" />
+      {nodes.map((n) => (
+        <g key={n.id}>
+          <circle cx={n.x} cy={n.y} r="22" fill="white" stroke="#8b5cf6" strokeWidth="2.5" />
+          <text x={n.x} y={n.y + 5} textAnchor="middle" fontSize="14" fontWeight="700" fill="#1e293b">{n.id}</text>
+        </g>
+      ))}
+      <text x={w / 2} y={h - 2} textAnchor="middle" fontSize="10" fill="#64748b">A → B → C (cadena)</text>
+    </svg>
+  );
+}
+
+function BayesianConvergentFigure() {
+  const w = 360, h = 200;
+  const nodes = {
+    D: { x: 80, y: 50 },
+    T: { x: 80, y: 150 },
+    C: { x: 200, y: 100 },
+    V: { x: 320, y: 100 },
+  };
+
+  const arrows = [
+    { from: "D", to: "C" },
+    { from: "T", to: "C" },
+    { from: "C", to: "V" },
+  ];
+
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} className="w-full max-w-sm" style={{ maxHeight: 200 }}>
+      <defs>
+        <marker id="arrowBayes2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L8,3 L0,6 Z" fill="#475569" />
+        </marker>
+      </defs>
+      {arrows.map((a, i) => {
+        const f = nodes[a.from], t = nodes[a.to];
+        const dx = t.x - f.x, dy = t.y - f.y;
+        const len = Math.sqrt(dx * dx + dy * dy);
+        const r = 22;
+        return (
+          <line key={i} x1={f.x + (dx / len) * r} y1={f.y + (dy / len) * r} x2={t.x - (dx / len) * (r + 6)} y2={t.y - (dy / len) * (r + 6)} stroke="#475569" strokeWidth="2" markerEnd="url(#arrowBayes2)" />
+        );
+      })}
+      {Object.entries(nodes).map(([label, pos]) => (
+        <g key={label}>
+          <circle cx={pos.x} cy={pos.y} r="22" fill="white" stroke="#8b5cf6" strokeWidth="2.5" />
+          <text x={pos.x} y={pos.y + 5} textAnchor="middle" fontSize="14" fontWeight="700" fill="#1e293b">{label}</text>
+        </g>
+      ))}
+      <text x={w / 2} y={h - 5} textAnchor="middle" fontSize="10" fill="#64748b">Red convergente: D,T → C → V</text>
+    </svg>
+  );
+}
+
+function HMMDiagramFigure() {
+  const w = 420, h = 220;
+  const states = [
+    { id: "X₀", x: 80, y: 70 },
+    { id: "X₁", x: 210, y: 70 },
+    { id: "X₂", x: 340, y: 70 },
+  ];
+  const obs = [
+    { id: "E₀", x: 80, y: 170 },
+    { id: "E₁", x: 210, y: 170 },
+    { id: "E₂", x: 340, y: 170 },
+  ];
+
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} className="w-full max-w-md" style={{ maxHeight: 220 }}>
+      <defs>
+        <marker id="arrowHMM" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L8,3 L0,6 Z" fill="#475569" />
+        </marker>
+      </defs>
+      {states.map((s, i) => {
+        if (i < states.length - 1) {
+          const next = states[i + 1];
+          return (
+            <line key={`t${i}`} x1={s.x + 22} y1={s.y} x2={next.x - 22} y2={next.y} stroke="#3b82f6" strokeWidth="2" markerEnd="url(#arrowHMM)" />
+          );
+        }
+        return null;
+      })}
+      {states.map((s, i) => {
+        const o = obs[i];
+        return (
+          <line key={`e${i}`} x1={s.x} y1={s.y + 22} x2={o.x} y2={o.y - 22} stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="4,3" markerEnd="url(#arrowHMM)" />
+        );
+      })}
+      {states.map((s) => (
+        <g key={s.id}>
+          <circle cx={s.x} cy={s.y} r="22" fill="white" stroke="#3b82f6" strokeWidth="2.5" />
+          <text x={s.x} y={s.y + 5} textAnchor="middle" fontSize="13" fontWeight="700" fill="#1e293b">{s.id}</text>
+        </g>
+      ))}
+      {obs.map((o) => (
+        <g key={o.id}>
+          <circle cx={o.x} cy={o.y} r="20" fill="white" stroke="#f59e0b" strokeWidth="2" />
+          <text x={o.x} y={o.y + 5} textAnchor="middle" fontSize="13" fontWeight="700" fill="#1e293b">{o.id}</text>
+        </g>
+      ))}
+      <text x={w / 2} y={h - 5} textAnchor="middle" fontSize="10" fill="#64748b">— estados ocultos, - - - emisiones</text>
+    </svg>
+  );
+}
+
+function MDPDiagramFigure() {
+  const w = 420, h = 280;
+  const states = {
+    A: { x: 80, y: 140 },
+    B: { x: 230, y: 70 },
+    C: { x: 230, y: 210 },
+  };
+
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} className="w-full max-w-md" style={{ maxHeight: 280 }}>
+      <defs>
+        <marker id="arrowMDP" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L8,3 L0,6 Z" fill="#475569" />
+        </marker>
+      </defs>
+      <line x1={states.A.x + 22} y1={states.A.y - 10} x2={states.B.x - 22} y2={states.B.y + 10} stroke="#3b82f6" strokeWidth="2" markerEnd="url(#arrowMDP)" />
+      <text x={140} y={95} fontSize="10" fill="#3b82f6" fontWeight="600">p: 0.8→B, 0.2→A (c=1)</text>
+
+      <line x1={states.A.x + 22} y1={states.A.y + 10} x2={states.C.x - 22} y2={states.C.y - 10} stroke="#8b5cf6" strokeWidth="2" markerEnd="url(#arrowMDP)" />
+      <text x={140} y={195} fontSize="10" fill="#8b5cf6" fontWeight="600">q: 0.1→C, 0.9→A (c=1)</text>
+
+      <line x1={states.B.x + 22} y1={states.B.y + 10} x2={states.C.x - 22} y2={states.C.y - 10} stroke="#10b981" strokeWidth="2" markerEnd="url(#arrowMDP)" />
+      <text x={260} y={130} fontSize="10" fill="#10b981" fontWeight="600">q: 0.9→C, 0.1→A (c=1)</text>
+
+      {Object.entries(states).map(([label, pos]) => (
+        <g key={label}>
+          <circle cx={pos.x} cy={pos.y} r="24" fill="white" stroke={label === "C" ? "#10b981" : "#3b82f6"} strokeWidth="2.5" />
+          <text x={pos.x} y={pos.y + 5} textAnchor="middle" fontSize="14" fontWeight="700" fill={label === "C" ? "#10b981" : "#1e293b"}>{label}</text>
+          {label === "C" && <text x={pos.x} y={pos.y + 38} textAnchor="middle" fontSize="9" fill="#10b981" fontWeight="600">META</text>}
+        </g>
+      ))}
+      <text x={w / 2} y={h - 10} textAnchor="middle" fontSize="10" fill="#64748b">MDP: estados, acciones probabilísticas y costes</text>
+    </svg>
+  );
 }
 
 function OptionButton({ letter, text, selected, disabled, onClick, showFeedback, correct }) {
@@ -2375,6 +3024,8 @@ export default function App() {
                     Comprobar
                   </button>
                 </div>
+
+                <QuestionFigure figure={q.figure} />
 
                 <div className="mt-4 grid gap-3">
                   {Object.entries(q.options).map(([letter, text]) => (
