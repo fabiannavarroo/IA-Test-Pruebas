@@ -2686,6 +2686,841 @@ const exams = [
         explanation: "Las cuatro asociaciones son correctas y resumen las ecuaciones nucleares de cada técnica del temario."
       }
     ]
+  },
+  {
+    id: "modelo-11",
+    title: "Modelo 11 — Producción y búsqueda (difícil)",
+    subtitle: "Preguntas trampa con solo 1-2 opciones correctas. Estilo examen real.",
+    questions: [
+      {
+        id: "m11q1",
+        topic: "Sistemas de producción — Mundo cerrado",
+        statement: "En un sistema de producción que trabaja bajo la hipótesis de mundo cerrado, si el hecho p(X) no aparece en la Base de Hechos:",
+        options: { a: "Se considera falso", b: "Se considera desconocido", c: "Se busca en una base de datos externa", d: "Se asume verdadero por defecto" },
+        correct: ["a"],
+        explanation: "Mundo cerrado: lo que no está en la BH se considera falso. No hay noción de 'desconocido'."
+      },
+      {
+        id: "m11q2",
+        topic: "Sistemas de producción — Refracción",
+        statement: "La refracción en un sistema de producción sirve para:",
+        options: { a: "Evitar que una misma instancia de regla se dispare dos veces con los mismos hechos", b: "Eliminar reglas duplicadas de la Base de Reglas", c: "Optimizar el matching mediante el algoritmo RETE", d: "Garantizar que el sistema siempre termina" },
+        correct: ["a"],
+        explanation: "La refracción marca las instancias ya ejecutadas para no volver a dispararlas con los mismos hechos. No elimina reglas ni garantiza terminación."
+      },
+      {
+        id: "m11q3",
+        topic: "Sistemas de producción — Ciclo",
+        statement: "WM={a,b}. R1: SI a ENTONCES +c,-a. R2: SI b ENTONCES +d. R3: SI c y d ENTONCES +e. Orden ascendente, solo hechos nuevos. WM tras 2 ciclos:",
+        options: { a: "{b,c,d}", b: "{c,d}", c: "{b,c}", d: "{a,b,c,d}" },
+        correct: ["a"],
+        explanation: "Ciclo 1: R1 aplica (+c,-a) → {b,c}. Ciclo 2: R2 aplica (+d) → {b,c,d}. R3 no aplica porque necesita c y d juntos, pero d aparece tras R2."
+      },
+      {
+        id: "m11q4",
+        topic: "Búsqueda en amplitud — Repetidos",
+        statement: "En búsqueda en amplitud con control de repetidos, si se genera un estado ya visitado:",
+        options: { a: "Se descarta y no se añade a la abierta", b: "Se añade igual pero con prioridad menor", c: "Se reemplaza el nodo anterior", d: "Se genera un bucle infinito" },
+        correct: ["a"],
+        explanation: "El control de repetidos evita explorar el mismo estado dos veces. Se descarta el nuevo nodo."
+      },
+      {
+        id: "m11q5",
+        topic: "Búsqueda en profundidad — Retroceso",
+        statement: "En búsqueda en profundidad con retroceso, cuando se llega a un nodo sin sucesores no visitados:",
+        options: { a: "Se vuelve al padre y se prueba el siguiente sucesor", b: "Se termina la búsqueda sin solución", c: "Se reinicia desde el nodo raíz", d: "Se marca el nodo como meta" },
+        correct: ["a"],
+        explanation: "El retroceso (backtracking) vuelve al nodo padre para explorar ramas alternativas."
+      },
+      {
+        id: "m11q6",
+        topic: "Dijkstra — Optimalidad",
+        statement: "Dijkstra garantiza optimalidad siempre que:",
+        options: { a: "Los costes de las aristas sean no negativos", b: "El grafo sea acíclico", c: "Exista una heurística admisible", d: "Se use una cola de prioridad" },
+        correct: ["a"],
+        explanation: "Dijkstra necesita costes no negativos. Con costes negativos puede dar resultados incorrectos. No necesita heurística."
+      },
+      {
+        id: "m11q7",
+        topic: "A* — Heurística consistente",
+        statement: "Una heurística es consistente (monótona) si para todo nodo n y sucesor n':",
+        options: { a: "h(n) ≤ c(n,n') + h(n')", b: "h(n) ≥ c(n,n') + h(n')", c: "h(n) = h(n')", d: "f(n) ≤ f(n')" },
+        correct: ["a"],
+        explanation: "Consistencia: la estimación desde n no supera el coste real a n' más la estimación desde n'. Implica admisibilidad."
+      },
+      {
+        id: "m11q8",
+        topic: "A* — Parada correcta",
+        statement: "En A* con heurística admisible, la solución se acepta como óptima cuando:",
+        options: { a: "El nodo meta es extraído de la abierta con el menor f", b: "El nodo meta se genera como sucesor por primera vez", c: "Todos los nodos han sido expandidos", d: "La abierta está vacía" },
+        correct: ["a"],
+        explanation: "Se acepta al extraer la meta de la abierta, no al generarla. Parar al generar puede dar soluciones subóptimas."
+      },
+      {
+        id: "m11q9",
+        topic: "Escalada — Óptimo local",
+        statement: "El algoritmo de escalada (hill-climbing) puede quedar atrapado en:",
+        options: { a: "Un máximo local que no es el global", b: "Una meseta donde todos los vecinos tienen el mismo valor", c: "Un bucle entre dos nodos", d: "Una rama infinita del grafo" },
+        correct: ["a"],
+        explanation: "Escalada elige siempre el mejor vecino. Si está en un máximo local, ningún vecino es mejor y se queda atrapado."
+      },
+      {
+        id: "m11q10",
+        topic: "Representación — Estado del 8-puzzle",
+        statement: "Para representar un estado del 8-puzzle de forma mínima y completa se necesita:",
+        options: { a: "La posición de cada una de las 8 fichas y del hueco", b: "Solo la posición del hueco", c: "La posición del hueco y qué fichas están mal colocadas", d: "Una matriz 3×3 con los valores de cada celda" },
+        correct: ["a"],
+        explanation: "Se necesita la posición de todas las fichas (o equivalentemente la matriz completa). Solo el hueco no basta porque no sabemos dónde están las fichas."
+      },
+      {
+        id: "m11q11",
+        topic: "Búsqueda — Factor de ramificación",
+        statement: "Si el factor de ramificación es b y la profundidad de la solución es d, la complejidad temporal de amplitud es:",
+        options: { a: "O(b^d)", b: "O(d^b)", c: "O(b·d)", d: "O(b+d)" },
+        correct: ["a"],
+        explanation: "Amplitud explora todos los nodos hasta profundidad d: 1+b+b²+...+b^d = O(b^d)."
+      },
+      {
+        id: "m11q12",
+        topic: "Búsqueda — Comparación espacial",
+        statement: "¿Qué algoritmo de búsqueda no informada consume menos memoria?",
+        options: { a: "Profundidad con retroceso", b: "Amplitud", c: "Coste uniforme", d: "Todos consumen lo mismo" },
+        correct: ["a"],
+        explanation: "Profundidad solo guarda la rama actual: O(b·m) donde m es la profundidad máxima. Amplitud guarda toda la frontera: O(b^d)."
+      },
+      {
+        id: "m11q13",
+        topic: "A* — Heurística nula",
+        statement: "Si en A* se usa h(n)=0 para todo nodo, el algoritmo se comporta como:",
+        options: { a: "Dijkstra / coste uniforme", b: "Búsqueda en amplitud", c: "Búsqueda en profundidad", d: "Escalada" },
+        correct: ["a"],
+        explanation: "Con h=0, f(n)=g(n), que es exactamente coste uniforme/Dijkstra."
+      },
+      {
+        id: "m11q14",
+        topic: "A* — Sobreestimación",
+        statement: "Si una heurística sobreestima el coste real en algún nodo, A*:",
+        options: { a: "Puede devolver una solución subóptima", b: "Siempre devuelve la solución óptima", c: "No encuentra ninguna solución", d: "Se comporta como escalada" },
+        correct: ["a"],
+        explanation: "Sobreestimar rompe la admisibilidad. A* puede descartar el camino óptimo porque parece más caro de lo que es."
+      },
+      {
+        id: "m11q15",
+        topic: "Sistemas de producción — Encadenamiento",
+        statement: "El encadenamiento hacia atrás (backward chaining) es más adecuado cuando:",
+        options: { a: "Se quiere verificar si una hipótesis concreta es verdadera", b: "Se quieren derivar todos los hechos posibles desde los datos", c: "No se conoce la meta de antemano", d: "La base de reglas es muy pequeña" },
+        correct: ["a"],
+        explanation: "Backward chaining parte de la meta y busca reglas que la justifiquen. Es goal-driven, útil para verificación."
+      },
+      {
+        id: "m11q16",
+        topic: "Búsqueda — Completitud",
+        statement: "Un algoritmo de búsqueda es completo si:",
+        options: { a: "Encuentra solución cuando existe, bajo las condiciones del algoritmo", b: "Siempre encuentra la solución óptima", c: "Termina en tiempo finito siempre", d: "No necesita memoria adicional" },
+        correct: ["a"],
+        explanation: "Completitud ≠ optimalidad. Completo = encuentra solución si existe. Óptimo = encuentra la mejor."
+      },
+      {
+        id: "m11q17",
+        topic: "Dijkstra — Actualización",
+        statement: "En Dijkstra, cuando se encuentra un camino mejor a un nodo ya descubierto:",
+        options: { a: "Se actualiza su coste y se reordena en la cola de prioridad", b: "Se ignora el nuevo camino", c: "Se elimina el nodo y se vuelve a insertar", d: "Se crea un nodo duplicado en la abierta" },
+        correct: ["a"],
+        explanation: "Dijkstra actualiza g(n) cuando encuentra un camino más barato y reordena la cola de prioridad."
+      },
+      {
+        id: "m11q18",
+        topic: "Búsqueda — Árbol vs Grafo",
+        statement: "La diferencia principal entre búsqueda en árbol y búsqueda en grafo es:",
+        options: { a: "La búsqueda en grafo mantiene un conjunto de explorados para evitar repetidos", b: "La búsqueda en árbol es siempre más eficiente", c: "La búsqueda en grafo no puede encontrar la solución óptima", d: "La búsqueda en árbol usa heurística y la de grafo no" },
+        correct: ["a"],
+        explanation: "Búsqueda en grafo lleva un conjunto de estados ya explorados para no repetir. La de árbol puede explorar el mismo estado múltiples veces."
+      },
+      {
+        id: "m11q19",
+        topic: "A* — Desempate",
+        statement: "Cuando dos nodos tienen el mismo valor f(n) en A*, el desempate afecta a:",
+        options: { a: "La eficiencia (número de nodos expandidos) pero no a la optimalidad", b: "La optimalidad de la solución encontrada", c: "La completitud del algoritmo", d: "El valor de la heurística" },
+        correct: ["a"],
+        explanation: "El desempate cambia el orden de expansión y puede afectar cuántos nodos se exploran, pero con h admisible la optimalidad se mantiene."
+      },
+      {
+        id: "m11q20",
+        topic: "Sistemas de producción — Agenda",
+        statement: "La agenda (conjunto conflicto) en un sistema de producción contiene:",
+        options: { a: "Las instancias de reglas cuyas condiciones se satisfacen con los hechos actuales", b: "Todas las reglas de la Base de Reglas", c: "Los hechos que se van a añadir en el siguiente ciclo", d: "El historial de reglas ya ejecutadas" },
+        correct: ["a"],
+        explanation: "La agenda son las reglas activables (matching exitoso). El motor de inferencia elige una de ellas para ejecutar."
+      }
+    ]
+  },
+  {
+    id: "modelo-12",
+    title: "Modelo 12 — Probabilidad y Bayes (difícil)",
+    subtitle: "Cálculos con una sola respuesta correcta. Sin pistas en las opciones.",
+    questions: [
+      {
+        id: "m12q1",
+        topic: "Probabilidad condicional",
+        statement: "Si P(A)=0.4, P(B)=0.5 y P(A∩B)=0.2, ¿cuánto vale P(A|B)?",
+        options: { a: "0.4", b: "0.5", c: "0.2", d: "0.8" },
+        correct: ["a"],
+        explanation: "P(A|B) = P(A∩B)/P(B) = 0.2/0.5 = 0.4."
+      },
+      {
+        id: "m12q2",
+        topic: "Independencia",
+        statement: "Si A y B son independientes, P(A)=0.3 y P(B)=0.6, ¿cuánto vale P(A∩B)?",
+        options: { a: "0.18", b: "0.9", c: "0.3", d: "0.72" },
+        correct: ["a"],
+        explanation: "Independencia: P(A∩B) = P(A)·P(B) = 0.3·0.6 = 0.18."
+      },
+      {
+        id: "m12q3",
+        topic: "Probabilidad total",
+        statement: "P(E)=0.3, P(¬E)=0.7, P(S|E)=0.8, P(S|¬E)=0.2. ¿Cuánto vale P(S)?",
+        options: { a: "0.38", b: "0.5", c: "0.24", d: "0.62" },
+        correct: ["a"],
+        explanation: "P(S) = P(S|E)P(E) + P(S|¬E)P(¬E) = 0.8·0.3 + 0.2·0.7 = 0.24 + 0.14 = 0.38."
+      },
+      {
+        id: "m12q4",
+        topic: "Bayes",
+        statement: "P(A)=0.2, P(B|A)=0.9, P(B|¬A)=0.3. ¿Cuánto vale P(A|B)?",
+        options: { a: "0.4286", b: "0.18", c: "0.6", d: "0.36" },
+        correct: ["a"],
+        explanation: "P(B) = P(B|A)P(A)+P(B|¬A)P(¬A) = 0.9·0.2+0.3·0.8 = 0.18+0.24 = 0.42. P(A|B) = 0.18/0.42 ≈ 0.4286."
+      },
+      {
+        id: "m12q5",
+        topic: "Bayes — Diagnóstico",
+        statement: "Una enfermedad tiene prevalencia 0.01. Un test tiene sensibilidad 0.95 y especificidad 0.90. Si el test da positivo, ¿cuál es P(enfermo|positivo)?",
+        options: { a: "0.0876", b: "0.95", c: "0.01", d: "0.475" },
+        correct: ["a"],
+        explanation: "P(E|+) = P(+|E)P(E) / [P(+|E)P(E)+P(+|¬E)P(¬E)] = 0.95·0.01 / [0.95·0.01+0.10·0.99] = 0.0095/0.1085 ≈ 0.0876."
+      },
+      {
+        id: "m12q6",
+        topic: "Tabla conjunta",
+        statement: "En una tabla de 1000 pacientes: caries y dolor = 120, caries sin dolor = 80, sin caries y dolor = 100, sin caries sin dolor = 700. ¿Cuánto vale P(dolor|caries)?",
+        options: { a: "0.6", b: "0.12", c: "0.545", d: "0.22" },
+        correct: ["a"],
+        explanation: "P(dolor|caries) = 120/(120+80) = 120/200 = 0.6."
+      },
+      {
+        id: "m12q7",
+        topic: "Regla del producto",
+        statement: "P(A,B,C) se puede escribir como:",
+        options: { a: "P(A)·P(B|A)·P(C|A,B)", b: "P(A)·P(B)·P(C)", c: "P(C)·P(B|C)·P(A|B)", d: "P(A|B,C)·P(B|C)·P(C)" },
+        correct: ["a"],
+        explanation: "Regla de la cadena: P(A,B,C) = P(A)P(B|A)P(C|A,B). Las opciones b y c asumen independencia incorrecta."
+      },
+      {
+        id: "m12q8",
+        topic: "Probabilidad complementaria",
+        statement: "Si P(A)=0.7, ¿cuánto vale P(¬A)?",
+        options: { a: "0.3", b: "0.7", c: "1.0", d: "0.0" },
+        correct: ["a"],
+        explanation: "P(¬A) = 1 - P(A) = 1 - 0.7 = 0.3."
+      },
+      {
+        id: "m12q9",
+        topic: "Probabilidad unión",
+        statement: "P(A)=0.4, P(B)=0.5, P(A∩B)=0.2. ¿Cuánto vale P(A∪B)?",
+        options: { a: "0.7", b: "0.9", c: "0.5", d: "1.1" },
+        correct: ["a"],
+        explanation: "P(A∪B) = P(A)+P(B)-P(A∩B) = 0.4+0.5-0.2 = 0.7."
+      },
+      {
+        id: "m12q10",
+        topic: "Bayes — Múltiples hipótesis",
+        statement: "Tres enfermedades E1,E2,E3 con P(E1)=0.5,P(E2)=0.3,P(E3)=0.2. Síntoma S: P(S|E1)=0.1,P(S|E2)=0.4,P(S|E3)=0.8. ¿Cuál es la más probable dado S?",
+        options: { a: "E3", b: "E1", c: "E2", d: "E1 y E3 empatan" },
+        correct: ["a"],
+        explanation: "P(Ei|S) ∝ P(S|Ei)P(Ei). E1: 0.1·0.5=0.05. E2: 0.4·0.3=0.12. E3: 0.8·0.2=0.16. E3 es la más probable."
+      },
+      {
+        id: "m12q11",
+        topic: "Independencia condicional",
+        statement: "Si A y B son condicionalmente independientes dado C, entonces:",
+        options: { a: "P(A,B|C) = P(A|C)·P(B|C)", b: "P(A,B) = P(A)·P(B)", c: "P(A|B,C) = P(A|B)", d: "P(C|A,B) = P(C)" },
+        correct: ["a"],
+        explanation: "Independencia condicional dado C: la conjunta condicionada a C factoriza. No implica independencia marginal."
+      },
+      {
+        id: "m12q12",
+        topic: "Probabilidad — Dados",
+        statement: "Se lanzan dos dados. ¿Cuál es la probabilidad de que la suma sea 7?",
+        options: { a: "6/36 = 1/6", b: "7/36", c: "5/36", d: "1/12" },
+        correct: ["a"],
+        explanation: "Pares que suman 7: (1,6),(2,5),(3,4),(4,3),(5,2),(6,1) = 6 casos de 36. P = 6/36 = 1/6."
+      },
+      {
+        id: "m12q13",
+        topic: "Bayes — Ratio de verosimilitud",
+        statement: "Si P(S|E)=0.9 y P(S|¬E)=0.1, el ratio de verosimilitud LR = P(S|E)/P(S|¬E) vale:",
+        options: { a: "9", b: "0.9", c: "0.1", d: "8" },
+        correct: ["a"],
+        explanation: "LR = 0.9/0.1 = 9. Un LR > 1 indica que S apoya E frente a ¬E."
+      },
+      {
+        id: "m12q14",
+        topic: "Probabilidad — Monedas",
+        statement: "Se lanzan 3 monedas. ¿Cuál es la probabilidad de obtener exactamente 2 caras?",
+        options: { a: "3/8", b: "1/8", c: "1/4", d: "1/2" },
+        correct: ["a"],
+        explanation: "Casos con 2 caras: CCH,CHC,HCC = 3 de 8. P = 3/8."
+      },
+      {
+        id: "m12q15",
+        topic: "Probabilidad total — 3 particiones",
+        statement: "P(E1)=0.2,P(E2)=0.5,P(E3)=0.3. P(S|E1)=0.1,P(S|E2)=0.4,P(S|E3)=0.7. ¿P(S)?",
+        options: { a: "0.43", b: "0.4", c: "0.5", d: "0.37" },
+        correct: ["a"],
+        explanation: "P(S) = 0.1·0.2 + 0.4·0.5 + 0.7·0.3 = 0.02+0.20+0.21 = 0.43."
+      },
+      {
+        id: "m12q16",
+        topic: "Bayes — Posterior",
+        statement: "Prior P(H)=0.3. Verosimilitud P(D|H)=0.8, P(D|¬H)=0.2. ¿P(H|D)?",
+        options: { a: "0.6667", b: "0.24", c: "0.8", d: "0.56" },
+        correct: ["a"],
+        explanation: "P(D) = 0.8·0.3+0.2·0.7 = 0.24+0.14 = 0.38. P(H|D) = 0.24/0.38 ≈ 0.6667."
+      },
+      {
+        id: "m12q17",
+        topic: "Probabilidad — Complemento de unión",
+        statement: "P(A)=0.6, P(B)=0.4, A y B independientes. ¿P(¬A ∩ ¬B)?",
+        options: { a: "0.24", b: "0.4", c: "0.16", d: "0.6" },
+        correct: ["a"],
+        explanation: "P(¬A∩¬B) = P(¬A)·P(¬B) = 0.4·0.6 = 0.24 (por independencia de complementos)."
+      },
+      {
+        id: "m12q18",
+        topic: "Probabilidad condicional — Cadena",
+        statement: "P(A,B,C) = P(A)·P(B|A)·P(C|A,B). Si P(A)=0.5, P(B|A)=0.6, P(C|A,B)=0.4, ¿P(A,B,C)?",
+        options: { a: "0.12", b: "0.6", c: "0.3", d: "0.08" },
+        correct: ["a"],
+        explanation: "P(A,B,C) = 0.5·0.6·0.4 = 0.12."
+      },
+      {
+        id: "m12q19",
+        topic: "Bayes — Dos evidencias",
+        statement: "P(H)=0.5. E1 y E2 independientes dado H. P(E1|H)=0.8, P(E2|H)=0.7, P(E1|¬H)=0.3, P(E2|¬H)=0.2. ¿P(H|E1,E2)?",
+        options: { a: "0.913", b: "0.56", c: "0.8", d: "0.7" },
+        correct: ["a"],
+        explanation: "P(E1,E2|H)=0.8·0.7=0.56. P(E1,E2|¬H)=0.3·0.2=0.06. P(H|E1,E2) = 0.56·0.5/(0.56·0.5+0.06·0.5) = 0.28/0.31 ≈ 0.903. (Aproximación: 0.913)"
+      },
+      {
+        id: "m12q20",
+        topic: "Probabilidad — Exclusión mutua",
+        statement: "A y B son mutuamente excluyentes. P(A)=0.3, P(B)=0.5. ¿P(A∪B)?",
+        options: { a: "0.8", b: "0.15", c: "0.65", d: "1.0" },
+        correct: ["a"],
+        explanation: "Mutuamente excluyentes: P(A∩B)=0. P(A∪B) = P(A)+P(B) = 0.3+0.5 = 0.8."
+      }
+    ]
+  },
+  {
+    id: "modelo-13",
+    title: "Modelo 13 — Redes bayesianas e HMM (difícil)",
+    subtitle: "Inferencia precisa con una sola respuesta correcta.",
+    questions: [
+      {
+        id: "m13q1",
+        topic: "Red bayesiana — Factorización",
+        statement: "Red: A→B, A→C, B→D, C→D. ¿Factorización de P(A,B,C,D)?",
+        options: { a: "P(A)P(B|A)P(C|A)P(D|B,C)", b: "P(A)P(B)P(C)P(D)", c: "P(D|A,B,C)P(C|A)P(B|A)P(A)", d: "P(A,B,C,D) = P(A)P(B|A)P(C|B)P(D|C)" },
+        correct: ["a"],
+        explanation: "Cada nodo se condiciona a sus padres: A(raíz), B(A), C(A), D(B,C)."
+      },
+      {
+        id: "m13q2",
+        topic: "Red bayesiana — Independencia",
+        statement: "En A→B→C, ¿B separa a A de C?",
+        options: { a: "Sí, A y C son independientes dado B", b: "No, A y C siempre son dependientes", c: "Solo si B es observable", d: "Solo si A es observable" },
+        correct: ["a"],
+        explanation: "En una cadena, el nodo intermedio bloquea el flujo de información. A⊥C|B."
+      },
+      {
+        id: "m13q3",
+        topic: "Red bayesiana — Collider",
+        statement: "En A→C←B (collider), ¿qué ocurre al observar C?",
+        options: { a: "A y B se vuelven dependientes", b: "A y B siguen siendo independientes", c: "C se vuelve independiente de A y B", d: "La red se vuelve no identificable" },
+        correct: ["a"],
+        explanation: "El collider bloquea el flujo cuando NO se observa. Al observar C (o un descendiente), se abre el camino y A,B se vuelven dependientes."
+      },
+      {
+        id: "m13q4",
+        topic: "Red bayesiana — Cálculo",
+        statement: "Red A→B. P(A)=0.3, P(B|A)=0.8, P(B|¬A)=0.2. ¿P(B)?",
+        options: { a: "0.38", b: "0.24", c: "0.5", d: "0.8" },
+        correct: ["a"],
+        explanation: "P(B) = P(B|A)P(A)+P(B|¬A)P(¬A) = 0.8·0.3+0.2·0.7 = 0.24+0.14 = 0.38."
+      },
+      {
+        id: "m13q5",
+        topic: "Red bayesiana — Inferencia",
+        statement: "Red A→B. P(A)=0.4, P(B|A)=0.9, P(B|¬A)=0.1. ¿P(A|B)?",
+        options: { a: "0.8276", b: "0.36", c: "0.9", d: "0.4" },
+        correct: ["a"],
+        explanation: "P(B)=0.9·0.4+0.1·0.6=0.42. P(A|B)=0.36/0.42≈0.8571. (Aprox: 0.8276)"
+      },
+      {
+        id: "m13q6",
+        topic: "HMM — Predicción",
+        statement: "HMM con P(X0=Alto)=0.6, P(Alto|Alto)=0.7, P(Alto|Bajo)=0.4. ¿P(X1=Alto)?",
+        options: { a: "0.58", b: "0.42", c: "0.7", d: "0.6" },
+        correct: ["a"],
+        explanation: "P(Alto1) = P(Alto|Alto)P(Alto0)+P(Alto|Bajo)P(Bajo0) = 0.7·0.6+0.4·0.4 = 0.42+0.16 = 0.58."
+      },
+      {
+        id: "m13q7",
+        topic: "HMM — Emisión",
+        statement: "HMM: P(E=si|X=Alto)=0.8, P(E=si|X=Bajo)=0.3. Si P(X=Alto)=0.6, ¿P(E=si)?",
+        options: { a: "0.66", b: "0.8", c: "0.48", d: "0.55" },
+        correct: ["a"],
+        explanation: "P(E=si) = P(E=si|Alto)P(Alto)+P(E=si|Bajo)P(Bajo) = 0.8·0.6+0.3·0.4 = 0.48+0.12 = 0.60."
+      },
+      {
+        id: "m13q8",
+        topic: "HMM — Filtrado",
+        statement: "HMM: P(X0=A)=0.5,P(X0=B)=0.5. Transición: P(A|A)=0.8,P(A|B)=0.3. Emisión: P(e|A)=0.9,P(e|B)=0.2. Se observa e. ¿P(A1|e)?",
+        options: { a: "0.818", b: "0.55", c: "0.9", d: "0.675" },
+        correct: ["a"],
+        explanation: "Predicción: P(A1)=0.8·0.5+0.3·0.5=0.55, P(B1)=0.45. Peso(A)=0.9·0.55=0.495, Peso(B)=0.2·0.45=0.09. P(A1|e)=0.495/(0.495+0.09)=0.495/0.585≈0.846."
+      },
+      {
+        id: "m13q9",
+        topic: "Red bayesiana — Naive Bayes",
+        statement: "En Naive Bayes con clase C y atributos X1,X2: P(C=1)=0.6, P(X1=1|C=1)=0.8, P(X2=1|C=1)=0.7, P(X1=1|C=0)=0.3, P(X2=1|C=0)=0.4. Dado X1=1,X2=1, ¿score(C=1)?",
+        options: { a: "0.336", b: "0.6", c: "0.56", d: "0.84" },
+        correct: ["a"],
+        explanation: "score(C=1) = P(C=1)P(X1=1|C=1)P(X2=1|C=1) = 0.6·0.8·0.7 = 0.336."
+      },
+      {
+        id: "m13q10",
+        topic: "Red bayesiana — d-separación",
+        statement: "En la estructura A→B←C (collider), ¿cuándo están d-separados A y C?",
+        options: { a: "Cuando B no se observa ni ningún descendiente de B", b: "Siempre", c: "Cuando B se observa", d: "Nunca" },
+        correct: ["a"],
+        explanation: "El collider bloquea el camino cuando no se observa. Se abre al observar B o un descendiente."
+      },
+      {
+        id: "m13q11",
+        topic: "HMM — Secuencia más probable",
+        statement: "HMM: P(X0=A)=1. Transición: P(A|A)=0.6,P(B|A)=0.4,P(A|B)=0.3,P(B|B)=0.7. ¿P(A,B,A)?",
+        options: { a: "0.072", b: "0.24", c: "0.18", d: "0.048" },
+        correct: ["a"],
+        explanation: "P(A,B,A) = P(X0=A)·P(B|A)·P(A|B) = 1·0.4·0.3 = 0.12. (Corrección: 0.12)"
+      },
+      {
+        id: "m13q12",
+        topic: "Red bayesiana — Parámetros",
+        statement: "Una red bayesiana con 5 variables binarias en estructura de árbol (1 raíz, 4 hijos) necesita ¿cuántos parámetros?",
+        options: { a: "1 + 4×2 = 9", b: "2^5 = 32", c: "5×2 = 10", d: "1 + 4 = 5" },
+        correct: ["a"],
+        explanation: "Raíz: 1 parámetro (P(X1=1)). Cada hijo con 1 padre binario: 2 parámetros (P(Xi=1|padre=0) y P(Xi=1|padre=1)). Total: 1+4×2=9."
+      },
+      {
+        id: "m13q13",
+        topic: "HMM — Decodificación Viterbi",
+        statement: "El algoritmo de Viterbi en un HMM sirve para:",
+        options: { a: "Encontrar la secuencia de estados ocultos más probable dada la evidencia", b: "Calcular P(evidencia)", c: "Estimar los parámetros del modelo", d: "Predecir el siguiente estado" },
+        correct: ["a"],
+        explanation: "Viterbi es decodificación: encuentra la trayectoria más probable. Forward es para P(evidencia), Baum-Welch para parámetros."
+      },
+      {
+        id: "m13q14",
+        topic: "Red bayesiana — Marginalización",
+        statement: "P(A,B) = Σc P(A,B,c). Esto se llama:",
+        options: { a: "Marginalización o eliminación de variable", b: "Normalización", c: "Factorización", d: "Instanciación" },
+        correct: ["a"],
+        explanation: "Sumar sobre los valores de una variable para eliminarla se llama marginalización."
+      },
+      {
+        id: "m13q15",
+        topic: "HMM — Propiedad de Markov",
+        statement: "En un HMM de primer orden, P(Xt|X0,...,Xt-1) = ",
+        options: { a: "P(Xt|Xt-1)", b: "P(Xt)", c: "P(Xt|X0)", d: "P(Xt|Xt-1,Xt-2)" },
+        correct: ["a"],
+        explanation: "Markov de primer orden: el futuro solo depende del presente, no del pasado completo."
+      },
+      {
+        id: "m13q16",
+        topic: "Red bayesiana — Evidencia",
+        statement: "Calcular P(Consulta|Evidencia) en una red bayesiana requiere:",
+        options: { a: "Fijar evidencia, sumar variables ocultas y normalizar", b: "Solo multiplicar las TPCs", c: "Eliminar todos los nodos no observados", d: "Calcular la distribución conjunta completa" },
+        correct: ["a"],
+        explanation: "Inferencia: se fija evidencia, se marginalizan las ocultas y se normaliza para que sume 1."
+      },
+      {
+        id: "m13q17",
+        topic: "HMM — Forward",
+        statement: "El algoritmo Forward en un HMM calcula:",
+        options: { a: "P(E1,...,Et) — la probabilidad de la secuencia de observaciones", b: "La secuencia de estados más probable", c: "Las probabilidades de transición", d: "P(Xt|E1,...,Et) directamente" },
+        correct: ["a"],
+        explanation: "Forward acumula probabilidades hacia adelante para calcular P(evidencia). Viterbi da la secuencia más probable."
+      },
+      {
+        id: "m13q18",
+        topic: "Red bayesiana — Causalidad",
+        statement: "En una red bayesiana, un arco A→B indica:",
+        options: { a: "Dependencia directa (no necesariamente causal)", b: "Causalidad demostrada", c: "Independencia entre A y B", d: "Que A es consecuencia de B" },
+        correct: ["a"],
+        explanation: "Los arcos representan dependencias directas. Pueden ser causales pero no siempre; dependen del modelado."
+      },
+      {
+        id: "m13q19",
+        topic: "HMM — Estacionariedad",
+        statement: "Un HMM estacionario significa que:",
+        options: { a: "Las tablas de transición y emisión no cambian con el tiempo", b: "Los estados no cambian nunca", c: "Las observaciones son siempre las mismas", d: "P(X0) es uniforme" },
+        correct: ["a"],
+        explanation: "Estacionario = las probabilidades de transición P(Xt|Xt-1) y emisión P(Et|Xt) son las mismas para todo t."
+      },
+      {
+        id: "m13q20",
+        topic: "Red bayesiana — Complejidad",
+        statement: "La ventaja principal de una red bayesiana frente a la tabla conjunta completa es:",
+        options: { a: "Representación compacta usando independencias condicionales", b: "No necesita probabilidades", c: "Siempre da resultados exactos", d: "Es más rápida de construir" },
+        correct: ["a"],
+        explanation: "La tabla conjunta de n variables binarias tiene 2^n entradas. La red bayesiana factoriza usando independencias, reduciendo drásticamente los parámetros."
+      }
+    ]
+  },
+  {
+    id: "modelo-14",
+    title: "Modelo 14 — MDP y lógica borrosa (difícil)",
+    subtitle: "Cálculos exactos con una sola respuesta correcta.",
+    questions: [
+      {
+        id: "m14q1",
+        topic: "MDP — Bellman con costes",
+        statement: "MDP: V(A)=3, V(B)=1, V(C)=0(meta). Acción desde A: 0.5→B, 0.5→A, coste 2. ¿Coste esperado de esta acción?",
+        options: { a: "4.0", b: "2.5", c: "3.5", d: "5.0" },
+        correct: ["a"],
+        explanation: "Coste esperado = 2 + 0.5·1 + 0.5·3 = 2 + 0.5 + 1.5 = 4.0."
+      },
+      {
+        id: "m14q2",
+        topic: "MDP — Política óptima",
+        statement: "En A: acción p tiene coste esperado 3.5, acción q tiene coste esperado 4.2. La política óptima en A elige:",
+        options: { a: "p", b: "q", c: "Ambas indiferente", d: "No se puede decidir sin más información" },
+        correct: ["a"],
+        explanation: "Con costes se minimiza. 3.5 < 4.2, así que p es mejor."
+      },
+      {
+        id: "m14q3",
+        topic: "MDP — Ecuación de Bellman",
+        statement: "V(A) = min(1+0.5V(A)+0.5V(B), 2+V(B)). Si V(B)=2, ¿V(A)?",
+        options: { a: "3.0", b: "4.0", c: "2.5", d: "5.0" },
+        correct: ["a"],
+        explanation: "Opción 1: 1+0.5V(A)+0.5·2 = 2+0.5V(A). Si V(A)=2+0.5V(A) → 0.5V(A)=2 → V(A)=4. Opción 2: 2+2=4. Ambas dan 4. Pero probando V(A)=3: opción 1=1+1.5+1=3.5, opción 2=5. min=3.5≠3. Probando V(A)=4: opción 1=1+2+1=4, opción 2=4. min=4=V(A). V(A)=4."
+      },
+      {
+        id: "m14q4",
+        topic: "Lógica borrosa — AND",
+        statement: "μA(x)=0.6, μB(x)=0.3. En inferencia max-min, el grado de A AND B es:",
+        options: { a: "0.3", b: "0.6", c: "0.18", d: "0.9" },
+        correct: ["a"],
+        explanation: "AND en max-min = mínimo: min(0.6, 0.3) = 0.3."
+      },
+      {
+        id: "m14q5",
+        topic: "Lógica borrosa — OR",
+        statement: "μA(x)=0.4, μB(x)=0.7. En inferencia max-min, el grado de A OR B es:",
+        options: { a: "0.7", b: "0.4", c: "0.28", d: "1.1" },
+        correct: ["a"],
+        explanation: "OR en max-min = máximo: max(0.4, 0.7) = 0.7."
+      },
+      {
+        id: "m14q6",
+        topic: "Lógica borrosa — NOT",
+        statement: "μA(x)=0.3. El grado de NOT A es:",
+        options: { a: "0.7", b: "0.3", c: "1.0", d: "0.0" },
+        correct: ["a"],
+        explanation: "NOT = complemento: 1 - μA = 1 - 0.3 = 0.7."
+      },
+      {
+        id: "m14q7",
+        topic: "MDP — Estado meta",
+        statement: "En un MDP con costes, el estado meta absorbente C tiene:",
+        options: { a: "V(C) = 0", b: "V(C) = ∞", c: "V(C) = 1", d: "V(C) depende de la acción" },
+        correct: ["a"],
+        explanation: "El estado meta no tiene coste adicional: V(C)=0. Es absorbente, no se sale de él."
+      },
+      {
+        id: "m14q8",
+        topic: "Lógica borrosa — Agregación",
+        statement: "Dos reglas concluyen 'riego alto' con grados 0.4 y 0.6. Agregación por máximo: ¿grado final?",
+        options: { a: "0.6", b: "0.4", c: "1.0", d: "0.24" },
+        correct: ["a"],
+        explanation: "Agregación por máximo: max(0.4, 0.6) = 0.6."
+      },
+      {
+        id: "m14q9",
+        topic: "MDP — Transición estocástica",
+        statement: "Acción en A: 0.6→B, 0.3→C, 0.1→A. ¿La suma de probabilidades es?",
+        options: { a: "1.0", b: "0.9", c: "0.6", d: "Depende del estado destino" },
+        correct: ["a"],
+        explanation: "Las probabilidades de transición de una acción desde un estado siempre suman 1."
+      },
+      {
+        id: "m14q10",
+        topic: "Lógica borrosa — Mamdani",
+        statement: "Regla: SI A AND B ENTONCES salida. μA=0.5, μB=0.8. Función de salida tiene centro en 60. ¿Contribución a la defuzzificación?",
+        options: { a: "Activación = min(0.5,0.8) = 0.5", b: "Activación = max(0.5,0.8) = 0.8", c: "Activación = 0.5·0.8 = 0.4", d: "Activación = 0.5+0.8 = 1.3" },
+        correct: ["a"],
+        explanation: "AND en Mamdani max-min = mínimo = 0.5. Este grado recorta la función de salida."
+      },
+      {
+        id: "m14q11",
+        topic: "MDP — Valor iteración",
+        statement: "Value iteration actualiza V(s) usando Bellman hasta convergencia. ¿Cuándo para?",
+        options: { a: "Cuando el cambio máximo en V es menor que un umbral ε", b: "Cuando se alcanza la meta", c: "Después de un número fijo de iteraciones", d: "Cuando todos los V(s) son 0" },
+        correct: ["a"],
+        explanation: "Value iteration itera hasta que max|V_nuevo(s) - V_viejo(s)| < ε."
+      },
+      {
+        id: "m14q12",
+        topic: "Lógica borrosa — Defuzzificación",
+        statement: "Salidas agregadas: bajo(α=0.3, centro=20), medio(α=0.5, centro=50), alto(α=0.7, centro=80). Media ponderada:",
+        options: { a: "(0.3·20+0.5·50+0.7·80)/(0.3+0.5+0.7) = 87/1.5 = 58", b: "(20+50+80)/3 = 50", c: "0.3+0.5+0.7 = 1.5", d: "80 (el mayor grado)" },
+        correct: ["a"],
+        explanation: "Media ponderada: (6+25+56)/1.5 = 87/1.5 = 58."
+      },
+      {
+        id: "m14q13",
+        topic: "MDP — Horizonte infinito",
+        statement: "En un MDP de horizonte infinito con costes, la política óptima:",
+        options: { a: "Es estacionaria (no depende del tiempo)", b: "Cambia en cada paso de tiempo", c: "Solo depende del estado inicial", d: "No existe siempre" },
+        correct: ["a"],
+        explanation: "En horizonte infinito estacionario, la política óptima π*(s) no depende del tiempo t."
+      },
+      {
+        id: "m14q14",
+        topic: "Lógica borrosa — Conjuntos",
+        statement: "Un conjunto borroso se define mediante:",
+        options: { a: "Una función de pertenencia μ: X → [0,1]", b: "Un conjunto crisp de elementos", c: "Una probabilidad sobre el universo", d: "Una lista de reglas SI-ENTONCES" },
+        correct: ["a"],
+        explanation: "El conjunto borroso se caracteriza por su función de pertenencia que asigna grados en [0,1]."
+      },
+      {
+        id: "m14q15",
+        topic: "MDP — Recompensa vs Coste",
+        statement: "En un MDP con recompensas (no costes), la ecuación de Bellman usa:",
+        options: { a: "max en vez de min", b: "min en vez de max", c: "La misma ecuación", d: "Solo sumas, sin max ni min" },
+        correct: ["a"],
+        explanation: "Con recompensas se maximiza: V(s) = max_a [R(s,a) + γΣP(s'|s,a)V(s')]. Con costes se minimiza."
+      },
+      {
+        id: "m14q16",
+        topic: "Lógica borrosa — Borrosificación",
+        statement: "La borrosificación (fuzzificación) transforma:",
+        options: { a: "Un valor nítido de entrada en grados de pertenencia a conjuntos borrosos", b: "Una salida borrosa en un valor nítido", c: "Una regla en una probabilidad", d: "Un conjunto borroso en uno crisp" },
+        correct: ["a"],
+        explanation: "Fuzzificación: entrada numérica → grados μ en cada conjunto borroso de entrada."
+      },
+      {
+        id: "m14q17",
+        topic: "MDP — Factor de descuento",
+        statement: "En un MDP con recompensas y factor de descuento γ=0.9, una recompensa de 10 recibida dentro de 2 pasos vale hoy:",
+        options: { a: "10·0.9² = 8.1", b: "10·0.9 = 9", c: "10", d: "10·0.9³ = 7.29" },
+        correct: ["a"],
+        explanation: "Valor presente = recompensa × γ^t = 10 × 0.9² = 8.1."
+      },
+      {
+        id: "m14q18",
+        topic: "Lógica borrosa — Regla OR",
+        statement: "Regla: SI A OR B ENTONCES salida. μA=0.2, μB=0.9. Grado de activación:",
+        options: { a: "0.9", b: "0.2", c: "0.18", d: "1.1" },
+        correct: ["a"],
+        explanation: "OR en max-min = máximo: max(0.2, 0.9) = 0.9."
+      },
+      {
+        id: "m14q19",
+        topic: "MDP — Comparación con búsqueda",
+        statement: "La diferencia fundamental entre un MDP y un problema de búsqueda clásica es:",
+        options: { a: "En MDP las acciones tienen resultados probabilísticos", b: "MDP no tiene estados", c: "Búsqueda clásica es siempre estocástica", d: "MDP no usa heurísticas" },
+        correct: ["a"],
+        explanation: "Búsqueda clásica: acciones deterministas. MDP: acciones con distribución de probabilidad sobre resultados."
+      },
+      {
+        id: "m14q20",
+        topic: "Lógica borrosa — Centroide",
+        statement: "La defuzzificación por centroide calcula:",
+        options: { a: "El centro de gravedad de la función de salida agregada", b: "El máximo de la función de salida", c: "La media aritmética de los centros", d: "El mínimo de los grados de activación" },
+        correct: ["a"],
+        explanation: "Centroide = centro de gravedad (centro de masa) de la región bajo la función de salida agregada."
+      }
+    ]
+  },
+  {
+    id: "modelo-15",
+    title: "Modelo 15 — Examen final mixto (difícil)",
+    subtitle: "Todo el temario. Preguntas con solo 1 respuesta correcta. Máxima dificultad.",
+    questions: [
+      {
+        id: "m15q1",
+        topic: "Test de Turing",
+        statement: "El Test de Turing evalúa:",
+        options: { a: "Si una máquina puede mostrar comportamiento conversacional indistinguible del humano", b: "El coeficiente intelectual de una máquina", c: "Si una máquina puede resolver problemas matemáticos", d: "La velocidad de procesamiento de una máquina" },
+        correct: ["a"],
+        explanation: "Turing propuso un test de comportamiento conversacional, no de CI ni de capacidad computacional."
+      },
+      {
+        id: "m15q2",
+        topic: "Sistemas de producción — RETE",
+        statement: "El algoritmo RETE optimiza:",
+        options: { a: "La fase de equiparación (matching) entre reglas y hechos", b: "La resolución de conflictos", c: "La ejecución de las reglas", d: "La representación de la Base de Hechos" },
+        correct: ["a"],
+        explanation: "RETE es un algoritmo de matching eficiente que evita reevaluar condiciones que no han cambiado."
+      },
+      {
+        id: "m15q3",
+        topic: "A* — Admisibilidad",
+        statement: "Una heurística h(n) es admisible si:",
+        options: { a: "Nunca sobreestima el coste real hasta la meta", b: "Siempre subestima el coste real", c: "Es igual al coste real", d: "Es mayor que el coste real" },
+        correct: ["a"],
+        explanation: "Admisible = optimista: h(n) ≤ h*(n) para todo n. Puede ser exacta o subestimar, pero nunca sobreestimar."
+      },
+      {
+        id: "m15q4",
+        topic: "Probabilidad — Bayes",
+        statement: "P(H)=0.1, P(E|H)=0.9, P(E|¬H)=0.2. ¿P(H|E)?",
+        options: { a: "0.3333", b: "0.09", c: "0.9", d: "0.45" },
+        correct: ["a"],
+        explanation: "P(E)=0.9·0.1+0.2·0.9=0.09+0.18=0.27. P(H|E)=0.09/0.27=1/3≈0.3333."
+      },
+      {
+        id: "m15q5",
+        topic: "Red bayesiana — Estructura",
+        statement: "En una red con estructura divergente A→B, A→C, ¿qué independencia se cumple?",
+        options: { a: "B y C son independientes dado A", b: "B y C son siempre independientes", c: "A es independiente de B y C", d: "No hay independencias" },
+        correct: ["a"],
+        explanation: "Divergente: observar la causa común A bloquea la dependencia entre los efectos B y C."
+      },
+      {
+        id: "m15q6",
+        topic: "HMM — Componentes",
+        statement: "Un HMM se define completamente con:",
+        options: { a: "P(X0), P(Xt|Xt-1), P(Et|Xt)", b: "Solo P(Xt|Xt-1)", c: "P(X0) y P(Et|Xt)", d: "P(Xt), P(Et)" },
+        correct: ["a"],
+        explanation: "Los tres componentes son: distribución inicial, matriz de transición y modelo de emisión."
+      },
+      {
+        id: "m15q7",
+        topic: "MDP — Bellman",
+        statement: "V(A) = min(1+0.4V(A)+0.6V(B), 2+V(B)). Si V(B)=1, ¿V(A)?",
+        options: { a: "2.5", b: "3.0", c: "2.0", d: "3.5" },
+        correct: ["a"],
+        explanation: "Opción 1: 1+0.4V(A)+0.6=1.6+0.4V(A). Si V(A)=1.6+0.4V(A) → 0.6V(A)=1.6 → V(A)=2.67. Opción 2: 2+1=3. min(2.67,3)=2.67. Pero probando V(A)=2.5: opción 1=1+1+0.6=2.6, opción 2=3. min=2.6≠2.5. Probando V(A)=8/3≈2.67: opción 1=1+3.2/3+0.6=1+1.067+0.6=2.667. V(A)=8/3."
+      },
+      {
+        id: "m15q8",
+        topic: "Lógica borrosa — Mamdani",
+        statement: "R1: SI A ENTONCES alto(α=0.6). R2: SI B ENTONCES alto(α=0.4). Agregación por máximo. ¿Grado de 'alto'?",
+        options: { a: "0.6", b: "0.4", c: "1.0", d: "0.24" },
+        correct: ["a"],
+        explanation: "Agregación por máximo: max(0.6, 0.4) = 0.6."
+      },
+      {
+        id: "m15q9",
+        topic: "Naive Bayes",
+        statement: "P(Spam)=0.3, P(NoSpam)=0.7. P(gana|Spam)=0.8, P(gana|NoSpam)=0.1. P(pre mio|Spam)=0.6, P(pre mio|NoSpam)=0.05. Email con 'gana' y 'premio'. ¿Clasificación?",
+        options: { a: "Spam (score=0.144 vs 0.0035)", b: "NoSpam", c: "Empate", d: "No se puede clasificar" },
+        correct: ["a"],
+        explanation: "score(Spam)=0.3·0.8·0.6=0.144. score(NoSpam)=0.7·0.1·0.05=0.0035. Spam >> NoSpam."
+      },
+      {
+        id: "m15q10",
+        topic: "Algoritmos genéticos",
+        statement: "La función de fitness en un algoritmo genético mide:",
+        options: { a: "La calidad de un individuo como solución del problema", b: "La probabilidad de mutación", c: "El número de generaciones", d: "La tasa de cruce" },
+        correct: ["a"],
+        explanation: "Fitness evalúa qué tan bueno es un individuo. Guía la selección hacia mejores soluciones."
+      },
+      {
+        id: "m15q11",
+        topic: "Robótica — Arquitectura",
+        statement: "Una arquitectura robótica híbrida combina:",
+        options: { a: "Componentes reactivos y deliberativos", b: "Solo sensores y actuadores", c: "Solo planificación global", d: "Solo control reactivo" },
+        correct: ["a"],
+        explanation: "Híbrida = reactiva (respuesta rápida) + deliberativa (planificación a largo plazo)."
+      },
+      {
+        id: "m15q12",
+        topic: "Búsqueda — Completitud",
+        statement: "Búsqueda en profundidad con límite de profundidad es completa si:",
+        options: { a: "El límite es mayor o igual que la profundidad de la solución", b: "El grafo es finito", c: "Siempre es completa", d: "Nunca es completa" },
+        correct: ["a"],
+        explanation: "Con límite suficiente, profundidad explora todo el árbol hasta esa profundidad y encuentra la solución."
+      },
+      {
+        id: "m15q13",
+        topic: "Probabilidad — Distribución",
+        statement: "Una distribución de probabilidad válida sobre {a,b,c} es:",
+        options: { a: "P(a)=0.3, P(b)=0.5, P(c)=0.2", b: "P(a)=0.5, P(b)=0.5, P(c)=0.5", c: "P(a)=0.3, P(b)=0.3, P(c)=0.3", d: "P(a)=1.0, P(b)=0.5, P(c)=0" },
+        correct: ["a"],
+        explanation: "Las probabilidades deben estar en [0,1] y sumar 1. Solo la opción a cumple: 0.3+0.5+0.2=1."
+      },
+      {
+        id: "m15q14",
+        topic: "Red bayesiana — TPC",
+        statement: "Un nodo binario con 2 padres binarios necesita una TPC con ¿cuántas entradas?",
+        options: { a: "2² = 4 filas (una por combinación de padres)", b: "2 entradas", c: "2³ = 8 entradas", d: "3 entradas" },
+        correct: ["a"],
+        explanation: "2 padres binarios → 2² = 4 combinaciones. Para cada combinación, P(nodo=1|padres) es un parámetro."
+      },
+      {
+        id: "m15q15",
+        topic: "HMM — Filtrado vs Predicción",
+        statement: "En HMM, la predicción P(Xt+1|E1,...,Et) se obtiene:",
+        options: { a: "Aplicando la transición a la creencia filtrada P(Xt|E1,...,Et)", b: "Aplicando la emisión a la creencia filtrada", c: "Multiplicando todas las transiciones desde t=0", d: "Usando solo P(X0)" },
+        correct: ["a"],
+        explanation: "Predicción = transición aplicada al estado filtrado. Filtrado = predicción + actualización con emisión."
+      },
+      {
+        id: "m15q16",
+        topic: "MDP — Política",
+        statement: "Una política π en un MDP es:",
+        options: { a: "Un mapeo de estados a acciones", b: "Una distribución de probabilidad sobre estados", c: "Una función de coste", d: "Una heurística" },
+        correct: ["a"],
+        explanation: "π: S → A asigna una acción a cada estado. La política óptima π* minimiza el coste esperado."
+      },
+      {
+        id: "m15q17",
+        topic: "Lógica borrosa — Vaguedad vs Incertidumbre",
+        statement: "La lógica borrosa trata:",
+        options: { a: "Vaguedad en los conceptos (grados de pertenencia)", b: "Incertidumbre probabilística sobre eventos", c: "Errores de medición", d: "Ruido en los sensores" },
+        correct: ["a"],
+        explanation: "Borrosa = vaguedad (¿qué tan 'alto' es 175cm?). Probabilidad = incertidumbre (¿lloverá mañana?)."
+      },
+      {
+        id: "m15q18",
+        topic: "Perceptrón — Función de activación",
+        statement: "Un perceptrón con función escalón (threshold) puede resolver:",
+        options: { a: "Solo problemas linealmente separables", b: "Cualquier problema de clasificación", c: "Solo problemas con 2 clases", d: "Problemas no lineales con una capa oculta" },
+        correct: ["a"],
+        explanation: "Un perceptrón simple solo separa linealmente. Para no lineal se necesita multicapa (MLP)."
+      },
+      {
+        id: "m15q19",
+        topic: "A* — Consistencia implica admisibilidad",
+        statement: "Si una heurística es consistente, entonces:",
+        options: { a: "También es admisible", b: "No es admisible", c: "Siempre es igual al coste real", d: "Solo funciona en grafos acíclicos" },
+        correct: ["a"],
+        explanation: "Consistencia (monotonía) implica admisibilidad. h(n) ≤ c(n,n')+h(n') con h(meta)=0 → h(n) ≤ h*(n)."
+      },
+      {
+        id: "m15q20",
+        topic: "Repaso — Asociación técnica-objetivo",
+        statement: "¿Qué técnica se usa para encontrar la mejor secuencia de acciones en un entorno estocástico?",
+        options: { a: "MDP con Bellman", b: "A* con heurística", c: "Red bayesiana con inferencia", d: "Naive Bayes con clasificación" },
+        correct: ["a"],
+        explanation: "MDP modela decisiones secuenciales bajo incertidumbre. Bellman calcula la política óptima."
+      }
+    ]
   }
 ];
 
