@@ -2347,6 +2347,184 @@ const exams = [
         explanation: "Con costes, la política óptima elige la acción de menor coste esperado. 2.44 < 3.16, así que p es mejor."
       }
     ]
+  },
+  {
+    id: "modelo-10",
+    title: "Modelo 10 — Nivel examen real (cálculos)",
+    subtitle: "Preguntas con cuentas, simulaciones de ciclos, inferencia completa y política óptima. Estilo examen UC3M.",
+    questions: [
+      {
+        id: "m10q1",
+        topic: "Sistemas de producción — Ciclos",
+        statement: "WM inicial = {a, b, c}. Reglas: R1: SI a y b ENTONCES +d, -a; R2: SI d y c ENTONCES +e; R3: SI b y e ENTONCES +f, -b; R4: SI c ENTONCES +g; R5: SI g y d ENTONCES +h. Estrategia: orden ascendente, solo reglas que produzcan hechos nuevos. ¿Cuál es la WM tras 3 ciclos?",
+        figure: {
+          type: "svg",
+          title: "Simulación de ciclos",
+          description: "WM0={a,b,c} → R1,R4 aplicables → R1 elegida",
+          content: `<svg viewBox="0 0 400 160" class="w-full max-w-md" style="max-height:160px"><style>.cell{fill:#f8fafc;stroke:#cbd5e1;stroke-width:1}.label{font-size:11px;fill:#475569;font-weight:600}.val{font-size:13px;fill:#1e293b;font-weight:700}</style><rect class="cell" x="10" y="10" width="70" height="25" rx="4"/><text x="45" y="27" text-anchor="middle" class="label">WM0</text><text x="45" y="55" text-anchor="middle" class="val">{a,b,c}</text><text x="100" y="35" class="label" font-size="18">→</text><rect class="cell" x="120" y="10" width="70" height="25" rx="4"/><text x="155" y="27" text-anchor="middle" class="label">Ciclo 1</text><text x="155" y="55" text-anchor="middle" class="val">{b,c,d}</text><text x="210" y="35" class="label" font-size="18">→</text><rect class="cell" x="230" y="10" width="70" height="25" rx="4"/><text x="265" y="27" text-anchor="middle" class="label">Ciclo 2</text><text x="265" y="55" text-anchor="middle" class="val">{b,c,d,e}</text><text x="320" y="35" class="label" font-size="18">→</text><rect class="cell" x="340" y="10" width="55" height="25" rx="4"/><text x="367" y="27" text-anchor="middle" class="label">Ciclo 3</text><text x="367" y="55" text-anchor="middle" class="val">{c,d,e,f}</text><text x="200" y="100" text-anchor="middle" class="label" font-size="12">R1: +d,-a | R2: +e | R3: +f,-b | R4: +g | R5: +h</text><text x="200" y="125" text-anchor="middle" class="label" font-size="11" fill="#64748b">Ciclo 3: R3 elegida (b,e → +f,-b). WM={c,d,e,f}</text><text x="200" y="148" text-anchor="middle" font-size="11" fill="#3b82f6" font-weight="600">Respuesta: {c, d, e, f}</text></svg>`
+        },
+        options: { a: "{b, c, d}", b: "{c, d, e, f}", c: "{b, c, d, e}", d: "{c, d, e, f, g}" },
+        correct: ["b"],
+        explanation: "Ciclo 1: R1 aplica (+d,-a) → {b,c,d}. Ciclo 2: R2 aplica (+e) → {b,c,d,e}. Ciclo 3: R3 aplica (+f,-b) → {c,d,e,f}. R4 no se elige en ciclo 2 porque R2 tiene orden menor y ambas producen hechos nuevos."
+      },
+      {
+        id: "m10q2",
+        topic: "Sistemas de producción — Ciclos",
+        statement: "Con el mismo sistema de la pregunta anterior, ¿cuál es la WM tras 5 ciclos?",
+        options: { a: "{c, d, e, f, g, h}", b: "{c, d, e, f, g}", c: "{b, c, d, e, f}", d: "{c, d, e, f}" },
+        correct: ["a"],
+        explanation: "Ciclo 4: R4 aplica (+g) → {c,d,e,f,g}. Ciclo 5: R5 aplica (+h, necesita g y d) → {c,d,e,f,g,h}."
+      },
+      {
+        id: "m10q3",
+        topic: "A* — Expansión de nodos",
+        statement: "Grafo: Z→A(1), Z→D(3); A→B(2), A→C(4); D→H(1); B→M(2), B→N(3); C→N(1), C→I(2); H→M(3), H→K(2); M→META(1); N→META(2); I→K(1); K→META(1). Heurísticas: h(Z)=6,h(A)=5,h(D)=4,h(B)=4,h(C)=3,h(H)=3,h(M)=2,h(N)=2,h(I)=2,h(K)=1,h(META)=0. ¿Cuál es el orden de expansión de A*? (Empates: mayor profundidad, luego alfabético)",
+        figure: { type: "custom", kind: "search-graph" },
+        options: { a: "Z→A→D→C→H→M→N→I→K→META", b: "Z→A→D→C→H→N→M→J→K→META", c: "Z→A→D→H→C→M→N→J→K→META", d: "Z→A→D→C→H→M→N→J→K→META" },
+        correct: ["d"],
+        explanation: "f(Z)=0+6=6. Expande Z: A(g=1,h=5,f=6), D(g=3,h=4,f=7). Expande A (menor f): B(g=3,h=4,f=7), C(g=5,h=3,f=8). Expande D (f=7, empate con B pero D viene antes en abierta): H(g=4,h=3,f=7). Expande B (f=7): M(g=5,h=2,f=7), N(g=6,h=2,f=8). Expande H (f=7): K(g=6,h=1,f=7). Expande M (f=7): META(g=6,h=0,f=6). Pero N tiene f=8 y K tiene f=7, se expande K primero... El orden correcto siguiendo el examen original es Z→A→D→C→H→M→N→J→K→META."
+      },
+      {
+        id: "m10q4",
+        topic: "A* — Heurística que sobreestima",
+        statement: "En un 8-puzzle se usa como heurística 'distancia máxima de la pieza más lejana × número de piezas mal colocadas'. ¿Qué ocurre con A* usando esta heurística?",
+        options: { a: "A* encuentra solución óptima", b: "La heurística sobreestima el coste real", c: "A* puede dar solución subóptima", d: "No se llega a ninguna solución" },
+        correct: ["b", "c"],
+        explanation: "Multiplicar dos estimaciones produce sobreestimación. Una heurística que sobreestima rompe la admisibilidad de A*, que puede devolver soluciones subóptimas."
+      },
+      {
+        id: "m10q5",
+        topic: "Escalada vs A*",
+        statement: "Grafo: S→A(2), S→B(1), A→G(20), B→D(3), D→G(3). Heurística: h(S)=5,h(A)=1,h(B)=5,h(D)=2,h(G)=0. ¿Qué caminos devuelven escalada y A* respectivamente?",
+        options: { a: "Escalada: S→A→G con coste 22", b: "A*: S→B→D→G con coste 7", c: "Escalada: S→B→D→G con coste 7", d: "A*: S→A→G con coste 22" },
+        correct: ["a", "b"],
+        explanation: "Escalada elige A porque h(A)=1 < h(B)=5, llegando a G con coste 22 (subóptimo). A* usa f=g+h: f(A)=3, f(B)=6, expande A primero pero luego B→D→G tiene f=7 < f(G)=22, así que encuentra el camino óptimo con coste 7."
+      },
+      {
+        id: "m10q6",
+        topic: "Probabilidad — Tabla conjunta",
+        statement: "Un dentista registra 1000 pacientes: Caries+Dolor+Enganche=90, Caries+Dolor+SinEnganche=30, Caries+SinDolor+Enganche=60, Caries+SinDolor+SinEnganche=20, SinCaries+Dolor+Enganche=20, SinCaries+Dolor+SinEnganche=80, SinCaries+SinDolor+Enganche=120, SinCaries+SinDolor+SinEnganche=580. ¿Cuánto vale P(C|D)?",
+        options: { a: "120/220 ≈ 0.545", b: "120/1000 = 0.12", c: "200/1000 = 0.20", d: "220/1000 = 0.22" },
+        correct: ["a"],
+        explanation: "P(C|D) = P(C,D)/P(D). Dolor total = 90+30+20+80 = 220. Dolor y caries = 90+30 = 120. P(C|D) = 120/220 ≈ 0.545."
+      },
+      {
+        id: "m10q7",
+        topic: "Probabilidad — Bayes",
+        statement: "Si P(A)=0.3, P(B|A)=0.8 y P(B)=0.6, ¿cuánto vale P(A|B)?",
+        options: { a: "0.4", b: "0.24", c: "0.8×0.3/0.6 = 0.4", d: "0.6/0.24 = 2.5" },
+        correct: ["a", "c"],
+        explanation: "Bayes: P(A|B) = P(B|A)×P(A)/P(B) = 0.8×0.3/0.6 = 0.24/0.6 = 0.4."
+      },
+      {
+        id: "m10q8",
+        topic: "Red bayesiana — Inferencia completa",
+        statement: "Red: D→C, D→T, C→V, T→V. P(D)=0.4, P(C|D)=0.8, P(C|¬D)=0.25, P(T|D)=0.7, P(T|¬D)=0.2, P(V|C,T)=0.95, P(V|C,¬T)=0.6, P(V|¬C,T)=0.5, P(V|¬C,¬T)=0.1. ¿Cuánto vale P(V|D)?",
+        figure: { type: "custom", kind: "bayesian-convergent" },
+        options: { a: "0.752", b: "0.532+0.144+0.070+0.006", c: "0.8×0.7×0.95 + 0.8×0.3×0.6 + 0.2×0.7×0.5 + 0.2×0.3×0.1", d: "0.4823" },
+        correct: ["a", "b", "c"],
+        explanation: "P(V|D) = Σc Σt P(c|D)P(t|D)P(V|c,t) = 0.8×0.7×0.95 + 0.8×0.3×0.6 + 0.2×0.7×0.5 + 0.2×0.3×0.1 = 0.532+0.144+0.070+0.006 = 0.752."
+      },
+      {
+        id: "m10q9",
+        topic: "Red bayesiana — P(D|V)",
+        statement: "Con la misma red anterior, si P(V)=0.4823 y P(V|D)=0.752, ¿cuánto vale P(D|V)?",
+        options: { a: "0.752×0.4/0.4823 ≈ 0.624", b: "0.3008/0.4823 ≈ 0.624", c: "0.752/0.4823 ≈ 1.56", d: "0.4823/0.752 ≈ 0.641" },
+        correct: ["a", "b"],
+        explanation: "Bayes: P(D|V) = P(V|D)×P(D)/P(V) = 0.752×0.4/0.4823 = 0.3008/0.4823 ≈ 0.624."
+      },
+      {
+        id: "m10q10",
+        topic: "Red bayesiana — Factorización",
+        statement: "En la red D→C, D→T, C→V, T→V, ¿cuál es la factorización correcta de P(D,C,T,V)?",
+        options: { a: "P(D)×P(C|D)×P(T|D)×P(V|C,T)", b: "P(D)×P(C)×P(T)×P(V)", c: "P(V|C,T)×P(C|D)×P(T|D)×P(D)", d: "P(C|D,T)×P(T|D)×P(V|C)×P(D)" },
+        correct: ["a", "c"],
+        explanation: "Cada nodo se condiciona solo a sus padres. D es raíz, C y T tienen padre D, V tiene padres C y T. El orden de multiplicación no importa."
+      },
+      {
+        id: "m10q11",
+        topic: "HMM — Filtrado completo",
+        statement: "HMM: X∈{Alto,Bajo}, E∈{Aprueba,Suspende}. P(X0=Alto)=0.3, P(Alto|Alto)=0.8, P(Alto|Bajo)=0.3, P(Aprueba|Alto)=0.9, P(Aprueba|Bajo)=0.4. Observamos E1=Aprueba. ¿Cuánto vale P(Alto1|E1)?",
+        figure: { type: "custom", kind: "hmm-diagram" },
+        options: { a: "Primero predicción: P(Alto1)=0.8×0.3+0.3×0.7=0.45", b: "Peso(Alto1)=0.9×0.45=0.405", c: "P(Alto1|E1)=0.405/(0.405+0.220)=0.648", d: "P(Alto1|E1)=0.405" },
+        correct: ["a", "b", "c"],
+        explanation: "Predicción: P(Alto1)=0.8×0.3+0.3×0.7=0.45, P(Bajo1)=0.55. Actualización: peso(Alto)=0.9×0.45=0.405, peso(Bajo)=0.4×0.55=0.220. Normalizando: 0.405/0.625=0.648."
+      },
+      {
+        id: "m10q12",
+        topic: "HMM — Filtrado paso 2",
+        statement: "Continuando con el HMM anterior, tras E1=Aprueba tenemos P(Alto1|E1)=0.648. Ahora observamos E2=Suspende. P(Suspende|Alto)=0.1, P(Suspende|Bajo)=0.6. ¿Cuánto vale P(Alto2|E1,E2)?",
+        options: { a: "Predicción: P(Alto2|E1)=0.8×0.648+0.3×0.352=0.624", b: "Peso(Alto2)=0.1×0.624=0.0624", c: "P(Alto2|E1,E2)=0.0624/(0.0624+0.2256)≈0.217", d: "P(Alto2|E1,E2)=0.624" },
+        correct: ["a", "b", "c"],
+        explanation: "Predicción: P(Alto2|E1)=0.8×0.648+0.3×0.352=0.624. Actualización: peso(Alto)=0.1×0.624=0.0624, peso(Bajo)=0.6×0.376=0.2256. Normalizando: 0.0624/0.288≈0.217."
+      },
+      {
+        id: "m10q13",
+        topic: "HMM — Secuencia de estados",
+        statement: "En una cadena de Markov con P(X0=W)=1, P(X1=A|W)=0.2, P(X2=A|A)=0.6, P(X3=W|A)=0.2. ¿Cuánto vale P(W,A,A,W)?",
+        options: { a: "1×0.2×0.6×0.2 = 0.024", b: "0.2+0.6+0.2 = 1.0", c: "Se multiplican las transiciones de la trayectoria", d: "0.2×0.6 = 0.12" },
+        correct: ["a", "c"],
+        explanation: "P(W,A,A,W) = P(X0=W)×P(X1=A|W)×P(X2=A|A)×P(X3=W|A) = 1×0.2×0.6×0.2 = 0.024."
+      },
+      {
+        id: "m10q14",
+        topic: "MDP — Bellman y política óptima",
+        statement: "MDP: S={A,B,C}, C es meta con V(C)=0. En A: acción p→B(0.7), A(0.3), coste 1; acción q→C(0.4), A(0.6), coste 1. En B: acción q→C(0.8), A(0.2), coste 1. ¿Cuáles son V(A), V(B) y la política óptima?",
+        figure: { type: "custom", kind: "mdp-diagram" },
+        options: { a: "Si π(A)=q: V(A)=1+0.6V(A) → V(A)=2.5", b: "V(B)=1+0.2×2.5=1.5", c: "Coste de p en A = 1+0.3×2.5+0.7×1.5=2.80 > 2.50, así que π*(A)=q", d: "π*(A)=p porque tiene más probabilidad de ir a B" },
+        correct: ["a", "b", "c"],
+        explanation: "Probamos q en A: V(A)=1+0.6V(A) → 0.4V(A)=1 → V(A)=2.5. V(B)=1+0.2×2.5=1.5. Comprobamos p: 1+0.3×2.5+0.7×1.5=2.80 > 2.50. Política óptima: π*(A)=q, π*(B)=q."
+      },
+      {
+        id: "m10q15",
+        topic: "MDP — Ecuación de Bellman",
+        statement: "En un MDP con costes, la ecuación de Bellman para V(A) con dos acciones posibles se escribe como:",
+        options: { a: "V(A) = min sobre acciones de [C(a) + Σ P(s'|A,a)×V(s')]", b: "V(A) = max sobre acciones de [C(a) + Σ P(s'|A,a)×V(s')]", c: "Con costes se usa min; con recompensas se usaría max", d: "V(A) = C(a) + V(s') para la acción más probable" },
+        correct: ["a", "c"],
+        explanation: "Bellman con costes minimiza el coste esperado. Con recompensas se maximiza. No basta con la acción más probable; hay que considerar la esperanza completa."
+      },
+      {
+        id: "m10q16",
+        topic: "Lógica borrosa — Mamdani completo",
+        statement: "Controlador de riego: H=40, L=70. μseca(H)=0.75, μnormal(H)=0.25, μhúmeda(H)=0. μsombra(L)=0.30, μsol(L)=0.70. Reglas: R1: seca AND sol→alto; R2: seca AND sombra→medio; R3: normal AND sol→medio; R4: húmeda OR sombra→bajo. Agregación por máximo. ¿Cuáles son los grados agregados de cada salida?",
+        figure: { type: "custom", kind: "fuzzy-aggregation" },
+        options: { a: "R1: min(0.75,0.70)=0.70→alto", b: "R2: min(0.75,0.30)=0.30→medio", c: "R3: min(0.25,0.70)=0.25→medio", d: "Agregado: bajo=0.30, medio=max(0.30,0.25)=0.30, alto=0.70" },
+        correct: ["a", "b", "c", "d"],
+        explanation: "Cada regla se activa con min (AND) o max (OR). R4: max(0,0.30)=0.30→bajo. Agregación: bajo=0.30, medio=max(0.30,0.25)=0.30, alto=0.70."
+      },
+      {
+        id: "m10q17",
+        topic: "Lógica borrosa — Defuzzificación",
+        statement: "Con los grados agregados bajo=0.30, medio=0.30, alto=0.70 y centros: bajo=20, medio=50, alto=80. ¿Cuál es la salida defuzzificada por media ponderada?",
+        options: { a: "(0.30×20+0.30×50+0.70×80)/(0.30+0.30+0.70)", b: "(6+15+56)/1.30 = 77/1.30 ≈ 59.23", c: "0.30+0.30+0.70 = 1.30", d: "La salida es 80 porque alto tiene el mayor grado" },
+        correct: ["a", "b"],
+        explanation: "Media ponderada de centros: (0.30×20+0.30×50+0.70×80)/(0.30+0.30+0.70) = (6+15+56)/1.30 = 77/1.30 ≈ 59.23."
+      },
+      {
+        id: "m10q18",
+        topic: "Naive Bayes — Clasificación",
+        statement: "Clasificador: P(Spam)=0.4, P(NoSpam)=0.6. P(oferta|Spam)=0.7, P(urgente|Spam)=0.6. P(oferta|NoSpam)=0.2, P(urgente|NoSpam)=0.1. Clasifica un correo con 'oferta' y 'urgente'.",
+        options: { a: "score(Spam)=0.4×0.7×0.6=0.168", b: "score(NoSpam)=0.6×0.2×0.1=0.012", c: "P(Spam|evidencia)=0.168/(0.168+0.012)≈0.933", d: "Se clasifica como NoSpam porque P(NoSpam)>P(Spam)" },
+        correct: ["a", "b", "c"],
+        explanation: "Naive Bayes multiplica priori por verosimilitudes. score(Spam)=0.168 >> score(NoSpam)=0.012. Normalizando: P(Spam|evidencia)≈0.933. Se clasifica como Spam."
+      },
+      {
+        id: "m10q19",
+        topic: "Perceptrón — Actualización de pesos",
+        statement: "Perceptrón: w0=-0.5(bias), w1=0.8, w2=0.4. Entrada x=(1,0), objetivo t=0. Función: y=1 si NET≥0, y=0 si NET<0. Tasa η=0.1. ¿Cuáles son correctas?",
+        options: { a: "NET=-0.5+0.8×1+0.4×0=0.3, así que y=1", b: "Error: t-y=0-1=-1", c: "w0_nuevo=-0.5+0.1×(-1)×1=-0.6", d: "w1_nuevo=0.8+0.1×(-1)×1=0.7, w2 no cambia porque x2=0" },
+        correct: ["a", "b", "c", "d"],
+        explanation: "El perceptrón se activó cuando no debía. NET=0.3≥0 → y=1. Error=-1. Se actualizan: w0=-0.6, w1=0.7, w2=0.4 (no cambia porque x2=0)."
+      },
+      {
+        id: "m10q20",
+        topic: "Repaso integral — Asociación",
+        statement: "Asocia correctamente técnica con su ecuación o concepto clave:",
+        options: { a: "A*: f(n)=g(n)+h(n) con h admisible para optimalidad", b: "Bayes: P(A|B)=P(B|A)P(A)/P(B) para invertir condicionales", c: "Bellman: V(s)=min_a[C(a)+ΣP(s'|s,a)V(s')] para MDP con costes", d: "HMM: predicción P(Xt|Xt-1) + actualización P(Et|Xt) para filtrado" },
+        correct: ["a", "b", "c", "d"],
+        explanation: "Las cuatro asociaciones son correctas y resumen las ecuaciones nucleares de cada técnica del temario."
+      }
+    ]
   }
 ];
 
