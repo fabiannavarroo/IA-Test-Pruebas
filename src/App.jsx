@@ -5276,12 +5276,7 @@ export default function App() {
                 <div className="mt-4 grid gap-3">
                   {(() => {
                     const opts = Object.entries(q.options);
-                    const hash = q.id.split("").reduce((acc, c) => acc + c.charCodeAt(0), 0);
-                    const shuffled = [...opts].sort((a, b) => {
-                      const orderA = (a[0].charCodeAt(0) * hash) % 10;
-                      const orderB = (b[0].charCodeAt(0) * hash) % 10;
-                      return orderA - orderB;
-                    });
+                    const shuffled = [...opts].sort(() => Math.random() - 0.5);
                     return shuffled.map(([letter, text]) => (
                       <OptionButton
                         key={letter}
