@@ -5018,21 +5018,49 @@ export default function App() {
   }
 
   function getScore() {
-    let correct = 0;
-    let wrong = 0;
+    let totalPoints = 0;
+    let perfectCount = 0;
+    let partialCount = 0;
+    let zeroCount = 0;
+    let unansweredCount = 0;
+
     for (const q of selectedExam.questions) {
-      if (answers[q.id] && answers[q.id].length > 0) {
-        if (isCorrect(answers[q.id], q.correct)) {
-          correct += 1;
-        } else {
-          wrong += 1;
-        }
+      const selected = answers[q.id] || [];
+      const correctAnswers = q.correct;
+      const numCorrect = correctAnswers.length;
+      const valuePerOption = 1 / numCorrect;
+
+      if (selected.length === 0) {
+        unansweredCount += 1;
+        zeroCount += 1;
+        continue;
       }
+
+      const correctSelected = selected.filter((s) => correctAnswers.includes(s)).length;
+      const incorrectSelected = selected.filter((s) => !correctAnswers.includes(s)).length;
+
+      const questionScore = Math.max(0, correctSelected * valuePerOption - incorrectSelected * valuePerOption);
+      totalPoints += questionScore;
+
+      if (questionScore === 1) perfectCount += 1;
+      else if (questionScore > 0) partialCount += 1;
+      else zeroCount += 1;
     }
+
     const total = selectedExam.questions.length;
-    const raw = (correct / total) * 10;
-    const penalty = (wrong / total) * 10;
-    return { correct, wrong, total, raw, penalty, score: Math.max(0, raw - penalty) };
+    const scoreOver20 = (totalPoints / total) * 20;
+    const scoreOver10 = scoreOver20 / 2;
+
+    return {
+      totalPoints,
+      total,
+      perfectCount,
+      partialCount,
+      zeroCount,
+      unansweredCount,
+      scoreOver20,
+      scoreOver10,
+    };
   }
 
   const examStats = useMemo(() => {
@@ -5155,38 +5183,58 @@ export default function App() {
         </aside>
 
         <section className="space-y-5">
-          {examMode && examFinished && (
+          {examMode && examFinished && (() => {
+            const score = getScore();
+            return (
             <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
               <h3 className="text-xl font-bold text-slate-900 mb-4">📋 Resultados del examen</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-                <div className="rounded-xl bg-slate-50 p-4 text-center">
-                  <div className="text-2xl font-bold">{getScore().correct}</div>
-                  <div className="text-xs text-slate-500">Correctas</div>
-                </div>
-                <div className="rounded-xl bg-rose-50 p-4 text-center">
-                  <div className="text-2xl font-bold text-rose-700">{getScore().wrong}</div>
-                  <div className="text-xs text-slate-500">Incorrectas</div>
+                <div className="rounded-xl bg-emerald-50 p-4 text-center">
+                  <div className="text-2xl font-bold text-emerald-700">{score.perfectCount}</div>
+                  <div className="text-xs text-slate-500">Perfectas (1 pt)</div>
                 </div>
                 <div className="rounded-xl bg-amber-50 p-4 text-center">
-                  <div className="text-2xl font-bold text-amber-700">{getScore().total - getScore().correct - getScore().wrong}</div>
+                  <div className="text-2xl font-bold text-amber-700">{score.partialCount}</div>
+                  <div className="text-xs text-slate-500">Parciales</div>
+                </div>
+                <div className="rounded-xl bg-rose-50 p-4 text-center">
+                  <div className="text-2xl font-bold text-rose-700">{score.zeroCount}</div>
+                  <div className="text-xs text-slate-500">Cero puntos</div>
+                </div>
+                <div className="rounded-xl bg-slate-100 p-4 text-center">
+                  <div className="text-2xl font-bold text-slate-600">{score.unansweredCount}</div>
                   <div className="text-xs text-slate-500">Sin responder</div>
                 </div>
-                <div className="rounded-xl bg-blue-50 p-4 text-center">
-                  <div className="text-2xl font-bold text-blue-700">{getScore().score.toFixed(2)}</div>
-                  <div className="text-xs text-slate-500">Nota /10</div>
+              </div>
+              <div className="grid grid-cols-2 gap-4 mb-4">
+                <div className="rounded-xl bg-blue-50 p-5 text-center border-2 border-blue-200">
+                  <div className="text-4xl font-bold text-blue-700">{score.scoreOver20.toFixed(2)}</div>
+                  <div className="text-sm font-semibold text-blue-600 mt-1">Nota sobre 20</div>
+                </div>
+                <div className="rounded-xl bg-purple-50 p-5 text-center border-2 border-purple-200">
+                  <div className="text-4xl font-bold text-purple-700">{score.scoreOver10.toFixed(2)}</div>
+                  <div className="text-sm font-semibold text-purple-600 mt-1">Nota sobre 10</div>
                 </div>
               </div>
-              <p className="text-sm text-slate-500">
-                Fórmula: ({getScore().correct}/{getScore().total})×10 − ({getScore().wrong}/{getScore().total})×10 = {getScore().score.toFixed(2)} (mínimo 0)
-              </p>
+              <div className="bg-slate-50 rounded-xl p-4 mb-4">
+                <p className="text-sm font-semibold text-slate-700 mb-2">📐 Sistema de puntuación:</p>
+                <p className="text-sm text-slate-600">
+                  Cada pregunta vale <strong>1 punto</strong>. Si una pregunta tiene N respuestas correctas, cada opción correcta vale <strong>1/N puntos</strong>.
+                  Las opciones incorrectas seleccionadas <strong>restan 1/N puntos</strong>. La nota mínima por pregunta es 0.
+                </p>
+                <p className="text-sm text-slate-500 mt-2">
+                  Ejemplo: Pregunta con 3 correctas → cada una vale 0.33 pts. Si aciertas 2 y fallas 1: 0.33 + 0.33 − 0.33 = <strong>0.33 pts</strong>.
+                </p>
+              </div>
               <button
                 onClick={() => { setChecked({}); setExamFinished(false); }}
-                className="mt-4 rounded-xl px-4 py-2 bg-blue-600 text-white font-semibold hover:bg-blue-700"
+                className="mt-2 rounded-xl px-4 py-2 bg-blue-600 text-white font-semibold hover:bg-blue-700"
               >
                 Ver corrección detallada
               </button>
             </div>
-          )}
+            );
+          })()}
 
           <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
             <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
