@@ -2449,10 +2449,10 @@ const exams = [
         statement: "Grafo: Z→A(1), Z→D(3); A→B(2), A→C(4); D→H(1); B→M(2), B→N(3); C→N(1), C→I(2); H→M(3), H→K(2); M→META(1); N→META(2); I→K(1); K→META(1). Heurísticas: h(Z)=6,h(A)=5,h(D)=4,h(B)=4,h(C)=3,h(H)=3,h(M)=2,h(N)=2,h(I)=2,h(K)=1,h(META)=0. ¿Cuál es el orden de expansión de A*? (Empates: mayor profundidad, luego alfabético)",
         figure: { type: "custom", kind: "search-graph" },
         options: {
-          a: "Z→A→B→D→H→M→K→N→I→META", b: "Z→A→D→B→H→M→META", c: "Z→A→B→D→H→M→N→I→K→META", d: "Z→A→D→C→H→M→N→I→K→META"
+          a: "Z→A→B→M→META", b: "Z→A→D→B→H→M→META", c: "Z→A→B→D→H→M→N→I→K→META", d: "Z→A→D→C→H→M→N→I→K→META"
         },
         correct: ["a"],
-        explanation: "f(Z)=0+6=6. Expande Z: A(g=1,h=5,f=6), D(g=3,h=4,f=7). Expande A (menor f): B(g=3,h=4,f=7), C(g=5,h=3,f=8). Expande B (f=7, empate con D pero B tiene mayor profundidad): M(g=5,h=2,f=7), N(g=6,h=2,f=8). Expande D (f=7): H(g=4,h=3,f=7). Expande H (f=7): K(g=6,h=1,f=7). Expande M (f=7): META(g=6,h=0,f=6). META tiene menor f, se expande y termina. Orden: Z,A,B,D,H,M,K,N,I,META."
+        explanation: "f(Z)=6. Expande Z: A(g=1,h=5,f=6), D(g=3,h=4,f=7). Expande A: B(g=3,h=4,f=7), C(g=5,h=3,f=8). Entre B y D empatan en f=7, y el enunciado desempata por mayor profundidad, así que se expande B. Desde B se genera M(g=5,h=2,f=7) y N(g=6,h=2,f=8). M tiene f=7 y mayor profundidad que D, por lo que se expande M. Desde M se genera META(g=6,h=0,f=6), que pasa a ser el mejor nodo abierto y se expande. Orden: Z→A→B→M→META."
       },
       {
         id: "m10q4",
@@ -2507,8 +2507,8 @@ const exams = [
         options: {
           a: "0.4", b: "0.24", c: "0.8×0.3/0.6 = 0.4", d: "0.6/0.24 = 2.5"
         },
-        correct: ["a"],
-        explanation: "Bayes: P(A|B) = P(B|A)×P(A)/P(B) = 0.8×0.3/0.6 = 0.24/0.6 = 0.4."
+        correct: ["a", "c"],
+        explanation: "Bayes: P(A|B) = P(B|A)×P(A)/P(B) = 0.8×0.3/0.6 = 0.24/0.6 = 0.4. Por eso son correctas tanto la opción numérica como la opción que muestra el cálculo."
       },
       {
         id: "m10q8",
@@ -2535,8 +2535,8 @@ const exams = [
         options: {
           a: "0.752", b: "0.532+0.144+0.070+0.006", c: "0.8×0.7×0.95 + 0.8×0.3×0.6 + 0.2×0.7×0.5 + 0.2×0.3×0.1", d: "0.4823"
         },
-        correct: ["a"],
-        explanation: "P(V|D) = Σc Σt P(c|D)P(t|D)P(V|c,t) = 0.8×0.7×0.95 + 0.8×0.3×0.6 + 0.2×0.7×0.5 + 0.2×0.3×0.1 = 0.532+0.144+0.070+0.006 = 0.752."
+        correct: ["a", "b", "c"],
+        explanation: "P(V|D) = Σc Σt P(c|D)P(t|D)P(V|c,t) = 0.8×0.7×0.95 + 0.8×0.3×0.6 + 0.2×0.7×0.5 + 0.2×0.3×0.1 = 0.532+0.144+0.070+0.006 = 0.752. Son correctas el valor, la suma de términos y la expresión completa."
       },
       {
         id: "m10q9",
@@ -2545,8 +2545,8 @@ const exams = [
         options: {
           a: "0.752×0.4/0.4823 ≈ 0.624", b: "0.3008/0.4823 ≈ 0.624", c: "0.752/0.4823 ≈ 1.56", d: "0.4823/0.752 ≈ 0.641"
         },
-        correct: ["a"],
-        explanation: "Bayes: P(D|V) = P(V|D)×P(D)/P(V) = 0.752×0.4/0.4823 = 0.3008/0.4823 ≈ 0.624."
+        correct: ["a", "b"],
+        explanation: "Bayes: P(D|V) = P(V|D)×P(D)/P(V) = 0.752×0.4/0.4823 = 0.3008/0.4823 ≈ 0.624. Las opciones a y b expresan el mismo cálculo."
       },
       {
         id: "m10q10",
@@ -2555,8 +2555,8 @@ const exams = [
         options: {
           a: "P(D)×P(C|D)×P(T|D)×P(V|C,T)", b: "P(D)×P(C)×P(T)×P(V)", c: "P(V|C,T)×P(C|D)×P(T|D)×P(D)", d: "P(C|D,T)×P(T|D)×P(V|C)×P(D)"
         },
-        correct: ["a"],
-        explanation: "Cada nodo se condiciona solo a sus padres. D es raíz, C y T tienen padre D, V tiene padres C y T. El orden de multiplicación no importa."
+        correct: ["a", "c"],
+        explanation: "Cada nodo se condiciona solo a sus padres. D es raíz, C y T tienen padre D, V tiene padres C y T. El orden de multiplicación no importa, por eso a y c son equivalentes."
       },
       {
         id: "m10q11",
@@ -2772,8 +2772,8 @@ const exams = [
         id: "m11q1",
         topic: "Sistemas de producción — Mundo cerrado",
         statement: "En un sistema de producción que trabaja bajo la hipótesis de mundo cerrado, si el hecho p(X) no aparece en la Base de Hechos:",
-        options: { a:"Se busca en una base de datos externa", b:"Se considera desconocido", a:"Se asume verdadero por defecto", b:"Se considera falso" },
-        correct: ["b"],
+        options: { a:"Se busca en una base de datos externa", b:"Se considera desconocido", c:"Se asume verdadero por defecto", d:"Se considera falso" },
+        correct: ["d"],
         explanation: "Mundo cerrado: lo que no está en la BH se considera falso. No hay noción de 'desconocido'."
       },
       {
@@ -2804,8 +2804,8 @@ const exams = [
         id: "m11q5",
         topic: "Búsqueda en profundidad — Retroceso",
         statement: "En búsqueda en profundidad con retroceso, cuando se llega a un nodo sin sucesores no visitados:",
-        options: { c:"Se termina la búsqueda sin solución", a:"Se reinicia desde el nodo raíz", b:"Se vuelve al padre y se prueba el siguiente sucesor", c:"Se marca el nodo como meta" },
-        correct: ["b"],
+        options: { a:"Se termina la búsqueda sin solución", b:"Se reinicia desde el nodo raíz", c:"Se vuelve al padre y se prueba el siguiente sucesor", d:"Se marca el nodo como meta" },
+        correct: ["c"],
         explanation: "El retroceso (backtracking) vuelve al nodo padre para explorar ramas alternativas."
       },
       {
@@ -2820,8 +2820,8 @@ const exams = [
         id: "m11q7",
         topic: "A* — Heurística consistente",
         statement: "Una heurística es consistente (monótona) si para todo nodo n y sucesor n':",
-        options: { a:"h(n) ≥ c(n,n') + h(n')", a:"f(n) ≤ f(n')", a:"h(n) = h(n')", a:"h(n) ≤ c(n,n') + h(n')" },
-        correct: ["a"],
+        options: { a:"h(n) ≥ c(n,n') + h(n')", b:"f(n) ≤ f(n')", c:"h(n) = h(n')", d:"h(n) ≤ c(n,n') + h(n')" },
+        correct: ["d"],
         explanation: "Consistencia: la estimación desde n no supera el coste real a n' más la estimación desde n'. Implica admisibilidad."
       },
       {
@@ -2836,17 +2836,17 @@ const exams = [
         id: "m11q9",
         topic: "Escalada — Óptimo local",
         statement: "El algoritmo de escalada (hill-climbing) puede quedar atrapado en:",
-        options: { c:"Una meseta donde todos los vecinos tienen el mismo valor", a:"Una rama infinita del grafo", b:"Un máximo local que no es el global", c:"Un bucle entre dos nodos" },
-        correct: ["b"],
-        explanation: "Escalada elige siempre el mejor vecino. Si está en un máximo local, ningún vecino es mejor y se queda atrapado."
+        options: { a:"Una meseta donde todos los vecinos tienen el mismo valor", b:"Una rama infinita del grafo", c:"Un óptimo local que no es el global", d:"Un problema de probabilidades negativas" },
+        correct: ["a", "c"],
+        explanation: "Escalada elige siempre el mejor vecino. Puede atascarse en un óptimo local o en una meseta, porque no ve una mejora inmediata aunque exista una solución mejor por otro camino."
       },
       {
         id: "m11q10",
         topic: "Representación — Estado del 8-puzzle",
         statement: "Para representar un estado del 8-puzzle de forma mínima y completa se necesita:",
         options: { a: "La posición de cada una de las 8 fichas y del hueco", b: "La posición del hueco y qué fichas están mal colocadas", c: "Solo la posición del hueco", d: "Una matriz 3×3 con los valores de cada celda" },
-        correct: ["a"],
-        explanation: "Se necesita la posición de todas las fichas (o equivalentemente la matriz completa). Solo el hueco no basta porque no sabemos dónde están las fichas."
+        correct: ["a", "d"],
+        explanation: "Se necesita la posición de todas las fichas y del hueco; una matriz 3×3 con los valores de cada celda contiene exactamente esa misma información. Solo el hueco no basta."
       },
       {
         id: "m11q11",
@@ -2900,7 +2900,7 @@ const exams = [
         id: "m11q17",
         topic: "Dijkstra — Actualización",
         statement: "En Dijkstra, cuando se encuentra un camino mejor a un nodo ya descubierto:",
-        options: { a: "Se crea un nodo duplicado en la abierta", b: "Se actualiza su coste y se reordena en la cola de prioridad", c: "Se elimina el nodo y se vuelve a insertar", d: "Se ignora el nuevo camino" },
+        options: { a: "Se crea un nodo duplicado como solución final", b: "Se actualiza su coste y se reordena en la cola de prioridad", c: "Se conserva el coste antiguo aunque sea peor", d: "Se ignora siempre el nuevo camino" },
         correct: ["b"],
         explanation: "Dijkstra actualiza g(n) cuando encuentra un camino más barato y reordena la cola de prioridad."
       },
@@ -2908,8 +2908,8 @@ const exams = [
         id: "m11q18",
         topic: "Búsqueda — Árbol vs Grafo",
         statement: "La diferencia principal entre búsqueda en árbol y búsqueda en grafo es:",
-        options: { a:"La búsqueda en árbol es siempre más eficiente", b:"La búsqueda en árbol usa heurística y la de grafo no", a:"La búsqueda en grafo no puede encontrar la solución óptima", b:"La búsqueda en grafo mantiene un conjunto de explorados para evitar repetidos" },
-        correct: ["b"],
+        options: { a:"La búsqueda en árbol es siempre más eficiente", b:"La búsqueda en árbol usa heurística y la de grafo no", c:"La búsqueda en grafo no puede encontrar la solución óptima", d:"La búsqueda en grafo mantiene un conjunto de explorados para evitar repetidos" },
+        correct: ["d"],
         explanation: "Búsqueda en grafo lleva un conjunto de estados ya explorados para no repetir. La de árbol puede explorar el mismo estado múltiples veces."
       },
       {
@@ -2924,8 +2924,8 @@ const exams = [
         id: "m11q20",
         topic: "Sistemas de producción — Agenda",
         statement: "La agenda (conjunto conflicto) en un sistema de producción contiene:",
-        options: { a:"El historial de reglas ya ejecutadas", a:"Los hechos que se van a añadir en el siguiente ciclo", a:"Todas las reglas de la Base de Reglas", a:"Las instancias de reglas cuyas condiciones se satisfacen con los hechos actuales" },
-        correct: ["a"],
+        options: { a:"El historial de reglas ya ejecutadas", b:"Los hechos que se van a añadir en el siguiente ciclo", c:"Todas las reglas de la Base de Reglas", d:"Las instancias de reglas cuyas condiciones se satisfacen con los hechos actuales" },
+        correct: ["d"],
         explanation: "La agenda son las reglas activables (matching exitoso). El motor de inferencia elige una de ellas para ejecutar."
       }
     ]
@@ -2955,8 +2955,8 @@ const exams = [
         id: "m12q3",
         topic: "Probabilidad total",
         statement: "P(E)=0.3, P(¬E)=0.7, P(S|E)=0.8, P(S|¬E)=0.2. ¿Cuánto vale P(S)?",
-        options: { a:"0.38", a:"0.62", a:"0.24", a:"0.5" },
-        correct: ["b"],
+        options: { a:"0.38", b:"0.62", c:"0.24", d:"0.5" },
+        correct: ["a"],
         explanation: "P(S) = P(S|E)P(E) + P(S|¬E)P(¬E) = 0.8·0.3 + 0.2·0.7 = 0.24 + 0.14 = 0.38."
       },
       {
@@ -3019,8 +3019,8 @@ const exams = [
         id: "m12q11",
         topic: "Independencia condicional",
         statement: "Si A y B son condicionalmente independientes dado C, entonces:",
-        options: { c:"P(A,B|C) = P(A|C)·P(B|C)", a:"P(A,B) = P(A)·P(B)", b:"P(A|B,C) = P(A|B)", c:"P(C|A,B) = P(C)" },
-        correct: ["d"],
+        options: { a:"P(A,B|C) = P(A|C)·P(B|C)", b:"P(A,B) = P(A)·P(B)", c:"P(A|B,C) = P(A|B)", d:"P(C|A,B) = P(C)" },
+        correct: ["a"],
         explanation: "Independencia condicional dado C: la conjunta condicionada a C factoriza. No implica independencia marginal."
       },
       {
@@ -3162,8 +3162,8 @@ const exams = [
         id: "m13q8",
         topic: "HMM — Filtrado",
         statement: "HMM: P(X0=A)=0.5,P(X0=B)=0.5. Transición: P(A|A)=0.8,P(A|B)=0.3. Emisión: P(e|A)=0.9,P(e|B)=0.2. Se observa e. ¿P(A1|e)?",
-        options: { a:"0.675", b:"0.55", a:"0.9", b:"0.846" },
-        correct: ["b"],
+        options: { a:"0.675", b:"0.55", c:"0.9", d:"0.846" },
+        correct: ["d"],
         explanation: "Predicción: P(A1)=0.8·0.5+0.3·0.5=0.55, P(B1)=0.45. Peso(A)=0.9·0.55=0.495, Peso(B)=0.2·0.45=0.09. P(A1|e)=0.495/(0.495+0.09)=0.495/0.585≈0.846."
       },
       {
@@ -3250,8 +3250,8 @@ const exams = [
         id: "m13q19",
         topic: "HMM — Estacionariedad",
         statement: "Un HMM estacionario significa que:",
-        options: { c:"Los estados no cambian nunca", a:"Las observaciones son siempre las mismas", b:"P(X0) es uniforme", c:"Las tablas de transición y emisión no cambian con el tiempo" },
-        correct: ["c"],
+        options: { a:"Los estados no cambian nunca", b:"Las observaciones son siempre las mismas", c:"P(X0) es uniforme", d:"Las tablas de transición y emisión no cambian con el tiempo" },
+        correct: ["d"],
         explanation: "Estacionario = las probabilidades de transición P(Xt|Xt-1) y emisión P(Et|Xt) son las mismas para todo t."
       },
       {
@@ -3361,8 +3361,8 @@ const exams = [
         id: "m14q12",
         topic: "Lógica borrosa — Defuzzificación",
         statement: "Salidas agregadas: bajo(α=0.3, centro=20), medio(α=0.5, centro=50), alto(α=0.7, centro=80). Media ponderada:",
-        options: { a:"0.3+0.5+0.7 = 1.5", a:"(20+50+80)/3 = 50", a:"80 (el mayor grado)", a:"(0.3·20+0.5·50+0.7·80)/(0.3+0.5+0.7) = 87/1.5 = 58" },
-        correct: ["a"],
+        options: { a:"0.3+0.5+0.7 = 1.5", b:"(20+50+80)/3 = 50", c:"80 (el mayor grado)", d:"(0.3·20+0.5·50+0.7·80)/(0.3+0.5+0.7) = 87/1.5 = 58" },
+        correct: ["d"],
         explanation: "Media ponderada: (6+25+56)/1.5 = 87/1.5 = 58."
       },
       {
@@ -3417,8 +3417,8 @@ const exams = [
         id: "m14q19",
         topic: "MDP — Comparación con búsqueda",
         statement: "La diferencia fundamental entre un MDP y un problema de búsqueda clásica es:",
-        options: { a:"MDP no tiene estados", a:"Búsqueda clásica es siempre estocástica", a:"MDP no usa heurísticas", a:"En MDP las acciones tienen resultados probabilísticos" },
-        correct: ["a"],
+        options: { a:"MDP no tiene estados", b:"Búsqueda clásica es siempre estocástica", c:"MDP no usa heurísticas", d:"En MDP las acciones tienen resultados probabilísticos" },
+        correct: ["d"],
         explanation: "Búsqueda clásica: acciones deterministas. MDP: acciones con distribución de probabilidad sobre resultados."
       },
       {
@@ -3448,8 +3448,8 @@ const exams = [
         id: "m15q2",
         topic: "Sistemas de producción — RETE",
         statement: "El algoritmo RETE optimiza:",
-        options: { c:"La representación de la Base de Hechos", a:"La ejecución de las reglas", b:"La fase de equiparación (matching) entre reglas y hechos", c:"La resolución de conflictos" },
-        correct: ["b"],
+        options: { a:"La representación de la Base de Hechos", b:"La ejecución de las reglas", c:"La fase de equiparación (matching) entre reglas y hechos", d:"La resolución de conflictos" },
+        correct: ["c"],
         explanation: "RETE es un algoritmo de matching eficiente que evita reevaluar condiciones que no han cambiado."
       },
       {
@@ -3480,8 +3480,8 @@ const exams = [
         id: "m15q6",
         topic: "HMM — Componentes",
         statement: "Un HMM se define completamente con:",
-        options: { a:"Solo P(Xt|Xt-1)", a:"P(Xt), P(Et)", a:"P(X0) y P(Et|Xt)", a:"P(X0), P(Xt|Xt-1), P(Et|Xt)" },
-        correct: ["a"],
+        options: { a:"Solo P(Xt|Xt-1)", b:"P(Xt), P(Et)", c:"P(X0) y P(Et|Xt)", d:"P(X0), P(Xt|Xt-1), P(Et|Xt)" },
+        correct: ["d"],
         explanation: "Los tres componentes son: distribución inicial, matriz de transición y modelo de emisión."
       },
       {
@@ -3520,8 +3520,8 @@ const exams = [
         id: "m15q11",
         topic: "Robótica — Arquitectura",
         statement: "Una arquitectura robótica híbrida combina:",
-        options: { a:"Solo planificación global", b:"Solo sensores y actuadores", a:"Solo control reactivo", b:"Componentes reactivos y deliberativos" },
-        correct: ["b"],
+        options: { a:"Solo planificación global", b:"Solo sensores y actuadores", c:"Solo control reactivo", d:"Componentes reactivos y deliberativos" },
+        correct: ["d"],
         explanation: "Híbrida = reactiva (respuesta rápida) + deliberativa (planificación a largo plazo)."
       },
       {
@@ -3536,8 +3536,8 @@ const exams = [
         id: "m15q13",
         topic: "Probabilidad — Distribución",
         statement: "Una distribución de probabilidad válida sobre {a,b,c} es:",
-        options: { c:"P(a)=1.0, P(b)=0.5, P(c)=0", a:"P(a)=0.5, P(b)=0.5, P(c)=0.5", b:"P(a)=0.3, P(b)=0.5, P(c)=0.2", c:"P(a)=0.3, P(b)=0.3, P(c)=0.3" },
-        correct: ["b"],
+        options: { a:"P(a)=1.0, P(b)=0.5, P(c)=0", b:"P(a)=0.5, P(b)=0.5, P(c)=0.5", c:"P(a)=0.3, P(b)=0.5, P(c)=0.2", d:"P(a)=0.3, P(b)=0.3, P(c)=0.3" },
+        correct: ["c"],
         explanation: "Las probabilidades deben estar en [0,1] y sumar 1. Solo la opción c cumple: 0.3+0.5+0.2=1."
       },
       {
@@ -3568,8 +3568,8 @@ const exams = [
         id: "m15q17",
         topic: "Lógica borrosa — Vaguedad vs Incertidumbre",
         statement: "La lógica borrosa trata:",
-        options: { a:"Incertidumbre probabilística sobre eventos", a:"Ruido en los sensores", a:"Errores de medición", a:"Vaguedad en los conceptos (grados de pertenencia)" },
-        correct: ["a"],
+        options: { a:"Incertidumbre probabilística sobre eventos", b:"Ruido en los sensores", c:"Errores de medición", d:"Vaguedad en los conceptos (grados de pertenencia)" },
+        correct: ["d"],
         explanation: "Borrosa = vaguedad (¿qué tan 'alto' es 175cm?). Probabilidad = incertidumbre (¿lloverá mañana?)."
       },
       {
@@ -3584,8 +3584,8 @@ const exams = [
         id: "m15q19",
         topic: "A* — Consistencia implica admisibilidad",
         statement: "Si una heurística es consistente, entonces:",
-        options: { a:"Solo funciona en grafos acíclicos", b:"Siempre es igual al coste real", a:"No es admisible", b:"También es admisible" },
-        correct: ["b"],
+        options: { a:"Solo funciona en grafos acíclicos", b:"Siempre es igual al coste real", c:"No es admisible", d:"También es admisible" },
+        correct: ["d"],
         explanation: "Consistencia (monotonía) implica admisibilidad. h(n) ≤ c(n,n')+h(n') con h(meta)=0 → h(n) ≤ h*(n)."
       },
       {
@@ -4081,6 +4081,15 @@ function MDPDiagramFigure() {
   );
 }
 
+function shuffleArray(array) {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
 function OptionButton({ letter, text, selected, disabled, onClick, showFeedback, correct }) {
   let cls = "border rounded-xl p-3 text-left transition bg-white hover:bg-slate-50";
   if (selected) cls += " border-blue-500 ring-2 ring-blue-100";
@@ -4138,6 +4147,7 @@ export default function App() {
   const [examMode, setExamMode] = useState(false);
   const [timeLeft, setTimeLeft] = useState(3600);
   const [examFinished, setExamFinished] = useState(false);
+  const [shuffledOptions, setShuffledOptions] = useState({});
 
   const selectedExam = exams.find((e) => e.id === selectedExamId) || exams[0];
 
@@ -4429,18 +4439,27 @@ export default function App() {
                 <QuestionFigure figure={q.figure} />
 
                 <div className="mt-4 grid gap-3">
-                  {Object.entries(q.options).map(([letter, text]) => (
-                    <OptionButton
-                      key={letter}
-                      letter={letter}
-                      text={text}
-                      selected={selected.includes(letter)}
-                      disabled={false}
-                      onClick={() => toggleAnswer(q.id, letter)}
-                      showFeedback={isChecked}
-                      correct={q.correct.includes(letter)}
-                    />
-                  ))}
+                  {(() => {
+                    const opts = Object.entries(q.options);
+                    const hash = q.id.split("").reduce((acc, c) => acc + c.charCodeAt(0), 0);
+                    const shuffled = [...opts].sort((a, b) => {
+                      const orderA = (a[0].charCodeAt(0) * hash) % 10;
+                      const orderB = (b[0].charCodeAt(0) * hash) % 10;
+                      return orderA - orderB;
+                    });
+                    return shuffled.map(([letter, text]) => (
+                      <OptionButton
+                        key={letter}
+                        letter={letter}
+                        text={text}
+                        selected={selected.includes(letter)}
+                        disabled={false}
+                        onClick={() => toggleAnswer(q.id, letter)}
+                        showFeedback={isChecked}
+                        correct={q.correct.includes(letter)}
+                      />
+                    ));
+                  })()}
                 </div>
 
                 {isChecked && (
