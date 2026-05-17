@@ -2213,8 +2213,8 @@ const exams = [
         options: {
           a: "0.6", b: "0.4", c: "min(0.6, 0.4)", d: "max(0.6, 0.4)"
         },
-        correct: [],
-        explanation: "En max-min, AND se calcula con el mínimo: min(0.6, 0.4) = 0.4."
+        correct: ["b", "c"],
+        explanation: "En max-min, AND se calcula con el mínimo: min(0.6, 0.4) = 0.4. Tanto el valor numérico (b) como la fórmula (c) son correctos."
       },
       {
         id: "m9q3",
@@ -2224,8 +2224,8 @@ const exams = [
         options: {
           a: "0.3", b: "0.7", c: "max(0.3, 0.7)", d: "0.3 · 0.7 = 0.21"
         },
-        correct: [],
-        explanation: "En max-min, OR se calcula con el máximo: max(0.3, 0.7) = 0.7."
+        correct: ["b", "c"],
+        explanation: "En max-min, OR se calcula con el máximo: max(0.3, 0.7) = 0.7. Tanto el valor numérico (b) como la fórmula (c) son correctos."
       },
       {
         id: "m9q4",
@@ -2235,8 +2235,8 @@ const exams = [
         options: {
           a: "0.5", b: "0.8", c: "max(0.5, 0.8)", d: "0.5 + 0.8 = 1.3"
         },
-        correct: [],
-        explanation: "La agregación por máximo conserva el mayor grado: max(0.5, 0.8) = 0.8."
+        correct: ["b", "c"],
+        explanation: "La agregación por máximo conserva el mayor grado: max(0.5, 0.8) = 0.8. Tanto el valor numérico (b) como la fórmula (c) son correctos."
       },
       {
         id: "m9q5",
@@ -2246,8 +2246,8 @@ const exams = [
         options: {
           a: "Transformar la salida borrosa agregada en un valor nítido", b: "Calcular el centro de gravedad de la función de salida agregada", c: "Obtener el máximo de las funciones de pertenencia de entrada", d: "Eliminar las reglas con menor grado de activación"
         },
-        correct: ["a"],
-        explanation: "El centroide calcula el centro de gravedad de la salida agregada para obtener un valor numérico concreto."
+        correct: ["a", "b"],
+        explanation: "El centroide calcula el centro de gravedad de la salida agregada para obtener un valor numérico concreto. Ambas descripciones (a y b) son correctas."
       },
       {
         id: "m9q6",
@@ -2257,7 +2257,7 @@ const exams = [
         options: {
           a: "0.7 usando máximo", b: "0.5 usando mínimo", c: "min(0.7, 0.5) = 0.5", d: "El AND en Mamdani max-min usa el mínimo"
         },
-        correct: [],
+        correct: ["b", "c", "d"],
         explanation: "AND en max-min = mínimo. min(0.7, 0.5) = 0.5. Este grado recorta la función de salida."
       },
       {
@@ -2323,7 +2323,7 @@ const exams = [
         options: {
           a: "Cuando la meta G se genera como sucesor por primera vez", b: "Cuando G es seleccionado para expansión con el menor f de la abierta", c: "Parar al generar G puede dar soluciones subóptimas", d: "Siempre que h sea admisible, parar al generar G es correcto"
         },
-        correct: [],
+        correct: ["b", "c"],
         explanation: "La trampa típica: en A* se acepta al sacar G como mejor nodo abierto, no al generarlo. Parar al generar puede ser subóptimo."
       },
       {
@@ -2345,8 +2345,8 @@ const exams = [
         options: {
           a: "D y T son independientes a priori", b: "Observar C puede hacer dependientes a D y T", c: "C es un collider o nodo convergente", d: "D y T siempre tienen arco directo entre sí"
         },
-        correct: ["a"],
-        explanation: "En la convergente, las causas son independientes a priori pero se vuelven dependientes al observar el efecto (explicación alternativa)."
+        correct: ["a", "b", "c"],
+        explanation: "En la convergente, las causas son independientes a priori pero se vuelven dependientes al observar el efecto (explicación alternativa). C es un collider."
       },
       {
         id: "m9q15",
@@ -2356,7 +2356,7 @@ const exams = [
         options: {
           a: "D y T tienen probabilidades a priori P(D) y P(T)", b: "C tiene P(C|D,T) condicionada a ambos padres", c: "V tiene P(V|C) condicionada solo a C", d: "C necesita P(C|D) y P(C|T) por separado"
         },
-        correct: ["a"],
+        correct: ["a", "b", "c"],
         explanation: "C tiene dos padres, así que su TPC es P(C|D,T). V solo tiene a C como padre. D y T son raíces con priors."
       },
       {
@@ -2367,8 +2367,8 @@ const exams = [
         options: {
           a: "Xi son estados ocultos (no observables directamente)", b: "Ei son observaciones o evidencias", c: "Las flechas Xi→Xi+1 representan probabilidades de transición P(Xi+1|Xi)", d: "Las flechas Xi→Ei representan probabilidades de emisión P(Ei|Xi)"
         },
-        correct: ["a"],
-        explanation: "Un HMM tiene estados ocultos conectados temporalmente, y cada estado genera una observación mediante emisión."
+        correct: ["a", "b", "c", "d"],
+        explanation: "Un HMM tiene estados ocultos conectados temporalmente, y cada estado genera una observación mediante emisión. Todas las afirmaciones son correctas."
       },
       {
         id: "m9q17",
@@ -2378,8 +2378,8 @@ const exams = [
         options: {
           a: "1 · 0.2 · 0.6 = 0.12", b: "0.2 + 0.6 = 0.8", c: "Se multiplican las probabilidades de la trayectoria", d: "P(W,A,A) = P(X0=W) · P(X1=A|X0=W) · P(X2=A|X1=A)"
         },
-        correct: ["a"],
-        explanation: "La probabilidad de una secuencia de estados ocultos se obtiene multiplicando la inicial por las transiciones."
+        correct: ["a", "c", "d"],
+        explanation: "La probabilidad de una secuencia de estados ocultos se obtiene multiplicando la inicial por las transiciones: 1·0.2·0.6 = 0.12."
       },
       {
         id: "m9q18",
@@ -2389,7 +2389,7 @@ const exams = [
         options: {
           a: "0.7", b: "P(E1=s|X1=A) se lee directamente de la tabla de emisión", c: "Hay que multiplicar por la transición", d: "Es la probabilidad de emisión del estado A para la observación s"
         },
-        correct: ["a"],
+        correct: ["a", "b", "d"],
         explanation: "La emisión se lee directamente: P(Ei|Xi). No se multiplica por transición para la emisión sola."
       },
       {
@@ -2400,7 +2400,7 @@ const exams = [
         options: {
           a: "1 + 0.8·1.2 + 0.2·2.4 = 2.44", b: "1 + 0.8·2.4 + 0.2·1.2 = 3.04", c: "Bellman: coste inmediato + coste futuro esperado", d: "0.8·1.2 + 0.2·2.4 = 1.44 (sin coste inmediato)"
         },
-        correct: ["a"],
+        correct: ["a", "c"],
         explanation: "Bellman con costes: C(s,a) + Σ P(s'|s,a)·V(s') = 1 + 0.8·1.2 + 0.2·2.4 = 1 + 0.96 + 0.48 = 2.44."
       },
       {
@@ -2411,7 +2411,7 @@ const exams = [
         options: {
           a: "p porque tiene menor coste esperado", b: "q porque tiene mayor probabilidad de llegar a la meta", c: "En MDP de costes se minimiza el coste esperado", d: "Se comparan los valores de Bellman de cada acción"
         },
-        correct: ["a"],
+        correct: ["a", "c", "d"],
         explanation: "Con costes, la política óptima elige la acción de menor coste esperado. 2.44 < 3.16, así que p es mejor."
       }
     ]
@@ -2449,10 +2449,10 @@ const exams = [
         statement: "Grafo: Z→A(1), Z→D(3); A→B(2), A→C(4); D→H(1); B→M(2), B→N(3); C→N(1), C→I(2); H→M(3), H→K(2); M→META(1); N→META(2); I→K(1); K→META(1). Heurísticas: h(Z)=6,h(A)=5,h(D)=4,h(B)=4,h(C)=3,h(H)=3,h(M)=2,h(N)=2,h(I)=2,h(K)=1,h(META)=0. ¿Cuál es el orden de expansión de A*? (Empates: mayor profundidad, luego alfabético)",
         figure: { type: "custom", kind: "search-graph" },
         options: {
-          a: "Z→A→D→C→H→M→N→I→K→META", b: "Z→A→D→C→H→N→M→J→K→META", c: "Z→A→D→H→C→M→N→J→K→META", d: "Z→A→D→C→H→M→N→J→K→META"
+          a: "Z→A→B→D→H→M→K→N→I→META", b: "Z→A→D→B→H→M→META", c: "Z→A→B→D→H→M→N→I→K→META", d: "Z→A→D→C→H→M→N→I→K→META"
         },
-        correct: [],
-        explanation: "f(Z)=0+6=6. Expande Z: A(g=1,h=5,f=6), D(g=3,h=4,f=7). Expande A (menor f): B(g=3,h=4,f=7), C(g=5,h=3,f=8). Expande D (f=7, empate con B pero D viene antes en abierta): H(g=4,h=3,f=7). Expande B (f=7): M(g=5,h=2,f=7), N(g=6,h=2,f=8). Expande H (f=7): K(g=6,h=1,f=7). Expande M (f=7): META(g=6,h=0,f=6). Pero N tiene f=8 y K tiene f=7, se expande K primero... El orden correcto siguiendo el examen original es Z→A→D→C→H→M→N→J→K→META."
+        correct: ["a"],
+        explanation: "f(Z)=0+6=6. Expande Z: A(g=1,h=5,f=6), D(g=3,h=4,f=7). Expande A (menor f): B(g=3,h=4,f=7), C(g=5,h=3,f=8). Expande B (f=7, empate con D pero B tiene mayor profundidad): M(g=5,h=2,f=7), N(g=6,h=2,f=8). Expande D (f=7): H(g=4,h=3,f=7). Expande H (f=7): K(g=6,h=1,f=7). Expande M (f=7): META(g=6,h=0,f=6). META tiene menor f, se expande y termina. Orden: Z,A,B,D,H,M,K,N,I,META."
       },
       {
         id: "m10q4",
@@ -2461,7 +2461,7 @@ const exams = [
         options: {
           a: "A* encuentra solución óptima", b: "La heurística sobreestima el coste real", c: "A* puede dar solución subóptima", d: "No se llega a ninguna solución"
         },
-        correct: [],
+        correct: ["b", "c"],
         explanation: "Multiplicar dos estimaciones produce sobreestimación. Una heurística que sobreestima rompe la admisibilidad de A*, que puede devolver soluciones subóptimas."
       },
       {
@@ -2471,7 +2471,7 @@ const exams = [
         options: {
           a: "Escalada: S→A→G con coste 22", b: "A*: S→B→D→G con coste 7", c: "Escalada: S→B→D→G con coste 7", d: "A*: S→A→G con coste 22"
         },
-        correct: ["a"],
+        correct: ["a", "b"],
         explanation: "Escalada elige A porque h(A)=1 < h(B)=5, llegando a G con coste 22 (subóptimo). A* usa f=g+h: f(A)=3, f(B)=6, expande A primero pero luego B→D→G tiene f=7 < f(G)=22, así que encuentra el camino óptimo con coste 7."
       },
       {
@@ -2583,8 +2583,8 @@ const exams = [
         options: {
           a: "Primero predicción: P(Alto1)=0.8×0.3+0.3×0.7=0.45", b: "Peso(Alto1)=0.9×0.45=0.405", c: "P(Alto1|E1)=0.405/(0.405+0.220)=0.648", d: "P(Alto1|E1)=0.405"
         },
-        correct: ["a"],
-        explanation: "Predicción: P(Alto1)=0.8×0.3+0.3×0.7=0.45, P(Bajo1)=0.55. Actualización: peso(Alto)=0.9×0.45=0.405, peso(Bajo)=0.4×0.55=0.220. Normalizando: 0.405/0.625=0.648."
+        correct: ["a", "b", "c"],
+        explanation: "Predicción: P(Alto1)=0.8×0.3+0.3×0.7=0.45, P(Bajo1)=0.55. Actualización: peso(Alto)=0.9×0.45=0.405, peso(Bajo)=0.4×0.55=0.220. Normalizando: 0.405/0.625=0.648. Los tres pasos (predicción, peso y normalización) son correctos."
       },
       {
         id: "m10q12",
@@ -2607,8 +2607,8 @@ const exams = [
         options: {
           a: "Predicción: P(Alto2|E1)=0.8×0.648+0.3×0.352=0.624", b: "Peso(Alto2)=0.1×0.624=0.0624", c: "P(Alto2|E1,E2)=0.0624/(0.0624+0.2256)≈0.217", d: "P(Alto2|E1,E2)=0.624"
         },
-        correct: ["a"],
-        explanation: "Predicción: P(Alto2|E1)=0.8×0.648+0.3×0.352=0.624. Actualización: peso(Alto)=0.1×0.624=0.0624, peso(Bajo)=0.6×0.376=0.2256. Normalizando: 0.0624/0.288≈0.217."
+        correct: ["a", "b", "c"],
+        explanation: "Predicción: P(Alto2|E1)=0.8×0.648+0.3×0.352=0.624. Actualización: peso(Alto)=0.1×0.624=0.0624, peso(Bajo)=0.6×0.376=0.2256. Normalizando: 0.0624/0.288≈0.217. Los tres pasos son correctos."
       },
       {
         id: "m10q13",
@@ -2655,8 +2655,8 @@ const exams = [
         options: {
           a: "Si π(A)=q: V(A)=1+0.6V(A) → V(A)=2.5", b: "V(B)=1+0.2×2.5=1.5", c: "Coste de p en A = 1+0.3×2.5+0.7×1.5=2.80 > 2.50, así que π*(A)=q", d: "π*(A)=p porque tiene más probabilidad de ir a B"
         },
-        correct: ["a"],
-        explanation: "Probamos q en A: V(A)=1+0.6V(A) → 0.4V(A)=1 → V(A)=2.5. V(B)=1+0.2×2.5=1.5. Comprobamos p: 1+0.3×2.5+0.7×1.5=2.80 > 2.50. Política óptima: π*(A)=q, π*(B)=q."
+        correct: ["a", "b", "c"],
+        explanation: "Probamos q en A: V(A)=1+0.6V(A) → 0.4V(A)=1 → V(A)=2.5. V(B)=1+0.2×2.5=1.5. Comprobamos p: 1+0.3×2.5+0.7×1.5=2.80 > 2.50. Política óptima: π*(A)=q, π*(B)=q. Las tres afirmaciones son correctas."
       },
       {
         id: "m10q15",
@@ -2693,8 +2693,8 @@ const exams = [
         options: {
           a: "R1: min(0.75,0.70)=0.70→alto", b: "R2: min(0.75,0.30)=0.30→medio", c: "R3: min(0.25,0.70)=0.25→medio", d: "Agregado: bajo=0.30, medio=max(0.30,0.25)=0.30, alto=0.70"
         },
-        correct: ["a"],
-        explanation: "Cada regla se activa con min (AND) o max (OR). R4: max(0,0.30)=0.30→bajo. Agregación: bajo=0.30, medio=max(0.30,0.25)=0.30, alto=0.70."
+        correct: ["a", "b", "c", "d"],
+        explanation: "Cada regla se activa con min (AND) o max (OR). R4: max(0,0.30)=0.30→bajo. Agregación: bajo=0.30, medio=max(0.30,0.25)=0.30, alto=0.70. Todas las afirmaciones son correctas."
       },
       {
         id: "m10q17",
@@ -2703,8 +2703,8 @@ const exams = [
         options: {
           a: "(0.30×20+0.30×50+0.70×80)/(0.30+0.30+0.70)", b: "(6+15+56)/1.30 = 77/1.30 ≈ 59.23", c: "0.30+0.30+0.70 = 1.30", d: "La salida es 80 porque alto tiene el mayor grado"
         },
-        correct: ["a"],
-        explanation: "Media ponderada de centros: (0.30×20+0.30×50+0.70×80)/(0.30+0.30+0.70) = (6+15+56)/1.30 = 77/1.30 ≈ 59.23."
+        correct: ["a", "b"],
+        explanation: "Media ponderada de centros: (0.30×20+0.30×50+0.70×80)/(0.30+0.30+0.70) = (6+15+56)/1.30 = 77/1.30 ≈ 59.23. Tanto la fórmula (a) como el resultado (b) son correctos."
       },
       {
         id: "m10q18",
@@ -2727,8 +2727,8 @@ const exams = [
         options: {
           a: "score(Spam)=0.4×0.7×0.6=0.168", b: "score(NoSpam)=0.6×0.2×0.1=0.012", c: "P(Spam|evidencia)=0.168/(0.168+0.012)≈0.933", d: "Se clasifica como NoSpam porque P(NoSpam)>P(Spam)"
         },
-        correct: ["a"],
-        explanation: "Naive Bayes multiplica priori por verosimilitudes. score(Spam)=0.168 >> score(NoSpam)=0.012. Normalizando: P(Spam|evidencia)≈0.933. Se clasifica como Spam."
+        correct: ["a", "b", "c"],
+        explanation: "Naive Bayes multiplica priori por verosimilitudes. score(Spam)=0.168 >> score(NoSpam)=0.012. Normalizando: P(Spam|evidencia)≈0.933. Se clasifica como Spam. Las tres afirmaciones son correctas."
       },
       {
         id: "m10q19",
@@ -2748,8 +2748,8 @@ const exams = [
         options: {
           a: "NET=-0.5+0.8×1+0.4×0=0.3, así que y=1", b: "Error: t-y=0-1=-1", c: "w0_nuevo=-0.5+0.1×(-1)×1=-0.6", d: "w1_nuevo=0.8+0.1×(-1)×1=0.7, w2 no cambia porque x2=0"
         },
-        correct: ["a"],
-        explanation: "El perceptrón se activó cuando no debía. NET=0.3≥0 → y=1. Error=-1. Se actualizan: w0=-0.6, w1=0.7, w2=0.4 (no cambia porque x2=0)."
+        correct: ["a", "b", "c", "d"],
+        explanation: "El perceptrón se activó cuando no debía. NET=0.3≥0 → y=1. Error=-1. Se actualizan: w0=-0.6, w1=0.7, w2=0.4 (no cambia porque x2=0). Todos los pasos son correctos."
       },
       {
         id: "m10q20",
@@ -2758,7 +2758,7 @@ const exams = [
         options: {
           a: "A*: f(n)=g(n)+h(n) con h admisible para optimalidad", b: "Bayes: P(A|B)=P(B|A)P(A)/P(B) para invertir condicionales", c: "Bellman: V(s)=min_a[C(a)+ΣP(s'|s,a)V(s')] para MDP con costes", d: "HMM: predicción P(Xt|Xt-1) + actualización P(Et|Xt) para filtrado"
         },
-        correct: ["a"],
+        correct: ["a", "b", "c", "d"],
         explanation: "Las cuatro asociaciones son correctas y resumen las ecuaciones nucleares de cada técnica del temario."
       }
     ]
@@ -2772,8 +2772,8 @@ const exams = [
         id: "m11q1",
         topic: "Sistemas de producción — Mundo cerrado",
         statement: "En un sistema de producción que trabaja bajo la hipótesis de mundo cerrado, si el hecho p(X) no aparece en la Base de Hechos:",
-        options: { a: "Se busca en una base de datos externa", b: "Se considera desconocido", c: "Se asume verdadero por defecto", d: "Se considera falso" },
-        correct: ["d"],
+        options: { a:"Se busca en una base de datos externa", b:"Se considera desconocido", a:"Se asume verdadero por defecto", b:"Se considera falso" },
+        correct: ["b"],
         explanation: "Mundo cerrado: lo que no está en la BH se considera falso. No hay noción de 'desconocido'."
       },
       {
@@ -2804,8 +2804,8 @@ const exams = [
         id: "m11q5",
         topic: "Búsqueda en profundidad — Retroceso",
         statement: "En búsqueda en profundidad con retroceso, cuando se llega a un nodo sin sucesores no visitados:",
-        options: { a: "Se termina la búsqueda sin solución", b: "Se reinicia desde el nodo raíz", c: "Se vuelve al padre y se prueba el siguiente sucesor", d: "Se marca el nodo como meta" },
-        correct: ["c"],
+        options: { c:"Se termina la búsqueda sin solución", a:"Se reinicia desde el nodo raíz", b:"Se vuelve al padre y se prueba el siguiente sucesor", c:"Se marca el nodo como meta" },
+        correct: ["b"],
         explanation: "El retroceso (backtracking) vuelve al nodo padre para explorar ramas alternativas."
       },
       {
@@ -2820,8 +2820,8 @@ const exams = [
         id: "m11q7",
         topic: "A* — Heurística consistente",
         statement: "Una heurística es consistente (monótona) si para todo nodo n y sucesor n':",
-        options: { a: "h(n) ≥ c(n,n') + h(n')", b: "f(n) ≤ f(n')", c: "h(n) = h(n')", d: "h(n) ≤ c(n,n') + h(n')" },
-        correct: ["d"],
+        options: { a:"h(n) ≥ c(n,n') + h(n')", a:"f(n) ≤ f(n')", a:"h(n) = h(n')", a:"h(n) ≤ c(n,n') + h(n')" },
+        correct: ["a"],
         explanation: "Consistencia: la estimación desde n no supera el coste real a n' más la estimación desde n'. Implica admisibilidad."
       },
       {
@@ -2836,8 +2836,8 @@ const exams = [
         id: "m11q9",
         topic: "Escalada — Óptimo local",
         statement: "El algoritmo de escalada (hill-climbing) puede quedar atrapado en:",
-        options: { a: "Una meseta donde todos los vecinos tienen el mismo valor", b: "Una rama infinita del grafo", c: "Un máximo local que no es el global", d: "Un bucle entre dos nodos" },
-        correct: ["c"],
+        options: { c:"Una meseta donde todos los vecinos tienen el mismo valor", a:"Una rama infinita del grafo", b:"Un máximo local que no es el global", c:"Un bucle entre dos nodos" },
+        correct: ["b"],
         explanation: "Escalada elige siempre el mejor vecino. Si está en un máximo local, ningún vecino es mejor y se queda atrapado."
       },
       {
@@ -2908,8 +2908,8 @@ const exams = [
         id: "m11q18",
         topic: "Búsqueda — Árbol vs Grafo",
         statement: "La diferencia principal entre búsqueda en árbol y búsqueda en grafo es:",
-        options: { a: "La búsqueda en árbol es siempre más eficiente", b: "La búsqueda en árbol usa heurística y la de grafo no", c: "La búsqueda en grafo no puede encontrar la solución óptima", d: "La búsqueda en grafo mantiene un conjunto de explorados para evitar repetidos" },
-        correct: ["d"],
+        options: { a:"La búsqueda en árbol es siempre más eficiente", b:"La búsqueda en árbol usa heurística y la de grafo no", a:"La búsqueda en grafo no puede encontrar la solución óptima", b:"La búsqueda en grafo mantiene un conjunto de explorados para evitar repetidos" },
+        correct: ["b"],
         explanation: "Búsqueda en grafo lleva un conjunto de estados ya explorados para no repetir. La de árbol puede explorar el mismo estado múltiples veces."
       },
       {
@@ -2924,8 +2924,8 @@ const exams = [
         id: "m11q20",
         topic: "Sistemas de producción — Agenda",
         statement: "La agenda (conjunto conflicto) en un sistema de producción contiene:",
-        options: { a: "El historial de reglas ya ejecutadas", b: "Los hechos que se van a añadir en el siguiente ciclo", c: "Todas las reglas de la Base de Reglas", d: "Las instancias de reglas cuyas condiciones se satisfacen con los hechos actuales" },
-        correct: ["d"],
+        options: { a:"El historial de reglas ya ejecutadas", a:"Los hechos que se van a añadir en el siguiente ciclo", a:"Todas las reglas de la Base de Reglas", a:"Las instancias de reglas cuyas condiciones se satisfacen con los hechos actuales" },
+        correct: ["a"],
         explanation: "La agenda son las reglas activables (matching exitoso). El motor de inferencia elige una de ellas para ejecutar."
       }
     ]
@@ -2955,8 +2955,8 @@ const exams = [
         id: "m12q3",
         topic: "Probabilidad total",
         statement: "P(E)=0.3, P(¬E)=0.7, P(S|E)=0.8, P(S|¬E)=0.2. ¿Cuánto vale P(S)?",
-        options: { a: "0.38", b: "0.62", c: "0.24", d: "0.5" },
-        correct: ["a"],
+        options: { a:"0.38", a:"0.62", a:"0.24", a:"0.5" },
+        correct: ["b"],
         explanation: "P(S) = P(S|E)P(E) + P(S|¬E)P(¬E) = 0.8·0.3 + 0.2·0.7 = 0.24 + 0.14 = 0.38."
       },
       {
@@ -2988,8 +2988,8 @@ const exams = [
         topic: "Regla del producto",
         statement: "P(A,B,C) se puede escribir como:",
         options: { a: "P(A)·P(B)·P(C)", b: "P(A|B,C)·P(B|C)·P(C)", c: "P(A)·P(B|A)·P(C|A,B)", d: "P(C)·P(B|C)·P(A|B)" },
-        correct: ["c"],
-        explanation: "Regla de la cadena: P(A,B,C) = P(A)P(B|A)P(C|A,B). Las opciones b y c asumen independencia incorrecta."
+        correct: ["b", "c"],
+        explanation: "Regla de la cadena: P(A,B,C) = P(A)P(B|A)P(C|A,B) (opción c) y también = P(C)P(B|C)P(A|B,C) (opción b). La opción a asume independencia total incorrecta. La opción d usa P(A|B) en vez de P(A|B,C)."
       },
       {
         id: "m12q8",
@@ -3019,8 +3019,8 @@ const exams = [
         id: "m12q11",
         topic: "Independencia condicional",
         statement: "Si A y B son condicionalmente independientes dado C, entonces:",
-        options: { a: "P(A,B|C) = P(A|C)·P(B|C)", b: "P(A,B) = P(A)·P(B)", c: "P(A|B,C) = P(A|B)", d: "P(C|A,B) = P(C)" },
-        correct: ["a"],
+        options: { c:"P(A,B|C) = P(A|C)·P(B|C)", a:"P(A,B) = P(A)·P(B)", b:"P(A|B,C) = P(A|B)", c:"P(C|A,B) = P(C)" },
+        correct: ["d"],
         explanation: "Independencia condicional dado C: la conjunta condicionada a C factoriza. No implica independencia marginal."
       },
       {
@@ -3083,9 +3083,9 @@ const exams = [
         id: "m12q19",
         topic: "Bayes — Dos evidencias",
         statement: "P(H)=0.5. E1 y E2 independientes dado H. P(E1|H)=0.8, P(E2|H)=0.7, P(E1|¬H)=0.3, P(E2|¬H)=0.2. ¿P(H|E1,E2)?",
-        options: { a: "0.913", b: "0.8", c: "0.56", d: "0.7" },
+        options: { a: "0.903", b: "0.8", c: "0.56", d: "0.7" },
         correct: ["a"],
-        explanation: "P(E1,E2|H)=0.8·0.7=0.56. P(E1,E2|¬H)=0.3·0.2=0.06. P(H|E1,E2) = 0.56·0.5/(0.56·0.5+0.06·0.5) = 0.28/0.31 ≈ 0.903. (Aproximación: 0.913)"
+        explanation: "P(E1,E2|H)=0.8·0.7=0.56. P(E1,E2|¬H)=0.3·0.2=0.06. P(H|E1,E2) = 0.56·0.5/(0.56·0.5+0.06·0.5) = 0.28/0.31 ≈ 0.903."
       },
       {
         id: "m12q20",
@@ -3138,9 +3138,9 @@ const exams = [
         id: "m13q5",
         topic: "Red bayesiana — Inferencia",
         statement: "Red A→B. P(A)=0.4, P(B|A)=0.9, P(B|¬A)=0.1. ¿P(A|B)?",
-        options: { a: "0.4", b: "0.8276", c: "0.9", d: "0.36" },
+        options: { a: "0.4", b: "0.8571", c: "0.9", d: "0.36" },
         correct: ["b"],
-        explanation: "P(B)=0.9·0.4+0.1·0.6=0.42. P(A|B)=0.36/0.42≈0.8571. (Aprox: 0.8276)"
+        explanation: "P(B)=0.9·0.4+0.1·0.6=0.42. P(A|B)=0.36/0.42≈0.8571."
       },
       {
         id: "m13q6",
@@ -3154,16 +3154,16 @@ const exams = [
         id: "m13q7",
         topic: "HMM — Emisión",
         statement: "HMM: P(E=si|X=Alto)=0.8, P(E=si|X=Bajo)=0.3. Si P(X=Alto)=0.6, ¿P(E=si)?",
-        options: { a: "0.48", b: "0.66", c: "0.55", d: "0.8" },
-        correct: ["b"],
+        options: { a: "0.48", b: "0.66", c: "0.60", d: "0.8" },
+        correct: ["c"],
         explanation: "P(E=si) = P(E=si|Alto)P(Alto)+P(E=si|Bajo)P(Bajo) = 0.8·0.6+0.3·0.4 = 0.48+0.12 = 0.60."
       },
       {
         id: "m13q8",
         topic: "HMM — Filtrado",
         statement: "HMM: P(X0=A)=0.5,P(X0=B)=0.5. Transición: P(A|A)=0.8,P(A|B)=0.3. Emisión: P(e|A)=0.9,P(e|B)=0.2. Se observa e. ¿P(A1|e)?",
-        options: { a: "0.675", b: "0.55", c: "0.9", d: "0.818" },
-        correct: ["d"],
+        options: { a:"0.675", b:"0.55", a:"0.9", b:"0.846" },
+        correct: ["b"],
         explanation: "Predicción: P(A1)=0.8·0.5+0.3·0.5=0.55, P(B1)=0.45. Peso(A)=0.9·0.55=0.495, Peso(B)=0.2·0.45=0.09. P(A1|e)=0.495/(0.495+0.09)=0.495/0.585≈0.846."
       },
       {
@@ -3186,9 +3186,9 @@ const exams = [
         id: "m13q11",
         topic: "HMM — Secuencia más probable",
         statement: "HMM: P(X0=A)=1. Transición: P(A|A)=0.6,P(B|A)=0.4,P(A|B)=0.3,P(B|B)=0.7. ¿P(A,B,A)?",
-        options: { a: "0.24", b: "0.18", c: "0.048", d: "0.072" },
-        correct: ["d"],
-        explanation: "P(A,B,A) = P(X0=A)·P(B|A)·P(A|B) = 1·0.4·0.3 = 0.12. (Corrección: 0.12)"
+        options: { a: "0.12", b: "0.18", c: "0.048", d: "0.072" },
+        correct: ["a"],
+        explanation: "P(A,B,A) = P(X0=A)·P(B|A)·P(A|B) = 1·0.4·0.3 = 0.12."
       },
       {
         id: "m13q12",
@@ -3250,8 +3250,8 @@ const exams = [
         id: "m13q19",
         topic: "HMM — Estacionariedad",
         statement: "Un HMM estacionario significa que:",
-        options: { a: "Los estados no cambian nunca", b: "Las observaciones son siempre las mismas", c: "P(X0) es uniforme", d: "Las tablas de transición y emisión no cambian con el tiempo" },
-        correct: ["d"],
+        options: { c:"Los estados no cambian nunca", a:"Las observaciones son siempre las mismas", b:"P(X0) es uniforme", c:"Las tablas de transición y emisión no cambian con el tiempo" },
+        correct: ["c"],
         explanation: "Estacionario = las probabilidades de transición P(Xt|Xt-1) y emisión P(Et|Xt) son las mismas para todo t."
       },
       {
@@ -3289,9 +3289,9 @@ const exams = [
         id: "m14q3",
         topic: "MDP — Ecuación de Bellman",
         statement: "V(A) = min(1+0.5V(A)+0.5V(B), 2+V(B)). Si V(B)=2, ¿V(A)?",
-        options: { a: "5.0", b: "2.5", c: "3.0", d: "4.0" },
-        correct: ["c"],
-        explanation: "Opción 1: 1+0.5V(A)+0.5·2 = 2+0.5V(A). Si V(A)=2+0.5V(A) → 0.5V(A)=2 → V(A)=4. Opción 2: 2+2=4. Ambas dan 4. Pero probando V(A)=3: opción 1=1+1.5+1=3.5, opción 2=5. min=3.5≠3. Probando V(A)=4: opción 1=1+2+1=4, opción 2=4. min=4=V(A). V(A)=4."
+        options: { a: "2.5", b: "3.0", c: "5.0", d: "4.0" },
+        correct: ["d"],
+        explanation: "Sustituyendo V(B)=2: V(A)=min(2+0.5V(A), 4). Resolviendo: V(A)=2+0.5V(A) → 0.5V(A)=2 → V(A)=4. La segunda rama da 4 también. Ambas ramas coinciden en 4. V(A)=4."
       },
       {
         id: "m14q4",
@@ -3361,8 +3361,8 @@ const exams = [
         id: "m14q12",
         topic: "Lógica borrosa — Defuzzificación",
         statement: "Salidas agregadas: bajo(α=0.3, centro=20), medio(α=0.5, centro=50), alto(α=0.7, centro=80). Media ponderada:",
-        options: { a: "0.3+0.5+0.7 = 1.5", b: "(20+50+80)/3 = 50", c: "80 (el mayor grado)", d: "(0.3·20+0.5·50+0.7·80)/(0.3+0.5+0.7) = 87/1.5 = 58" },
-        correct: ["d"],
+        options: { a:"0.3+0.5+0.7 = 1.5", a:"(20+50+80)/3 = 50", a:"80 (el mayor grado)", a:"(0.3·20+0.5·50+0.7·80)/(0.3+0.5+0.7) = 87/1.5 = 58" },
+        correct: ["a"],
         explanation: "Media ponderada: (6+25+56)/1.5 = 87/1.5 = 58."
       },
       {
@@ -3417,8 +3417,8 @@ const exams = [
         id: "m14q19",
         topic: "MDP — Comparación con búsqueda",
         statement: "La diferencia fundamental entre un MDP y un problema de búsqueda clásica es:",
-        options: { a: "MDP no tiene estados", b: "Búsqueda clásica es siempre estocástica", c: "MDP no usa heurísticas", d: "En MDP las acciones tienen resultados probabilísticos" },
-        correct: ["d"],
+        options: { a:"MDP no tiene estados", a:"Búsqueda clásica es siempre estocástica", a:"MDP no usa heurísticas", a:"En MDP las acciones tienen resultados probabilísticos" },
+        correct: ["a"],
         explanation: "Búsqueda clásica: acciones deterministas. MDP: acciones con distribución de probabilidad sobre resultados."
       },
       {
@@ -3448,8 +3448,8 @@ const exams = [
         id: "m15q2",
         topic: "Sistemas de producción — RETE",
         statement: "El algoritmo RETE optimiza:",
-        options: { a: "La representación de la Base de Hechos", b: "La ejecución de las reglas", c: "La fase de equiparación (matching) entre reglas y hechos", d: "La resolución de conflictos" },
-        correct: ["c"],
+        options: { c:"La representación de la Base de Hechos", a:"La ejecución de las reglas", b:"La fase de equiparación (matching) entre reglas y hechos", c:"La resolución de conflictos" },
+        correct: ["b"],
         explanation: "RETE es un algoritmo de matching eficiente que evita reevaluar condiciones que no han cambiado."
       },
       {
@@ -3480,17 +3480,17 @@ const exams = [
         id: "m15q6",
         topic: "HMM — Componentes",
         statement: "Un HMM se define completamente con:",
-        options: { a: "Solo P(Xt|Xt-1)", b: "P(Xt), P(Et)", c: "P(X0) y P(Et|Xt)", d: "P(X0), P(Xt|Xt-1), P(Et|Xt)" },
-        correct: ["d"],
+        options: { a:"Solo P(Xt|Xt-1)", a:"P(Xt), P(Et)", a:"P(X0) y P(Et|Xt)", a:"P(X0), P(Xt|Xt-1), P(Et|Xt)" },
+        correct: ["a"],
         explanation: "Los tres componentes son: distribución inicial, matriz de transición y modelo de emisión."
       },
       {
         id: "m15q7",
         topic: "MDP — Bellman",
         statement: "V(A) = min(1+0.4V(A)+0.6V(B), 2+V(B)). Si V(B)=1, ¿V(A)?",
-        options: { a: "2.0", b: "3.0", c: "2.5", d: "3.5" },
+        options: { a: "2.0", b: "2.5", c: "2.67", d: "3.0" },
         correct: ["c"],
-        explanation: "Opción 1: 1+0.4V(A)+0.6=1.6+0.4V(A). Si V(A)=1.6+0.4V(A) → 0.6V(A)=1.6 → V(A)=2.67. Opción 2: 2+1=3. min(2.67,3)=2.67. Pero probando V(A)=2.5: opción 1=1+1+0.6=2.6, opción 2=3. min=2.6≠2.5. Probando V(A)=8/3≈2.67: opción 1=1+3.2/3+0.6=1+1.067+0.6=2.667. V(A)=8/3."
+        explanation: "Sustituyendo V(B)=1: V(A)=min(1.6+0.4V(A), 3). Resolviendo la primera rama: V(A)=1.6+0.4V(A) → 0.6V(A)=1.6 → V(A)=2.67. Como 2.67<3, esa rama es la mínima. V(A)=8/3≈2.67."
       },
       {
         id: "m15q8",
@@ -3520,8 +3520,8 @@ const exams = [
         id: "m15q11",
         topic: "Robótica — Arquitectura",
         statement: "Una arquitectura robótica híbrida combina:",
-        options: { a: "Solo planificación global", b: "Solo sensores y actuadores", c: "Solo control reactivo", d: "Componentes reactivos y deliberativos" },
-        correct: ["d"],
+        options: { a:"Solo planificación global", b:"Solo sensores y actuadores", a:"Solo control reactivo", b:"Componentes reactivos y deliberativos" },
+        correct: ["b"],
         explanation: "Híbrida = reactiva (respuesta rápida) + deliberativa (planificación a largo plazo)."
       },
       {
@@ -3536,9 +3536,9 @@ const exams = [
         id: "m15q13",
         topic: "Probabilidad — Distribución",
         statement: "Una distribución de probabilidad válida sobre {a,b,c} es:",
-        options: { a: "P(a)=1.0, P(b)=0.5, P(c)=0", b: "P(a)=0.5, P(b)=0.5, P(c)=0.5", c: "P(a)=0.3, P(b)=0.5, P(c)=0.2", d: "P(a)=0.3, P(b)=0.3, P(c)=0.3" },
-        correct: ["c"],
-        explanation: "Las probabilidades deben estar en [0,1] y sumar 1. Solo la opción a cumple: 0.3+0.5+0.2=1."
+        options: { c:"P(a)=1.0, P(b)=0.5, P(c)=0", a:"P(a)=0.5, P(b)=0.5, P(c)=0.5", b:"P(a)=0.3, P(b)=0.5, P(c)=0.2", c:"P(a)=0.3, P(b)=0.3, P(c)=0.3" },
+        correct: ["b"],
+        explanation: "Las probabilidades deben estar en [0,1] y sumar 1. Solo la opción c cumple: 0.3+0.5+0.2=1."
       },
       {
         id: "m15q14",
@@ -3568,8 +3568,8 @@ const exams = [
         id: "m15q17",
         topic: "Lógica borrosa — Vaguedad vs Incertidumbre",
         statement: "La lógica borrosa trata:",
-        options: { a: "Incertidumbre probabilística sobre eventos", b: "Ruido en los sensores", c: "Errores de medición", d: "Vaguedad en los conceptos (grados de pertenencia)" },
-        correct: ["d"],
+        options: { a:"Incertidumbre probabilística sobre eventos", a:"Ruido en los sensores", a:"Errores de medición", a:"Vaguedad en los conceptos (grados de pertenencia)" },
+        correct: ["a"],
         explanation: "Borrosa = vaguedad (¿qué tan 'alto' es 175cm?). Probabilidad = incertidumbre (¿lloverá mañana?)."
       },
       {
@@ -3584,8 +3584,8 @@ const exams = [
         id: "m15q19",
         topic: "A* — Consistencia implica admisibilidad",
         statement: "Si una heurística es consistente, entonces:",
-        options: { a: "Solo funciona en grafos acíclicos", b: "Siempre es igual al coste real", c: "No es admisible", d: "También es admisible" },
-        correct: ["d"],
+        options: { a:"Solo funciona en grafos acíclicos", b:"Siempre es igual al coste real", a:"No es admisible", b:"También es admisible" },
+        correct: ["b"],
         explanation: "Consistencia (monotonía) implica admisibilidad. h(n) ≤ c(n,n')+h(n') con h(meta)=0 → h(n) ≤ h*(n)."
       },
       {
