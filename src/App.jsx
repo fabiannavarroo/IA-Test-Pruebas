@@ -3595,6 +3595,46 @@ const exams = [
         options: { a: "MDP con Bellman", b: "A* con heurística", c: "Red bayesiana con inferencia", d: "Naive Bayes con clasificación" },
         correct: ["a"],
         explanation: "MDP modela decisiones secuenciales bajo incertidumbre. Bellman calcula la política óptima."
+      },
+      {
+        id: "m15q21",
+        topic: "A* — Consistencia y optimalidad",
+        statement: "Sea una heurística h1(n) admisible pero no consistente. Si h2(n) = h1(n) + c donde c > 0 es constante, ¿cuáles son afirmaciones correctas?",
+        options: { a: "h2 deja de ser admisible", b: "A* puede encontrar soluciones subóptimas", c: "h2 siempre sigue siendo consistente", d: "h2 sobreestima el coste real" },
+        correct: ["a", "b", "d"],
+        explanation: "Sumar c>0 hace que h2(n) = h1(n)+c > h*(n) para todo n, luego sobreestima (no es admisible) y A* pierde garantía de optimalidad. No es necesariamente consistente."
+      },
+      {
+        id: "m15q22",
+        topic: "Probabilidad — Teorema de Bayes encadenado",
+        statement: "P(A)=0.3, P(B|A)=0.7, P(C|B)=0.5, P(D|C)=0.8, P(E|D)=0.6. Calcular P(A,B,C,D,E) (todos verdaderos).",
+        options: { a: "0.3×0.7×0.5×0.8×0.6 = 0.0504", b: "0.3+0.7+0.5+0.8+0.6 = 2.9", c: "0.3×0.7×(0.5+0.8+0.6) = 0.399", d: "0.3×(0.7+0.5+0.8+0.6) = 0.72" },
+        correct: ["a"],
+        explanation: "P(A,B,C,D,E) = P(A)P(B|A)P(C|B)P(D|C)P(E|D) = 0.3×0.7×0.5×0.8×0.6 = 0.0504."
+      },
+      {
+        id: "m15q23",
+        topic: "MDP — Value Iteration converge",
+        statement: "En value iteration, si en una iteración los valores cambian en menos de ε=0.01 en todos los estados, ¿cuáles de estas afirmaciones son correctas?",
+        options: { a: "Los valores han convergido aproximadamente a los valores óptimos", b: "La política extraída es óptima", c: "El algoritmo ha terminado completamente", d: "El factor de descuento γ debe ser menor que 1" },
+        correct: ["a", "d"],
+        explanation: "El criterio ||V_{k+1} - V_k||_∞ < ε garantiza proximidad al valor óptimo. Para que converja, se necesita γ < 1. La política extraída es ε-óptima, no necesariamente óptima."
+      },
+      {
+        id: "m15q24",
+        topic: "Red bayesiana — Inferencia con evidencia",
+        statement: "En una red A→B→C, con P(A)=0.4, P(B|A)=0.7, P(B|¬A)=0.2, P(C|B)=0.9, P(C|¬B)=0.1. Si observamos B=true, ¿cuáles son correctas?",
+        options: { a: "P(A|C,B) = P(A|B)", b: "P(A|B) = 0.7", c: "C es independiente de A dado B", d: "P(A,B,C) = P(A)P(B|A)P(C|B)" },
+        correct: ["a", "b", "c", "d"],
+        explanation: "Todas son correctas. Por independencia condicional: A⊥C|B. P(A|B) = P(B|A)P(A)/P(B) = 0.7×0.4/0.4 = 0.7. La factorización es P(A)P(B|A)P(C|B)."
+      },
+      {
+        id: "m15q25",
+        topic: "Lógica borrosa — Defuzzificación con múltiples reglas",
+        statement: "Sistema borroso: 3 reglas con salidas 'bajo' (centros 10,20,30) activadas con grados 0.3, 0.5, 0.2. Usando media ponderada, ¿cuáles son correctas?",
+        options: { a: "La suma de pesos es 1.0", b: "La salida defuzzificada es 19", c: "El centroide siempre devuelve el mayor grado", d: "Se calcula (0.3×10 + 0.5×20 + 0.2×30)/1.0" },
+        correct: ["b", "d"],
+        explanation: "La suma de pesos es 0.3+0.5+0.2 = 1.0, pero el cálculo es (3+10+6)/1 = 19. El centroide no devuelve el mayor grado, sino el centro de gravedad."
       }
     ]
   }
