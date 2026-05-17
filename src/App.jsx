@@ -2202,8 +2202,8 @@ const exams = [
         options: {
           a: "μSeco(40) > 0", b: "μHúmedo(40) = 0", c: "μSeco(40) + μHúmedo(40) = 1 siempre", d: "En x=40, el grado de pertenencia a Seco es mayor que a Húmedo"
         },
-        correct: ["a"],
-        explanation: "En x=40, la función Seco tiene valor positivo (≈0.33) mientras que Húmedo empieza en 0 hasta x=40. No es obligatorio que sumen 1."
+        correct: ["a", "b", "d"],
+        explanation: "En x=40, Seco tiene valor positivo (≈0.33) y Húmedo empieza en 0. Por tanto: μSeco(40)>0 (a), μHúmedo(40)=0 (b), y μSeco(40)>μHúmedo(40) (d). No suman 1."
       },
       {
         id: "m9q2",
