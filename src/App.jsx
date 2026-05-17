@@ -2279,8 +2279,8 @@ const exams = [
         options: {
           a: "Tiene en cada punto el máximo de los valores de las reglas individuales", b: "Siempre es una función triangular", c: "Puede tener forma de meseta si varias reglas se solapan", d: "Es la entrada para la defuzzificación"
         },
-        correct: ["a"],
-        explanation: "La agregación por máximo toma el valor más alto en cada punto. Puede crear mesetas. Luego se defuzzifica."
+        correct: ["a", "c", "d"],
+        explanation: "La agregación por máximo toma el valor más alto en cada punto (a). Puede crear mesetas cuando las reglas se solapan (c). La función agregada resultante es la entrada para la defuzzificación (d). No siempre es triangular (b es falsa)."
       },
       {
         id: "m9q9",
