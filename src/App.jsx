@@ -2312,8 +2312,8 @@ const exams = [
         options: {
           a: "f(B) por S directo = 5+1 = 6", b: "f(B) por S→A→B = 3+1 = 4", c: "A* prefiere el camino S→A→B porque tiene menor f(B)", d: "La heurística h(B) cambia según el camino"
         },
-        correct: ["a"],
-        explanation: "f = g + h. h(B)=1 es fija. g(B) depende del camino. Menor f = preferido."
+        correct: ["a", "b", "c"],
+        explanation: "f = g + h. h(B)=1 es fija (d es falsa). g(B) depende del camino. f(S→B)=6, f(S→A→B)=4. A* prefiere el camino con menor f, es decir S→A→B."
       },
       {
         id: "m9q12",
