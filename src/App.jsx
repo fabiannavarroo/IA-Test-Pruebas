@@ -2268,8 +2268,8 @@ const exams = [
         options: {
           a: "El valor 60 pertenece más al conjunto Alto que al Bajo", b: "μBajo(60) + μAlto(60) = 1", c: "Si la regla es 'SI es Alto ENTONCES acción fuerte', se activa con grado 0.8", d: "El grado de pertenencia es una probabilidad"
         },
-        correct: ["a"],
-        explanation: "μAlto(60)=0.8 > μBajo(60)=0.2, así que pertenece más a Alto. La regla se activa con ese grado. No es obligatorio que sumen 1 y no es probabilidad."
+        correct: ["a", "b", "c"],
+        explanation: "μAlto(60)=0.8 > μBajo(60)=0.2, así que pertenece más a Alto (a). En este caso específico suman 1 (b). La regla se activa con grado 0.8 (c). El grado de pertenencia NO es probabilidad (d es falsa)."
       },
       {
         id: "m9q8",
