@@ -11,12 +11,12 @@ const exams = [
         topic: "Sistemas de producción",
         statement: "En un sistema de producción, la Base de Hechos o Memoria de Trabajo representa:",
         options: {
-          a: "El conjunto de reglas aplicables en cada ciclo.",
-          b: "El conocimiento sobre el dominio en un momento determinado.",
-          c: "La estrategia usada para elegir una regla del conjunto conflicto.",
-          d: "El conjunto de hechos que se consideran ciertos en ese instante."
+          a: "El conjunto de hechos que se consideran ciertos en ese instante.",
+          b: "La estrategia usada para elegir una regla del conjunto conflicto.",
+          c: "El conocimiento sobre el dominio en un momento determinado.",
+          d: "El conjunto de reglas aplicables en cada ciclo."
         },
-        correct: ["b", "d"],
+        correct: ["a", "c"],
         explanation: "La BH/WM almacena los hechos actuales del dominio; por tanto, contiene lo que el sistema considera cierto en ese instante. Las reglas están en la BR, y la estrategia de selección pertenece al motor de inferencia."
       },
       {
@@ -25,11 +25,11 @@ const exams = [
         statement: "Sobre las reglas de producción, marque las afirmaciones correctas:",
         options: {
           a: "Suelen tener formato SI condiciones ENTONCES acciones.",
-          b: "La parte izquierda contiene las condiciones de aplicación.",
-          c: "La parte derecha puede modificar la memoria de trabajo.",
-          d: "Una regla siempre debe contener una estructura if-then-else."
+          b: "Una regla siempre debe contener una estructura if-then-else.",
+          c: "La parte izquierda contiene las condiciones de aplicación.",
+          d: "La parte derecha puede modificar la memoria de trabajo."
         },
-        correct: ["a", "b", "c"],
+        correct: ["a", "c", "d"],
         explanation: "Una regla tiene condiciones en el antecedente y acciones en el consecuente. No se usa if-then-else como estructura obligatoria; de hecho, en sistemas de producción se separan las reglas."
       },
       {
@@ -37,10 +37,10 @@ const exams = [
         topic: "Ciclo de inferencia",
         statement: "En el ciclo básico de un sistema de producción, ¿qué pasos aparecen normalmente?",
         options: {
-          a: "Equiparación de reglas con la memoria de trabajo.",
+          a: "Ejecución de la regla seleccionada.",
           b: "Construcción del conjunto conflicto o agenda.",
-          c: "Resolución de conflictos para elegir una regla.",
-          d: "Ejecución de la regla seleccionada."
+          c: "Equiparación de reglas con la memoria de trabajo.",
+          d: "Resolución de conflictos para elegir una regla."
         },
         correct: ["a", "b", "c", "d"],
         explanation: "El ciclo completo compara reglas con hechos, construye la agenda, decide qué regla aplicar y ejecuta sus efectos."
@@ -50,12 +50,12 @@ const exams = [
         topic: "Mundo cerrado y refracción",
         statement: "Marque las afirmaciones correctas:",
         options: {
-          a: "En mundo cerrado, lo que no aparece en la Base de Hechos se considera falso.",
-          b: "La refracción evita aplicar repetidamente la misma regla con los mismos valores de variables.",
-          c: "Si una regla solo añade hechos, el razonamiento puede considerarse monótono.",
-          d: "En un sistema de producción, todas las reglas se ejecutan siempre en cada ciclo."
+          a: "En un sistema de producción, todas las reglas se ejecutan siempre en cada ciclo.",
+          b: "Si una regla solo añade hechos, el razonamiento puede considerarse monótono.",
+          c: "En mundo cerrado, lo que no aparece en la Base de Hechos se considera falso.",
+          d: "La refracción evita aplicar repetidamente la misma regla con los mismos valores de variables."
         },
-        correct: ["a", "b", "c"],
+        correct: ["b", "c", "d"],
         explanation: "El sistema elige una regla por ciclo. Mundo cerrado y refracción son conceptos clave; el razonamiento monótono no elimina información, solo añade."
       },
       {
@@ -63,9 +63,9 @@ const exams = [
         topic: "Búsqueda no informada",
         statement: "En un problema de búsqueda, para definir formalmente el problema es necesario indicar:",
         options: {
-          a: "Estado inicial.",
-          b: "Estado o estados objetivo.",
-          c: "Operadores o acciones posibles.",
+          a: "Operadores o acciones posibles.",
+          b: "Estado inicial.",
+          c: "Estado o estados objetivo.",
           d: "Siempre una función heurística."
         },
         correct: ["a", "b", "c"],
@@ -77,11 +77,11 @@ const exams = [
         statement: "Sobre la búsqueda en amplitud, marque las correctas:",
         options: {
           a: "Expande primero los nodos de menor profundidad.",
-          b: "Utiliza una estructura tipo cola FIFO.",
-          c: "Si todos los costes son iguales, encuentra una solución óptima en número de pasos.",
-          d: "Siempre ocupa menos memoria que la búsqueda en profundidad."
+          b: "Siempre ocupa menos memoria que la búsqueda en profundidad.",
+          c: "Utiliza una estructura tipo cola FIFO.",
+          d: "Si todos los costes son iguales, encuentra una solución óptima en número de pasos."
         },
-        correct: ["a", "b", "c"],
+        correct: ["a", "c", "d"],
         explanation: "Amplitud trabaja por niveles y usa cola FIFO. Suele consumir mucha memoria porque guarda la frontera completa."
       },
       {
@@ -89,10 +89,10 @@ const exams = [
         topic: "Búsqueda en profundidad",
         statement: "Sobre la búsqueda en profundidad, marque las correctas:",
         options: {
-          a: "Puede quedar atrapada en ramas infinitas si no hay control.",
-          b: "Usa una estrategia tipo pila LIFO.",
+          a: "Usa una estrategia tipo pila LIFO.",
+          b: "Puede consumir menos memoria que la búsqueda en amplitud.",
           c: "Garantiza siempre encontrar la solución óptima.",
-          d: "Puede consumir menos memoria que la búsqueda en amplitud."
+          d: "Puede quedar atrapada en ramas infinitas si no hay control."
         },
         correct: ["a", "b", "d"],
         explanation: "Profundidad baja por una rama antes de retroceder. No garantiza optimalidad y puede caer en ciclos o ramas infinitas."
@@ -102,12 +102,12 @@ const exams = [
         topic: "Coste uniforme / Dijkstra",
         statement: "Cuando los costes de las acciones no son uniformes, el algoritmo de coste uniforme/Dijkstra:",
         options: {
-          a: "Expande el nodo con menor coste acumulado g(n).",
-          b: "Garantiza optimalidad si los costes son no negativos.",
-          c: "Usa exclusivamente la heurística h(n).",
-          d: "Puede encontrar soluciones con menor coste aunque tengan más pasos."
+          a: "Puede encontrar soluciones con menor coste aunque tengan más pasos.",
+          b: "Expande el nodo con menor coste acumulado g(n).",
+          c: "Garantiza optimalidad si los costes son no negativos.",
+          d: "Usa exclusivamente la heurística h(n)."
         },
-        correct: ["a", "b", "d"],
+        correct: ["a", "b", "c"],
         explanation: "Dijkstra se guía por g(n), no por h(n). Al minimizar coste acumulado, puede preferir un camino más largo en pasos pero más barato."
       },
       {
@@ -115,12 +115,12 @@ const exams = [
         topic: "Heurísticas",
         statement: "Una heurística admisible es aquella que:",
         options: {
-          a: "Nunca sobreestima el coste real hasta el objetivo.",
+          a: "Siempre hace que el algoritmo explore menos nodos que cualquier otra heurística.",
           b: "Siempre da exactamente el coste real.",
           c: "Puede utilizarse en A* para garantizar optimalidad bajo las condiciones adecuadas.",
-          d: "Siempre hace que el algoritmo explore menos nodos que cualquier otra heurística."
+          d: "Nunca sobreestima el coste real hasta el objetivo."
         },
-        correct: ["a", "c"],
+        correct: ["c", "d"],
         explanation: "Admisible significa optimista: no se pasa del coste real. No tiene por qué ser exacta ni siempre la más eficiente."
       },
       {
@@ -128,8 +128,8 @@ const exams = [
         topic: "A*",
         statement: "En el algoritmo A*, marque las afirmaciones correctas:",
         options: {
-          a: "Se usa normalmente f(n) = g(n) + h(n).",
-          b: "g(n) representa el coste acumulado desde el nodo inicial hasta n.",
+          a: "g(n) representa el coste acumulado desde el nodo inicial hasta n.",
+          b: "Se usa normalmente f(n) = g(n) + h(n).",
           c: "h(n) representa una estimación del coste desde n hasta la meta.",
           d: "A* ignora los costes reales de las acciones."
         },
@@ -141,12 +141,12 @@ const exams = [
         topic: "Escalada / Hill-Climbing",
         statement: "Sobre el algoritmo de escalada, marque las correctas:",
         options: {
-          a: "Selecciona sucesores en función de la heurística.",
-          b: "Puede caer en óptimos locales.",
-          c: "Siempre garantiza encontrar la solución óptima.",
-          d: "Puede ser más rápido que otros métodos, pero menos seguro."
+          a: "Puede caer en óptimos locales.",
+          b: "Puede ser más rápido que otros métodos, pero menos seguro.",
+          c: "Selecciona sucesores en función de la heurística.",
+          d: "Siempre garantiza encontrar la solución óptima."
         },
-        correct: ["a", "b", "d"],
+        correct: ["a", "b", "c"],
         explanation: "Escalada es voraz respecto a la heurística. Puede ser rápida, pero no garantiza solución ni optimalidad."
       },
       {
@@ -154,9 +154,9 @@ const exams = [
         topic: "Probabilidad",
         statement: "Sean dos sucesos A y B. Marque las fórmulas correctas:",
         options: {
-          a: "P(A|B) = P(A ∩ B) / P(B), si P(B) > 0.",
-          b: "P(A ∩ B) = P(A|B)P(B).",
-          c: "P(A|B) = P(B|A)P(A) / P(B), si P(B) > 0.",
+          a: "P(A|B) = P(B|A)P(A) / P(B), si P(B) > 0.",
+          b: "P(A|B) = P(A ∩ B) / P(B), si P(B) > 0.",
+          c: "P(A ∩ B) = P(A|B)P(B).",
           d: "P(A|B) = P(A) siempre."
         },
         correct: ["a", "b", "c"],
@@ -167,12 +167,12 @@ const exams = [
         topic: "Incertidumbre",
         statement: "Marque las afirmaciones correctas:",
         options: {
-          a: "La lógica clásica trabaja con valores verdadero/falso.",
-          b: "La probabilidad permite representar incertidumbre sobre si algo ocurre.",
-          c: "La lógica borrosa representa grados de pertenencia a conceptos vagos.",
-          d: "Probabilidad y lógica borrosa significan exactamente lo mismo."
+          a: "Probabilidad y lógica borrosa significan exactamente lo mismo.",
+          b: "La lógica clásica trabaja con valores verdadero/falso.",
+          c: "La probabilidad permite representar incertidumbre sobre si algo ocurre.",
+          d: "La lógica borrosa representa grados de pertenencia a conceptos vagos."
         },
-        correct: ["a", "b", "c"],
+        correct: ["b", "c", "d"],
         explanation: "Probabilidad mide incertidumbre sobre eventos; lógica borrosa mide grado de pertenencia o verdad de conceptos vagos."
       },
       {
@@ -181,12 +181,12 @@ const exams = [
         statement: "En una red bayesiana:",
         figure: { type: "custom", kind: "bayesian-chain" },
         options: {
-          a: "Los nodos representan variables aleatorias.",
+          a: "Todos los nodos deben depender directamente de todos los demás.",
           b: "Los arcos representan dependencias directas.",
-          c: "Cada nodo tiene asociada una tabla de probabilidad, condicionada por sus padres si los tiene.",
-          d: "Todos los nodos deben depender directamente de todos los demás."
+          c: "Los nodos representan variables aleatorias.",
+          d: "Cada nodo tiene asociada una tabla de probabilidad, condicionada por sus padres si los tiene."
         },
-        correct: ["a", "b", "c"],
+        correct: ["b", "c", "d"],
         explanation: "La gracia de una red bayesiana es representar solo dependencias relevantes, no conectar todo con todo."
       },
       {
@@ -194,8 +194,8 @@ const exams = [
         topic: "Inferencia en redes bayesianas",
         statement: "Cuando se realiza inferencia en una red bayesiana, normalmente:",
         options: {
-          a: "Se calcula una probabilidad de consulta dada cierta evidencia.",
-          b: "Las variables no observadas pueden tratarse como variables ocultas y sumarse.",
+          a: "Las variables no observadas pueden tratarse como variables ocultas y sumarse.",
+          b: "Se calcula una probabilidad de consulta dada cierta evidencia.",
           c: "Puede utilizarse un factor de normalización α.",
           d: "No es necesario conocer ninguna probabilidad condicional."
         },
@@ -207,8 +207,8 @@ const exams = [
         topic: "Markov y HMM",
         statement: "Marque las afirmaciones correctas:",
         options: {
-          a: "Una cadena de Markov representa una secuencia de estados a lo largo del tiempo.",
-          b: "La propiedad de Markov indica que el futuro es independiente del pasado dado el presente.",
+          a: "La propiedad de Markov indica que el futuro es independiente del pasado dado el presente.",
+          b: "Una cadena de Markov representa una secuencia de estados a lo largo del tiempo.",
           c: "Un HMM incluye estados ocultos y variables de observación/evidencia.",
           d: "En un HMM no existen probabilidades de emisión."
         },
@@ -222,8 +222,8 @@ const exams = [
         options: {
           a: "Un conjunto de estados S.",
           b: "Un conjunto de acciones A.",
-          c: "Probabilidades de transición.",
-          d: "Costes o recompensas asociadas a acciones/estados."
+          c: "Costes o recompensas asociadas a acciones/estados.",
+          d: "Probabilidades de transición."
         },
         correct: ["a", "b", "c", "d"],
         explanation: "Un MDP necesita estados, acciones, modelo de transición y función de coste/recompensa."
@@ -235,8 +235,8 @@ const exams = [
         options: {
           a: "Una política indica qué acción tomar en cada estado.",
           b: "La política óptima minimiza el coste esperado o maximiza la recompensa esperada.",
-          c: "Las ecuaciones de Bellman permiten calcular valores de los estados.",
-          d: "El estado meta suele tener valor 0 si trabajamos con costes."
+          c: "El estado meta suele tener valor 0 si trabajamos con costes.",
+          d: "Las ecuaciones de Bellman permiten calcular valores de los estados."
         },
         correct: ["a", "b", "c", "d"],
         explanation: "La política mapea estados a acciones. Bellman estima el valor esperado; con costes, una meta absorbente suele valer 0."
@@ -247,10 +247,10 @@ const exams = [
         statement: "Sobre lógica borrosa, marque las correctas:",
         figure: { type: "custom", kind: "fuzzy-humidity" },
         options: {
-          a: "Los valores de pertenencia están en el intervalo [0,1].",
-          b: "La borrosificación transforma entradas nítidas en grados de pertenencia.",
-          c: "En inferencia max-min, una conjunción AND suele calcularse con el mínimo.",
-          d: "La defuzzificación transforma una salida borrosa en un valor nítido."
+          a: "La borrosificación transforma entradas nítidas en grados de pertenencia.",
+          b: "Los valores de pertenencia están en el intervalo [0,1].",
+          c: "La defuzzificación transforma una salida borrosa en un valor nítido.",
+          d: "En inferencia max-min, una conjunción AND suele calcularse con el mínimo."
         },
         correct: ["a", "b", "c", "d"],
         explanation: "Son las fases y operadores básicos de Mamdani: borrosificar, aplicar reglas, agregar y deborrosificar."
@@ -260,10 +260,10 @@ const exams = [
         topic: "ML, bioinspiradas y robótica",
         statement: "Marque las afirmaciones correctas:",
         options: {
-          a: "El aprendizaje supervisado usa datos etiquetados.",
+          a: "En robótica, los sensores captan información del entorno y los actuadores ejecutan acciones.",
           b: "En una red neuronal, el aprendizaje implica ajustar pesos.",
-          c: "En algoritmos genéticos aparecen selección, cruce y mutación.",
-          d: "En robótica, los sensores captan información del entorno y los actuadores ejecutan acciones."
+          c: "El aprendizaje supervisado usa datos etiquetados.",
+          d: "En algoritmos genéticos aparecen selección, cruce y mutación."
         },
         correct: ["a", "b", "c", "d"],
         explanation: "Las cuatro afirmaciones resumen bloques finales del temario: ML, redes neuronales, algoritmos genéticos y robótica."
@@ -280,12 +280,12 @@ const exams = [
         topic: "Reglas de producción",
         statement: "En el problema clásico del lobo, la oveja y la col, una regla correcta para mover la oveja de X a Y debe incluir:",
         options: {
-          a: "Que la barca esté en X.",
-          b: "Que la oveja esté en X.",
-          c: "Que exista la relación opposite(X,Y).",
-          d: "Que se añada la oveja en Y sin eliminarla de X."
+          a: "Que exista la relación opposite(X,Y).",
+          b: "Que se añada la oveja en Y sin eliminarla de X.",
+          c: "Que la oveja esté en X.",
+          d: "Que la barca esté en X."
         },
-        correct: ["a", "b", "c"],
+        correct: ["a", "c", "d"],
         explanation: "Hay que comprobar que barca y oveja están en el origen y que Y es la orilla opuesta. Si no se elimina sheep(X), la oveja aparecería en dos lugares."
       },
       {
@@ -293,12 +293,12 @@ const exams = [
         topic: "Reglas y hechos estáticos",
         statement: "En una representación con predicados como opposite(left,right), marque las correctas:",
         options: {
-          a: "opposite puede tratarse como un hecho estático del dominio.",
-          b: "Una regla de movimiento no debería modificar opposite.",
-          c: "opposite describe una relación fija entre localizaciones.",
-          d: "opposite debe eliminarse cada vez que se mueve la barca."
+          a: "opposite describe una relación fija entre localizaciones.",
+          b: "opposite debe eliminarse cada vez que se mueve la barca.",
+          c: "opposite puede tratarse como un hecho estático del dominio.",
+          d: "Una regla de movimiento no debería modificar opposite."
         },
-        correct: ["a", "b", "c"],
+        correct: ["a", "c", "d"],
         explanation: "Los hechos estáticos describen el mapa o relaciones fijas. No cambian por la acción; lo que cambia es dónde están los objetos."
       },
       {
@@ -306,12 +306,12 @@ const exams = [
         topic: "ASSERT/RETRACT",
         statement: "Si una regla tiene como consecuente '+c(manuel), -a(manuel)', significa que:",
         options: {
-          a: "Se añade c(manuel) a la BH.",
-          b: "Se elimina a(manuel) de la BH.",
-          c: "Se añade a(manuel) por refracción.",
+          a: "Se elimina a(manuel) de la BH.",
+          b: "Se añade a(manuel) por refracción.",
+          c: "Se añade c(manuel) a la BH.",
           d: "La regla modifica la memoria de trabajo."
         },
-        correct: ["a", "b", "d"],
+        correct: ["a", "c", "d"],
         explanation: "+ es ASSERT y - es RETRACT. Esto altera la BH y puede cambiar qué reglas se activan en el siguiente ciclo."
       },
       {
@@ -319,12 +319,12 @@ const exams = [
         topic: "Agenda y conflicto",
         statement: "Si varias instancias de regla son aplicables en un ciclo, el sistema debe:",
         options: {
-          a: "Construir el conjunto conflicto o agenda.",
-          b: "Elegir una mediante la estrategia de resolución de conflictos.",
-          c: "Ejecutarlas todas obligatoriamente en paralelo.",
-          d: "Actualizar la BH tras ejecutar la regla seleccionada."
+          a: "Actualizar la BH tras ejecutar la regla seleccionada.",
+          b: "Construir el conjunto conflicto o agenda.",
+          c: "Elegir una mediante la estrategia de resolución de conflictos.",
+          d: "Ejecutarlas todas obligatoriamente en paralelo."
         },
-        correct: ["a", "b", "d"],
+        correct: ["a", "b", "c"],
         explanation: "El modelo de ejecución visto en clase aplica una regla por ciclo. Después se actualiza la BH y se recalcula o actualiza la agenda."
       },
       {
@@ -332,12 +332,12 @@ const exams = [
         topic: "FIFO/LIFO",
         statement: "En la estrategia 'más antigua' aplicada a una agenda de reglas, se selecciona:",
         options: {
-          a: "La primera instancia que entró en la agenda.",
+          a: "La última instancia generada.",
           b: "Una estrategia equivalente a FIFO.",
-          c: "La última instancia generada.",
+          c: "La primera instancia que entró en la agenda.",
           d: "Una estrategia equivalente a LIFO."
         },
-        correct: ["a", "b"],
+        correct: ["b", "c"],
         explanation: "Más antigua = FIFO. Más nueva = LIFO. Confundirlas cambia todo el orden de ejecución."
       },
       {
@@ -345,12 +345,12 @@ const exams = [
         topic: "Representación de estados",
         statement: "Al representar un problema de búsqueda, un estado debe incluir:",
         options: {
-          a: "Toda la información necesaria para distinguirlo de otros estados relevantes.",
-          b: "Solo una letra, aunque existan cargas, posiciones y objetos distintos.",
-          c: "La posición del agente si esa posición afecta a las acciones.",
-          d: "El estado de objetos que puedan cambiar y afectar al problema."
+          a: "La posición del agente si esa posición afecta a las acciones.",
+          b: "El estado de objetos que puedan cambiar y afectar al problema.",
+          c: "Solo una letra, aunque existan cargas, posiciones y objetos distintos.",
+          d: "Toda la información necesaria para distinguirlo de otros estados relevantes."
         },
-        correct: ["a", "c", "d"],
+        correct: ["a", "b", "d"],
         explanation: "Tus ejercicios insisten en no representar dos situaciones distintas igual. Hay que incluir todo lo que los operadores pueden usar."
       },
       {
@@ -358,12 +358,12 @@ const exams = [
         topic: "Pacman y espacio de estados",
         statement: "Si Pacman solo debe llegar de una posición inicial a una final, y no importan comida ni fantasmas, el estado puede representarse con:",
         options: {
-          a: "La posición actual de Pacman.",
-          b: "Todas las bolas restantes obligatoriamente.",
-          c: "La posición final como criterio de meta.",
-          d: "El conjunto de operadores N, S, E, O si son movimientos posibles."
+          a: "Todas las bolas restantes obligatoriamente.",
+          b: "El conjunto de operadores N, S, E, O si son movimientos posibles.",
+          c: "La posición actual de Pacman.",
+          d: "La posición final como criterio de meta."
         },
-        correct: ["a", "c", "d"],
+        correct: ["b", "c", "d"],
         explanation: "Si el objetivo solo es llegar a una celda, basta con la posición. Las bolas se añaden al estado si el objetivo es comerlas."
       },
       {
@@ -371,12 +371,12 @@ const exams = [
         topic: "Pacman con comida",
         statement: "Si Pacman debe comer todas las bolas, entonces el estado debe incluir:",
         options: {
-          a: "La posición de Pacman.",
-          b: "Si queda o no comida en cada posición donde inicialmente podía haberla.",
-          c: "Solo el número total de pasos dados, siempre.",
-          d: "Estados finales donde no queda ninguna bola."
+          a: "Si queda o no comida en cada posición donde inicialmente podía haberla.",
+          b: "Solo el número total de pasos dados, siempre.",
+          c: "Estados finales donde no queda ninguna bola.",
+          d: "La posición de Pacman."
         },
-        correct: ["a", "b", "d"],
+        correct: ["a", "c", "d"],
         explanation: "Para saber si se ha alcanzado la meta hay que saber qué bolas quedan. El número de pasos no caracteriza por sí solo el mundo."
       },
       {
@@ -384,12 +384,12 @@ const exams = [
         topic: "Búsqueda en amplitud",
         statement: "En una búsqueda en amplitud con control de repetidos como en los ejercicios:",
         options: {
-          a: "No se generan nodos para estados ya generados antes.",
-          b: "Se expande por niveles.",
-          c: "La lista abierta funciona como cola.",
-          d: "Siempre se usa una heurística para ordenar nodos."
+          a: "Se expande por niveles.",
+          b: "Siempre se usa una heurística para ordenar nodos.",
+          c: "No se generan nodos para estados ya generados antes.",
+          d: "La lista abierta funciona como cola."
         },
-        correct: ["a", "b", "c"],
+        correct: ["a", "c", "d"],
         explanation: "Amplitud es no informada. El orden viene por profundidad y cola FIFO, no por heurística."
       },
       {
@@ -397,12 +397,12 @@ const exams = [
         topic: "Búsqueda en profundidad",
         statement: "En profundidad, según la convención de ejercicios, para evitar ciclos se puede:",
         options: {
-          a: "No generar estados que ya estén en la rama actual.",
-          b: "Usar retroceso al llegar a una rama sin salida.",
+          a: "Usar retroceso al llegar a una rama sin salida.",
+          b: "Expandir siempre todos los nodos de menor profundidad primero.",
           c: "Eliminar siempre todos los nodos generados anteriormente del grafo original.",
-          d: "Expandir siempre todos los nodos de menor profundidad primero."
+          d: "No generar estados que ya estén en la rama actual."
         },
-        correct: ["a", "b"],
+        correct: ["a", "d"],
         explanation: "Profundidad trabaja por ramas y puede usar retroceso. No es una búsqueda por niveles."
       },
       {
@@ -411,9 +411,9 @@ const exams = [
         statement: "Sobre la comparación entre amplitud y profundidad con retroceso, marque las correctas:",
         options: {
           a: "Amplitud suele tener alta complejidad espacial porque guarda muchos nodos frontera.",
-          b: "Profundidad con retroceso suele tener complejidad espacial proporcional a la rama actual.",
+          b: "El factor de ramificación influye en el número de nodos generados.",
           c: "Amplitud y profundidad siempre expanden exactamente los mismos nodos en el mismo orden.",
-          d: "El factor de ramificación influye en el número de nodos generados."
+          d: "Profundidad con retroceso suele tener complejidad espacial proporcional a la rama actual."
         },
         correct: ["a", "b", "d"],
         explanation: "El factor de ramificación determina cuántos sucesores salen de cada nodo. Las estrategias no expanden necesariamente lo mismo."
@@ -423,12 +423,12 @@ const exams = [
         topic: "Dijkstra",
         statement: "En Dijkstra/coste uniforme, una lista abierta ordenada correctamente prioriza:",
         options: {
-          a: "Menor g(n).",
-          b: "Menor h(n).",
+          a: "Menor h(n).",
+          b: "La profundidad más baja aunque el coste sea mayor.",
           c: "Menor coste acumulado desde el origen.",
-          d: "La profundidad más baja aunque el coste sea mayor."
+          d: "Menor g(n)."
         },
-        correct: ["a", "c"],
+        correct: ["c", "d"],
         explanation: "Dijkstra no usa h. Ordena por el coste real acumulado."
       },
       {
@@ -436,12 +436,12 @@ const exams = [
         topic: "A* y sucesores",
         statement: "El orden de generación de sucesores en A* puede afectar:",
         options: {
-          a: "A la eficiencia, por desempates y orden de expansión.",
-          b: "A la completitud y optimalidad si la heurística y costes cumplen las condiciones habituales.",
-          c: "Al número concreto de nodos explorados.",
-          d: "A que f(n) deje de ser g(n)+h(n)."
+          a: "Al número concreto de nodos explorados.",
+          b: "A que f(n) deje de ser g(n)+h(n).",
+          c: "A la completitud y optimalidad si la heurística y costes cumplen las condiciones habituales.",
+          d: "A la eficiencia, por desempates y orden de expansión."
         },
-        correct: ["a", "c"],
+        correct: ["a", "d"],
         explanation: "El orden de sucesores influye en desempates y eficiencia, pero no cambia la fórmula ni debería romper optimalidad/completitud bajo condiciones adecuadas."
       },
       {
@@ -449,8 +449,8 @@ const exams = [
         topic: "Representación en predicados",
         statement: "En un problema de robot que empuja cajas, son predicados razonables:",
         options: {
-          a: "robot-en(l).",
-          b: "caja-en(c,l).",
+          a: "caja-en(c,l).",
+          b: "robot-en(l).",
           c: "adyacente(l1,l2,o).",
           d: "es-objetivo(l)."
         },
@@ -462,12 +462,12 @@ const exams = [
         topic: "Operadores de robot",
         statement: "Para un operador empujar-caja(l1,l2,l3,c,o), son precondiciones razonables:",
         options: {
-          a: "robot-en(l1).",
+          a: "Que l3 esté ocupada por otra caja.",
           b: "caja-en(c,l2).",
           c: "adyacente(l1,l2,o) y adyacente(l2,l3,o).",
-          d: "Que l3 esté ocupada por otra caja."
+          d: "robot-en(l1)."
         },
-        correct: ["a", "b", "c"],
+        correct: ["b", "c", "d"],
         explanation: "Para empujar, el robot está detrás de la caja y la casilla destino debe estar libre, no ocupada."
       },
       {
@@ -476,9 +476,9 @@ const exams = [
         statement: "Tras empujar una caja de l2 a l3 y moverse el robot de l1 a l2, los efectos deben incluir:",
         options: {
           a: "¬robot-en(l1).",
-          b: "robot-en(l2).",
+          b: "caja-en(c,l3).",
           c: "¬caja-en(c,l2).",
-          d: "caja-en(c,l3)."
+          d: "robot-en(l2)."
         },
         correct: ["a", "b", "c", "d"],
         explanation: "Un operador correcto actualiza tanto la posición del robot como la de la caja, eliminando los hechos antiguos."
@@ -488,12 +488,12 @@ const exams = [
         topic: "8-puzzle",
         statement: "En el 8-puzzle, para representar el movimiento del blanco con predicados, se necesita normalmente:",
         options: {
-          a: "Saber dónde está la casilla vacía.",
-          b: "Saber qué ficha ocupa la casilla adyacente.",
-          c: "Intercambiar el valor de la casilla vacía y la casilla adyacente.",
-          d: "Ignorar todas las posiciones del tablero."
+          a: "Saber qué ficha ocupa la casilla adyacente.",
+          b: "Ignorar todas las posiciones del tablero.",
+          c: "Saber dónde está la casilla vacía.",
+          d: "Intercambiar el valor de la casilla vacía y la casilla adyacente."
         },
-        correct: ["a", "b", "c"],
+        correct: ["a", "c", "d"],
         explanation: "Un movimiento del 8-puzzle cambia dos casillas: la vacía y la ficha movida."
       },
       {
@@ -501,12 +501,12 @@ const exams = [
         topic: "Resolución de conflicto",
         statement: "El orden de las reglas en un sistema de producción:",
         options: {
-          a: "Puede afectar a la resolución de conflictos si la estrategia depende del orden.",
+          a: "Puede cambiar la secuencia de hechos obtenidos cuando hay varias reglas aplicables.",
           b: "No afecta al proceso de matching/equiparación de condiciones con hechos.",
-          c: "Siempre hace que la primera regla sea la única aplicable.",
-          d: "Puede cambiar la secuencia de hechos obtenidos cuando hay varias reglas aplicables."
+          c: "Puede afectar a la resolución de conflictos si la estrategia depende del orden.",
+          d: "Siempre hace que la primera regla sea la única aplicable."
         },
-        correct: ["a", "b", "d"],
+        correct: ["a", "b", "c"],
         explanation: "El matching depende de condiciones y BH. El orden puede intervenir al decidir entre varias reglas aplicables."
       },
       {
@@ -514,12 +514,12 @@ const exams = [
         topic: "Tipos de encadenamiento",
         statement: "Sobre encadenamiento hacia delante y hacia atrás:",
         options: {
-          a: "Hacia delante parte de hechos y aplica reglas para derivar nuevos hechos.",
-          b: "Hacia atrás parte de una meta y busca reglas que puedan justificarla.",
-          c: "Hacia atrás nunca usa reglas.",
-          d: "Hacia delante es típico en sistemas dirigidos por datos."
+          a: "Hacia atrás nunca usa reglas.",
+          b: "Hacia delante parte de hechos y aplica reglas para derivar nuevos hechos.",
+          c: "Hacia delante es típico en sistemas dirigidos por datos.",
+          d: "Hacia atrás parte de una meta y busca reglas que puedan justificarla."
         },
-        correct: ["a", "b", "d"],
+        correct: ["b", "c", "d"],
         explanation: "Adelante es data-driven; atrás es goal-driven. Ambos usan reglas."
       },
       {
@@ -528,11 +528,11 @@ const exams = [
         statement: "El algoritmo RETE se relaciona con:",
         options: {
           a: "La etapa de equiparación o filtrado en sistemas de producción.",
-          b: "La búsqueda eficiente de reglas activables.",
+          b: "La política óptima de un MDP.",
           c: "La defuzzificación por centroide.",
-          d: "La política óptima de un MDP."
+          d: "La búsqueda eficiente de reglas activables."
         },
-        correct: ["a", "b"],
+        correct: ["a", "d"],
         explanation: "RETE es una técnica para hacer eficiente el matching entre reglas y hechos. No pertenece a lógica borrosa ni a MDP."
       }
     ]
@@ -548,8 +548,8 @@ const exams = [
         statement: "En IA, la incertidumbre probabilística se usa especialmente cuando queremos responder a preguntas del tipo:",
         options: {
           a: "¿Qué es más probable?",
-          b: "¿Qué distribución tiene una variable desconocida?",
-          c: "¿Qué hipótesis es más compatible con una evidencia?",
+          b: "¿Qué hipótesis es más compatible con una evidencia?",
+          c: "¿Qué distribución tiene una variable desconocida?",
           d: "¿Qué hecho es verdadero con certeza lógica absoluta siempre?"
         },
         correct: ["a", "b", "c"],
@@ -560,12 +560,12 @@ const exams = [
         topic: "Probabilidad",
         statement: "Una distribución de probabilidad válida debe cumplir:",
         options: {
-          a: "Todas las probabilidades están entre 0 y 1.",
-          b: "La suma de probabilidades sobre eventos exhaustivos y excluyentes es 1.",
-          c: "Puede tener probabilidades negativas si representan imposibilidad.",
+          a: "Puede tener probabilidades negativas si representan imposibilidad.",
+          b: "Todas las probabilidades están entre 0 y 1.",
+          c: "La suma de probabilidades sobre eventos exhaustivos y excluyentes es 1.",
           d: "Probabilidad 1 representa certeza dentro del modelo."
         },
-        correct: ["a", "b", "d"],
+        correct: ["b", "c", "d"],
         explanation: "Las probabilidades negativas no son válidas. 0 es imposible y 1 es cierto dentro del modelo probabilístico."
       },
       {
@@ -573,8 +573,8 @@ const exams = [
         topic: "Probabilidad condicional",
         statement: "Si P(B)>0, ¿cuáles son equivalentes o derivadas correctas?",
         options: {
-          a: "P(A|B)=P(A,B)/P(B).",
-          b: "P(A,B)=P(A|B)P(B).",
+          a: "P(A,B)=P(A|B)P(B).",
+          b: "P(A|B)=P(A,B)/P(B).",
           c: "P(A|B)=P(B|A)P(A)/P(B).",
           d: "P(A|B)=P(B|A) siempre."
         },
@@ -586,9 +586,9 @@ const exams = [
         topic: "Independencia",
         statement: "Dos sucesos A y B son independientes si:",
         options: {
-          a: "P(A,B)=P(A)P(B).",
-          b: "P(A|B)=P(A), si P(B)>0.",
-          c: "P(B|A)=P(B), si P(A)>0.",
+          a: "P(A|B)=P(A), si P(B)>0.",
+          b: "P(B|A)=P(B), si P(A)>0.",
+          c: "P(A,B)=P(A)P(B).",
           d: "P(A,B)=0 siempre."
         },
         correct: ["a", "b", "c"],
@@ -599,12 +599,12 @@ const exams = [
         topic: "Regla de la cadena",
         statement: "La regla de la cadena permite escribir P(X1,...,Xn) como:",
         options: {
-          a: "Producto de probabilidades condicionales sucesivas.",
-          b: "P(X1)P(X2|X1)P(X3|X1,X2)...",
-          c: "Suma de todas las probabilidades a priori.",
+          a: "P(X1)P(X2|X1)P(X3|X1,X2)...",
+          b: "Suma de todas las probabilidades a priori.",
+          c: "Producto de probabilidades condicionales sucesivas.",
           d: "Una forma de calcular conjuntas usando condicionales."
         },
-        correct: ["a", "b", "d"],
+        correct: ["a", "c", "d"],
         explanation: "La regla de la cadena factoriza la conjunta; no es una suma de marginales."
       },
       {
@@ -613,12 +613,12 @@ const exams = [
         statement: "Para construir una red bayesiana se necesita indicar:",
         figure: { type: "custom", kind: "bayesian-chain" },
         options: {
-          a: "Variables aleatorias y sus dominios.",
-          b: "Dependencias directas representadas por arcos.",
+          a: "Una cola FIFO de nodos abiertos.",
+          b: "Variables aleatorias y sus dominios.",
           c: "Tablas de probabilidad condicionada o a priori.",
-          d: "Una cola FIFO de nodos abiertos."
+          d: "Dependencias directas representadas por arcos."
         },
-        correct: ["a", "b", "c"],
+        correct: ["b", "c", "d"],
         explanation: "La cola FIFO pertenece a búsqueda en amplitud, no a la definición de una red bayesiana."
       },
       {
@@ -626,12 +626,12 @@ const exams = [
         topic: "Independencia condicional",
         statement: "X e Y son independientes condicionalmente dado Z si:",
         options: {
-          a: "P(X,Y|Z)=P(X|Z)P(Y|Z).",
-          b: "P(X|Y,Z)=P(X|Z).",
-          c: "Siempre existe un arco directo entre X e Y.",
-          d: "Conocer Y no aporta información adicional sobre X si ya se conoce Z."
+          a: "P(X|Y,Z)=P(X|Z).",
+          b: "P(X,Y|Z)=P(X|Z)P(Y|Z).",
+          c: "Conocer Y no aporta información adicional sobre X si ya se conoce Z.",
+          d: "Siempre existe un arco directo entre X e Y."
         },
-        correct: ["a", "b", "d"],
+        correct: ["a", "b", "c"],
         explanation: "La independencia condicional suele representarse por la ausencia de ciertos arcos, no por tener siempre arco directo."
       },
       {
@@ -640,12 +640,12 @@ const exams = [
         statement: "Si una red tiene A como padre de B y C, y B y C como padres de D, una factorización correcta es:",
         figure: { type: "custom", kind: "bayesian-convergent" },
         options: {
-          a: "P(A,B,C,D)=P(A)P(B|A)P(C|A)P(D|B,C).",
-          b: "P(A,B,C,D)=P(D)P(C|D)P(B|D)P(A|B,C).",
-          c: "P(A,B,C,D)=P(A)P(B)P(C)P(D) siempre.",
-          d: "La factorización se obtiene multiplicando cada variable condicionada por sus padres."
+          a: "La factorización se obtiene multiplicando cada variable condicionada por sus padres.",
+          b: "P(A,B,C,D)=P(A)P(B|A)P(C|A)P(D|B,C).",
+          c: "P(A,B,C,D)=P(D)P(C|D)P(B|D)P(A|B,C).",
+          d: "P(A,B,C,D)=P(A)P(B)P(C)P(D) siempre."
         },
-        correct: ["a", "d"],
+        correct: ["a", "b"],
         explanation: "En una RB cada nodo se condiciona solo a sus padres. No se asume independencia total salvo que la estructura lo indique."
       },
       {
@@ -653,10 +653,10 @@ const exams = [
         topic: "Inferencia RB",
         statement: "Si se pide P(Consulta | Evidencia) en una red bayesiana, las variables no observadas que no son consulta ni evidencia:",
         options: {
-          a: "Se tratan como variables ocultas.",
-          b: "Se pueden eliminar sumando sobre sus valores.",
+          a: "Pueden formar parte del cálculo de normalización.",
+          b: "Se tratan como variables ocultas.",
           c: "Se ignoran sin más, aunque afecten a la probabilidad.",
-          d: "Pueden formar parte del cálculo de normalización."
+          d: "Se pueden eliminar sumando sobre sus valores."
         },
         correct: ["a", "b", "d"],
         explanation: "Las ocultas no se ignoran: se marginalizan sumando. Después se normaliza para que la distribución sume 1."
@@ -666,12 +666,12 @@ const exams = [
         topic: "Naive Bayes",
         statement: "En un clasificador Naive Bayes, normalmente se asume que:",
         options: {
-          a: "Los atributos son condicionalmente independientes dada la clase.",
-          b: "La clase actúa como padre común de los atributos.",
-          c: "Nunca se usa el teorema de Bayes.",
-          d: "Se calcula la clase más probable dada la evidencia observada."
+          a: "Se calcula la clase más probable dada la evidencia observada.",
+          b: "Nunca se usa el teorema de Bayes.",
+          c: "Los atributos son condicionalmente independientes dada la clase.",
+          d: "La clase actúa como padre común de los atributos."
         },
-        correct: ["a", "b", "d"],
+        correct: ["a", "c", "d"],
         explanation: "Naive Bayes usa Bayes y una suposición fuerte: independencia condicional de atributos dada la clase."
       },
       {
@@ -680,8 +680,8 @@ const exams = [
         statement: "En una estructura divergente A → B y A → C, marque las correctas:",
         figure: { type: "custom", kind: "bayesian-chain" },
         options: {
-          a: "B y C pueden ser dependientes si no se conoce A.",
-          b: "B y C son independientes condicionados a A.",
+          a: "B y C son independientes condicionados a A.",
+          b: "B y C pueden ser dependientes si no se conoce A.",
           c: "A actúa como causa común o variable explicativa.",
           d: "B y C son siempre independientes aunque A sea desconocida."
         },
@@ -694,12 +694,12 @@ const exams = [
         statement: "En una estructura convergente A → C ← B, marque las correctas:",
         figure: { type: "custom", kind: "bayesian-convergent" },
         options: {
-          a: "A y B pueden ser independientes a priori.",
-          b: "Observar C puede hacer dependientes a A y B.",
+          a: "Observar C puede hacer dependientes a A y B.",
+          b: "A y B siempre deben tener arco directo entre sí.",
           c: "C es un efecto común.",
-          d: "A y B siempre deben tener arco directo entre sí."
+          d: "A y B pueden ser independientes a priori."
         },
-        correct: ["a", "b", "c"],
+        correct: ["a", "c", "d"],
         explanation: "El collider o estructura convergente se abre al observar el efecto o descendientes del efecto."
       },
       {
@@ -707,9 +707,9 @@ const exams = [
         topic: "Cadenas de Markov",
         statement: "Una cadena de Markov de primer orden estacionaria se define mediante:",
         options: {
-          a: "P(X0).",
-          b: "P(Xt | Xt-1).",
-          c: "Una transición que se mantiene igual para todos los pasos temporales.",
+          a: "Una transición que se mantiene igual para todos los pasos temporales.",
+          b: "P(X0).",
+          c: "P(Xt | Xt-1).",
           d: "P(Xt | X0,...,Xt-2) obligatoriamente completa."
         },
         correct: ["a", "b", "c"],
@@ -720,12 +720,12 @@ const exams = [
         topic: "Propiedad de Markov",
         statement: "La propiedad de Markov afirma que:",
         options: {
-          a: "El futuro es independiente del pasado dado el presente.",
-          b: "P(Xt+1|Xt,...,X0)=P(Xt+1|Xt).",
-          c: "La secuencia no puede tener incertidumbre.",
-          d: "El estado actual resume la información relevante para predecir el siguiente."
+          a: "La secuencia no puede tener incertidumbre.",
+          b: "El estado actual resume la información relevante para predecir el siguiente.",
+          c: "P(Xt+1|Xt,...,X0)=P(Xt+1|Xt).",
+          d: "El futuro es independiente del pasado dado el presente."
         },
-        correct: ["a", "b", "d"],
+        correct: ["b", "c", "d"],
         explanation: "La cadena sigue siendo probabilística; la propiedad solo simplifica las dependencias temporales."
       },
       {
@@ -734,12 +734,12 @@ const exams = [
         statement: "Un Modelo Oculto de Markov añade a una cadena de Markov:",
         figure: { type: "custom", kind: "hmm-diagram" },
         options: {
-          a: "Estados ocultos o latentes.",
-          b: "Variables de evidencia/observación.",
+          a: "Variables de evidencia/observación.",
+          b: "Acciones y recompensas obligatoriamente.",
           c: "Probabilidades de emisión P(Ei|Xi).",
-          d: "Acciones y recompensas obligatoriamente."
+          d: "Estados ocultos o latentes."
         },
-        correct: ["a", "b", "c"],
+        correct: ["a", "c", "d"],
         explanation: "Acciones y recompensas son propias de MDP. HMM trata observaciones generadas por estados ocultos."
       },
       {
@@ -747,10 +747,10 @@ const exams = [
         topic: "HMM aplicado",
         statement: "Para modelar si un alumno entiende una asignatura mediante un HMM, son componentes razonables:",
         options: {
-          a: "Estado oculto: nivel de comprensión.",
-          b: "Evidencia: resultado de exámenes o prácticas.",
-          c: "Transición: cómo cambia el nivel de comprensión entre momentos.",
-          d: "Emisión: probabilidad de observar cierto resultado dado el nivel."
+          a: "Emisión: probabilidad de observar cierto resultado dado el nivel.",
+          b: "Estado oculto: nivel de comprensión.",
+          c: "Evidencia: resultado de exámenes o prácticas.",
+          d: "Transición: cómo cambia el nivel de comprensión entre momentos."
         },
         correct: ["a", "b", "c", "d"],
         explanation: "Es el patrón típico de HMM: estado latente temporal más observaciones dependientes del estado."
@@ -760,8 +760,8 @@ const exams = [
         topic: "HMM vs MDP",
         statement: "La diferencia clave entre HMM y MDP es:",
         options: {
-          a: "HMM modela estados ocultos y observaciones.",
-          b: "MDP incorpora acciones y recompensa/coste para decidir.",
+          a: "MDP incorpora acciones y recompensa/coste para decidir.",
+          b: "HMM modela estados ocultos y observaciones.",
           c: "HMM se usa para inferir estados; MDP para elegir acciones.",
           d: "MDP no tiene estados."
         },
@@ -773,12 +773,12 @@ const exams = [
         topic: "POMDP",
         statement: "Un POMDP se caracteriza por:",
         options: {
-          a: "Combinar decisión secuencial con observación parcial.",
+          a: "Manejar incertidumbre sobre el estado real.",
           b: "Incluir acciones como en MDP.",
-          c: "Manejar incertidumbre sobre el estado real.",
-          d: "Ser igual que una búsqueda en amplitud sin costes."
+          c: "Ser igual que una búsqueda en amplitud sin costes.",
+          d: "Combinar decisión secuencial con observación parcial."
         },
-        correct: ["a", "b", "c"],
+        correct: ["a", "b", "d"],
         explanation: "POMDP es más complejo que MDP porque el agente no observa completamente el estado."
       },
       {
@@ -786,12 +786,12 @@ const exams = [
         topic: "Aplicaciones probabilísticas",
         statement: "Son aplicaciones típicas del razonamiento probabilístico en IA:",
         options: {
-          a: "Clasificación.",
+          a: "Toma de decisiones bajo incertidumbre.",
           b: "Predicción de secuencias.",
-          c: "Toma de decisiones bajo incertidumbre.",
-          d: "Sustituir siempre toda lógica clásica por probabilidad."
+          c: "Sustituir siempre toda lógica clásica por probabilidad.",
+          d: "Clasificación."
         },
-        correct: ["a", "b", "c"],
+        correct: ["a", "b", "d"],
         explanation: "No siempre se sustituye la lógica clásica; depende del tipo de incertidumbre y tarea."
       },
       {
@@ -819,12 +819,12 @@ const exams = [
         topic: "Heurística",
         statement: "Una función heurística h(n) representa:",
         options: {
-          a: "Conocimiento parcial del dominio.",
-          b: "Una estimación del coste o distancia hasta la meta.",
-          c: "Siempre el coste real exacto.",
-          d: "Una ayuda para ordenar la búsqueda informada."
+          a: "Siempre el coste real exacto.",
+          b: "Conocimiento parcial del dominio.",
+          c: "Una ayuda para ordenar la búsqueda informada.",
+          d: "Una estimación del coste o distancia hasta la meta."
         },
-        correct: ["a", "b", "d"],
+        correct: ["b", "c", "d"],
         explanation: "La heurística suele ser una estimación útil, no necesariamente exacta."
       },
       {
@@ -832,10 +832,10 @@ const exams = [
         topic: "Problemas relajados",
         statement: "Las heurísticas del 8-puzzle como casillas mal colocadas o Manhattan pueden obtenerse a partir de:",
         options: {
-          a: "Problemas relajados.",
+          a: "Resolver un problema más sencillo que da una cota inferior.",
           b: "Eliminar algunas restricciones del problema original.",
           c: "Inventar un valor aleatorio para cada estado.",
-          d: "Resolver un problema más sencillo que da una cota inferior."
+          d: "Problemas relajados."
         },
         correct: ["a", "b", "d"],
         explanation: "Las relajaciones simplifican el problema y suelen producir heurísticas admisibles."
@@ -845,12 +845,12 @@ const exams = [
         topic: "Manhattan",
         statement: "La distancia Manhattan es apropiada cuando:",
         options: {
-          a: "El movimiento está restringido a horizontal/vertical en una cuadrícula.",
-          b: "Se calcula sumando diferencias absolutas de coordenadas.",
-          c: "Siempre sobreestima cualquier distancia real.",
-          d: "Puede ser admisible en problemas como el 8-puzzle."
+          a: "Se calcula sumando diferencias absolutas de coordenadas.",
+          b: "Puede ser admisible en problemas como el 8-puzzle.",
+          c: "El movimiento está restringido a horizontal/vertical en una cuadrícula.",
+          d: "Siempre sobreestima cualquier distancia real."
         },
-        correct: ["a", "b", "d"],
+        correct: ["a", "b", "c"],
         explanation: "Manhattan no sobreestima si los movimientos permitidos son ortogonales y no hay atajos diagonales."
       },
       {
@@ -858,8 +858,8 @@ const exams = [
         topic: "Escalada",
         statement: "En búsqueda por escalada, marque las correctas:",
         options: {
-          a: "Se elige el sucesor que mejora la evaluación local.",
-          b: "Puede detenerse en una meseta o máximo/mínimo local.",
+          a: "Puede detenerse en una meseta o máximo/mínimo local.",
+          b: "Se elige el sucesor que mejora la evaluación local.",
           c: "Puede devolver una solución subóptima.",
           d: "Siempre revisa todos los caminos posibles antes de decidir."
         },
@@ -871,10 +871,10 @@ const exams = [
         topic: "A*",
         statement: "Si h es admisible, A* normalmente garantiza optimalidad porque:",
         options: {
-          a: "h no sobreestima el coste real hasta la meta.",
-          b: "f(n)=g(n)+h(n) combina coste real y estimación.",
+          a: "No descarta caminos baratos por una estimación demasiado optimista hacia arriba.",
+          b: "h no sobreestima el coste real hasta la meta.",
           c: "Siempre expande primero el nodo alfabéticamente menor.",
-          d: "No descarta caminos baratos por una estimación demasiado optimista hacia arriba."
+          d: "f(n)=g(n)+h(n) combina coste real y estimación."
         },
         correct: ["a", "b", "d"],
         explanation: "El orden alfabético puede ser desempate, pero no la razón de optimalidad."
@@ -885,11 +885,11 @@ const exams = [
         statement: "Si se usa una heurística con peso w>1 en A*, marque las afirmaciones prudentes:",
         options: {
           a: "Puede mejorar eficiencia en algunos casos.",
-          b: "Puede perder la garantía de optimalidad si la heurística queda efectivamente sobreponderada.",
-          c: "Siempre mantiene exactamente las mismas propiedades que A* clásico.",
-          d: "Puede favorecer más la estimación h que el coste real g."
+          b: "Siempre mantiene exactamente las mismas propiedades que A* clásico.",
+          c: "Puede favorecer más la estimación h que el coste real g.",
+          d: "Puede perder la garantía de optimalidad si la heurística queda efectivamente sobreponderada."
         },
-        correct: ["a", "b", "d"],
+        correct: ["a", "c", "d"],
         explanation: "Ponderar h puede hacer el algoritmo más voraz. Esto puede ahorrar nodos, pero arriesga optimalidad."
       },
       {
@@ -897,12 +897,12 @@ const exams = [
         topic: "MDP",
         statement: "En un MDP, una política π es:",
         options: {
-          a: "Un mapeo de estados a acciones.",
-          b: "La tabla de probabilidades a priori de un HMM.",
-          c: "Una regla que indica qué hacer en cada estado.",
-          d: "Un elemento necesario para decidir en entornos estocásticos."
+          a: "La tabla de probabilidades a priori de un HMM.",
+          b: "Un elemento necesario para decidir en entornos estocásticos.",
+          c: "Un mapeo de estados a acciones.",
+          d: "Una regla que indica qué hacer en cada estado."
         },
-        correct: ["a", "c", "d"],
+        correct: ["b", "c", "d"],
         explanation: "La política decide acciones. No es la distribución inicial de un HMM."
       },
       {
@@ -910,12 +910,12 @@ const exams = [
         topic: "Bellman",
         statement: "Las ecuaciones de Bellman en MDP con costes representan:",
         options: {
-          a: "El coste esperado de llegar a la meta desde cada estado.",
-          b: "Una actualización recursiva de valores.",
+          a: "La probabilidad de emisión de una observación.",
+          b: "El coste esperado de llegar a la meta desde cada estado.",
           c: "Una forma de comparar acciones por coste esperado.",
-          d: "La probabilidad de emisión de una observación."
+          d: "Una actualización recursiva de valores."
         },
-        correct: ["a", "b", "c"],
+        correct: ["b", "c", "d"],
         explanation: "La emisión es de HMM. Bellman calcula valores y permite obtener la política óptima."
       },
       {
@@ -923,12 +923,12 @@ const exams = [
         topic: "MDP",
         statement: "Si C es estado meta absorbente y trabajamos con costes, normalmente:",
         options: {
-          a: "V(C)=0.",
-          b: "No se define una acción necesaria para seguir avanzando desde C.",
-          c: "C siempre tiene coste infinito.",
-          d: "Llegar a C termina el problema."
+          a: "Llegar a C termina el problema.",
+          b: "C siempre tiene coste infinito.",
+          c: "No se define una acción necesaria para seguir avanzando desde C.",
+          d: "V(C)=0."
         },
-        correct: ["a", "b", "d"],
+        correct: ["a", "c", "d"],
         explanation: "El estado meta no necesita más coste; por eso se suele fijar valor 0."
       },
       {
@@ -936,12 +936,12 @@ const exams = [
         topic: "MDP vs búsqueda",
         statement: "Frente a búsqueda clásica determinista, un MDP se usa cuando:",
         options: {
-          a: "Las acciones pueden tener resultados probabilísticos.",
+          a: "Una misma acción en un estado puede llevar a varios estados con distintas probabilidades.",
           b: "Queremos elegir acciones considerando coste/recompensa esperada.",
-          c: "No existen estados.",
-          d: "Una misma acción en un estado puede llevar a varios estados con distintas probabilidades."
+          c: "Las acciones pueden tener resultados probabilísticos.",
+          d: "No existen estados."
         },
-        correct: ["a", "b", "d"],
+        correct: ["a", "b", "c"],
         explanation: "Los MDP siguen teniendo estados, pero las transiciones son probabilísticas y se optimiza el valor esperado."
       },
       {
@@ -950,10 +950,10 @@ const exams = [
         statement: "Una función de pertenencia μF(x):",
         figure: { type: "custom", kind: "fuzzy-humidity" },
         options: {
-          a: "Devuelve un valor entre 0 y 1.",
+          a: "Puede tomar valores intermedios como 0.3 o 0.8.",
           b: "Indica el grado en que x pertenece al conjunto borroso F.",
           c: "Es siempre una probabilidad de ocurrencia.",
-          d: "Puede tomar valores intermedios como 0.3 o 0.8."
+          d: "Devuelve un valor entre 0 y 1."
         },
         correct: ["a", "b", "d"],
         explanation: "La pertenencia no es lo mismo que probabilidad. Un valor intermedio representa grado de pertenencia."
@@ -964,12 +964,12 @@ const exams = [
         statement: "En inferencia borrosa max-min, se suele usar:",
         figure: { type: "custom", kind: "fuzzy-and-rule" },
         options: {
-          a: "AND como mínimo.",
+          a: "XOR como único operador obligatorio.",
           b: "OR como máximo.",
           c: "NOT como complemento 1-μ.",
-          d: "XOR como único operador obligatorio."
+          d: "AND como mínimo."
         },
-        correct: ["a", "b", "c"],
+        correct: ["b", "c", "d"],
         explanation: "Max-min usa mínimo y máximo. El complemento habitual es 1 menos el grado."
       },
       {
@@ -978,9 +978,9 @@ const exams = [
         statement: "En un sistema borroso tipo Mamdani aparecen estas fases:",
         options: {
           a: "Borrosificación.",
-          b: "Evaluación/inferencia de reglas.",
-          c: "Agregación de salidas.",
-          d: "Deborrosificación."
+          b: "Agregación de salidas.",
+          c: "Deborrosificación.",
+          d: "Evaluación/inferencia de reglas."
         },
         correct: ["a", "b", "c", "d"],
         explanation: "Son las fases completas para pasar de entradas nítidas a una salida nítida."
@@ -991,12 +991,12 @@ const exams = [
         statement: "Si una regla dice 'SI humedad es seca AND luz es soleada ENTONCES riego alto', su grado de activación con max-min se obtiene mediante:",
         figure: { type: "custom", kind: "fuzzy-and-rule" },
         options: {
-          a: "El mínimo de los grados de humedad seca y luz soleada.",
-          b: "El máximo de los grados de humedad seca y luz soleada.",
-          c: "El producto siempre, sin alternativa.",
-          d: "El valor de verdad del antecedente borroso."
+          a: "El máximo de los grados de humedad seca y luz soleada.",
+          b: "El valor de verdad del antecedente borroso.",
+          c: "El mínimo de los grados de humedad seca y luz soleada.",
+          d: "El producto siempre, sin alternativa."
         },
-        correct: ["a", "d"],
+        correct: ["b", "c"],
         explanation: "Para AND en max-min se toma el mínimo. Ese valor recorta o escala la salida de la regla."
       },
       {
@@ -1004,12 +1004,12 @@ const exams = [
         topic: "Robótica",
         statement: "En un robot, los sensores y actuadores cumplen que:",
         options: {
-          a: "Los sensores captan información del entorno o del propio robot.",
-          b: "Los actuadores ejecutan acciones físicas como movimiento.",
-          c: "Los sensores son motores.",
-          d: "Los actuadores pueden ser controlados por la unidad de control."
+          a: "Los actuadores ejecutan acciones físicas como movimiento.",
+          b: "Los sensores son motores.",
+          c: "Los actuadores pueden ser controlados por la unidad de control.",
+          d: "Los sensores captan información del entorno o del propio robot."
         },
-        correct: ["a", "b", "d"],
+        correct: ["a", "c", "d"],
         explanation: "Sensores perciben; actuadores actúan. No hay que confundir entrada con salida."
       },
       {
@@ -1017,12 +1017,12 @@ const exams = [
         topic: "Arquitectura robótica",
         statement: "Una arquitectura reactiva se caracteriza por:",
         options: {
-          a: "Responder rápido a estímulos del entorno.",
-          b: "No depender necesariamente de planificación global compleja.",
-          c: "Ser útil para comportamientos inmediatos.",
-          d: "Garantizar siempre ruta óptima global."
+          a: "Ser útil para comportamientos inmediatos.",
+          b: "Garantizar siempre ruta óptima global.",
+          c: "No depender necesariamente de planificación global compleja.",
+          d: "Responder rápido a estímulos del entorno."
         },
-        correct: ["a", "b", "c"],
+        correct: ["a", "c", "d"],
         explanation: "Lo reactivo prioriza respuesta rápida. Para ruta óptima global suelen hacer falta representación del mapa y planificación."
       },
       {
@@ -1030,12 +1030,12 @@ const exams = [
         topic: "Planificación robótica",
         statement: "Para que un robot encuentre una ruta óptima entre dos puntos suele ser necesario:",
         options: {
-          a: "Representar el mapa o espacio navegable.",
-          b: "Definir estado inicial y meta.",
-          c: "Usar un algoritmo de planificación como A* si hay costes/heurística.",
-          d: "Usar solo dos controladores reactivos sin mapa en todos los casos."
+          a: "Usar un algoritmo de planificación como A* si hay costes/heurística.",
+          b: "Usar solo dos controladores reactivos sin mapa en todos los casos.",
+          c: "Definir estado inicial y meta.",
+          d: "Representar el mapa o espacio navegable."
         },
-        correct: ["a", "b", "c"],
+        correct: ["a", "c", "d"],
         explanation: "La arquitectura reactiva puede moverse, pero optimalidad requiere planificación sobre una representación."
       },
       {
@@ -1043,12 +1043,12 @@ const exams = [
         topic: "Controladores",
         statement: "Entre técnicas para construir controladores de robots aparecen:",
         options: {
-          a: "Sistemas de producción o reglas.",
-          b: "Sistemas borrosos.",
-          c: "Sistemas erráticos como técnica formal principal.",
-          d: "Controladores neuronales o aprendidos en ciertos casos."
+          a: "Sistemas erráticos como técnica formal principal.",
+          b: "Controladores neuronales o aprendidos en ciertos casos.",
+          c: "Sistemas borrosos.",
+          d: "Sistemas de producción o reglas."
         },
-        correct: ["a", "b", "d"],
+        correct: ["b", "c", "d"],
         explanation: "Reglas, borrosa y aprendizaje pueden usarse en control. 'Errático' no es una técnica formal del temario."
       },
       {
@@ -1057,11 +1057,11 @@ const exams = [
         statement: "Para detectar por vídeo si un conductor está concentrado, distraído o dormido, una técnica adecuada sería:",
         options: {
           a: "Redes neuronales.",
-          b: "Aprendizaje automático supervisado con ejemplos etiquetados.",
-          c: "Visión artificial combinada con clasificación.",
-          d: "Un MDP necesariamente, porque siempre hay acciones y recompensas."
+          b: "Un MDP necesariamente, porque siempre hay acciones y recompensas.",
+          c: "Aprendizaje automático supervisado con ejemplos etiquetados.",
+          d: "Visión artificial combinada con clasificación."
         },
-        correct: ["a", "b", "c"],
+        correct: ["a", "c", "d"],
         explanation: "El problema descrito es de percepción/clasificación. MDP sería para elegir acciones secuenciales, no simplemente clasificar vídeo."
       },
       {
@@ -1069,10 +1069,10 @@ const exams = [
         topic: "Comparación de técnicas",
         statement: "Relacione correctamente técnicas y uso típico:",
         options: {
-          a: "A*: planificación de caminos con costes y heurística.",
-          b: "Lógica borrosa: control con conceptos vagos.",
-          c: "HMM: inferir estados ocultos a partir de observaciones temporales.",
-          d: "MDP: elegir acciones bajo transición probabilística."
+          a: "MDP: elegir acciones bajo transición probabilística.",
+          b: "HMM: inferir estados ocultos a partir de observaciones temporales.",
+          c: "A*: planificación de caminos con costes y heurística.",
+          d: "Lógica borrosa: control con conceptos vagos."
         },
         correct: ["a", "b", "c", "d"],
         explanation: "Las cuatro relaciones son correctas y resumen los bloques centrales del final."
@@ -1089,12 +1089,12 @@ const exams = [
         topic: "Aprendizaje automático",
         statement: "Según la definición de aprendizaje automático vista en clase, un programa aprende si:",
         options: {
-          a: "Mejora automáticamente con la experiencia.",
-          b: "La mejora se mide respecto a alguna medida de rendimiento.",
-          c: "Nunca necesita datos.",
+          a: "Nunca necesita datos.",
+          b: "Mejora automáticamente con la experiencia.",
+          c: "La mejora se mide respecto a alguna medida de rendimiento.",
           d: "Puede aprender conocimiento nuevo o mejorar comportamiento."
         },
-        correct: ["a", "b", "d"],
+        correct: ["b", "c", "d"],
         explanation: "ML se basa en experiencia/datos y medida de rendimiento. No significa funcionar sin datos."
       },
       {
@@ -1103,9 +1103,9 @@ const exams = [
         statement: "Entre las motivaciones de las técnicas de aprendizaje automático están:",
         options: {
           a: "La explosión de datos en la sociedad de la información.",
-          b: "La personalización y adaptación al individuo.",
-          c: "La comprensibilidad de la salida.",
-          d: "Que el desarrollo manual de software puede ser un cuello de botella."
+          b: "Que el desarrollo manual de software puede ser un cuello de botella.",
+          c: "La personalización y adaptación al individuo.",
+          d: "La comprensibilidad de la salida."
         },
         correct: ["a", "b", "c", "d"],
         explanation: "Todas aparecen como motivaciones: datos, personalización, comprensión y dificultad de programar manualmente todas las reglas."
@@ -1115,12 +1115,12 @@ const exams = [
         topic: "Tipos de aprendizaje",
         statement: "El aprendizaje supervisado se caracteriza por:",
         options: {
-          a: "Usar ejemplos etiquetados.",
+          a: "Ser útil en clasificación.",
           b: "Aprender una función que relacione entradas con salidas/clases.",
-          c: "No usar nunca clases o etiquetas.",
-          d: "Ser útil en clasificación."
+          c: "Usar ejemplos etiquetados.",
+          d: "No usar nunca clases o etiquetas."
         },
-        correct: ["a", "b", "d"],
+        correct: ["a", "b", "c"],
         explanation: "Supervisado implica etiquetas. Sin etiquetas hablamos típicamente de no supervisado."
       },
       {
@@ -1128,12 +1128,12 @@ const exams = [
         topic: "Aprendizaje no supervisado",
         statement: "El aprendizaje no supervisado:",
         options: {
-          a: "Busca patrones sin clases etiquetadas.",
-          b: "Puede incluir clustering.",
-          c: "Agrupa datos por similitud.",
-          d: "Siempre necesita una etiqueta correcta por instancia."
+          a: "Siempre necesita una etiqueta correcta por instancia.",
+          b: "Busca patrones sin clases etiquetadas.",
+          c: "Puede incluir clustering.",
+          d: "Agrupa datos por similitud."
         },
-        correct: ["a", "b", "c"],
+        correct: ["b", "c", "d"],
         explanation: "Clustering es el ejemplo típico de no supervisado; no hay etiqueta objetivo."
       },
       {
@@ -1141,12 +1141,12 @@ const exams = [
         topic: "Conceptos ML",
         statement: "En aprendizaje automático, marque las correctas:",
         options: {
-          a: "Un atributo es una característica de una instancia.",
-          b: "Una instancia es un ejemplo o caso del conjunto de datos.",
-          c: "Una clase puede ser la etiqueta que se quiere predecir.",
-          d: "Un atributo y una clase significan siempre exactamente lo mismo."
+          a: "Una instancia es un ejemplo o caso del conjunto de datos.",
+          b: "Un atributo es una característica de una instancia.",
+          c: "Un atributo y una clase significan siempre exactamente lo mismo.",
+          d: "Una clase puede ser la etiqueta que se quiere predecir."
         },
-        correct: ["a", "b", "c"],
+        correct: ["a", "b", "d"],
         explanation: "Atributos describen; clase suele ser el valor objetivo en clasificación."
       },
       {
@@ -1154,9 +1154,9 @@ const exams = [
         topic: "Naive Bayes",
         statement: "Sobre Naive Bayes en aprendizaje automático, marque las correctas:",
         options: {
-          a: "Utiliza el teorema de Bayes.",
-          b: "Simplifica el cálculo suponiendo independencia condicional de atributos dada la clase.",
-          c: "Puede usarse para clasificación.",
+          a: "Simplifica el cálculo suponiendo independencia condicional de atributos dada la clase.",
+          b: "Puede usarse para clasificación.",
+          c: "Utiliza el teorema de Bayes.",
           d: "No usa probabilidades."
         },
         correct: ["a", "b", "c"],
@@ -1167,12 +1167,12 @@ const exams = [
         topic: "Evaluación ML",
         statement: "Para evaluar un modelo de ML correctamente:",
         options: {
-          a: "Los ejemplos de entrenamiento y test deben ser diferentes.",
-          b: "Puede usarse holdout/split.",
-          c: "Puede usarse validación cruzada k-fold.",
-          d: "Lo correcto es probar siempre con los mismos datos usados para entrenar."
+          a: "Lo correcto es probar siempre con los mismos datos usados para entrenar.",
+          b: "Puede usarse validación cruzada k-fold.",
+          c: "Puede usarse holdout/split.",
+          d: "Los ejemplos de entrenamiento y test deben ser diferentes."
         },
-        correct: ["a", "b", "c"],
+        correct: ["b", "c", "d"],
         explanation: "Probar con los datos de entrenamiento infla el rendimiento y no mide generalización."
       },
       {
@@ -1180,12 +1180,12 @@ const exams = [
         topic: "K-fold",
         statement: "En validación cruzada k-fold:",
         options: {
-          a: "Se divide el conjunto de ejemplos en k partes.",
+          a: "Solo se puede usar si k=1.",
           b: "Se entrena k veces usando k-1 partes y probando con la parte restante.",
-          c: "La tasa de error se estima promediando errores.",
-          d: "Solo se puede usar si k=1."
+          c: "Se divide el conjunto de ejemplos en k partes.",
+          d: "La tasa de error se estima promediando errores."
         },
-        correct: ["a", "b", "c"],
+        correct: ["b", "c", "d"],
         explanation: "K-fold repite el entrenamiento/prueba con distintas particiones. K=1 no es el caso general."
       },
       {
@@ -1194,11 +1194,11 @@ const exams = [
         statement: "Una red neuronal artificial se caracteriza por:",
         options: {
           a: "Unidades llamadas neuronas o nodos.",
-          b: "Conexiones con pesos.",
+          b: "No poder combinar varias capas.",
           c: "Aprendizaje mediante ajuste de pesos.",
-          d: "No poder combinar varias capas."
+          d: "Conexiones con pesos."
         },
-        correct: ["a", "b", "c"],
+        correct: ["a", "c", "d"],
         explanation: "Las redes multicapa son precisamente una extensión importante."
       },
       {
@@ -1206,12 +1206,12 @@ const exams = [
         topic: "Neurona artificial",
         statement: "En una neurona artificial típica:",
         options: {
-          a: "Se calcula una suma ponderada de entradas.",
-          b: "Puede haber un umbral o sesgo.",
-          c: "Se aplica una función de activación.",
-          d: "Los pesos nunca influyen en la salida."
+          a: "Se aplica una función de activación.",
+          b: "Los pesos nunca influyen en la salida.",
+          c: "Puede haber un umbral o sesgo.",
+          d: "Se calcula una suma ponderada de entradas."
         },
-        correct: ["a", "b", "c"],
+        correct: ["a", "c", "d"],
         explanation: "Los pesos determinan la importancia de las señales de entrada."
       },
       {
@@ -1219,12 +1219,12 @@ const exams = [
         topic: "Perceptrón multicapa",
         statement: "Sobre el perceptrón multicapa, marque las correctas:",
         options: {
-          a: "Tiene al menos una capa oculta entre entrada y salida.",
-          b: "Puede resolver problemas no lineales complejos.",
+          a: "Solo puede clasificar datos linealmente separables.",
+          b: "Tiene al menos una capa oculta entre entrada y salida.",
           c: "Utiliza ajuste de pesos según el error.",
-          d: "Solo puede clasificar datos linealmente separables."
+          d: "Puede resolver problemas no lineales complejos."
         },
-        correct: ["a", "b", "c"],
+        correct: ["b", "c", "d"],
         explanation: "El MLP supera la limitación del perceptrón simple gracias a capas ocultas y funciones no lineales."
       },
       {
@@ -1232,12 +1232,12 @@ const exams = [
         topic: "Overfitting",
         statement: "Pueden contribuir al sobreaprendizaje en redes neuronales:",
         options: {
-          a: "Demasiadas neuronas o demasiada capacidad para pocos datos.",
-          b: "Conjunto de entrenamiento muy pequeño.",
-          c: "No aplicar regularización cuando hace falta.",
-          d: "Tener exactamente un modelo que generaliza perfectamente."
+          a: "No aplicar regularización cuando hace falta.",
+          b: "Tener exactamente un modelo que generaliza perfectamente.",
+          c: "Demasiadas neuronas o demasiada capacidad para pocos datos.",
+          d: "Conjunto de entrenamiento muy pequeño."
         },
-        correct: ["a", "b", "c"],
+        correct: ["a", "c", "d"],
         explanation: "Overfitting es aprender demasiado los detalles del entrenamiento y generalizar mal."
       },
       {
@@ -1245,10 +1245,10 @@ const exams = [
         topic: "Algoritmos genéticos",
         statement: "En un algoritmo genético aparecen normalmente:",
         options: {
-          a: "Población de individuos.",
-          b: "Función de adecuación o fitness.",
-          c: "Selección de individuos.",
-          d: "Operadores de cruce y mutación."
+          a: "Función de adecuación o fitness.",
+          b: "Operadores de cruce y mutación.",
+          c: "Población de individuos.",
+          d: "Selección de individuos."
         },
         correct: ["a", "b", "c", "d"],
         explanation: "Son los componentes básicos: población, evaluación, selección y generación de nuevos individuos."
@@ -1259,8 +1259,8 @@ const exams = [
         statement: "La función de fitness mide:",
         options: {
           a: "La calidad o adecuación de un individuo como solución.",
-          b: "La capacidad de un individuo para resolver el problema.",
-          c: "Un criterio para favorecer la selección.",
+          b: "Un criterio para favorecer la selección.",
+          c: "La capacidad de un individuo para resolver el problema.",
           d: "El número fijo de capas ocultas de una red neuronal."
         },
         correct: ["a", "b", "c"],
@@ -1271,9 +1271,9 @@ const exams = [
         topic: "Cruce y mutación",
         statement: "En algoritmos genéticos:",
         options: {
-          a: "El cruce combina información de individuos padres.",
-          b: "La mutación introduce cambios aleatorios.",
-          c: "La mutación ayuda a mantener diversidad.",
+          a: "La mutación introduce cambios aleatorios.",
+          b: "La mutación ayuda a mantener diversidad.",
+          c: "El cruce combina información de individuos padres.",
           d: "La selección siempre elige únicamente al peor individuo."
         },
         correct: ["a", "b", "c"],
@@ -1284,10 +1284,10 @@ const exams = [
         topic: "Bioinspiradas",
         statement: "Redes neuronales y algoritmos genéticos se parecen en que:",
         options: {
-          a: "Se inspiran en procesos biológicos.",
-          b: "Ambos pueden mejorar su rendimiento ajustando parámetros o soluciones.",
+          a: "Ambos pueden mejorar su rendimiento ajustando parámetros o soluciones.",
+          b: "Ambos pueden utilizarse para resolver problemas complejos.",
           c: "Ambos son necesariamente aprendizaje supervisado.",
-          d: "Ambos pueden utilizarse para resolver problemas complejos."
+          d: "Se inspiran en procesos biológicos."
         },
         correct: ["a", "b", "d"],
         explanation: "Los genéticos no son necesariamente aprendizaje supervisado."
@@ -1297,10 +1297,10 @@ const exams = [
         topic: "Minería de datos",
         statement: "La minería de datos puede descubrir patrones:",
         options: {
-          a: "Predictivos.",
-          b: "Descriptivos.",
+          a: "Descriptivos.",
+          b: "Útiles para clasificación o agrupamiento.",
           c: "Únicamente binarios verdadero/falso.",
-          d: "Útiles para clasificación o agrupamiento."
+          d: "Predictivos."
         },
         correct: ["a", "b", "d"],
         explanation: "Predictivo/descriptivo es la distinción importante. Clasificación y clustering son ejemplos de tareas."
@@ -1311,11 +1311,11 @@ const exams = [
         statement: "Un robot puede describirse como:",
         options: {
           a: "Una máquina o dispositivo programable que realiza tareas.",
-          b: "Un sistema con sensores, control y actuadores.",
-          c: "Algo que necesariamente solo realiza tareas domésticas.",
+          b: "Algo que necesariamente solo realiza tareas domésticas.",
+          c: "Un sistema con sensores, control y actuadores.",
           d: "Un agente que puede operar con cierto grado de autonomía."
         },
-        correct: ["a", "b", "d"],
+        correct: ["a", "c", "d"],
         explanation: "La robótica incluye industria, medicina, transporte, exploración, entretenimiento, etc."
       },
       {
@@ -1323,12 +1323,12 @@ const exams = [
         topic: "Autonomía robótica",
         statement: "La autonomía en robótica implica:",
         options: {
-          a: "Operar sin intervención humana continua.",
-          b: "Tomar decisiones o ejecutar comportamientos según percepción/control.",
-          c: "No necesitar sensores nunca.",
-          d: "Puede variar por niveles según la tarea."
+          a: "Puede variar por niveles según la tarea.",
+          b: "Operar sin intervención humana continua.",
+          c: "Tomar decisiones o ejecutar comportamientos según percepción/control.",
+          d: "No necesitar sensores nunca."
         },
-        correct: ["a", "b", "d"],
+        correct: ["a", "b", "c"],
         explanation: "La autonomía requiere percepción y control; no elimina la necesidad de sensores."
       },
       {
@@ -1336,10 +1336,10 @@ const exams = [
         topic: "Repaso transversal",
         statement: "Marque asociaciones correctas:",
         options: {
-          a: "Clustering → aprendizaje no supervisado.",
-          b: "Árboles de decisión → reglas tipo si-entonces.",
-          c: "Naive Bayes → clasificación probabilística.",
-          d: "Algoritmos genéticos → selección, cruce y mutación."
+          a: "Naive Bayes → clasificación probabilística.",
+          b: "Algoritmos genéticos → selección, cruce y mutación.",
+          c: "Clustering → aprendizaje no supervisado.",
+          d: "Árboles de decisión → reglas tipo si-entonces."
         },
         correct: ["a", "b", "c", "d"],
         explanation: "Las cuatro son asociaciones típicas de examen."
@@ -1356,12 +1356,12 @@ const exams = [
         topic: "Test de Turing e IA",
         statement: "El Test de Turing se entiende como:",
         options: {
-          a: "Una prueba de comportamiento inteligente similar o indistinguible del humano.",
-          b: "Una prueba que implica interacción mediante lenguaje natural.",
-          c: "Una medición directa del coeficiente intelectual de una máquina.",
+          a: "Una prueba que implica interacción mediante lenguaje natural.",
+          b: "Una medición directa del coeficiente intelectual de una máquina.",
+          c: "Una prueba de comportamiento inteligente similar o indistinguible del humano.",
           d: "Una prueba histórica asociada a la pregunta de si las máquinas pueden pensar."
         },
-        correct: ["a", "b", "d"],
+        correct: ["a", "c", "d"],
         explanation: "No mide CI. Evalúa si el comportamiento conversacional puede pasar por humano."
       },
       {
@@ -1369,9 +1369,9 @@ const exams = [
         topic: "Dartmouth e historia IA",
         statement: "El taller de Dartmouth se asocia con:",
         options: {
-          a: "El nacimiento formal de la IA como disciplina de investigación.",
-          b: "John McCarthy.",
-          c: "La idea de que aspectos de la inteligencia podrían describirse para ser simulados por máquinas.",
+          a: "La idea de que aspectos de la inteligencia podrían describirse para ser simulados por máquinas.",
+          b: "El nacimiento formal de la IA como disciplina de investigación.",
+          c: "John McCarthy.",
           d: "La invención de la defuzzificación por centroide."
         },
         correct: ["a", "b", "c"],
@@ -1382,9 +1382,9 @@ const exams = [
         topic: "Sistemas de producción",
         statement: "En la parte derecha de una regla de producción pueden aparecer:",
         options: {
-          a: "Hechos a añadir a la BH.",
-          b: "Hechos a retirar de la BH.",
-          c: "Acciones sobre el mundo externo.",
+          a: "Hechos a retirar de la BH.",
+          b: "Acciones sobre el mundo externo.",
+          c: "Hechos a añadir a la BH.",
           d: "Una referencia obligatoria a otra regla por nombre."
         },
         correct: ["a", "b", "c"],
@@ -1395,12 +1395,12 @@ const exams = [
         topic: "Razonamiento monótono",
         statement: "Un sistema de producción con reglas que solo añaden hechos:",
         options: {
-          a: "Puede considerarse monótono.",
-          b: "Nunca elimina conocimiento de la BH.",
+          a: "Siempre debe ser no monótono.",
+          b: "Puede considerarse monótono.",
           c: "Puede seguir generando nuevos hechos si hay reglas aplicables.",
-          d: "Siempre debe ser no monótono."
+          d: "Nunca elimina conocimiento de la BH."
         },
-        correct: ["a", "b", "c"],
+        correct: ["b", "c", "d"],
         explanation: "Monótono implica que no se retractan hechos; la información acumulada no disminuye."
       },
       {
@@ -1408,12 +1408,12 @@ const exams = [
         topic: "Búsqueda",
         statement: "Cuando decimos que un algoritmo de búsqueda es completo, significa que:",
         options: {
-          a: "Si existe solución, la encuentra bajo las condiciones del algoritmo.",
-          b: "Siempre devuelve la solución óptima.",
-          c: "Nunca necesita memoria.",
-          d: "Es una propiedad distinta de la optimalidad."
+          a: "Es una propiedad distinta de la optimalidad.",
+          b: "Si existe solución, la encuentra bajo las condiciones del algoritmo.",
+          c: "Siempre devuelve la solución óptima.",
+          d: "Nunca necesita memoria."
         },
-        correct: ["a", "d"],
+        correct: ["a", "b"],
         explanation: "Completo no significa óptimo. Completo = encuentra solución si existe; óptimo = encuentra la mejor."
       },
       {
@@ -1421,10 +1421,10 @@ const exams = [
         topic: "Comparación de búsqueda",
         statement: "Entre las medidas para comparar algoritmos de búsqueda están:",
         options: {
-          a: "Complejidad temporal.",
+          a: "Completitud.",
           b: "Complejidad espacial.",
-          c: "Optimalidad.",
-          d: "Completitud."
+          c: "Complejidad temporal.",
+          d: "Optimalidad."
         },
         correct: ["a", "b", "c", "d"],
         explanation: "Todas son criterios clásicos: tiempo, memoria, si encuentra solución y si es la mejor."
@@ -1434,12 +1434,12 @@ const exams = [
         topic: "Heurística no informada",
         statement: "Si una heurística aporta muy poca información, entonces:",
         options: {
-          a: "A* puede seguir encontrando solución bajo condiciones adecuadas.",
+          a: "Siempre hace imposible encontrar solución.",
           b: "Puede ser menos eficiente que con una heurística más informada.",
-          c: "Siempre hace imposible encontrar solución.",
-          d: "Puede comportarse parecido a búsqueda de coste uniforme si h es cero."
+          c: "Puede comportarse parecido a búsqueda de coste uniforme si h es cero.",
+          d: "A* puede seguir encontrando solución bajo condiciones adecuadas."
         },
-        correct: ["a", "b", "d"],
+        correct: ["b", "c", "d"],
         explanation: "Una heurística nula no impide resolver; simplemente no guía. A* con h=0 se parece a coste uniforme."
       },
       {
@@ -1447,10 +1447,10 @@ const exams = [
         topic: "Heurística que sobreestima",
         statement: "Si una heurística sobreestima el coste real:",
         options: {
-          a: "Puede dejar de ser admisible.",
+          a: "Puede conducir a soluciones subóptimas.",
           b: "A* puede perder garantía de optimalidad.",
           c: "A* necesariamente no encuentra ninguna solución jamás.",
-          d: "Puede conducir a soluciones subóptimas."
+          d: "Puede dejar de ser admisible."
         },
         correct: ["a", "b", "d"],
         explanation: "Sobreestimar no impide siempre encontrar solución, pero puede romper optimalidad."
@@ -1460,12 +1460,12 @@ const exams = [
         topic: "Dijkstra y A*",
         statement: "Dijkstra puede verse como un caso especial de A* cuando:",
         options: {
-          a: "h(n)=0 para todos los nodos.",
-          b: "f(n)=g(n).",
-          c: "No se usa información heurística.",
-          d: "h(n) sobreestima siempre."
+          a: "h(n) sobreestima siempre.",
+          b: "h(n)=0 para todos los nodos.",
+          c: "f(n)=g(n).",
+          d: "No se usa información heurística."
         },
-        correct: ["a", "b", "c"],
+        correct: ["b", "c", "d"],
         explanation: "Con h=0, A* ordena por g(n), igual que coste uniforme/Dijkstra."
       },
       {
@@ -1473,12 +1473,12 @@ const exams = [
         topic: "Probabilidad y lógica clásica",
         statement: "Marque las correctas:",
         options: {
-          a: "En lógica clásica una aserción suele tratarse como verdadera o falsa.",
-          b: "En probabilidad se pueden representar grados de creencia.",
-          c: "La probabilidad de un evento puede interpretarse como frecuencia o creencia según el contexto.",
-          d: "El cálculo probabilístico depende de la interpretación concreta y cambia sus reglas algebraicas."
+          a: "En probabilidad se pueden representar grados de creencia.",
+          b: "El cálculo probabilístico depende de la interpretación concreta y cambia sus reglas algebraicas.",
+          c: "En lógica clásica una aserción suele tratarse como verdadera o falsa.",
+          d: "La probabilidad de un evento puede interpretarse como frecuencia o creencia según el contexto."
         },
-        correct: ["a", "b", "c"],
+        correct: ["a", "c", "d"],
         explanation: "La interpretación puede variar, pero el cálculo formal de probabilidades sigue las mismas reglas."
       },
       {
@@ -1486,12 +1486,12 @@ const exams = [
         topic: "Red bayesiana",
         statement: "Las redes bayesianas permiten:",
         options: {
-          a: "Representar de forma compacta distribuciones conjuntas usando independencias condicionales.",
+          a: "Reducir el número de parámetros respecto a una tabla conjunta completa en muchos dominios.",
           b: "Realizar consultas de probabilidad dada evidencia.",
-          c: "Reducir el número de parámetros respecto a una tabla conjunta completa en muchos dominios.",
-          d: "Evitar por completo la necesidad de probabilidades."
+          c: "Evitar por completo la necesidad de probabilidades.",
+          d: "Representar de forma compacta distribuciones conjuntas usando independencias condicionales."
         },
-        correct: ["a", "b", "c"],
+        correct: ["a", "b", "d"],
         explanation: "Las redes bayesianas son probabilísticas; no eliminan probabilidades, las organizan."
       },
       {
@@ -1500,8 +1500,8 @@ const exams = [
         statement: "Una tabla de probabilidad condicionada de un nodo X con padres Pa(X):",
         options: {
           a: "Especifica P(X | Pa(X)).",
-          b: "Debe sumar 1 para cada combinación de valores de los padres.",
-          c: "Si X no tiene padres, se convierte en una probabilidad a priori P(X).",
+          b: "Si X no tiene padres, se convierte en una probabilidad a priori P(X).",
+          c: "Debe sumar 1 para cada combinación de valores de los padres.",
           d: "Representa siempre P(Pa(X)|X)."
         },
         correct: ["a", "b", "c"],
@@ -1512,9 +1512,9 @@ const exams = [
         topic: "HMM",
         statement: "Los inputs necesarios para representar un HMM incluyen:",
         options: {
-          a: "Estados ocultos.",
-          b: "Observaciones.",
-          c: "Probabilidad inicial y de transición.",
+          a: "Probabilidad inicial y de transición.",
+          b: "Estados ocultos.",
+          c: "Observaciones.",
           d: "Modelo de observación o emisión."
         },
         correct: ["a", "b", "c", "d"],
@@ -1525,12 +1525,12 @@ const exams = [
         topic: "MDP",
         statement: "Si en un MDP una acción en A lleva a B con probabilidad 0.8 y permanece en A con 0.2, entonces:",
         options: {
-          a: "La transición es estocástica.",
-          b: "La suma de probabilidades de resultados de esa acción debe ser 1.",
-          c: "La acción tiene resultado determinista único.",
-          d: "Bellman puede usar esas probabilidades para calcular coste esperado."
+          a: "La acción tiene resultado determinista único.",
+          b: "Bellman puede usar esas probabilidades para calcular coste esperado.",
+          c: "La suma de probabilidades de resultados de esa acción debe ser 1.",
+          d: "La transición es estocástica."
         },
-        correct: ["a", "b", "d"],
+        correct: ["b", "c", "d"],
         explanation: "Hay dos resultados posibles con probabilidades. Eso es transición probabilística."
       },
       {
@@ -1539,12 +1539,12 @@ const exams = [
         statement: "En lógica borrosa, decir que la concentración alta tiene grado 0.9 significa:",
         figure: { type: "custom", kind: "fuzzy-humidity" },
         options: {
-          a: "Que pertenece al concepto 'alta' con grado 0.9.",
-          b: "Que necesariamente hay 90% de probabilidad de morir.",
-          c: "Que no es una verdad binaria absoluta.",
-          d: "Que se está usando una función de pertenencia."
+          a: "Que necesariamente hay 90% de probabilidad de morir.",
+          b: "Que pertenece al concepto 'alta' con grado 0.9.",
+          c: "Que se está usando una función de pertenencia.",
+          d: "Que no es una verdad binaria absoluta."
         },
-        correct: ["a", "c", "d"],
+        correct: ["b", "c", "d"],
         explanation: "Grado de pertenencia no equivale directamente a probabilidad de un evento."
       },
       {
@@ -1554,10 +1554,10 @@ const exams = [
         options: {
           a: "Transformar una salida borrosa agregada en un valor numérico nítido.",
           b: "Obtener una acción concreta en controladores.",
-          c: "Calcular una salida final, por ejemplo mediante centroide.",
-          d: "Convertir una regla SI-ENTONCES en una probabilidad a priori."
+          c: "Convertir una regla SI-ENTONCES en una probabilidad a priori.",
+          d: "Calcular una salida final, por ejemplo mediante centroide."
         },
-        correct: ["a", "b", "c"],
+        correct: ["a", "b", "d"],
         explanation: "El centroide es un método típico para obtener un valor final. No tiene que ver con probabilidades a priori."
       },
       {
@@ -1565,10 +1565,10 @@ const exams = [
         topic: "ML",
         statement: "Marque las correctas sobre aprendizaje semi-supervisado:",
         options: {
-          a: "Puede usar datos etiquetados y no etiquetados.",
+          a: "Puede aparecer como respuesta junto a supervisado si se pregunta por datos etiquetados.",
           b: "Está relacionado con aprendizaje cuando no todas las instancias tienen etiqueta.",
           c: "Es idéntico a no supervisado puro.",
-          d: "Puede aparecer como respuesta junto a supervisado si se pregunta por datos etiquetados."
+          d: "Puede usar datos etiquetados y no etiquetados."
         },
         correct: ["a", "b", "d"],
         explanation: "Semi-supervisado combina una parte etiquetada con otra sin etiquetar."
@@ -1579,9 +1579,9 @@ const exams = [
         statement: "En un algoritmo genético con codificación binaria:",
         options: {
           a: "Cada individuo puede representarse como una cadena de bits.",
-          b: "La selección favorece individuos con mejor fitness.",
-          c: "El cruce combina partes de individuos.",
-          d: "La mutación introduce variaciones aleatorias."
+          b: "El cruce combina partes de individuos.",
+          c: "La mutación introduce variaciones aleatorias.",
+          d: "La selección favorece individuos con mejor fitness."
         },
         correct: ["a", "b", "c", "d"],
         explanation: "Es el esquema clásico: codificación, fitness, selección, cruce y mutación."
@@ -1591,10 +1591,10 @@ const exams = [
         topic: "Robótica",
         statement: "Para controlar un dron desde sensores hasta motores, un flujo razonable es:",
         options: {
-          a: "Sensores → unidad de procesamiento → algoritmos de control de vuelo → motores.",
+          a: "Procesamiento para decidir comandos de control.",
           b: "Motores → sensores → algoritmo → procesamiento, siempre.",
           c: "Sensores para percibir y actuadores/motores para ejecutar.",
-          d: "Procesamiento para decidir comandos de control."
+          d: "Sensores → unidad de procesamiento → algoritmos de control de vuelo → motores."
         },
         correct: ["a", "c", "d"],
         explanation: "El flujo correcto parte de percepción, procesa información, calcula control y actúa."
@@ -1604,9 +1604,9 @@ const exams = [
         topic: "Mixto final",
         statement: "Marque las afirmaciones correctas:",
         options: {
-          a: "Bayes y redes bayesianas usan razonamiento probabilístico.",
+          a: "HMM usa observaciones para inferir estados ocultos.",
           b: "La lógica borrosa usa grados de pertenencia.",
-          c: "HMM usa observaciones para inferir estados ocultos.",
+          c: "Bayes y redes bayesianas usan razonamiento probabilístico.",
           d: "MDP usa acciones para decidir bajo incertidumbre de transición."
         },
         correct: ["a", "b", "c", "d"],
@@ -1625,12 +1625,12 @@ const exams = [
         topic: "Probabilidad básica",
         statement: "Una pareja tiene 4 hijos y cada hijo tiene probabilidad 0.5 de ser masculino. ¿Cuál es la probabilidad de que los 4 tengan el mismo sexo?",
         options: {
-          a: "2/16 = 0.125",
+          a: "6/16 = 0.375",
           b: "4/16 = 0.25",
           c: "1/16 = 0.0625",
-          d: "6/16 = 0.375"
+          d: "2/16 = 0.125"
         },
-        correct: ["a"],
+        correct: ["d"],
         explanation: "Los casos de mismo sexo son MMMM y FFFF: 2 casos de 16 equiprobables. Por eso es 2/16 = 0.125."
       },
       {
@@ -1638,12 +1638,12 @@ const exams = [
         topic: "Probabilidad básica",
         statement: "Con 4 hijos equiprobables M/F, ¿cuál es la probabilidad de que exactamente 2 sean masculinos?",
         options: {
-          a: "4/16",
-          b: "6/16",
-          c: "8/16",
-          d: "11/16"
+          a: "8/16",
+          b: "4/16",
+          c: "11/16",
+          d: "6/16"
         },
-        correct: ["b"],
+        correct: ["d"],
         explanation: "Hay que elegir en qué 2 posiciones aparecen los varones: C(4,2)=6. Total de casos: 16. Resultado: 6/16."
       },
       {
@@ -1651,12 +1651,12 @@ const exams = [
         topic: "Probabilidad básica",
         statement: "Con 4 hijos equiprobables M/F, ¿cuál es la probabilidad de que al menos 2 sean masculinos?",
         options: {
-          a: "6/16",
-          b: "10/16",
-          c: "11/16",
+          a: "11/16",
+          b: "6/16",
+          c: "10/16",
           d: "15/16"
         },
-        correct: ["c"],
+        correct: ["a"],
         explanation: "Al menos 2 masculinos incluye 2, 3 o 4 varones: C(4,2)+C(4,3)+C(4,4)=6+4+1=11. Total 16."
       },
       {
@@ -1680,12 +1680,12 @@ const exams = [
           footer: "Total: 1000 pacientes",
         },
         options: {
-          a: "0.108",
-          b: "0.2",
-          c: "0.8",
-          d: "200"
+          a: "0.8",
+          b: "200",
+          c: "0.108",
+          d: "0.2"
         },
-        correct: ["b"],
+        correct: ["d"],
         explanation: "Se suman todos los casos con caries: 108+12+72+8=200. Como hay 1000 pacientes, P(caries)=200/1000=0.2."
       },
       {
@@ -1694,9 +1694,9 @@ const exams = [
         statement: "En la tabla del dentista (ver arriba), P(¬dolor, enganche) se calcula sumando los casos de enganche y no dolor: caries=72, ¬caries=144. ¿Cuál es el valor?",
         options: {
           a: "0.072",
-          b: "0.144",
+          b: "0.784",
           c: "0.216",
-          d: "0.784"
+          d: "0.144"
         },
         correct: ["c"],
         explanation: "El evento no fija caries, así que se suman ambos casos: 72+144=216. Dividido entre 1000 da 0.216."
@@ -1706,12 +1706,12 @@ const exams = [
         topic: "Probabilidad condicional",
         statement: "En la tabla del dentista (ver pregunta anterior): dolor y caries son 108+12=120; total con dolor es 108+12+16+64=200. ¿Cuál es P(caries|dolor)?",
         options: {
-          a: "0.2",
-          b: "0.4",
-          c: "0.6",
-          d: "0.8"
+          a: "0.4",
+          b: "0.2",
+          c: "0.8",
+          d: "0.6"
         },
-        correct: ["c"],
+        correct: ["d"],
         explanation: "P(caries|dolor)=P(caries,dolor)/P(dolor)=120/200=0.6. No se divide entre 1000 al final porque es una condicional entre dos cantidades de la misma tabla."
       },
       {
@@ -1719,9 +1719,9 @@ const exams = [
         topic: "Bayes",
         statement: "Si P(A)=0.3, P(B|A)=0.8 y P(B)=0.6, ¿cuánto vale P(A|B)?",
         options: {
-          a: "0.24",
+          a: "0.6",
           b: "0.4",
-          c: "0.6",
+          c: "0.24",
           d: "0.8"
         },
         correct: ["b"],
@@ -1732,12 +1732,12 @@ const exams = [
         topic: "Probabilidad total",
         statement: "Si P(E)=0.4, P(¬E)=0.6, P(S|E)=0.7 y P(S|¬E)=0.2, ¿cuánto vale P(S)?",
         options: {
-          a: "0.28",
+          a: "0.40",
           b: "0.12",
-          c: "0.40",
-          d: "0.50"
+          c: "0.50",
+          d: "0.28"
         },
-        correct: ["c"],
+        correct: ["a"],
         explanation: "Por probabilidad total: P(S)=P(S|E)P(E)+P(S|¬E)P(¬E)=0.7·0.4+0.2·0.6=0.28+0.12=0.40."
       },
       {
@@ -1746,10 +1746,10 @@ const exams = [
         statement: "En una red A → B → C, con P(A)=0.2, P(B|A)=0.5 y P(C|B)=0.8, ¿cuál es P(A,B,C)? para A,B,C verdaderos?",
         figure: { type: "custom", kind: "bayesian-chain" },
         options: {
-          a: "0.2+0.5+0.8 = 1.5",
+          a: "0.5·0.8 = 0.4",
           b: "0.2·0.5·0.8 = 0.08",
-          c: "0.5·0.8 = 0.4",
-          d: "0.2/0.5/0.8 = 0.5"
+          c: "0.2/0.5/0.8 = 0.5",
+          d: "0.2+0.5+0.8 = 1.5"
         },
         correct: ["b"],
         explanation: "La conjunta se factoriza siguiendo la red: P(A,B,C)=P(A)P(B|A)P(C|B)=0.2·0.5·0.8=0.08."
@@ -1772,9 +1772,9 @@ const exams = [
         },
         options: {
           a: "0.536",
-          b: "0.67",
-          c: "0.80",
-          d: "1.47"
+          b: "0.80",
+          c: "1.47",
+          d: "0.67"
         },
         correct: ["a"],
         explanation: "El peso sin normalizar es P(Temp>37.5|Gripe)P(Gripe)=0.80·0.67=0.536. Luego habría que normalizar comparando con las otras clases."
@@ -1786,10 +1786,10 @@ const exams = [
         options: {
           a: "0.536",
           b: "0.2442",
-          c: "0.687",
-          d: "0.313"
+          c: "0.313",
+          d: "0.687"
         },
-        correct: ["c"],
+        correct: ["d"],
         explanation: "Se normaliza dividiendo por la suma: 0.536/(0.536+0.2442)=0.536/0.7802≈0.687."
       },
       {
@@ -1797,12 +1797,12 @@ const exams = [
         topic: "Inferencia exacta",
         statement: "Si en una red bayesiana se calcula una distribución y salen pesos no normalizados <0.12, 0.18>, ¿cuál es la distribución normalizada?",
         options: {
-          a: "<0.12, 0.18>",
-          b: "<0.4, 0.6>",
-          c: "<0.6, 0.4>",
+          a: "<0.4, 0.6>",
+          b: "<0.6, 0.4>",
+          c: "<0.12, 0.18>",
           d: "<0.3, 0.3>"
         },
-        correct: ["b"],
+        correct: ["a"],
         explanation: "La suma es 0.30. Normalizar: 0.12/0.30=0.4 y 0.18/0.30=0.6."
       },
       {
@@ -1811,12 +1811,12 @@ const exams = [
         statement: "En un HMM de salud, P(X0=W)=1, y P(X1=A|X0=W)=0.2. ¿Cuál es P(X0=W, X1=A)?",
         figure: { type: "custom", kind: "hmm-diagram" },
         options: {
-          a: "1.2",
+          a: "0.2",
           b: "0.8",
-          c: "0.2",
-          d: "0"
+          c: "0",
+          d: "1.2"
         },
-        correct: ["c"],
+        correct: ["a"],
         explanation: "Se multiplica el estado inicial por la transición: P(X0=W)P(X1=A|X0=W)=1·0.2=0.2."
       },
       {
@@ -1824,12 +1824,12 @@ const exams = [
         topic: "HMM",
         statement: "Con P(X0=W)=1, P(X1=C|W)=0.1, P(X2=C|C)=0.6 y P(X3=W|C)=0.2, ¿cuál es P(W,C,C,W)?",
         options: {
-          a: "0.012",
-          b: "0.12",
-          c: "0.9",
-          d: "0.0012"
+          a: "0.0012",
+          b: "0.012",
+          c: "0.12",
+          d: "0.9"
         },
-        correct: ["a"],
+        correct: ["b"],
         explanation: "Probabilidad de secuencia: 1·0.1·0.6·0.2=0.012. Se multiplican las transiciones de la trayectoria concreta."
       },
       {
@@ -1837,12 +1837,12 @@ const exams = [
         topic: "HMM emisión",
         statement: "Si el estado oculto es C y P(O=s|C)=0.7, ¿cuál es la probabilidad de observar estornudo estando en C?",
         options: {
-          a: "0.3",
-          b: "0.7",
-          c: "1.0",
-          d: "No se puede saber porque es un MDP"
+          a: "1.0",
+          b: "No se puede saber porque es un MDP",
+          c: "0.3",
+          d: "0.7"
         },
-        correct: ["b"],
+        correct: ["d"],
         explanation: "La probabilidad de emisión se lee directamente: P(O=s|C)=0.7."
       },
       {
@@ -1850,12 +1850,12 @@ const exams = [
         topic: "Inferencia con evidencia",
         statement: "Supón P(X=2)=1/8, P(door|X=2)=1 y P(door)=2/8. ¿Cuánto vale P(X=2|door)?",
         options: {
-          a: "1/8",
-          b: "1/2",
+          a: "1/2",
+          b: "1/8",
           c: "2/8",
           d: "0"
         },
-        correct: ["b"],
+        correct: ["a"],
         explanation: "Bayes: P(X=2|door)=P(door|X=2)P(X=2)/P(door)=1·(1/8)/(2/8)=1/2."
       },
       {
@@ -1865,9 +1865,9 @@ const exams = [
         figure: { type: "custom", kind: "mdp-diagram" },
         options: {
           a: "1 + 0.2·2.4 + 0.8·1.2 = 2.44",
-          b: "0.2·2.4 + 0.8·1.2 = 1.44",
+          b: "2.4 - 1.2 = 1.2",
           c: "1 + 2.4 + 1.2 = 4.6",
-          d: "2.4 - 1.2 = 1.2"
+          d: "0.2·2.4 + 0.8·1.2 = 1.44"
         },
         correct: ["a"],
         explanation: "Bellman con costes suma coste inmediato más coste futuro esperado: 1 + 0.48 + 0.96 = 2.44."
@@ -1877,12 +1877,12 @@ const exams = [
         topic: "MDP Bellman",
         statement: "Si desde A la acción p tiene coste esperado 2.44 y la acción q tiene coste esperado 3.16, en un MDP de costes la política óptima en A elige:",
         options: {
-          a: "p",
+          a: "Ninguna, porque no se comparan costes",
           b: "q",
           c: "Ambas porque 3.16 es mayor",
-          d: "Ninguna, porque no se comparan costes"
+          d: "p"
         },
-        correct: ["a"],
+        correct: ["d"],
         explanation: "Con costes se elige la acción de menor coste esperado. Como 2.44 < 3.16, se elige p."
       },
       {
@@ -1891,10 +1891,10 @@ const exams = [
         statement: "Si μSeco(40)=0.8 y μSoleado(70000)=0.7, en una regla con antecedente Seco AND Soleado usando max-min, ¿cuál es el grado de activación?",
         figure: { type: "custom", kind: "fuzzy-humidity" },
         options: {
-          a: "max(0.8,0.7)=0.8",
+          a: "0.8·0.7=0.56 siempre obligatoriamente",
           b: "min(0.8,0.7)=0.7",
-          c: "0.8+0.7=1.5",
-          d: "0.8·0.7=0.56 siempre obligatoriamente"
+          c: "max(0.8,0.7)=0.8",
+          d: "0.8+0.7=1.5"
         },
         correct: ["b"],
         explanation: "En inferencia max-min, AND se calcula con el mínimo. Por eso el grado de activación es 0.7."
@@ -1905,9 +1905,9 @@ const exams = [
         statement: "Si dos reglas activan la misma salida 'riego alto' con grados 0.3 y 0.7, usando agregación por máximo, ¿qué grado queda para esa salida?",
         figure: { type: "custom", kind: "fuzzy-aggregation" },
         options: {
-          a: "0.3",
+          a: "1.0",
           b: "0.7",
-          c: "1.0",
+          c: "0.3",
           d: "0.21"
         },
         correct: ["b"],
@@ -1952,12 +1952,12 @@ const exams = [
         topic: "Agenda FIFO",
         statement: "BH = {a(manuel), b(manuel), b(jose), c(alberto)}. R1: si a(X) y b(Y) entonces c(Y). R2: si a(X) y c(X) entonces d(X). ¿Qué instancias se activan en el primer ciclo?",
         options: {
-          a: "R1(X=manuel,Y=manuel)",
+          a: "R2(X=manuel)",
           b: "R1(X=manuel,Y=jose)",
-          c: "R2(X=manuel)",
+          c: "R1(X=manuel,Y=manuel)",
           d: "R2(X=alberto)"
         },
-        correct: ["a", "b"],
+        correct: ["b", "c"],
         explanation: "R1 se activa con a(manuel) y con cada b(Y): Y=manuel y Y=jose. R2 necesitaría a(X) y c(X) con el mismo X; existe c(alberto), pero no a(alberto), y todavía no existe c(manuel)."
       },
       {
@@ -1965,12 +1965,12 @@ const exams = [
         topic: "Agenda FIFO",
         statement: "En el sistema anterior, usando estrategia 'más antigua' (FIFO) y equiparación por lectura, ¿cuál es el orden de hechos nuevos que se insertan?",
         options: {
-          a: "c(manuel), c(jose), d(manuel)",
-          b: "c(jose), c(manuel), d(manuel)",
-          c: "d(manuel), c(manuel), c(jose)",
-          d: "c(alberto), d(alberto), d(manuel)"
+          a: "c(jose), c(manuel), d(manuel)",
+          b: "c(manuel), c(jose), d(manuel)",
+          c: "c(alberto), d(alberto), d(manuel)",
+          d: "d(manuel), c(manuel), c(jose)"
         },
-        correct: ["a"],
+        correct: ["b"],
         explanation: "FIFO ejecuta primero la instancia más antigua: R1 con Y=manuel, luego R1 con Y=jose. Al aparecer c(manuel), se activa R2(X=manuel), que finalmente añade d(manuel)."
       },
       {
@@ -1978,10 +1978,10 @@ const exams = [
         topic: "Agenda LIFO",
         statement: "En el mismo sistema, usando estrategia 'más nueva' (LIFO), ¿cuál sería el orden de hechos nuevos insertados?",
         options: {
-          a: "c(manuel), c(jose), d(manuel)",
+          a: "c(alberto), c(jose), d(jose)",
           b: "c(jose), c(manuel), d(manuel)",
-          c: "d(manuel), c(jose), c(manuel)",
-          d: "c(alberto), c(jose), d(jose)"
+          c: "c(manuel), c(jose), d(manuel)",
+          d: "d(manuel), c(jose), c(manuel)"
         },
         correct: ["b"],
         explanation: "La agenda inicial contiene primero R1(Y=manuel) y después R1(Y=jose). LIFO ejecuta la más nueva: c(jose) primero. Luego queda R1(Y=manuel), que añade c(manuel), y entonces R2 añade d(manuel)."
@@ -1991,12 +1991,12 @@ const exams = [
         topic: "Orden de reglas",
         statement: "Hechos iniciales: {P,R}. Reglas en orden: R1: si P entonces +J; R2: si R entonces +K,+L; R3: si P y R entonces +L; R4: si L entonces +F. Se elige por orden ascendente y solo reglas que produzcan algún hecho nuevo. ¿Qué regla se ejecuta primero?",
         options: {
-          a: "R1",
-          b: "R2",
-          c: "R3",
-          d: "R4"
+          a: "R2",
+          b: "R1",
+          c: "R4",
+          d: "R3"
         },
-        correct: ["a"],
+        correct: ["b"],
         explanation: "Inicialmente R1, R2 y R3 son aplicables y producen hechos nuevos. Al resolver conflicto por orden ascendente, se ejecuta R1. R4 aún no puede ejecutarse porque L no está en la BH."
       },
       {
@@ -2017,10 +2017,10 @@ const exams = [
         topic: "Terminación",
         statement: "En un sistema de producción, la ejecución puede terminar cuando:",
         options: {
-          a: "No se pueden activar más reglas que produzcan cambios.",
-          b: "Una regla ejecuta una señal de parada o halt.",
-          c: "Se alcanza un número predefinido de reglas ejecutadas.",
-          d: "Se cumple un hecho específico definido como condición de parada."
+          a: "Una regla ejecuta una señal de parada o halt.",
+          b: "Se cumple un hecho específico definido como condición de parada.",
+          c: "No se pueden activar más reglas que produzcan cambios.",
+          d: "Se alcanza un número predefinido de reglas ejecutadas."
         },
         correct: ["a", "b", "c", "d"],
         explanation: "La parada no depende solo de una regla PARAR. También puede no haber reglas activables, existir límite de ciclos o alcanzarse una condición concreta."
@@ -2030,12 +2030,12 @@ const exams = [
         topic: "Representación: lobo, oveja y col",
         statement: "Para mover la oveja de X a Y en el problema lobo-oveja-col, ¿cuál es la regla mejor formulada?",
         options: {
-          a: "IF boat(X) AND sheep(X) THEN ¬boat(X), boat(Y), ¬sheep(X), sheep(Y)",
-          b: "IF boat(X) AND sheep(X) AND opposite(X,Y) THEN ¬boat(X), boat(Y), ¬sheep(X), sheep(Y)",
+          a: "IF boat(X) AND sheep(X) AND opposite(X,Y) THEN ¬boat(X), boat(Y), ¬sheep(X), sheep(Y)",
+          b: "IF boat(X) AND sheep(X) THEN ¬boat(X), boat(Y), ¬sheep(X), sheep(Y)",
           c: "IF boat(X) AND sheep(X) AND opposite(X,Y) THEN boat(Y), sheep(Y)",
           d: "IF boat(X) AND sheep(X) AND opposite(X,Y) THEN ¬boat(X), boat(Y), ¬sheep(X), sheep(Y), ¬opposite(X,Y)"
         },
-        correct: ["b"],
+        correct: ["a"],
         explanation: "Hay que definir Y mediante opposite(X,Y), eliminar barca y oveja de X y añadirlas en Y. No se debe modificar opposite porque es una relación estática del dominio."
       },
       {
@@ -2045,8 +2045,8 @@ const exams = [
         options: {
           a: "Añadir que el hueco pasa a la casilla de la ficha.",
           b: "Añadir que la ficha pasa a la antigua casilla del hueco.",
-          c: "Eliminar la posición antigua del hueco.",
-          d: "Eliminar la posición antigua de la ficha."
+          c: "Eliminar la posición antigua de la ficha.",
+          d: "Eliminar la posición antigua del hueco."
         },
         correct: ["a", "b", "c", "d"],
         explanation: "Un movimiento correcto sustituye dos hechos antiguos por dos hechos nuevos. Si no retraes los antiguos, el tablero queda inconsistente."
@@ -2057,11 +2057,11 @@ const exams = [
         statement: "Grafo: A tiene sucesores B,C; B tiene D,E; C tiene F; E tiene G. Inicial A, meta G. En amplitud, generando sucesores en orden alfabético y parando al generar la meta, ¿cuál es la solución?",
         options: {
           a: "A-C-F-G",
-          b: "A-B-E-G",
-          c: "A-B-D-G",
-          d: "A-G"
+          b: "A-G",
+          c: "A-B-E-G",
+          d: "A-B-D-G"
         },
-        correct: ["b"],
+        correct: ["c"],
         explanation: "Amplitud explora por niveles. Desde A genera B,C. Al expandir B genera D,E. Más tarde al expandir E aparece G. El camino de padres es A-B-E-G."
       },
       {
@@ -2083,12 +2083,12 @@ const exams = [
         statement: "Grafo con costes: S→A(2), S→B(5), A→B(1), A→G(10), B→G(2). ¿Cuál es el camino óptimo por coste?",
         figure: { type: "custom", kind: "search-graph" },
         options: {
-          a: "S→G, coste 0",
-          b: "S→B→G, coste 7",
-          c: "S→A→G, coste 12",
-          d: "S→A→B→G, coste 5"
+          a: "S→A→G, coste 12",
+          b: "S→A→B→G, coste 5",
+          c: "S→G, coste 0",
+          d: "S→B→G, coste 7"
         },
-        correct: ["d"],
+        correct: ["b"],
         explanation: "Coste uniforme compara costes acumulados. S-A-B-G cuesta 2+1+2=5, menor que S-B-G=7 y S-A-G=12."
       },
       {
@@ -2098,11 +2098,11 @@ const exams = [
         figure: { type: "custom", kind: "search-graph" },
         options: {
           a: "S→B→G, coste 7",
-          b: "S→A→G, coste 12",
-          c: "S→A→B→G, coste 5",
+          b: "S→A→B→G, coste 5",
+          c: "S→A→G, coste 12",
           d: "S→A→B, coste 3, aunque no llegue a G"
         },
-        correct: ["c"],
+        correct: ["b"],
         explanation: "Primero A tiene f=2+3=5 y B tiene f=5+1=6, se expande A. Desde A se mejora B con g=3 y f=4. Luego B genera G con coste 5."
       },
       {
@@ -2110,12 +2110,12 @@ const exams = [
         topic: "A*: parada",
         statement: "En A*, ¿cuándo debe aceptarse normalmente la solución óptima si se trabaja con las condiciones habituales de optimalidad?",
         options: {
-          a: "Cuando el objetivo se genera por primera vez, siempre.",
-          b: "Cuando el objetivo es seleccionado para expansión con el menor f de la abierta.",
+          a: "Cuando aparece cualquier nodo con h=0, aunque no sea meta.",
+          b: "Cuando el objetivo se genera por primera vez, siempre.",
           c: "Antes de calcular g(n).",
-          d: "Cuando aparece cualquier nodo con h=0, aunque no sea meta."
+          d: "Cuando el objetivo es seleccionado para expansión con el menor f de la abierta."
         },
-        correct: ["b"],
+        correct: ["d"],
         explanation: "La trampa típica es parar al generar la meta. En A* se acepta al sacar/expandir la meta como mejor nodo abierto; antes podría existir un camino más barato pendiente."
       },
       {
@@ -2123,12 +2123,12 @@ const exams = [
         topic: "Heurísticas admisibles",
         statement: "Costes reales al objetivo: d*(S)=5,d*(A)=3,d*(B)=2,d*(G)=0. h1={S:4,A:2,B:1,G:0}; h2={S:6,A:3,B:2,G:0}. Marque las correctas:",
         options: {
-          a: "h1 es admisible.",
-          b: "h2 es admisible.",
-          c: "h2 no es admisible porque h2(S)=6 sobreestima d*(S)=5.",
-          d: "Una heurística admisible nunca sobreestima el coste real."
+          a: "Una heurística admisible nunca sobreestima el coste real.",
+          b: "h2 no es admisible porque h2(S)=6 sobreestima d*(S)=5.",
+          c: "h2 es admisible.",
+          d: "h1 es admisible."
         },
-        correct: ["a", "c", "d"],
+        correct: ["a", "b", "d"],
         explanation: "h1 no supera ningún coste real. h2 falla en S porque 6>5, aunque en otros nodos sea igual al coste real."
       },
       {
@@ -2152,11 +2152,11 @@ const exams = [
         figure: { type: "custom", kind: "hmm-diagram" },
         options: {
           a: "0.6+0.5+0.7=1.8",
-          b: "0.6·0.5·0.7=0.21",
-          c: "0.5·0.7=0.35",
-          d: "0.6·0.7=0.42"
+          b: "0.6·0.7=0.42",
+          c: "0.6·0.5·0.7=0.21",
+          d: "0.5·0.7=0.35"
         },
-        correct: ["b"],
+        correct: ["c"],
         explanation: "En una cadena de Markov se multiplica la probabilidad inicial por las transiciones de la secuencia: 0.6·0.5·0.7=0.21."
       },
       {
@@ -2165,12 +2165,12 @@ const exams = [
         statement: "En un MDP con costes, V(A)=2, V(B)=5. Acción p desde S cuesta 1 y lleva a A con 0.75 y a B con 0.25. ¿Coste esperado de p?",
         figure: { type: "custom", kind: "mdp-diagram" },
         options: {
-          a: "1 + 0.75·2 + 0.25·5 = 3.75",
+          a: "1 + 2 + 5 = 8",
           b: "0.75·2 + 0.25·5 = 2.75",
-          c: "1 + 2 + 5 = 8",
+          c: "1 + 0.75·2 + 0.25·5 = 3.75",
           d: "0.75 + 0.25 = 1"
         },
-        correct: ["a"],
+        correct: ["c"],
         explanation: "Bellman suma coste inmediato más valor esperado futuro: 1 + 1.5 + 1.25 = 3.75."
       },
       {
@@ -2179,12 +2179,12 @@ const exams = [
         statement: "Una regla borrosa tiene antecedente A AND B. Para una entrada, μA=0.4 y μB=0.9. Usando max-min, ¿qué grado activa la regla?",
         figure: { type: "custom", kind: "fuzzy-and-rule" },
         options: {
-          a: "0.4",
-          b: "0.9",
-          c: "1.3",
-          d: "0.36 obligatoriamente"
+          a: "1.3",
+          b: "0.36 obligatoriamente",
+          c: "0.4",
+          d: "0.9"
         },
-        correct: ["a"],
+        correct: ["c"],
         explanation: "En inferencia max-min, AND se calcula con el mínimo: min(0.4,0.9)=0.4. El producto no es el operador usado en este estilo de ejercicios."
       }
     ]
@@ -2199,8 +2199,10 @@ const exams = [
         topic: "Lógica borrosa — Funciones de pertenencia",
         statement: "Observa la gráfica de funciones de pertenencia para humedad. Para un valor de entrada x=40, ¿cuáles de las siguientes afirmaciones son correctas?",
         figure: { type: "custom", kind: "fuzzy-humidity" },
-        options: { a: "μSeco(40) > 0", b: "μHúmedo(40) = 0", c: "μSeco(40) + μHúmedo(40) = 1 siempre", d: "En x=40, el grado de pertenencia a Seco es mayor que a Húmedo" },
-        correct: ["a", "b", "d"],
+        options: {
+          a: "μSeco(40) > 0", b: "μHúmedo(40) = 0", c: "μSeco(40) + μHúmedo(40) = 1 siempre", d: "En x=40, el grado de pertenencia a Seco es mayor que a Húmedo"
+        },
+        correct: ["a"],
         explanation: "En x=40, la función Seco tiene valor positivo (≈0.33) mientras que Húmedo empieza en 0 hasta x=40. No es obligatorio que sumen 1."
       },
       {
@@ -2208,8 +2210,10 @@ const exams = [
         topic: "Lógica borrosa — Regla AND",
         statement: "En una regla con antecedente A AND B usando inferencia max-min, si μA(x)=0.6 y μB(x)=0.4, ¿cuál es el grado de activación de la regla?",
         figure: { type: "custom", kind: "fuzzy-and-rule" },
-        options: { a: "0.6", b: "0.4", c: "min(0.6, 0.4)", d: "max(0.6, 0.4)" },
-        correct: ["b", "c"],
+        options: {
+          a: "0.6", b: "0.4", c: "min(0.6, 0.4)", d: "max(0.6, 0.4)"
+        },
+        correct: [],
         explanation: "En max-min, AND se calcula con el mínimo: min(0.6, 0.4) = 0.4."
       },
       {
@@ -2217,8 +2221,10 @@ const exams = [
         topic: "Lógica borrosa — Regla OR",
         statement: "En una regla con antecedente A OR B usando inferencia max-min, si μA(x)=0.3 y μB(x)=0.7, ¿cuál es el grado de activación?",
         figure: { type: "custom", kind: "fuzzy-or-rule" },
-        options: { a: "0.3", b: "0.7", c: "max(0.3, 0.7)", d: "0.3 · 0.7 = 0.21" },
-        correct: ["b", "c"],
+        options: {
+          a: "0.3", b: "0.7", c: "max(0.3, 0.7)", d: "0.3 · 0.7 = 0.21"
+        },
+        correct: [],
         explanation: "En max-min, OR se calcula con el máximo: max(0.3, 0.7) = 0.7."
       },
       {
@@ -2226,8 +2232,10 @@ const exams = [
         topic: "Lógica borrosa — Agregación",
         statement: "Si dos reglas activan la misma salida con grados α1=0.5 y α2=0.8, y se usa agregación por máximo, ¿qué grado tiene la salida agregada?",
         figure: { type: "custom", kind: "fuzzy-aggregation" },
-        options: { a: "0.5", b: "0.8", c: "max(0.5, 0.8)", d: "0.5 + 0.8 = 1.3" },
-        correct: ["b", "c"],
+        options: {
+          a: "0.5", b: "0.8", c: "max(0.5, 0.8)", d: "0.5 + 0.8 = 1.3"
+        },
+        correct: [],
         explanation: "La agregación por máximo conserva el mayor grado: max(0.5, 0.8) = 0.8."
       },
       {
@@ -2235,8 +2243,10 @@ const exams = [
         topic: "Lógica borrosa — Defuzzificación",
         statement: "La defuzzificación por centroide sirve para:",
         figure: { type: "custom", kind: "fuzzy-defuzz" },
-        options: { a: "Transformar la salida borrosa agregada en un valor nítido", b: "Calcular el centro de gravedad de la función de salida agregada", c: "Obtener el máximo de las funciones de pertenencia de entrada", d: "Eliminar las reglas con menor grado de activación" },
-        correct: ["a", "b"],
+        options: {
+          a: "Transformar la salida borrosa agregada en un valor nítido", b: "Calcular el centro de gravedad de la función de salida agregada", c: "Obtener el máximo de las funciones de pertenencia de entrada", d: "Eliminar las reglas con menor grado de activación"
+        },
+        correct: ["a"],
         explanation: "El centroide calcula el centro de gravedad de la salida agregada para obtener un valor numérico concreto."
       },
       {
@@ -2244,8 +2254,10 @@ const exams = [
         topic: "Lógica borrosa — Mamdani",
         statement: "En un sistema Mamdani con regla 'SI temp es alta AND humedad es baja ENTONCES riego medio', si μalta(30)=0.7 y μbaja(30)=0.5, ¿cuál es el grado de activación y qué operador se usa?",
         figure: { type: "custom", kind: "fuzzy-and-rule" },
-        options: { a: "0.7 usando máximo", b: "0.5 usando mínimo", c: "min(0.7, 0.5) = 0.5", d: "El AND en Mamdani max-min usa el mínimo" },
-        correct: ["b", "c", "d"],
+        options: {
+          a: "0.7 usando máximo", b: "0.5 usando mínimo", c: "min(0.7, 0.5) = 0.5", d: "El AND en Mamdani max-min usa el mínimo"
+        },
+        correct: [],
         explanation: "AND en max-min = mínimo. min(0.7, 0.5) = 0.5. Este grado recorta la función de salida."
       },
       {
@@ -2253,8 +2265,10 @@ const exams = [
         topic: "Lógica borrosa — Interpretación gráfica",
         statement: "Si en una gráfica de funciones de pertenencia, para x=60 se tiene μBajo(60)=0.2 y μAlto(60)=0.8, ¿qué se puede afirmar?",
         figure: { type: "custom", kind: "fuzzy-humidity" },
-        options: { a: "El valor 60 pertenece más al conjunto Alto que al Bajo", b: "μBajo(60) + μAlto(60) = 1", c: "Si la regla es 'SI es Alto ENTONCES acción fuerte', se activa con grado 0.8", d: "El grado de pertenencia es una probabilidad" },
-        correct: ["a", "c"],
+        options: {
+          a: "El valor 60 pertenece más al conjunto Alto que al Bajo", b: "μBajo(60) + μAlto(60) = 1", c: "Si la regla es 'SI es Alto ENTONCES acción fuerte', se activa con grado 0.8", d: "El grado de pertenencia es una probabilidad"
+        },
+        correct: ["a"],
         explanation: "μAlto(60)=0.8 > μBajo(60)=0.2, así que pertenece más a Alto. La regla se activa con ese grado. No es obligatorio que sumen 1 y no es probabilidad."
       },
       {
@@ -2262,8 +2276,10 @@ const exams = [
         topic: "Lógica borrosa — Salida agregada",
         statement: "Tras agregar las salidas de múltiples reglas con máximo, la función resultante:",
         figure: { type: "custom", kind: "fuzzy-aggregation" },
-        options: { a: "Tiene en cada punto el máximo de los valores de las reglas individuales", b: "Siempre es una función triangular", c: "Puede tener forma de meseta si varias reglas se solapan", d: "Es la entrada para la defuzzificación" },
-        correct: ["a", "c", "d"],
+        options: {
+          a: "Tiene en cada punto el máximo de los valores de las reglas individuales", b: "Siempre es una función triangular", c: "Puede tener forma de meseta si varias reglas se solapan", d: "Es la entrada para la defuzzificación"
+        },
+        correct: ["a"],
         explanation: "La agregación por máximo toma el valor más alto en cada punto. Puede crear mesetas. Luego se defuzzifica."
       },
       {
@@ -2271,8 +2287,10 @@ const exams = [
         topic: "Búsqueda — Dijkstra",
         statement: "Observa el grafo con costes. ¿Cuál es el camino óptimo de S a G usando Dijkstra/coste uniforme?",
         figure: { type: "custom", kind: "search-graph" },
-        options: { a: "S→A→B→G con coste 5", b: "S→B→G con coste 7", c: "S→A→G con coste 12", d: "El camino de menor coste acumulado es S→A→B→G" },
-        correct: ["a", "d"],
+        options: {
+          a: "S→A→B→G con coste 5", b: "S→B→G con coste 7", c: "S→A→G con coste 12", d: "El camino de menor coste acumulado es S→A→B→G"
+        },
+        correct: ["a"],
         explanation: "S→A(2)→B(1)→G(2) = 5, que es menor que S→B(5)→G(2) = 7 y S→A(2)→G(10) = 12."
       },
       {
@@ -2280,8 +2298,10 @@ const exams = [
         topic: "Búsqueda — A*",
         statement: "Con el mismo grafo y heurísticas h(S)=4, h(A)=3, h(B)=1, h(G)=0, ¿qué camino devuelve A*?",
         figure: { type: "custom", kind: "search-graph" },
-        options: { a: "S→A→B→G con coste 5", b: "Primero se expande A porque f(A)=2+3=5", c: "Desde A se mejora B con g(B)=3 y f(B)=4", d: "A* devuelve S→B→G porque es más directo" },
-        correct: ["a", "b", "c"],
+        options: {
+          a: "S→A→B→G con coste 5", b: "Primero se expande A porque f(A)=2+3=5", c: "Desde A se mejora B con g(B)=3 y f(B)=4", d: "A* devuelve S→B→G porque es más directo"
+        },
+        correct: ["a"],
         explanation: "A* expande A primero (f=5), luego mejora B vía A (g=3, f=4), y B genera G con coste total 5."
       },
       {
@@ -2289,8 +2309,10 @@ const exams = [
         topic: "Búsqueda — f(n)=g(n)+h(n)",
         statement: "En A*, para el nodo B del grafo, si se llega por S directamente: g(B)=5, h(B)=1. Si se llega por S→A→B: g(B)=3, h(B)=1. ¿Cuáles son correctas?",
         figure: { type: "custom", kind: "search-graph" },
-        options: { a: "f(B) por S directo = 5+1 = 6", b: "f(B) por S→A→B = 3+1 = 4", c: "A* prefiere el camino S→A→B porque tiene menor f(B)", d: "La heurística h(B) cambia según el camino" },
-        correct: ["a", "b", "c"],
+        options: {
+          a: "f(B) por S directo = 5+1 = 6", b: "f(B) por S→A→B = 3+1 = 4", c: "A* prefiere el camino S→A→B porque tiene menor f(B)", d: "La heurística h(B) cambia según el camino"
+        },
+        correct: ["a"],
         explanation: "f = g + h. h(B)=1 es fija. g(B) depende del camino. Menor f = preferido."
       },
       {
@@ -2298,8 +2320,10 @@ const exams = [
         topic: "Búsqueda — Parada de A*",
         statement: "En A*, ¿cuándo se acepta la solución como óptima?",
         figure: { type: "custom", kind: "search-graph" },
-        options: { a: "Cuando la meta G se genera como sucesor por primera vez", b: "Cuando G es seleccionado para expansión con el menor f de la abierta", c: "Parar al generar G puede dar soluciones subóptimas", d: "Siempre que h sea admisible, parar al generar G es correcto" },
-        correct: ["b", "c"],
+        options: {
+          a: "Cuando la meta G se genera como sucesor por primera vez", b: "Cuando G es seleccionado para expansión con el menor f de la abierta", c: "Parar al generar G puede dar soluciones subóptimas", d: "Siempre que h sea admisible, parar al generar G es correcto"
+        },
+        correct: [],
         explanation: "La trampa típica: en A* se acepta al sacar G como mejor nodo abierto, no al generarlo. Parar al generar puede ser subóptimo."
       },
       {
@@ -2307,8 +2331,10 @@ const exams = [
         topic: "Red bayesiana — Factorización",
         statement: "En la red A → B → C, ¿cuál es la factorización correcta de P(A,B,C)?",
         figure: { type: "custom", kind: "bayesian-chain" },
-        options: { a: "P(A) · P(B|A) · P(C|B)", b: "P(A) · P(B) · P(C)", c: "P(C|A,B) · P(B|A) · P(A)", d: "B es independiente de A dado C" },
-        correct: ["a", "c"],
+        options: {
+          a: "P(A) · P(B|A) · P(C|B)", b: "P(A) · P(B) · P(C)", c: "P(C|A,B) · P(B|A) · P(A)", d: "B es independiente de A dado C"
+        },
+        correct: ["a"],
         explanation: "Cada nodo se condiciona a sus padres: P(A,B,C) = P(A)P(B|A)P(C|B). Por la regla de la cadena también es P(C|A,B)P(B|A)P(A), pero en esta red P(C|A,B) = P(C|B)."
       },
       {
@@ -2316,8 +2342,10 @@ const exams = [
         topic: "Red bayesiana — Estructura convergente",
         statement: "En la red D → C ← T (C es efecto común de D y T), ¿cuáles son correctas?",
         figure: { type: "custom", kind: "bayesian-convergent" },
-        options: { a: "D y T son independientes a priori", b: "Observar C puede hacer dependientes a D y T", c: "C es un collider o nodo convergente", d: "D y T siempre tienen arco directo entre sí" },
-        correct: ["a", "b", "c"],
+        options: {
+          a: "D y T son independientes a priori", b: "Observar C puede hacer dependientes a D y T", c: "C es un collider o nodo convergente", d: "D y T siempre tienen arco directo entre sí"
+        },
+        correct: ["a"],
         explanation: "En la convergente, las causas son independientes a priori pero se vuelven dependientes al observar el efecto (explicación alternativa)."
       },
       {
@@ -2325,8 +2353,10 @@ const exams = [
         topic: "Red bayesiana — TPC",
         statement: "En la red D,T → C → V, ¿qué tabla de probabilidad corresponde a cada nodo?",
         figure: { type: "custom", kind: "bayesian-convergent" },
-        options: { a: "D y T tienen probabilidades a priori P(D) y P(T)", b: "C tiene P(C|D,T) condicionada a ambos padres", c: "V tiene P(V|C) condicionada solo a C", d: "C necesita P(C|D) y P(C|T) por separado" },
-        correct: ["a", "b", "c"],
+        options: {
+          a: "D y T tienen probabilidades a priori P(D) y P(T)", b: "C tiene P(C|D,T) condicionada a ambos padres", c: "V tiene P(V|C) condicionada solo a C", d: "C necesita P(C|D) y P(C|T) por separado"
+        },
+        correct: ["a"],
         explanation: "C tiene dos padres, así que su TPC es P(C|D,T). V solo tiene a C como padre. D y T son raíces con priors."
       },
       {
@@ -2334,8 +2364,10 @@ const exams = [
         topic: "HMM — Componentes",
         statement: "En el diagrama HMM, ¿qué representa cada elemento?",
         figure: { type: "custom", kind: "hmm-diagram" },
-        options: { a: "Xi son estados ocultos (no observables directamente)", b: "Ei son observaciones o evidencias", c: "Las flechas Xi→Xi+1 representan probabilidades de transición P(Xi+1|Xi)", d: "Las flechas Xi→Ei representan probabilidades de emisión P(Ei|Xi)" },
-        correct: ["a", "b", "c", "d"],
+        options: {
+          a: "Xi son estados ocultos (no observables directamente)", b: "Ei son observaciones o evidencias", c: "Las flechas Xi→Xi+1 representan probabilidades de transición P(Xi+1|Xi)", d: "Las flechas Xi→Ei representan probabilidades de emisión P(Ei|Xi)"
+        },
+        correct: ["a"],
         explanation: "Un HMM tiene estados ocultos conectados temporalmente, y cada estado genera una observación mediante emisión."
       },
       {
@@ -2343,8 +2375,10 @@ const exams = [
         topic: "HMM — Cálculo de secuencia",
         statement: "Si P(X0=W)=1, P(X1=A|X0=W)=0.2, P(X2=A|X1=A)=0.6, ¿cuál es P(W,A,A)?",
         figure: { type: "custom", kind: "hmm-diagram" },
-        options: { a: "1 · 0.2 · 0.6 = 0.12", b: "0.2 + 0.6 = 0.8", c: "Se multiplican las probabilidades de la trayectoria", d: "P(W,A,A) = P(X0=W) · P(X1=A|X0=W) · P(X2=A|X1=A)" },
-        correct: ["a", "c", "d"],
+        options: {
+          a: "1 · 0.2 · 0.6 = 0.12", b: "0.2 + 0.6 = 0.8", c: "Se multiplican las probabilidades de la trayectoria", d: "P(W,A,A) = P(X0=W) · P(X1=A|X0=W) · P(X2=A|X1=A)"
+        },
+        correct: ["a"],
         explanation: "La probabilidad de una secuencia de estados ocultos se obtiene multiplicando la inicial por las transiciones."
       },
       {
@@ -2352,8 +2386,10 @@ const exams = [
         topic: "HMM — Emisión",
         statement: "Si el estado oculto X1=A y P(E1=s|X1=A)=0.7, ¿cuál es la probabilidad de observar 's' en el paso 1 estando en A?",
         figure: { type: "custom", kind: "hmm-diagram" },
-        options: { a: "0.7", b: "P(E1=s|X1=A) se lee directamente de la tabla de emisión", c: "Hay que multiplicar por la transición", d: "Es la probabilidad de emisión del estado A para la observación s" },
-        correct: ["a", "b", "d"],
+        options: {
+          a: "0.7", b: "P(E1=s|X1=A) se lee directamente de la tabla de emisión", c: "Hay que multiplicar por la transición", d: "Es la probabilidad de emisión del estado A para la observación s"
+        },
+        correct: ["a"],
         explanation: "La emisión se lee directamente: P(Ei|Xi). No se multiplica por transición para la emisión sola."
       },
       {
@@ -2361,8 +2397,10 @@ const exams = [
         topic: "MDP — Componentes y Bellman",
         statement: "En el MDP mostrado, desde el estado A con acción p: va a B con prob. 0.8 y se queda en A con prob. 0.2, coste 1. Si V(A)=2.4 y V(B)=1.2, ¿cuál es el coste esperado de p?",
         figure: { type: "custom", kind: "mdp-diagram" },
-        options: { a: "1 + 0.8·1.2 + 0.2·2.4 = 2.44", b: "1 + 0.8·2.4 + 0.2·1.2 = 3.04", c: "Bellman: coste inmediato + coste futuro esperado", d: "0.8·1.2 + 0.2·2.4 = 1.44 (sin coste inmediato)" },
-        correct: ["a", "c"],
+        options: {
+          a: "1 + 0.8·1.2 + 0.2·2.4 = 2.44", b: "1 + 0.8·2.4 + 0.2·1.2 = 3.04", c: "Bellman: coste inmediato + coste futuro esperado", d: "0.8·1.2 + 0.2·2.4 = 1.44 (sin coste inmediato)"
+        },
+        correct: ["a"],
         explanation: "Bellman con costes: C(s,a) + Σ P(s'|s,a)·V(s') = 1 + 0.8·1.2 + 0.2·2.4 = 1 + 0.96 + 0.48 = 2.44."
       },
       {
@@ -2370,8 +2408,10 @@ const exams = [
         topic: "MDP — Política óptima",
         statement: "Si desde A la acción p tiene coste esperado 2.44 y la acción q tiene coste esperado 3.16, en un MDP de costes la política óptima en A elige:",
         figure: { type: "custom", kind: "mdp-diagram" },
-        options: { a: "p porque tiene menor coste esperado", b: "q porque tiene mayor probabilidad de llegar a la meta", c: "En MDP de costes se minimiza el coste esperado", d: "Se comparan los valores de Bellman de cada acción" },
-        correct: ["a", "c", "d"],
+        options: {
+          a: "p porque tiene menor coste esperado", b: "q porque tiene mayor probabilidad de llegar a la meta", c: "En MDP de costes se minimiza el coste esperado", d: "Se comparan los valores de Bellman de cada acción"
+        },
+        correct: ["a"],
         explanation: "Con costes, la política óptima elige la acción de menor coste esperado. 2.44 < 3.16, así que p es mejor."
       }
     ]
@@ -2408,24 +2448,30 @@ const exams = [
         topic: "A* — Expansión de nodos",
         statement: "Grafo: Z→A(1), Z→D(3); A→B(2), A→C(4); D→H(1); B→M(2), B→N(3); C→N(1), C→I(2); H→M(3), H→K(2); M→META(1); N→META(2); I→K(1); K→META(1). Heurísticas: h(Z)=6,h(A)=5,h(D)=4,h(B)=4,h(C)=3,h(H)=3,h(M)=2,h(N)=2,h(I)=2,h(K)=1,h(META)=0. ¿Cuál es el orden de expansión de A*? (Empates: mayor profundidad, luego alfabético)",
         figure: { type: "custom", kind: "search-graph" },
-        options: { a: "Z→A→D→C→H→M→N→I→K→META", b: "Z→A→D→C→H→N→M→J→K→META", c: "Z→A→D→H→C→M→N→J→K→META", d: "Z→A→D→C→H→M→N→J→K→META" },
-        correct: ["d"],
+        options: {
+          a: "Z→A→D→C→H→M→N→I→K→META", b: "Z→A→D→C→H→N→M→J→K→META", c: "Z→A→D→H→C→M→N→J→K→META", d: "Z→A→D→C→H→M→N→J→K→META"
+        },
+        correct: [],
         explanation: "f(Z)=0+6=6. Expande Z: A(g=1,h=5,f=6), D(g=3,h=4,f=7). Expande A (menor f): B(g=3,h=4,f=7), C(g=5,h=3,f=8). Expande D (f=7, empate con B pero D viene antes en abierta): H(g=4,h=3,f=7). Expande B (f=7): M(g=5,h=2,f=7), N(g=6,h=2,f=8). Expande H (f=7): K(g=6,h=1,f=7). Expande M (f=7): META(g=6,h=0,f=6). Pero N tiene f=8 y K tiene f=7, se expande K primero... El orden correcto siguiendo el examen original es Z→A→D→C→H→M→N→J→K→META."
       },
       {
         id: "m10q4",
         topic: "A* — Heurística que sobreestima",
         statement: "En un 8-puzzle se usa como heurística 'distancia máxima de la pieza más lejana × número de piezas mal colocadas'. ¿Qué ocurre con A* usando esta heurística?",
-        options: { a: "A* encuentra solución óptima", b: "La heurística sobreestima el coste real", c: "A* puede dar solución subóptima", d: "No se llega a ninguna solución" },
-        correct: ["b", "c"],
+        options: {
+          a: "A* encuentra solución óptima", b: "La heurística sobreestima el coste real", c: "A* puede dar solución subóptima", d: "No se llega a ninguna solución"
+        },
+        correct: [],
         explanation: "Multiplicar dos estimaciones produce sobreestimación. Una heurística que sobreestima rompe la admisibilidad de A*, que puede devolver soluciones subóptimas."
       },
       {
         id: "m10q5",
         topic: "Escalada vs A*",
         statement: "Grafo: S→A(2), S→B(1), A→G(20), B→D(3), D→G(3). Heurística: h(S)=5,h(A)=1,h(B)=5,h(D)=2,h(G)=0. ¿Qué caminos devuelven escalada y A* respectivamente?",
-        options: { a: "Escalada: S→A→G con coste 22", b: "A*: S→B→D→G con coste 7", c: "Escalada: S→B→D→G con coste 7", d: "A*: S→A→G con coste 22" },
-        correct: ["a", "b"],
+        options: {
+          a: "Escalada: S→A→G con coste 22", b: "A*: S→B→D→G con coste 7", c: "Escalada: S→B→D→G con coste 7", d: "A*: S→A→G con coste 22"
+        },
+        correct: ["a"],
         explanation: "Escalada elige A porque h(A)=1 < h(B)=5, llegando a G con coste 22 (subóptimo). A* usa f=g+h: f(A)=3, f(B)=6, expande A primero pero luego B→D→G tiene f=7 < f(G)=22, así que encuentra el camino óptimo con coste 7."
       },
       {
@@ -2448,7 +2494,9 @@ const exams = [
           ],
           footer: "Total: 1000 pacientes",
         },
-        options: { a: "120/220 ≈ 0.545", b: "120/1000 = 0.12", c: "200/1000 = 0.20", d: "220/1000 = 0.22" },
+        options: {
+          a: "120/220 ≈ 0.545", b: "120/1000 = 0.12", c: "200/1000 = 0.20", d: "220/1000 = 0.22"
+        },
         correct: ["a"],
         explanation: "P(C|D) = P(C,D)/P(D). Dolor total = 90+30+20+80 = 220. Dolor y caries = 90+30 = 120. P(C|D) = 120/220 ≈ 0.545."
       },
@@ -2456,8 +2504,10 @@ const exams = [
         id: "m10q7",
         topic: "Probabilidad — Bayes",
         statement: "Si P(A)=0.3, P(B|A)=0.8 y P(B)=0.6, ¿cuánto vale P(A|B)?",
-        options: { a: "0.4", b: "0.24", c: "0.8×0.3/0.6 = 0.4", d: "0.6/0.24 = 2.5" },
-        correct: ["a", "c"],
+        options: {
+          a: "0.4", b: "0.24", c: "0.8×0.3/0.6 = 0.4", d: "0.6/0.24 = 2.5"
+        },
+        correct: ["a"],
         explanation: "Bayes: P(A|B) = P(B|A)×P(A)/P(B) = 0.8×0.3/0.6 = 0.24/0.6 = 0.4."
       },
       {
@@ -2482,24 +2532,30 @@ const exams = [
           ],
           footer: "Red: D → C, D → T, C → V, T → V",
         },
-        options: { a: "0.752", b: "0.532+0.144+0.070+0.006", c: "0.8×0.7×0.95 + 0.8×0.3×0.6 + 0.2×0.7×0.5 + 0.2×0.3×0.1", d: "0.4823" },
-        correct: ["a", "b", "c"],
+        options: {
+          a: "0.752", b: "0.532+0.144+0.070+0.006", c: "0.8×0.7×0.95 + 0.8×0.3×0.6 + 0.2×0.7×0.5 + 0.2×0.3×0.1", d: "0.4823"
+        },
+        correct: ["a"],
         explanation: "P(V|D) = Σc Σt P(c|D)P(t|D)P(V|c,t) = 0.8×0.7×0.95 + 0.8×0.3×0.6 + 0.2×0.7×0.5 + 0.2×0.3×0.1 = 0.532+0.144+0.070+0.006 = 0.752."
       },
       {
         id: "m10q9",
         topic: "Red bayesiana — P(D|V)",
         statement: "Con la misma red anterior, si P(V)=0.4823 y P(V|D)=0.752, ¿cuánto vale P(D|V)?",
-        options: { a: "0.752×0.4/0.4823 ≈ 0.624", b: "0.3008/0.4823 ≈ 0.624", c: "0.752/0.4823 ≈ 1.56", d: "0.4823/0.752 ≈ 0.641" },
-        correct: ["a", "b"],
+        options: {
+          a: "0.752×0.4/0.4823 ≈ 0.624", b: "0.3008/0.4823 ≈ 0.624", c: "0.752/0.4823 ≈ 1.56", d: "0.4823/0.752 ≈ 0.641"
+        },
+        correct: ["a"],
         explanation: "Bayes: P(D|V) = P(V|D)×P(D)/P(V) = 0.752×0.4/0.4823 = 0.3008/0.4823 ≈ 0.624."
       },
       {
         id: "m10q10",
         topic: "Red bayesiana — Factorización",
         statement: "En la red D→C, D→T, C→V, T→V, ¿cuál es la factorización correcta de P(D,C,T,V)?",
-        options: { a: "P(D)×P(C|D)×P(T|D)×P(V|C,T)", b: "P(D)×P(C)×P(T)×P(V)", c: "P(V|C,T)×P(C|D)×P(T|D)×P(D)", d: "P(C|D,T)×P(T|D)×P(V|C)×P(D)" },
-        correct: ["a", "c"],
+        options: {
+          a: "P(D)×P(C|D)×P(T|D)×P(V|C,T)", b: "P(D)×P(C)×P(T)×P(V)", c: "P(V|C,T)×P(C|D)×P(T|D)×P(D)", d: "P(C|D,T)×P(T|D)×P(V|C)×P(D)"
+        },
+        correct: ["a"],
         explanation: "Cada nodo se condiciona solo a sus padres. D es raíz, C y T tienen padre D, V tiene padres C y T. El orden de multiplicación no importa."
       },
       {
@@ -2524,8 +2580,10 @@ const exams = [
           ],
           footer: "Observación: E1 = Aprueba",
         },
-        options: { a: "Primero predicción: P(Alto1)=0.8×0.3+0.3×0.7=0.45", b: "Peso(Alto1)=0.9×0.45=0.405", c: "P(Alto1|E1)=0.405/(0.405+0.220)=0.648", d: "P(Alto1|E1)=0.405" },
-        correct: ["a", "b", "c"],
+        options: {
+          a: "Primero predicción: P(Alto1)=0.8×0.3+0.3×0.7=0.45", b: "Peso(Alto1)=0.9×0.45=0.405", c: "P(Alto1|E1)=0.405/(0.405+0.220)=0.648", d: "P(Alto1|E1)=0.405"
+        },
+        correct: ["a"],
         explanation: "Predicción: P(Alto1)=0.8×0.3+0.3×0.7=0.45, P(Bajo1)=0.55. Actualización: peso(Alto)=0.9×0.45=0.405, peso(Bajo)=0.4×0.55=0.220. Normalizando: 0.405/0.625=0.648."
       },
       {
@@ -2546,8 +2604,10 @@ const exams = [
           ],
           footer: "Observación nueva: E2 = Suspende",
         },
-        options: { a: "Predicción: P(Alto2|E1)=0.8×0.648+0.3×0.352=0.624", b: "Peso(Alto2)=0.1×0.624=0.0624", c: "P(Alto2|E1,E2)=0.0624/(0.0624+0.2256)≈0.217", d: "P(Alto2|E1,E2)=0.624" },
-        correct: ["a", "b", "c"],
+        options: {
+          a: "Predicción: P(Alto2|E1)=0.8×0.648+0.3×0.352=0.624", b: "Peso(Alto2)=0.1×0.624=0.0624", c: "P(Alto2|E1,E2)=0.0624/(0.0624+0.2256)≈0.217", d: "P(Alto2|E1,E2)=0.624"
+        },
+        correct: ["a"],
         explanation: "Predicción: P(Alto2|E1)=0.8×0.648+0.3×0.352=0.624. Actualización: peso(Alto)=0.1×0.624=0.0624, peso(Bajo)=0.6×0.376=0.2256. Normalizando: 0.0624/0.288≈0.217."
       },
       {
@@ -2568,8 +2628,10 @@ const exams = [
           ],
           footer: "Trayectoria: W → A → A → W",
         },
-        options: { a: "1×0.2×0.6×0.2 = 0.024", b: "0.2+0.6+0.2 = 1.0", c: "Se multiplican las transiciones de la trayectoria", d: "0.2×0.6 = 0.12" },
-        correct: ["a", "c"],
+        options: {
+          a: "1×0.2×0.6×0.2 = 0.024", b: "0.2+0.6+0.2 = 1.0", c: "Se multiplican las transiciones de la trayectoria", d: "0.2×0.6 = 0.12"
+        },
+        correct: ["a"],
         explanation: "P(W,A,A,W) = P(X0=W)×P(X1=A|W)×P(X2=A|A)×P(X3=W|A) = 1×0.2×0.6×0.2 = 0.024."
       },
       {
@@ -2590,16 +2652,20 @@ const exams = [
           ],
           footer: "C es estado meta absorbente: V(C) = 0",
         },
-        options: { a: "Si π(A)=q: V(A)=1+0.6V(A) → V(A)=2.5", b: "V(B)=1+0.2×2.5=1.5", c: "Coste de p en A = 1+0.3×2.5+0.7×1.5=2.80 > 2.50, así que π*(A)=q", d: "π*(A)=p porque tiene más probabilidad de ir a B" },
-        correct: ["a", "b", "c"],
+        options: {
+          a: "Si π(A)=q: V(A)=1+0.6V(A) → V(A)=2.5", b: "V(B)=1+0.2×2.5=1.5", c: "Coste de p en A = 1+0.3×2.5+0.7×1.5=2.80 > 2.50, así que π*(A)=q", d: "π*(A)=p porque tiene más probabilidad de ir a B"
+        },
+        correct: ["a"],
         explanation: "Probamos q en A: V(A)=1+0.6V(A) → 0.4V(A)=1 → V(A)=2.5. V(B)=1+0.2×2.5=1.5. Comprobamos p: 1+0.3×2.5+0.7×1.5=2.80 > 2.50. Política óptima: π*(A)=q, π*(B)=q."
       },
       {
         id: "m10q15",
         topic: "MDP — Ecuación de Bellman",
         statement: "En un MDP con costes, la ecuación de Bellman para V(A) con dos acciones posibles se escribe como:",
-        options: { a: "V(A) = min sobre acciones de [C(a) + Σ P(s'|A,a)×V(s')]", b: "V(A) = max sobre acciones de [C(a) + Σ P(s'|A,a)×V(s')]", c: "Con costes se usa min; con recompensas se usaría max", d: "V(A) = C(a) + V(s') para la acción más probable" },
-        correct: ["a", "c"],
+        options: {
+          a: "V(A) = min sobre acciones de [C(a) + Σ P(s'|A,a)×V(s')]", b: "V(A) = max sobre acciones de [C(a) + Σ P(s'|A,a)×V(s')]", c: "Con costes se usa min; con recompensas se usaría max", d: "V(A) = C(a) + V(s') para la acción más probable"
+        },
+        correct: ["a"],
         explanation: "Bellman con costes minimiza el coste esperado. Con recompensas se maximiza. No basta con la acción más probable; hay que considerar la esperanza completa."
       },
       {
@@ -2624,16 +2690,20 @@ const exams = [
           ],
           footer: "AND = mínimo, OR = máximo, agregación = máximo",
         },
-        options: { a: "R1: min(0.75,0.70)=0.70→alto", b: "R2: min(0.75,0.30)=0.30→medio", c: "R3: min(0.25,0.70)=0.25→medio", d: "Agregado: bajo=0.30, medio=max(0.30,0.25)=0.30, alto=0.70" },
-        correct: ["a", "b", "c", "d"],
+        options: {
+          a: "R1: min(0.75,0.70)=0.70→alto", b: "R2: min(0.75,0.30)=0.30→medio", c: "R3: min(0.25,0.70)=0.25→medio", d: "Agregado: bajo=0.30, medio=max(0.30,0.25)=0.30, alto=0.70"
+        },
+        correct: ["a"],
         explanation: "Cada regla se activa con min (AND) o max (OR). R4: max(0,0.30)=0.30→bajo. Agregación: bajo=0.30, medio=max(0.30,0.25)=0.30, alto=0.70."
       },
       {
         id: "m10q17",
         topic: "Lógica borrosa — Defuzzificación",
         statement: "Con los grados agregados bajo=0.30, medio=0.30, alto=0.70 y centros: bajo=20, medio=50, alto=80. ¿Cuál es la salida defuzzificada por media ponderada?",
-        options: { a: "(0.30×20+0.30×50+0.70×80)/(0.30+0.30+0.70)", b: "(6+15+56)/1.30 = 77/1.30 ≈ 59.23", c: "0.30+0.30+0.70 = 1.30", d: "La salida es 80 porque alto tiene el mayor grado" },
-        correct: ["a", "b"],
+        options: {
+          a: "(0.30×20+0.30×50+0.70×80)/(0.30+0.30+0.70)", b: "(6+15+56)/1.30 = 77/1.30 ≈ 59.23", c: "0.30+0.30+0.70 = 1.30", d: "La salida es 80 porque alto tiene el mayor grado"
+        },
+        correct: ["a"],
         explanation: "Media ponderada de centros: (0.30×20+0.30×50+0.70×80)/(0.30+0.30+0.70) = (6+15+56)/1.30 = 77/1.30 ≈ 59.23."
       },
       {
@@ -2654,8 +2724,10 @@ const exams = [
           ],
           footer: "Evidencia: correo contiene 'oferta' y 'urgente'",
         },
-        options: { a: "score(Spam)=0.4×0.7×0.6=0.168", b: "score(NoSpam)=0.6×0.2×0.1=0.012", c: "P(Spam|evidencia)=0.168/(0.168+0.012)≈0.933", d: "Se clasifica como NoSpam porque P(NoSpam)>P(Spam)" },
-        correct: ["a", "b", "c"],
+        options: {
+          a: "score(Spam)=0.4×0.7×0.6=0.168", b: "score(NoSpam)=0.6×0.2×0.1=0.012", c: "P(Spam|evidencia)=0.168/(0.168+0.012)≈0.933", d: "Se clasifica como NoSpam porque P(NoSpam)>P(Spam)"
+        },
+        correct: ["a"],
         explanation: "Naive Bayes multiplica priori por verosimilitudes. score(Spam)=0.168 >> score(NoSpam)=0.012. Normalizando: P(Spam|evidencia)≈0.933. Se clasifica como Spam."
       },
       {
@@ -2673,16 +2745,20 @@ const exams = [
           ],
           footer: "Regla: wi_nuevo = wi + η·(t−y)·xi  |  Objetivo t = 0",
         },
-        options: { a: "NET=-0.5+0.8×1+0.4×0=0.3, así que y=1", b: "Error: t-y=0-1=-1", c: "w0_nuevo=-0.5+0.1×(-1)×1=-0.6", d: "w1_nuevo=0.8+0.1×(-1)×1=0.7, w2 no cambia porque x2=0" },
-        correct: ["a", "b", "c", "d"],
+        options: {
+          a: "NET=-0.5+0.8×1+0.4×0=0.3, así que y=1", b: "Error: t-y=0-1=-1", c: "w0_nuevo=-0.5+0.1×(-1)×1=-0.6", d: "w1_nuevo=0.8+0.1×(-1)×1=0.7, w2 no cambia porque x2=0"
+        },
+        correct: ["a"],
         explanation: "El perceptrón se activó cuando no debía. NET=0.3≥0 → y=1. Error=-1. Se actualizan: w0=-0.6, w1=0.7, w2=0.4 (no cambia porque x2=0)."
       },
       {
         id: "m10q20",
         topic: "Repaso integral — Asociación",
         statement: "Asocia correctamente técnica con su ecuación o concepto clave:",
-        options: { a: "A*: f(n)=g(n)+h(n) con h admisible para optimalidad", b: "Bayes: P(A|B)=P(B|A)P(A)/P(B) para invertir condicionales", c: "Bellman: V(s)=min_a[C(a)+ΣP(s'|s,a)V(s')] para MDP con costes", d: "HMM: predicción P(Xt|Xt-1) + actualización P(Et|Xt) para filtrado" },
-        correct: ["a", "b", "c", "d"],
+        options: {
+          a: "A*: f(n)=g(n)+h(n) con h admisible para optimalidad", b: "Bayes: P(A|B)=P(B|A)P(A)/P(B) para invertir condicionales", c: "Bellman: V(s)=min_a[C(a)+ΣP(s'|s,a)V(s')] para MDP con costes", d: "HMM: predicción P(Xt|Xt-1) + actualización P(Et|Xt) para filtrado"
+        },
+        correct: ["a"],
         explanation: "Las cuatro asociaciones son correctas y resumen las ecuaciones nucleares de cada técnica del temario."
       }
     ]
