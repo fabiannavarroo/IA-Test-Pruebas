@@ -5011,6 +5011,15 @@ export default function App() {
     }
   }, [examMode, selectedExamId]);
 
+  React.useEffect(() => {
+    const shuffled = {};
+    selectedExam.questions.forEach((q) => {
+      const opts = Object.entries(q.options);
+      shuffled[q.id] = [...opts].sort(() => Math.random() - 0.5);
+    });
+    setShuffledOptions(shuffled);
+  }, [selectedExamId]);
+
   function formatTime(seconds) {
     const m = Math.floor(seconds / 60);
     const s = seconds % 60;
@@ -5322,22 +5331,29 @@ export default function App() {
                 <QuestionFigure figure={q.figure} />
 
                 <div className="mt-4 grid gap-3">
-                  {(() => {
-                    const opts = Object.entries(q.options);
-                    const shuffled = [...opts].sort(() => Math.random() - 0.5);
-                    return shuffled.map(([letter, text]) => (
-                      <OptionButton
-                        key={letter}
-                        letter={letter}
-                        text={text}
-                        selected={selected.includes(letter)}
-                        disabled={false}
-                        onClick={() => toggleAnswer(q.id, letter)}
-                        showFeedback={isChecked}
-                        correct={q.correct.includes(letter)}
-                      />
-                    ));
-                  })()}
+                  {shuffledOptions[q.id] ? shuffledOptions[q.id].map(([letter, text]) => (
+                    <OptionButton
+                      key={letter}
+                      letter={letter}
+                      text={text}
+                      selected={selected.includes(letter)}
+                      disabled={false}
+                      onClick={() => toggleAnswer(q.id, letter)}
+                      showFeedback={isChecked}
+                      correct={q.correct.includes(letter)}
+                    />
+                  )) : Object.entries(q.options).map(([letter, text]) => (
+                    <OptionButton
+                      key={letter}
+                      letter={letter}
+                      text={text}
+                      selected={selected.includes(letter)}
+                      disabled={false}
+                      onClick={() => toggleAnswer(q.id, letter)}
+                      showFeedback={isChecked}
+                      correct={q.correct.includes(letter)}
+                    />
+                  ))}
                 </div>
 
                 {isChecked && (
