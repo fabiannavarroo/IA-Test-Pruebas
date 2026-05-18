@@ -4435,6 +4435,433 @@ const exams = [
   }
 ];
 
+const balancedAdvancedModels = buildBalancedAdvancedModels();
+const firstBalancedModelIndex = exams.findIndex((exam) => exam.id === "modelo-16");
+if (firstBalancedModelIndex !== -1) {
+  exams.splice(firstBalancedModelIndex, balancedAdvancedModels.length, ...balancedAdvancedModels);
+}
+
+function buildBalancedAdvancedModels() {
+  const modelConfigs = [
+    {
+      id: "modelo-16",
+      title: "Modelo 16 — Producción y búsqueda avanzada",
+      subtitle: "20 preguntas tipo examen: 5 con 1 correcta, 5 con 2, 5 con 3 y 5 con 4.",
+      topicPacks: [
+        {
+          topic: "Sistemas de producción",
+          label: "sistemas de producción",
+          trueStatements: [
+            "La agenda contiene instancias de reglas aplicables con la memoria de trabajo actual.",
+            "La resolución de conflictos decide qué regla se ejecuta si hay varias aplicables.",
+            "La refracción evita disparar repetidamente la misma instancia de regla con los mismos hechos.",
+            "RETE optimiza la fase de equiparación o matching entre reglas y hechos.",
+          ],
+          falseStatements: [
+            "La base de reglas contiene únicamente hechos temporales del ciclo actual.",
+            "En mundo cerrado, lo que no aparece en la base de hechos se asume verdadero.",
+            "La estrategia LIFO ejecuta siempre la regla más antigua de la agenda.",
+            "Una regla de producción debe llamar explícitamente a la siguiente regla por nombre.",
+          ],
+        },
+        {
+          topic: "Búsqueda no informada",
+          label: "búsqueda no informada",
+          trueStatements: [
+            "La búsqueda en amplitud expande por niveles.",
+            "La búsqueda en profundidad puede necesitar control de ciclos.",
+            "Coste uniforme ordena la frontera por coste acumulado g(n).",
+            "La completitud y la optimalidad son propiedades distintas.",
+          ],
+          falseStatements: [
+            "La búsqueda en amplitud usa siempre una heurística h(n).",
+            "Profundidad garantiza siempre la solución óptima.",
+            "Coste uniforme ordena exclusivamente por h(n).",
+            "Un algoritmo completo siempre consume memoria constante.",
+          ],
+        },
+        {
+          topic: "A* y heurísticas",
+          label: "A* y heurísticas",
+          trueStatements: [
+            "A* usa normalmente f(n)=g(n)+h(n).",
+            "Una heurística admisible no sobreestima el coste real hasta la meta.",
+            "Una heurística consistente implica admisibilidad bajo las condiciones habituales.",
+            "Con h(n)=0, A* se comporta como coste uniforme.",
+          ],
+          falseStatements: [
+            "A* ignora el coste acumulado g(n).",
+            "Una heurística admisible debe ser siempre exacta.",
+            "Sobreestimar nunca afecta a la optimalidad de A*.",
+            "La heurística h(n) cambia según el camino usado para llegar a n.",
+          ],
+        },
+        {
+          topic: "Representación de estados",
+          label: "representación de estados",
+          trueStatements: [
+            "Un estado debe contener la información relevante para decidir acciones y metas.",
+            "En el 8-puzzle se necesita representar la posición de cada ficha y del hueco.",
+            "En problemas con comida, Pacman necesita recordar qué comida queda.",
+            "Los predicados estáticos no deben modificarse por operadores de movimiento.",
+          ],
+          falseStatements: [
+            "Siempre basta con representar el estado mediante una sola letra arbitraria.",
+            "En el 8-puzzle basta con conocer la posición del hueco.",
+            "Los hechos estáticos deben retractarse tras cada acción.",
+            "El estado objetivo no forma parte de la definición del problema.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "modelo-17",
+      title: "Modelo 17 — Probabilidad y Bayes avanzado",
+      subtitle: "20 preguntas tipo examen: 5 con 1 correcta, 5 con 2, 5 con 3 y 5 con 4.",
+      topicPacks: [
+        {
+          topic: "Probabilidad condicional",
+          label: "probabilidad condicional",
+          trueStatements: [
+            "P(A|B)=P(A∩B)/P(B) si P(B)>0.",
+            "P(A∩B)=P(A|B)P(B).",
+            "P(A|B)=P(B|A)P(A)/P(B) cuando las probabilidades existen.",
+            "La independencia permite escribir P(A∩B)=P(A)P(B).",
+          ],
+          falseStatements: [
+            "P(A|B)=P(A) siempre, aunque A y B no sean independientes.",
+            "Una probabilidad condicional puede tener valor negativo.",
+            "P(A∪B)=P(A)+P(B)+P(A∩B).",
+            "Bayes elimina la necesidad de conocer P(B).",
+          ],
+        },
+        {
+          topic: "Bayes y diagnóstico",
+          label: "razonamiento bayesiano",
+          trueStatements: [
+            "La evidencia puede cambiar la probabilidad posterior de una hipótesis.",
+            "La prevalencia baja puede hacer que un positivo no implique alta probabilidad de enfermedad.",
+            "Bayes permite invertir probabilidades condicionadas.",
+            "La normalización convierte pesos no normalizados en una distribución que suma 1.",
+          ],
+          falseStatements: [
+            "Un test con alta sensibilidad garantiza P(enfermo|positivo)=1.",
+            "La probabilidad posterior ignora la probabilidad a priori.",
+            "La especificidad es P(positivo|enfermo).",
+            "Normalizar consiste en restar todos los pesos entre sí.",
+          ],
+        },
+        {
+          topic: "Regla de la cadena",
+          label: "regla de la cadena",
+          trueStatements: [
+            "P(A,B,C)=P(A)P(B|A)P(C|A,B).",
+            "La regla de la cadena factoriza conjuntas mediante condicionales.",
+            "El orden de factorización puede cambiar sin cambiar la conjunta.",
+            "La marginalización elimina variables sumando sobre sus valores.",
+          ],
+          falseStatements: [
+            "P(A,B,C)=P(A)P(B)P(C) siempre.",
+            "La regla de la cadena solo sirve para variables independientes.",
+            "Marginalizar una variable significa condicionarla a verdadero.",
+            "La normalización hace que todas las probabilidades sean iguales.",
+          ],
+        },
+        {
+          topic: "Independencia",
+          label: "independencia probabilística",
+          trueStatements: [
+            "Si A y B son independientes, P(A|B)=P(A) si P(B)>0.",
+            "La independencia condicional no implica necesariamente independencia marginal.",
+            "La independencia puede simplificar cálculos de conjuntas.",
+            "La independencia condicional se expresa como P(A,B|C)=P(A|C)P(B|C).",
+          ],
+          falseStatements: [
+            "A y B independientes significa que nunca pueden ocurrir juntos.",
+            "Independencia condicional y marginal son siempre equivalentes.",
+            "Si A y B son independientes, entonces P(A∩B)=0.",
+            "Conocer B siempre cambia P(A), incluso si son independientes.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "modelo-18",
+      title: "Modelo 18 — Redes bayesianas e HMM avanzado",
+      subtitle: "20 preguntas tipo examen: 5 con 1 correcta, 5 con 2, 5 con 3 y 5 con 4.",
+      topicPacks: [
+        {
+          topic: "Redes bayesianas",
+          label: "redes bayesianas",
+          trueStatements: [
+            "Cada nodo representa una variable aleatoria.",
+            "Los arcos representan dependencias directas del modelo.",
+            "Cada nodo se condiciona a sus padres en la factorización.",
+            "Las independencias condicionales permiten una representación compacta.",
+          ],
+          falseStatements: [
+            "Todos los nodos deben depender directamente de todos los demás.",
+            "Una red bayesiana elimina la necesidad de probabilidades.",
+            "Los arcos siempre prueban causalidad física.",
+            "La factorización ignora los padres de cada nodo.",
+          ],
+        },
+        {
+          topic: "D-separación",
+          label: "d-separación",
+          trueStatements: [
+            "En una cadena A→B→C, observar B bloquea el camino A-C.",
+            "En un collider A→C←B, observar C puede hacer dependientes a A y B.",
+            "Un collider no observado bloquea el camino entre sus causas.",
+            "La d-separación permite leer independencias condicionales del grafo.",
+          ],
+          falseStatements: [
+            "Observar un collider siempre bloquea más el camino.",
+            "En una cadena, observar el nodo intermedio abre el camino.",
+            "La d-separación solo se usa en MDP.",
+            "Si hay un collider, sus padres siempre tienen arco directo entre sí.",
+          ],
+        },
+        {
+          topic: "HMM",
+          label: "modelos ocultos de Markov",
+          trueStatements: [
+            "Un HMM tiene estados ocultos y observaciones.",
+            "El modelo de emisión define P(E_t|X_t).",
+            "La transición temporal usa P(X_t|X_{t-1}).",
+            "La propiedad de Markov simplifica la dependencia temporal.",
+          ],
+          falseStatements: [
+            "Un HMM no tiene probabilidades de emisión.",
+            "Las observaciones son siempre estados completamente visibles del MDP.",
+            "En primer orden, X_t depende de todos los estados pasados sin simplificación.",
+            "Un HMM necesita acciones y recompensas obligatoriamente.",
+          ],
+        },
+        {
+          topic: "Inferencia temporal",
+          label: "inferencia temporal",
+          trueStatements: [
+            "Forward calcula la probabilidad de la evidencia acumulada.",
+            "Viterbi busca la secuencia de estados ocultos más probable.",
+            "El filtrado combina predicción y actualización con evidencia.",
+            "La normalización convierte pesos en una distribución posterior.",
+          ],
+          falseStatements: [
+            "Viterbi estima los parámetros del modelo sin datos.",
+            "Forward devuelve siempre una única trayectoria de estados.",
+            "El filtrado ignora el modelo de emisión.",
+            "La evidencia no afecta nunca a la creencia sobre estados ocultos.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "modelo-19",
+      title: "Modelo 19 — MDP y lógica borrosa avanzada",
+      subtitle: "20 preguntas tipo examen: 5 con 1 correcta, 5 con 2, 5 con 3 y 5 con 4.",
+      topicPacks: [
+        {
+          topic: "MDP",
+          label: "procesos de decisión de Markov",
+          trueStatements: [
+            "Un MDP incluye estados, acciones, transiciones y costes o recompensas.",
+            "Una política indica qué acción tomar en cada estado.",
+            "Bellman calcula valores esperados de estados o acciones.",
+            "Las transiciones pueden ser estocásticas.",
+          ],
+          falseStatements: [
+            "Un MDP no tiene estados.",
+            "Una política es una tabla de emisiones de un HMM.",
+            "Bellman ignora las probabilidades de transición.",
+            "Todas las acciones en un MDP son deterministas.",
+          ],
+        },
+        {
+          topic: "Bellman",
+          label: "ecuaciones de Bellman",
+          trueStatements: [
+            "Con costes se minimiza el coste esperado.",
+            "Con recompensas se maximiza la recompensa esperada.",
+            "El coste inmediato se suma al valor futuro esperado.",
+            "Un estado meta absorbente suele tener valor 0 si trabajamos con costes.",
+          ],
+          falseStatements: [
+            "Con costes se elige siempre la acción de mayor valor numérico.",
+            "Bellman usa solo el sucesor más probable y descarta el resto.",
+            "El estado meta tiene siempre coste infinito.",
+            "Las probabilidades de una acción no tienen que sumar 1.",
+          ],
+        },
+        {
+          topic: "Lógica borrosa",
+          label: "lógica borrosa",
+          trueStatements: [
+            "Una función de pertenencia devuelve valores en [0,1].",
+            "Borrosificación transforma entradas nítidas en grados de pertenencia.",
+            "En max-min, AND se modela habitualmente con mínimo.",
+            "El grado de pertenencia no es una probabilidad necesariamente.",
+          ],
+          falseStatements: [
+            "La lógica borrosa es idéntica a la probabilidad.",
+            "Un conjunto borroso solo admite valores 0 o 1.",
+            "En max-min, AND se calcula obligatoriamente con suma.",
+            "Borrosificación convierte una salida borrosa en un número nítido.",
+          ],
+        },
+        {
+          topic: "Defuzzificación",
+          label: "defuzzificación y agregación",
+          trueStatements: [
+            "La agregación por máximo toma el mayor grado en cada punto.",
+            "La salida agregada se usa como entrada para defuzzificación.",
+            "El centroide calcula un valor nítido representativo de la salida borrosa.",
+            "Varias reglas pueden solaparse y crear mesetas.",
+          ],
+          falseStatements: [
+            "La defuzzificación produce siempre una probabilidad a priori.",
+            "La agregación por máximo suma todos los grados sin límite.",
+            "El centroide elige siempre el mayor grado sin considerar la forma.",
+            "La salida agregada nunca depende de las reglas activadas.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "modelo-20",
+      title: "Modelo 20 — ML, bioinspiradas y robótica avanzada",
+      subtitle: "20 preguntas tipo examen: 5 con 1 correcta, 5 con 2, 5 con 3 y 5 con 4.",
+      topicPacks: [
+        {
+          topic: "Aprendizaje automático",
+          label: "aprendizaje automático",
+          trueStatements: [
+            "Un sistema aprende si mejora con la experiencia según una medida de rendimiento.",
+            "El aprendizaje supervisado usa ejemplos etiquetados.",
+            "El aprendizaje no supervisado busca patrones sin etiquetas de clase.",
+            "La validación con datos no usados en entrenamiento mide mejor la generalización.",
+          ],
+          falseStatements: [
+            "El aprendizaje supervisado nunca usa etiquetas.",
+            "Evaluar con los mismos datos de entrenamiento siempre mide generalización real.",
+            "Clustering es el ejemplo típico de aprendizaje supervisado.",
+            "Un atributo y una clase significan siempre exactamente lo mismo.",
+          ],
+        },
+        {
+          topic: "Redes neuronales",
+          label: "redes neuronales",
+          trueStatements: [
+            "Una neurona artificial calcula una suma ponderada de entradas.",
+            "Los pesos se ajustan durante el aprendizaje.",
+            "Las funciones de activación permiten modelar no linealidades.",
+            "Un perceptrón multicapa puede resolver problemas no lineales.",
+          ],
+          falseStatements: [
+            "Los pesos no influyen nunca en la salida.",
+            "Un MLP no puede tener capas ocultas.",
+            "Una red neuronal no puede sobreajustar.",
+            "Todas las redes neuronales son reglas simbólicas if-then puras.",
+          ],
+        },
+        {
+          topic: "Algoritmos genéticos",
+          label: "algoritmos genéticos",
+          trueStatements: [
+            "Trabajan con poblaciones de individuos.",
+            "Usan una función de fitness para evaluar soluciones.",
+            "La mutación introduce variación aleatoria.",
+            "El cruce combina información de individuos padres.",
+          ],
+          falseStatements: [
+            "La selección elige siempre exclusivamente al peor individuo.",
+            "La mutación elimina toda diversidad.",
+            "La función de fitness define el número fijo de capas ocultas.",
+            "Los algoritmos genéticos son necesariamente supervisados.",
+          ],
+        },
+        {
+          topic: "Robótica",
+          label: "robótica inteligente",
+          trueStatements: [
+            "Los sensores captan información del entorno o del propio robot.",
+            "Los actuadores ejecutan acciones físicas.",
+            "La autonomía puede tener distintos niveles según la tarea.",
+            "La planificación puede usar búsqueda o MDP según el tipo de incertidumbre.",
+          ],
+          falseStatements: [
+            "Un robot no necesita sensores bajo ninguna circunstancia.",
+            "Los actuadores son únicamente cámaras de percepción.",
+            "La autonomía implica siempre ausencia total de control y objetivos.",
+            "La robótica solo estudia tareas domésticas.",
+          ],
+        },
+      ],
+    },
+  ];
+
+  return modelConfigs.map((config, modelIndex) => ({
+    id: config.id,
+    title: config.title,
+    subtitle: config.subtitle,
+    questions: buildBalancedQuestions(config, modelIndex),
+  }));
+}
+
+function buildBalancedQuestions(config, modelIndex) {
+  const patterns = rotatePatterns(
+    [
+      ["a"], ["b"], ["c"], ["d"], ["a"],
+      ["b", "c"], ["b", "d"], ["c", "d"], ["a", "c"], ["a", "d"],
+      ["b", "c", "d"], ["a", "c", "d"], ["a", "b", "d"], ["a", "b", "c"], ["b", "c", "d"],
+      ["a", "b", "c", "d"], ["a", "b", "c", "d"], ["a", "b", "c", "d"], ["a", "b", "c", "d"], ["a", "b", "c", "d"],
+    ],
+    modelIndex
+  );
+
+  return patterns.map((correct, index) => {
+    const pack = config.topicPacks[index % config.topicPacks.length];
+    const options = buildBalancedOptions(pack, correct, index);
+    const modelNumber = config.id.replace("modelo-", "");
+    const trueSummary = correct.map((letter) => options[letter]).join(" ");
+
+    return {
+      id: `m${modelNumber}q${index + 1}`,
+      topic: pack.topic,
+      statement: `Marca las afirmaciones correctas sobre ${pack.label}:`,
+      options,
+      correct,
+      explanation: `Correctas: ${letterList(correct)}. ${trueSummary}`,
+    };
+  });
+}
+
+function rotatePatterns(patterns, amount) {
+  const letters = ["a", "b", "c", "d"];
+  const rotatedLetters = letters.map((_, index) => letters[(index + amount) % letters.length]);
+  const letterMap = Object.fromEntries(letters.map((letter, index) => [letter, rotatedLetters[index]]));
+  return patterns.map((pattern) => pattern.map((letter) => letterMap[letter]).sort());
+}
+
+function buildBalancedOptions(pack, correct, questionIndex) {
+  const options = {};
+  const correctSet = new Set(correct);
+  let trueIndex = questionIndex % pack.trueStatements.length;
+  let falseIndex = questionIndex % pack.falseStatements.length;
+
+  ["a", "b", "c", "d"].forEach((letter) => {
+    if (correctSet.has(letter)) {
+      options[letter] = pack.trueStatements[trueIndex % pack.trueStatements.length];
+      trueIndex += 1;
+    } else {
+      options[letter] = pack.falseStatements[falseIndex % pack.falseStatements.length];
+      falseIndex += 1;
+    }
+  });
+
+  return options;
+}
+
 function normalizeAnswer(arr) {
   return [...arr].sort().join("");
 }
